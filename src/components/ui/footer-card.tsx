@@ -18,17 +18,19 @@ interface CardItems {
 }
 export const FooterCard = ({ data }: { data: CardItems }) => {
   return (
-    <div className="flex flex-col items-center justify-between shadow-custom rounded-md p-4 lg:h-[230px] lg:w-[230px] w-44 h-56">
+    <div className="flex flex-col items-center justify-between shadow-custom rounded-md p-4 lg:h-[250px] lg:w-[250px] w-44 h-56 bg-primary">
       <Image
         src={data.icon.src}
         alt={`${data.link.text}-footer-card-icon`}
         width={data.icon.width}
         height={data.icon.height}
-        className="object-cover"
+        className="object-cover w-auto h-12"
       />
       <div className="flex flex-col items-center justify-center">
-        <h4 className="text-white font-jakarta text-base">{data.subtitle}</h4>
-        <h3 className="text-white font-jakarta font-bold text-lg">
+        <h4 className="text-white font-jakarta text-base text-center">
+          {data.subtitle}
+        </h4>
+        <h3 className="text-white font-jakarta font-bold text-lg text-center">
           {data.title}
         </h3>
       </div>

@@ -28,7 +28,7 @@ interface CardProps {
 export default function StepsShadowCard({ step }: { step: CardProps }) {
   return (
     <div
-      className={`lg:w-44 lg:h-48 h-64 w-[80vw] max-w-[400px] flex items-center justify-center p-2 rounded-md bg-white ${step.shadowStyle}`}
+      className={`lg:w-48 lg:h-[14rem] h-64 w-[80vw] max-w-[400px] flex items-center justify-center p-2 rounded-md bg-white ${step.shadowStyle}`}
     >
       <div className="flex flex-col items-center justify-around w-full h-full">
         <Image
@@ -41,10 +41,10 @@ export default function StepsShadowCard({ step }: { step: CardProps }) {
         <div
           className={`flex flex-col items-center justify-center font-bold font-jakarta ${step.titlesColor}`}
         >
-          <h2 className="lg:text-sm text-base translate-y-[5px]">
+          <h2 className="lg:text-sm text-base translate-y-[5px] text-center">
             {step.subtitle}
           </h2>
-          <h1 className="lg:text-base text-lg">{step.title}</h1>
+          <h1 className="lg:text-base text-lg text-center">{step.title}</h1>
         </div>
         <p className="font-jakarta lg:text-sm text-base text-center">
           {step.description}

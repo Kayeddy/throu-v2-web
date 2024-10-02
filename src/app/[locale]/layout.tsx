@@ -6,6 +6,9 @@ import { Providers } from "../providers";
 import { headers } from "next/headers";
 
 import "../globals.css";
+import Loader from "@/components/shared/Loader";
+import AuthWrapper from "@/components/shared/AuthWrapper";
+import { Locale } from "@/utils/types/shared/common";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,8 +31,11 @@ export default async function RootLayout({
     <html lang={locale}>
       <body className={`${inter.className}`}>
         <NextIntlClientProvider messages={messages}>
-          <Providers locale={locale} cookie={cookie}>
-            {children}
+          <Providers locale={locale as Locale} cookie={cookie}>
+            <AuthWrapper>
+              <Loader />
+              {children}
+            </AuthWrapper>
           </Providers>
         </NextIntlClientProvider>
       </body>

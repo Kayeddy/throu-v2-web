@@ -10,21 +10,9 @@ export default function Layout({
 }>) {
   return (
     <main className="overflow-x-hidden bg-[#F7FAFF] relative">
-      <BackgroundImage
-        src="/assets/shared/logo_purple_left.png"
-        containerStyles="absolute hidden lg:flex top-[64%] z-[1] right-0"
-        imageStyles="lg:w-[15vw] lg:h-[60vh] w-[8vh] h-[25vh]"
-      />
-      <BackgroundImage
-        src="/assets/shared/logo_blue_right.png"
-        containerStyles="absolute hidden lg:flex left-0 top-[80.8%] z-[1] right-0"
-        imageStyles="lg:w-[15vw] lg:h-[63vh] w-[8vh] h-[25vh]"
-      />
       <Navigation />
-      <div className="relative z-[2]">{children}</div>
-      <div className="relative z-[2] mt-10">
-        <Footer />
-      </div>
+      {children}
+      <Footer />
       <SupportButton />
     </main>
   );

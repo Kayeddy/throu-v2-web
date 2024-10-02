@@ -1,6 +1,195 @@
 {
+  "Common": {
+    "scrollToLearnMore": "Scroll para conocer más",
+    "supportButton": {
+      "whatsappMessage": "¡Hola! Estoy interesado/a en obtener más información sobre sus servicios. ¿Podría darme más detalles? ¡Gracias!",
+      "supportLabel": "Ayuda y soporte"
+    }
+  },
   "HomePage": {
-    "title": "Hola mundo!",
-    "about": "Ir a la pagina de sobre nosotros"
+    "Hero": {
+      "title": "Invierte en propiedad raíz a través de la tecnología blockchain",
+      "subtitle": "Vive el futuro de la inversión inmobiliaria con THROU, maximiza tu portafolio y obtén mejores rendimientos.",
+      "primaryButton": "Explorar",
+      "secondaryButton": "Conocer más"
+    },
+    "About": {
+      "trusted_by": "Confían en nosotros",
+      "be_part_of_evolution": "Sé parte de la evolución",
+      "experience_transparency": "Experimenta la transparencia y la seguridad de la tecnología blockchain mientras maximiza el rendimiento de sus inversiones inmobiliarias.",
+      "we_are_here_for": "Estamos aquí para",
+      "promote_title": "Promover",
+      "promote_description": "Inversiones de bajo riesgo y alta rentabilidad.",
+      "create_title": "Crear",
+      "create_description": "Los tokens según el valor del proyecto.",
+      "link_title": "Vincular",
+      "link_description": "Legalmente los tokens a la propiedad.",
+      "manage_title": "Administrar",
+      "manage_description": "La ejecución del proyecto y su rendimiento.",
+      "distribute_title": "Distribuir",
+      "distribute_description": "La rentabilidad con contratos inteligentes.",
+      "learn_more": "Conocer más"
+    },
+    "Showcase": {
+      "title": "Proyectos exclusivos, Inversiones asequibles",
+      "description": "Accede a una plataforma de finanzas descentralizadas (DeFi) que ofrece la posibilidad de proyectos inmobiliarios a través de tokens de fracción, con la seguridad y transparencia garantizadas por los Smart Contracts.",
+      "explore_button": "Explorar",
+      "learn_more_button": "Conocer más",
+      "no_projects_message": "No hay proyectos disponibles para mostrar",
+      "project_complete": "{percentage}% Completo",
+      "no_location_available": "No hay ubicación disponible",
+      "explore_all_projects": "Conoce todos nuestros proyectos",
+      "go_to_marketplace": "Ir al marketplace",
+      "invest_button": "Invertir"
+    },
+    "Steps": {
+      "main_title_part1": "Estaremos en cada",
+      "main_title_part2": "Paso",
+      "main_title_part3": "a paso",
+      "main_title_part4": "para ti",
+      "steps": [
+        {
+          "title": "la inversión",
+          "subtitle": "Únete al camino de",
+          "description": "¡Accede a oportunidades únicas con Throu!",
+          "link_text": "Invertir"
+        },
+        {
+          "title": "nuestros proyectos",
+          "subtitle": "Escoje entre",
+          "description": "¡Construye tu portafolio inmobiliario!",
+          "link_text": "Explorar"
+        },
+        {
+          "title": "tokens que desees",
+          "subtitle": "Compra los",
+          "description": "Repite el proceso y aumenta tu patrimonio",
+          "link_text": "Comprar tokens"
+        },
+        {
+          "title": "crece tu cartera",
+          "subtitle": "Recibe utilidad y",
+          "description": "Repite el proceso y aumenta tu patrimonio",
+          "link_text": "Más información"
+        }
+      ]
+    },
+    "Perks": {
+      "title": "¿Cómo lo Hacemos Posible?",
+      "perks": {
+        "security": {
+          "title": "Seguridad",
+          "description": "Utilizamos tecnología de vanguardia y protocolos rigurosos para proteger su información y activos."
+        },
+        "invest": {
+          "title": "Invierte desde $50 USD",
+          "description": "Da tus primeros pasos en el mundo de la inversión y comienza a construir tu cartera desde bajos montos."
+        },
+        "innovation": {
+          "title": "Innovación",
+          "description": "Buscamos nuevas formas de hacer las cosas para ayudarte con tus objetivos de inversión."
+        },
+        "freedom": {
+          "title": "Libertad financiera",
+          "description": "Te ayudamos a lograr la independencia económica mediante proyectos sólidos."
+        },
+        "accessibility": {
+          "title": "Accesibilidad",
+          "description": "Ofrecemos una plataforma donde puedes invertir de manera fácil y rápida, desde cualquier lugar del mundo."
+        },
+        "decentralization": {
+          "title": "Descentralización",
+          "description": "Tienes el control de tus activos y tus decisiones de inversión gracias a la Organización Autónoma Descentralizada (DAO)."
+        }
+      }
+    }
+  },
+  "AboutUs": {
+    "intro": {
+      "headline": {
+        "mobile": "Nosotros",
+        "desktop": "Una puerta de entrada a la inversión inmobiliaria"
+      },
+      "description": "En Throu, creemos en el poder de la tecnología blockchain y la inversión inmobiliaria para hacer del mundo un lugar más equitativo. Nuestra misión es hacer que las inversiones en bienes raíces sean simples y accesibles para todos, sin importar dónde se encuentren o cuánto deseen invertir.",
+      "pillars": {
+        "democratize": {
+          "title": "Democratizar",
+          "description": "Creemos que todos deberían tener la oportunidad de invertir en bienes raíces. Por eso, estamos eliminando las barreras de entrada y haciendo que la inversión inmobiliaria sea accesible para todos."
+        },
+        "simplify": {
+          "title": "Simplificar",
+          "description": "Hacemos que la inversión inmobiliaria sea fácil. Nuestra plataforma es intuitiva y fácil de usar, y nuestro equipo está siempre disponible para ayudarte en cada paso del camino."
+        },
+        "dynamize": {
+          "title": "Dinamizar",
+          "description": "Estamos utilizando la tecnología blockchain para hacer que la inversión inmobiliaria sea más eficiente y transparente. Con Throu, puedes ver exactamente dónde va tu dinero y cómo se está utilizando."
+        }
+      }
+    },
+    "team": {
+      "quote": "El futuro de la inversión inmobiliaria está aquí, y tú eres parte de él.",
+      "teamImageAlt": "Foto del equipo 1",
+      "teamImageAlt2": "Foto del equipo 2"
+    },
+    "teamMetrics": {
+      "headline": {
+        "desktop": "Nuestro Equipo: Expertos dedicados a tu servicio",
+        "mobile": "Nuestro Equipo"
+      },
+      "roles": {
+        "ceoCoFounder": "CEO - Cofundador",
+        "humanWebEngineer": "Ingeniero Web Humano",
+        "ctoCoFounder": "CTO - Cofundador",
+        "directResearchAnalyst": "Analista de Investigación Directa"
+      },
+      "description": "En Throu, contamos con un equipo de expertos en bienes raíces, blockchain, finanzas e inversión. Nuestro equipo se dedica a buscar, analizar y seleccionar las mejores oportunidades de inversión para nuestros usuarios. Estamos aquí para ayudarte en cada paso de tu viaje de inversión, desde la elección de proyectos hasta la compra de tokens. Nuestro equipo está compuesto por profesionales apasionados que están comprometidos con la democratización de la inversión inmobiliaria. Juntos, estamos cambiando la forma en que el mundo invierte en bienes raíces.",
+      "professionals": "Profesionales",
+      "areas": "Áreas",
+      "users": "Usuarios"
+    }
+  },
+  "Languages": {
+    "english": "Inglés",
+    "spanish": "Español",
+    "french": "Francés",
+    "arabic": "Árabe"
+  },
+  "HomeNavigation": {
+    "projects": "Proyectos",
+    "about-us": "Nosotros",
+    "learn": "Aprende",
+    "signIn": "Iniciar sesión",
+    "invest": "Invertir",
+    "termsConditions": "Términos del servicio",
+    "privacy": "Privacidad"
+  },
+  "HomeFooter": {
+    "headline": {
+      "part1": "Conoce",
+      "part2": "el universo de posibilidades de",
+      "part3": "Throu"
+    },
+    "description": "Aprovecha nuestra plataforma para explorar nuevas oportunidades financieras.",
+    "cards": {
+      "createAccount": {
+        "title": "Crea una cuenta",
+        "subtitle": "Conoce Throu y",
+        "linkText": "Conocer Throu"
+      },
+      "createWallet": {
+        "title": "Crea una wallet",
+        "subtitle": "Conoce wallets y",
+        "linkText": "Crea una wallet"
+      }
+    },
+    "logoAltText": "Logotipo de Throu",
+    "links": {
+      "projects": "Proyectos",
+      "aboutUs": "Nosotros",
+      "learn": "Aprende",
+      "termsService": "Términos del servicio",
+      "privacy": "Privacidad"
+    },
+    "rightsReserved": "© 2023 Throu Investment. Todos los derechos reservados."
   }
 }

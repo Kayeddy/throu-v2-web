@@ -1,26 +1,11 @@
 import { FaInstagram, FaTwitter, FaFacebookF, FaDiscord } from "react-icons/fa";
+import {
+  HomeNavigationItems,
+  KeyAboutItems,
+  Sponsors,
+} from "./types/shared/common";
 
 // Home
-
-interface Sponsors {
-  name: string;
-  imageUrl: string;
-  imageWidth: number;
-  imageHeight: number;
-  mobileWidth: number;
-  mobileHeight: number;
-}
-
-interface KeyAboutItems {
-  title: string;
-  description: string;
-  link: string;
-}
-
-interface HomeNavigationItems {
-  name: string;
-  link: string;
-}
 
 export const sponsors: Sponsors[] = [
   {
@@ -135,23 +120,18 @@ export const keyAboutItems: KeyAboutItems[] = [
 
 // Navigation
 
-interface HomeNavigationItems {
-  name: string;
-  link: string;
-}
-
 export const homeNavigationItems: HomeNavigationItems[] = [
   {
     name: "Proyectos",
-    link: "/proyectos",
+    link: "/marketplace",
   },
   {
     name: "Nosotros",
-    link: "/nosotros",
+    link: "/about-us",
   },
   {
     name: "Aprende",
-    link: "/aprende",
+    link: "/learn",
   },
 ];
 
@@ -194,22 +174,22 @@ export const socialMediaItems: SocialMediaItems[] = [
 export const footerLinks: HomeNavigationItems[] = [
   {
     name: "Proyectos",
-    link: "/proyectos",
+    link: "/marketplace",
   },
   {
     name: "Nosotros",
-    link: "/nosotros",
+    link: "/about-us",
   },
   {
     name: "Aprende",
-    link: "/aprende",
+    link: "/learn",
   },
   {
     name: "Términos del servicio",
-    link: "/aprende",
+    link: "/terms",
   },
   {
     name: "Privacidad",
-    link: "/aprende",
+    link: "/privacy",
   },
 ];

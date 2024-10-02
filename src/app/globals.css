@@ -11,6 +11,8 @@
 
 @import "../utils/styles/home/showcase.module.css";
 
+@import "../utils/styles/shared/animatedSpinner.module.css";
+
 .font-sen {
   font-family: "Sen", system-ui;
   font-optical-sizing: auto;
@@ -23,6 +25,10 @@
 
 html {
   font-size: 100%; /* 16px */
+}
+
+body {
+  scroll-behavior: smooth;
 }
 
 @media (min-width: 640px) {

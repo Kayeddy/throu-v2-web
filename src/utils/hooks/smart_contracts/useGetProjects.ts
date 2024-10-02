@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useReadContracts } from "wagmi";
 import projectAdminAbi from "@/utils/abis/projectAdmin.json";
 import projectTokenizationAdmin from "@/utils/abis/projectTokenizationAdmin.json";
-import { fetchMetadataFromUri } from "@/lib/actions/project.action";
+import { fetchMetadataFromUri } from "@/actions/project.action";
 import { convertContractUnits } from "@/lib/utils";
 
 /**

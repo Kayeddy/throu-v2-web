@@ -8,11 +8,14 @@ const isPublicRoute = createRouteMatcher([
   "/",
   "/en",
   "/es",
-  "/pt",
+  "/fr",
+  "/ar",
   "/:locale/sign-in",
   "/:locale/sign-up",
+  "/:locale/about-us", // More specific route first
   "/api/webhooks/clerk",
-  "/(en|es|pt)(.*)",
+  "/(en|es|fr|ar)/about-us", // Also ensure locale-specific paths for about-us
+  "/(en|es|fr|ar)(.*)", // General route matcher last
 ]);
 
 export default clerkMiddleware((auth, req) => {
@@ -28,6 +31,6 @@ export const config = {
     // Always run for API routes
     "/(api|trpc)(.*)",
     // Match locales
-    "/(pt|es|en)/:path*",
+    "/(en|es|fr|ar)/:path*",
   ],
 };

@@ -15,7 +15,7 @@ export const PerksCard = ({ perk }: { perk: Perk }) => {
   const isMobile = useIsMobile();
   return (
     <div
-      className="lg:min-w-56 lg:max-w-96 lg:w-full lg:h-60 w-44 h-80 bg-transparent rounded-md bg-white lg:bg-transparent lg:hover:bg-primary transtion-all duration-300 ease-in-out flex flex-col items-center justify-start p-4 group lg:gap-2"
+      className="lg:min-w-56 lg:max-w-96 lg:w-full lg:h-60 w-44 h-80 bg-transparent rounded-md bg-white lg:bg-light lg:hover:bg-primary transtion-all duration-300 ease-in-out flex flex-col items-center justify-start p-4 group lg:gap-2"
       onMouseEnter={() => !isMobile && setIsHovered(true)}
       onMouseLeave={() => !isMobile && setIsHovered(false)}
     >

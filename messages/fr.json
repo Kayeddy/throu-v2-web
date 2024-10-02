@@ -1,0 +1,195 @@
+{
+  "Common": {
+    "scrollToLearnMore": "Faites défiler pour en savoir plus",
+    "supportButton": {
+      "whatsappMessage": "Bonjour! Je suis intéressé(e) par plus d'informations sur vos services. Pourriez-vous m'en dire plus ? Merci !",
+      "supportLabel": "Aide et support"
+    }
+  },
+  "HomePage": {
+    "Hero": {
+      "title": "Investissez dans l'immobilier grâce à la technologie blockchain",
+      "subtitle": "Découvrez l'avenir de l'investissement immobilier avec THROU, maximisez votre portefeuille et obtenez de meilleurs rendements.",
+      "primaryButton": "Explorer",
+      "secondaryButton": "En savoir plus"
+    },
+    "About": {
+      "trusted_by": "Digne de confiance",
+      "be_part_of_evolution": "Faites partie de l'évolution",
+      "experience_transparency": "Découvrez la transparence et la sécurité de la technologie blockchain tout en maximisant la performance de vos investissements immobiliers.",
+      "we_are_here_for": "Nous sommes ici pour",
+      "promote_title": "Promouvoir",
+      "promote_description": "Investissements à faible risque et à rendement élevé.",
+      "create_title": "Créer",
+      "create_description": "Des tokens basés sur la valeur du projet.",
+      "link_title": "Lier",
+      "link_description": "Lier légalement les tokens à la propriété.",
+      "manage_title": "Gérer",
+      "manage_description": "Gérer l'exécution et la performance du projet.",
+      "distribute_title": "Distribuer",
+      "distribute_description": "Distribuer les rendements via des contrats intelligents.",
+      "learn_more": "En savoir plus"
+    },
+    "Showcase": {
+      "title": "Projets exclusifs, investissements abordables",
+      "description": "Accédez à une plateforme de finance décentralisée (DeFi) qui offre la possibilité de projets immobiliers via des tokens fractionnés, avec sécurité et transparence garanties par les contrats intelligents.",
+      "explore_button": "Explorer",
+      "learn_more_button": "En savoir plus",
+      "no_projects_message": "Il n'y a aucun projet disponible à montrer",
+      "project_complete": "{percentage}% Terminé",
+      "no_location_available": "Aucun emplacement disponible",
+      "explore_all_projects": "Découvrez tous nos projets",
+      "go_to_marketplace": "Aller au marché",
+      "invest_button": "Investir"
+    },
+    "Steps": {
+      "main_title_part1": "Nous serons là à chaque",
+      "main_title_part2": "Étape",
+      "main_title_part3": "par étape",
+      "main_title_part4": "pour vous",
+      "steps": [
+        {
+          "title": "investissement",
+          "subtitle": "Rejoignez la voie de",
+          "description": "Accédez à des opportunités uniques avec Throu!",
+          "link_text": "Investir"
+        },
+        {
+          "title": "nos projets",
+          "subtitle": "Choisissez parmi",
+          "description": "Construisez votre portefeuille immobilier!",
+          "link_text": "Explorer"
+        },
+        {
+          "title": "tokens que vous voulez",
+          "subtitle": "Achetez les",
+          "description": "Répétez le processus et développez votre patrimoine",
+          "link_text": "Acheter des tokens"
+        },
+        {
+          "title": "faites grandir votre portefeuille",
+          "subtitle": "Recevez des bénéfices et",
+          "description": "Répétez le processus et développez votre patrimoine",
+          "link_text": "Plus d'informations"
+        }
+      ]
+    },
+    "Perks": {
+      "title": "Comment le rendons-nous possible ?",
+      "perks": {
+        "security": {
+          "title": "Sécurité",
+          "description": "Nous utilisons des technologies de pointe et des protocoles rigoureux pour protéger vos informations et actifs."
+        },
+        "invest": {
+          "title": "Investir à partir de 50 USD",
+          "description": "Faites vos premiers pas dans le monde de l'investissement et commencez à constituer votre portefeuille avec de petits montants."
+        },
+        "innovation": {
+          "title": "Innovation",
+          "description": "Nous cherchons de nouvelles façons de vous aider à atteindre vos objectifs d'investissement."
+        },
+        "freedom": {
+          "title": "Liberté financière",
+          "description": "Nous vous aidons à atteindre l'indépendance financière grâce à des projets solides."
+        },
+        "accessibility": {
+          "title": "Accessibilité",
+          "description": "Nous offrons une plateforme où vous pouvez investir facilement et rapidement de n'importe où dans le monde."
+        },
+        "decentralization": {
+          "title": "Décentralisation",
+          "description": "Vous contrôlez vos actifs et vos décisions d'investissement grâce à l'Organisation Autonome Décentralisée (DAO)."
+        }
+      }
+    }
+  },
+  "AboutUs": {
+    "intro": {
+      "headline": {
+        "mobile": "À Propos de Nous",
+        "desktop": "Une Porte d’Entrée vers l’Investissement Immobilier"
+      },
+      "description": "Chez Throu, nous croyons au pouvoir de la technologie blockchain et de l’investissement immobilier pour rendre le monde plus équitable. Notre mission est de rendre les investissements immobiliers simples et accessibles à tous, où qu'ils soient et quel que soit le montant qu'ils souhaitent investir.",
+      "pillars": {
+        "democratize": {
+          "title": "Démocratiser",
+          "description": "Nous croyons que chacun doit avoir l'opportunité d'investir dans l'immobilier. C’est pourquoi nous supprimons les barrières à l'entrée et rendons l'investissement immobilier accessible à tous."
+        },
+        "simplify": {
+          "title": "Simplifier",
+          "description": "Nous rendons l'investissement immobilier facile. Notre plateforme est intuitive et facile à utiliser, et notre équipe est toujours disponible pour vous aider à chaque étape."
+        },
+        "dynamize": {
+          "title": "Dynamiser",
+          "description": "Nous utilisons la technologie blockchain pour rendre l'investissement immobilier plus efficace et transparent. Avec Throu, vous pouvez voir exactement où va votre argent et comment il est utilisé."
+        }
+      }
+    },
+    "team": {
+      "quote": "L'avenir de l'investissement immobilier est ici, et vous en faites partie.",
+      "teamImageAlt": "Photo de l'équipe 1",
+      "teamImageAlt2": "Photo de l'équipe 2"
+    },
+    "teamMetrics": {
+      "headline": {
+        "desktop": "Notre Équipe : Des Experts Dédiés à Votre Service",
+        "mobile": "Notre Équipe"
+      },
+      "roles": {
+        "ceoCoFounder": "PDG - Cofondateur",
+        "humanWebEngineer": "Ingénieur Web Humain",
+        "ctoCoFounder": "CTO - Cofondateur",
+        "directResearchAnalyst": "Analyste en Recherche Directe"
+      },
+      "description": "Chez Throu, nous avons une équipe d'experts en immobilier, blockchain, finance et investissement. Notre équipe est dédiée à trouver, analyser et sélectionner les meilleures opportunités d'investissement pour nos utilisateurs. Nous sommes là pour vous accompagner à chaque étape de votre parcours d'investissement, de la sélection des projets à l'achat de tokens. Notre équipe est composée de professionnels passionnés engagés dans la démocratisation de l'investissement immobilier. Ensemble, nous changeons la façon dont le monde investit dans l'immobilier.",
+      "professionals": "Professionnels",
+      "areas": "Secteurs",
+      "users": "Utilisateurs"
+    }
+  },
+  "Languages": {
+    "english": "Anglais",
+    "spanish": "Espagnol",
+    "french": "Français",
+    "arabic": "Arabe"
+  },
+  "HomeNavigation": {
+    "projects": "Projets",
+    "about-us": "À propos",
+    "learn": "Apprendre",
+    "signIn": "Se connecter",
+    "invest": "Investir",
+    "termsConditions": "Conditions d'utilisation",
+    "privacy": "Confidentialité"
+  },
+  "HomeFooter": {
+    "headline": {
+      "part1": "Découvrez",
+      "part2": "l'univers des possibilités de",
+      "part3": "Throu"
+    },
+    "description": "Vulputate at commodo mi cursus amet. Eget porta sed egestas sociis pellentesque pellentesque. Ultricies ac phasellus dapibus.",
+    "logoAltText": "Logo de bureau Throu",
+    "cards": {
+      "createAccount": {
+        "title": "Créer un compte",
+        "subtitle": "Découvrez Throu et",
+        "linkText": "Découvrez Throu"
+      },
+      "createWallet": {
+        "title": "Créer un",
+        "subtitle": "Découvrez les portefeuilles et",
+        "linkText": "Créer un portefeuille"
+      }
+    },
+    "links": {
+      "projects": "Projets",
+      "aboutUs": "À propos de nous",
+      "learn": "Apprendre",
+      "termsService": "Conditions d'utilisation",
+      "privacy": "Confidentialité"
+    },
+    "rightsReserved": "© 2023 Throu Investment. Tous droits réservés."
+  }
+}

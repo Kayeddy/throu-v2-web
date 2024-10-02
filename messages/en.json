@@ -1,6 +1,200 @@
 {
+  "Common": {
+    "scrollToLearnMore": "Scroll to learn more",
+    "supportButton": {
+      "whatsappMessage": "Hello! I am interested in learning more about your services. Could you provide more details? Thank you!",
+      "supportLabel": "Support & Help"
+    }
+  },
+
   "HomePage": {
-    "title": "Hello world!",
-    "about": "Go to the about page"
+    "Hero": {
+      "title": "Invest in real estate through blockchain technology",
+      "subtitle": "Experience the future of real estate investing with THROU, maximize your portfolio, and achieve higher returns.",
+      "primaryButton": "Explore",
+      "secondaryButton": "Learn more"
+    },
+    "About": {
+      "trusted_by": "Trusted by",
+      "be_part_of_evolution": "Be part of the evolution",
+      "experience_transparency": "Experience the transparency and security of blockchain technology while maximizing the performance of your real estate investments.",
+      "we_are_here_for": "We are here for",
+      "promote_title": "Promote",
+      "promote_description": "Low-risk, high-return investments.",
+      "create_title": "Create",
+      "create_description": "Tokens based on the project value.",
+      "link_title": "Link",
+      "link_description": "Legally link tokens to the property.",
+      "manage_title": "Manage",
+      "manage_description": "Manage project execution and performance.",
+      "distribute_title": "Distribute",
+      "distribute_description": "Distribute returns via smart contracts.",
+      "learn_more": "Learn more"
+    },
+    "Showcase": {
+      "title": "Exclusive projects, affordable investments",
+      "description": "Access a decentralized finance (DeFi) platform that offers the possibility of real estate projects through fractional tokens, with security and transparency guaranteed by Smart Contracts.",
+      "explore_button": "Explore",
+      "learn_more_button": "Learn more",
+      "no_projects_message": "There are no projects available to show",
+      "project_complete": "{percentage}% Complete",
+      "no_location_available": "No location available",
+      "explore_all_projects": "Explore all our projects",
+      "go_to_marketplace": "Go to marketplace",
+      "invest_button": "Invest"
+    },
+    "Steps": {
+      "main_title_part1": "We will be there at every",
+      "main_title_part2": "Step",
+      "main_title_part3": "by step",
+      "main_title_part4": "for you",
+      "steps": [
+        {
+          "title": "investment",
+          "subtitle": "Join the path of",
+          "description": "Access unique opportunities with Throu!",
+          "link_text": "Invest"
+        },
+        {
+          "title": "our projects",
+          "subtitle": "Choose from",
+          "description": "Build your real estate portfolio!",
+          "link_text": "Explore"
+        },
+        {
+          "title": "tokens you want",
+          "subtitle": "Buy the",
+          "description": "Repeat the process and grow your assets",
+          "link_text": "Buy tokens"
+        },
+        {
+          "title": "grow your portfolio",
+          "subtitle": "Receive profits and",
+          "description": "Repeat the process and grow your assets",
+          "link_text": "More information"
+        }
+      ]
+    },
+    "Perks": {
+      "title": "How Do We Make It Possible?",
+      "perks": {
+        "security": {
+          "title": "Security",
+          "description": "We use cutting-edge technology and rigorous protocols to protect your information and assets."
+        },
+        "invest": {
+          "title": "Invest from $50 USD",
+          "description": "Take your first steps into the investment world and start building your portfolio from low amounts."
+        },
+        "innovation": {
+          "title": "Innovation",
+          "description": "We seek new ways to help you reach your investment goals."
+        },
+        "freedom": {
+          "title": "Financial Freedom",
+          "description": "We help you achieve financial independence through solid projects."
+        },
+        "accessibility": {
+          "title": "Accessibility",
+          "description": "We offer a platform where you can invest easily and quickly from anywhere in the world."
+        },
+        "decentralization": {
+          "title": "Decentralization",
+          "description": "You control your assets and investment decisions thanks to the Decentralized Autonomous Organization (DAO)."
+        }
+      }
+    }
+  },
+
+  "AboutUs": {
+    "intro": {
+      "headline": {
+        "mobile": "About Us",
+        "desktop": "A Gateway to Real Estate Investment"
+      },
+      "description": "At Throu, we believe in the power of blockchain technology and real estate investment to make the world a more equitable place. Our mission is to make real estate investments simple and accessible to everyone, no matter where they are or how much they wish to invest.",
+      "pillars": {
+        "democratize": {
+          "title": "Democratize",
+          "description": "We believe everyone should have the opportunity to invest in real estate. That’s why we are removing entry barriers and making real estate investment accessible to all."
+        },
+        "simplify": {
+          "title": "Simplify",
+          "description": "We make real estate investing easy. Our platform is intuitive and easy to use, and our team is always available to assist you every step of the way."
+        },
+        "dynamize": {
+          "title": "Dynamize",
+          "description": "We’re using blockchain technology to make real estate investment more efficient and transparent. With Throu, you can see exactly where your money is going and how it’s being used."
+        }
+      }
+    },
+    "team": {
+      "quote": "The future of real estate investment is here, and you’re a part of it.",
+      "teamImageAlt": "Photo of the team 1",
+      "teamImageAlt2": "Photo of the team 2"
+    },
+    "teamMetrics": {
+      "headline": {
+        "desktop": "Our Team: Experts Dedicated to Your Service",
+        "mobile": "Our Team"
+      },
+      "roles": {
+        "ceoCoFounder": "CEO - Co-founder",
+        "humanWebEngineer": "Human Web Engineer",
+        "ctoCoFounder": "CTO - Co-founder",
+        "directResearchAnalyst": "Direct Research Analyst"
+      },
+      "description": "At Throu, we have a team of experts in real estate, blockchain, finance, and investment. Our team is dedicated to finding, analyzing, and selecting the best investment opportunities for our users. We are here to help you at every step of your investment journey, from choosing projects to purchasing tokens. Our team consists of passionate professionals committed to democratizing real estate investment. Together, we are changing the way the world invests in real estate.",
+      "professionals": "Professionals",
+      "areas": "Areas",
+      "users": "Users"
+    }
+  },
+
+  "Languages": {
+    "english": "English",
+    "spanish": "Spanish",
+    "french": "French",
+    "arabic": "Arabic"
+  },
+
+  "HomeNavigation": {
+    "projects": "Projects",
+    "about-us": "About",
+    "learn": "Learn",
+    "signIn": "Sign In",
+    "invest": "Invest",
+    "termsConditions": "Terms of Service",
+    "privacy": "Privacy"
+  },
+
+  "HomeFooter": {
+    "headline": {
+      "part1": "Discover",
+      "part2": "the universe of possibilities with",
+      "part3": "Throu"
+    },
+    "description": "Take advantage of our platform to explore new financial opportunities.",
+    "cards": {
+      "createAccount": {
+        "title": "Create an account",
+        "subtitle": "Learn about Throu and",
+        "linkText": "Explore Throu"
+      },
+      "createWallet": {
+        "title": "Create a wallet",
+        "subtitle": "Learn about wallets and",
+        "linkText": "Create a wallet"
+      }
+    },
+    "logoAltText": "Throu logo",
+    "links": {
+      "projects": "Projects",
+      "aboutUs": "About Us",
+      "learn": "Learn",
+      "termsService": "Terms of Service",
+      "privacy": "Privacy"
+    },
+    "rightsReserved": "© 2023 Throu Investment. All rights reserved."
   }
 }
