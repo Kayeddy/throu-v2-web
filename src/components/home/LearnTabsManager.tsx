@@ -41,7 +41,7 @@ export default function LearnTabsManager() {
 
   return (
     <div className="flex flex-col px-4 mt-20 w-full h-full">
-      <div className="flex w-full flex-col min-h-fit">
+      <div className="flex w-full flex-col h-full">
         <Tabs
           aria-label="Options"
           isVertical={isMobile ? false : true}
