@@ -40,8 +40,8 @@ export default function LearnTabsManager() {
   ];
 
   return (
-    <div className="flex flex-col px-4 mt-20 w-full">
-      <div className="flex w-full flex-col">
+    <div className="flex flex-col px-4 mt-20 w-full h-full">
+      <div className="flex w-full flex-col min-h-fit">
         <Tabs
           aria-label="Options"
           isVertical={isMobile ? false : true}
