@@ -151,6 +151,169 @@
     }
   },
 
+  "Learn": {
+    "tabs": {
+      "default": "Home",
+      "blog": "Blog",
+      "faqs": "FAQs"
+    },
+    "home": {
+      "welcomeTitle": "Welcome to Throu",
+      "welcomeContent": "<p>Welcome to the Learn section of our platform. Here begins your journey into the revolutionary world of real estate investment through blockchain technology. With the information and insights gathered here, you will be empowered to navigate our platform with confidence and competence.</p><p>We are sure that the more you explore, the more you will be inspired by the potential synergies between cryptocurrencies and real estate. Your journey towards wealth creation and financial freedom starts now. Learn, invest, and prosper with us.</p><p>Our <Blog>Blog</Blog> tab offers the latest insights and trends in the field, while the <FAQs>FAQs</FAQs> tab answers your most pressing questions about the platform.</p>"
+    },
+
+    "blog": {
+      "tokenizationBlog": {
+        "title": "Real Estate Tokenization",
+        "content": "<p>Real estate tokenization is revolutionizing the way we invest in real estate, democratizing access and providing greater liquidity to investors. But what is real estate tokenization and how does it work? In this article, we will explore the concept of real estate tokenization, its benefits, and how it is changing the landscape of real estate investments.</p><p><b>What is Real Estate Tokenization?</b></p><p>Real estate tokenization is a process by which real estate assets are divided into digital tokens, representing a fraction of the property. These tokens can be acquired by investors, allowing them to buy and sell fractions of properties instead of having to invest in an entire property. By tokenizing real estate assets, access to real estate investments is facilitated for a broader audience and investors are provided with greater liquidity. Additionally, tokenization can help reduce transaction costs and facilitate the diversification of investments.</p><p><b>Benefits of Real Estate Tokenization:</b></p><p><b>1. Accessibility:</b> Tokenization allows investors with less capital to invest in real estate, as they can acquire fractions of a property rather than having to purchase the entire property.</p><p><b>2. Liquidity:</b> Real estate tokens can be bought and sold on digital platforms, making it easier to enter and exit investments and increasing liquidity compared to traditional real estate investments.</p><p><b>3. Diversification:</b> By investing in real estate tokens, investors can diversify their investments across different properties and locations, reducing the risk associated with investing in a single asset.</p><p><b>4. Transparency:</b> Blockchain technology, used to issue and manage real estate tokens, provides a transparent and immutable record of all transactions, facilitating auditing and property verification.</p><p>Real estate tokenization is changing the way we invest in real estate, offering a more accessible and liquid way to invest in this type of asset. By understanding how real estate tokenization works and its benefits, investors can make more informed decisions and take advantage of the opportunities that this innovative investment approach offers.</p>"
+      },
+      "platformGuideBlog": {
+        "title": "How does Throu's tokenized real estate investment platform work?",
+        "content": "<p>Step-by-step guide for user registration and KYC verification.</p><p><b>Step 1: Access Throu.app</b></p><p>Start by visiting our platform through this link <Link>Throu.app</Link>. You'll find a friendly and easy-to-navigate interface.</p><p><b>Step 2: Initial registration</b></p><p>Click the <Link>Create Account</Link> button located at the top of the page. You will be redirected to a registration page where you will be asked to provide basic information, such as your email, first name, last name, and a secure password.</p><p><b>Step 3: Email confirmation</b></p><p>After completing the registration, you will receive a confirmation email to the address you provided. Look for this email in your inbox and click the verification link. If you don't find it, check your spam folder or request the email to be resent.</p><p>You are now part of Throu.app as an unverified user! To access all the features and benefits of our platform, you can complete the KYC verification.</p>"
+      },
+      "investmentGuideBlog": {
+        "title": "How to start investing in real estate projects with Throu App?",
+        "content": "<p><b>1. Account creation and KYC verification process</b></p><p>To ensure security and comply with regulations, Throu requires users to complete an identity verification process (KYC) before investing on the platform. When creating an account, you will be asked to provide information such as your name, ID, age, cell phone number, email, and wallet address. This process helps prevent fraud, protect investors, and ensure compliance with applicable laws and regulations.</p><p><b>2. Explore investment opportunities</b></p><p>Once you have completed the KYC verification process, you can explore the various investment opportunities available on the Throu platform. The projects on the platform may vary in duration, from two years to longer periods, depending on the nature of the project and the investment plan. Throu offers two main ways to invest:</p><span><p><b>A. Purchase, remodel, and sell projects:</b></p><p>These projects involve acquiring properties that require renovation or improvements before being sold on the market. Investors can benefit from the difference between the purchase price and the sale price after the necessary improvements are made.</p></span><span><p><b>B. Passive income projects:</b></p><p>These projects focus on generating passive income through short- and long-term rentals, such as hotels, Airbnb, and other rental properties. Investors can benefit from the income generated by these rentals, which is proportionally distributed to token holders according to their share in the property.</p></span><span><p><b>C. Select a project and invest:</b></p><p>After reviewing and analyzing the investment opportunities on the Throu platform, you can select a project that fits your investment goals and preferences. To invest, simply follow the instructions on the platform and purchase the tokens corresponding to the project using cryptocurrencies or fiat currencies.</p></span><p>The Throu tokenized real estate investment platform offers an innovative and accessible way to invest in real estate. By understanding how the platform works and the investment opportunities available, you can make informed decisions and take advantage of the benefits of real estate tokenization.</p>"
+      },
+      "walletCreationGuideBlog": {
+        "title": "How to create a wallet in MetaMask?",
+        "content": "<p>To participate in the tokenized real estate investment platform Throu, users need a compatible digital wallet. MetaMask is a popular and user-friendly wallet that integrates with Throu and allows users to manage and transact with property tokens. In this article, we will explain how to create a wallet in MetaMask and how to use it to access the Throu platform.</p><span><b>Step 1:</b><Link>Download and install MetaMask</Link><span><p><b>A.</b> Visit the official MetaMask website (<Link>https://metamask.io/</Link>) and click “Download”.</p><p><b>B.</b> Select the appropriate MetaMask version for your browser (Chrome, Firefox, Brave, or Edge) and follow the instructions to install the extension.</p></span></span><span><b>Step 2:</b> Create a new wallet in MetaMask<span><p><b>A.</b> Click the MetaMask icon in your browser’s toolbar to open the extension.</p><p><b>B.</b> Select “Get Started” and then choose “Create a Wallet”.</p><p><b>C.</b> Set a secure password and click “Create”.</p><p><b>D.</b> MetaMask will generate a 12-word seed phrase. Make sure to save this phrase in a safe place, as it will be required to recover your wallet if you lose access. Click “Next” once you have backed up your seed phrase.</p><p><b>E.</b> Confirm your seed phrase by selecting the words in the correct order and click “Confirm”.</p><p><b>F.</b> Once you have confirmed your seed phrase, your MetaMask wallet will be created and ready to use.</p></span></span><span><b>Step 3:</b> Connect MetaMask with the Throu platform<span><p><b>A.</b> Visit the Throu website and sign up or log in to your account.</p><p><b>B.</b> Go to the account settings or deposit page.</p><p><b>C.</b> Select MetaMask as your wallet connection method and click “Connect”.</p><p><b>D.</b> A MetaMask pop-up will appear asking for permission to connect your wallet to Throu. Click “Connect” to authorize the connection.</p><p><b>E.</b> Once connected, your MetaMask wallet will be linked to your Throu account, allowing you to transact and manage your property tokens on the platform.</p></span></span>",
+        "polygonTitle": "Connect MetaMask to the Polygon Network",
+        "polygonContent": "<p>The Throu platform operates on the Polygon network, a layer-2 scalability solution for Ethereum. To interact with the Throu platform and transact with property tokens, you will need to connect your MetaMask wallet to the Polygon network. In this article, we will guide you through the process of setting up the Polygon network on MetaMask and how to use it on Throu.</p><span><b>Step 1:</b> Set up the Polygon network in MetaMask<span><p><b>A.</b> Open MetaMask by clicking the icon in your browser’s toolbar.</p><p><b>B.</b> Click the circular icon in the top right and select “Settings” from the dropdown menu.</p><p><b>C.</b> On the settings page, click “Networks” and then “Add Network”.</p></span></span><span><b>Step 2:</b> Switch to the Polygon network in MetaMask<span><p><b>A.</b> Open MetaMask and click on the top where the current network (e.g., “Ethereum Mainnet”) is displayed.</p><p><b>B.</b> Select “Polygon” from the list of available networks. Now, your MetaMask will be connected to the Polygon network.</p></span></span><span><b>Step 3:</b> Transfer funds to the Polygon network<span><p><b>A.</b> Visit the Polygon bridge website (<Link>https://wallet.polygon.technology/bridge</Link>).</p><p><b>B.</b> Select the token you wish to transfer (e.g., USDT) and the amount.</p><p><b>C.</b> Click “Transfer” and confirm the transaction in MetaMask. Please note that this process may take several minutes or even hours, depending on the network congestion.</p></span></span><span><b>Step 4:</b> Access the Throu platform with MetaMask on the Polygon network<span><p><b>A.</b> Visit the Throu website and sign up or log in to your account.</p><p><b>B.</b> If you have not already connected your MetaMask to Throu, follow the steps in Example 4 to connect your wallet.</p><p><b>C.</b> Make sure your MetaMask is on the Polygon network, as outlined in Step 2.</p><p><b>D.</b> You can now explore investment opportunities on Throu, purchase property tokens, and manage your investments using your MetaMask wallet on the Polygon network.</p></span></span>"
+      },
+      "stablecoinBlog": {
+        "title": "Stablecoins and their integration into the Throu platform",
+        "content": "<p>In the world of cryptocurrencies, volatility is often the norm, not the exception. Prices can rise or fall dramatically in a matter of minutes. While this volatility can offer lucrative opportunities for some, it can also present significant risks for those seeking more stable investments. This is where stablecoins come into play.</p><span><p><b>What is a Stablecoin?</b></p><p>Stablecoins are a special type of cryptocurrency designed to maintain their value relative to a specific asset, typically a fiat currency such as the US dollar. By being pegged to stable-value assets, stablecoins offer the promise of the stability of traditional fiat currencies and the functionality and security of cryptocurrencies.</p></span><span><p><b>USDT: A Popular Stablecoin</b></p><p>One of the most popular and widely used stablecoins is Tether (USDT). Each USDT token is backed by one US dollar, which is held in reserves by Tether Ltd., the company behind USDT. This means that, in theory, each USDT has a value of one US dollar. USDT can be exchanged on many cryptocurrency platforms and can be used to buy other cryptocurrencies or store value.</p></span><span><p><b>Using USDT on Throu</b></p><p>At Throu, we have chosen to use USDT as our stablecoin of choice for several reasons. Firstly, the stability of USDT makes it an attractive option for investors looking to avoid the volatility associated with other cryptocurrencies. When you invest in tokenized real estate projects on Throu, we want you to focus on the potential of the real estate asset itself, not the fluctuations in cryptocurrency value.</p></span><span><p>Additionally, USDT is widely accepted and easy to exchange, making it convenient for our users. You can buy USDT on most cryptocurrency exchanges and then use it to purchase property tokens on the Throu platform.</p></span><span><p>Finally, by using USDT, we can also provide a more efficient investment and withdrawal process. When your investment profits become available and liquid, you can withdraw your profits in USDT directly from the platform. Likewise, investment returns can be automatically distributed to the wallets of property token holders.</p></span><span><p>Stablecoins like USDT offer a balance between the stability of fiat currencies and the efficiency and security of cryptocurrencies. At Throu, we are proud to offer our users the ability to invest in tokenized real estate assets using USDT, providing an investment experience that is both secure and convenient. With Throu and USDT, you can navigate the world of tokenized real estate investments with confidence.</p></span>"
+      },
+      "gainsWithdrawalGuideBlog": {
+        "title": "Withdrawing Gains from the Throu Platform",
+        "content": "<p>In the world of investments, the process of withdrawing gains can often be complicated and sometimes slow. At Throu, we are proud to offer a simplified and efficient gains withdrawal process. In this article, we will guide you through the steps to withdraw your gains directly from the Throu platform or automatically receive gains in your wallet.</p><span><p><b>Step 1: Logging into your Throu account</b></p><p>To start the withdrawal process, you must first log into your Throu account. Make sure you have your login credentials ready.</p></span><span><p><b>Step 2: Review your gains</b></p><p>Once you are logged in, you can review your gains in your account dashboard. Here, you can see all the investments you have made, as well as the gains generated by each one.</p></span><span><p><b>Step 3: Request a withdrawal</b></p><p>Real estate tokens can be bought and sold on digital platforms, facilitating entry and exit from investments and increasing liquidity compared to traditional real estate investments.</p></span><span><p><b>Step 4: Confirm the withdrawal</b></p><p>After requesting a withdrawal, you will receive an email to confirm your request. Once confirmed, the withdrawal process will begin. Throu uses USDT, a stablecoin pegged to the US dollar, to process withdrawals.</p></span><span><p><b>Step 5: Receive your gains</b></p><p>Once confirmed, the withdrawal process will start. Throu uses USDT to process withdrawals.</p></span><span><p>In addition to this manual withdrawal process, Throu also offers the option of automatic withdrawals. With automatic withdrawals, gains are distributed directly to property token holders' wallets at a specified time interval. This is an excellent option for those who prefer a more passive approach to managing their investments.</p></span><span><p>At Throu, we strive to make the investment experience as easy and convenient as possible. Whether you prefer to manually withdraw your gains or receive automatic payouts, our goal is to provide you with a platform where you can invest with confidence and comfort. By simplifying the gains withdrawal process, we hope you can focus on what matters most: investing in tokenized real estate assets and watching your wealth grow.</p></span>"
+      }
+    },
+    "faqs": {
+      "throuDefinition": {
+        "title": "What is Throu?",
+        "content": "Throu is a platform that enables the tokenization of real estate assets, facilitating the purchase and sale of property fractions for investors."
+      },
+      "realEstateTokenizationDefinition": {
+        "title": "What is real estate tokenization?",
+        "content": "Real estate tokenization is a process that allows dividing a real estate asset into multiple digital tokens. Each token represents a fraction of ownership of the asset."
+      },
+      "platformPropertiesList": {
+        "title": "What type of properties are available on Throu?",
+        "content": "Throu offers a variety of real estate assets, including residential, commercial, and development projects, as well as investment opportunities in hotel projects."
+      },
+      "buyTokens": {
+        "title": "How do you buy property tokens on Throu?",
+        "content": "To buy property tokens, investors must register on the platform, complete the identity verification process (KYC/AML), and then they can purchase tokens using cryptocurrencies or fiat currencies."
+      },
+      "kycDefinition": {
+        "title": "What is the KYC/AML process?",
+        "content": "KYC (Know Your Customer) and AML (Anti-Money Laundering) are regulatory processes that financial institutions use to verify the identity of their customers and prevent illegal activities."
+      },
+      "stablecoinDefinition": {
+        "title": "What is a stablecoin?",
+        "content": "A stablecoin is a cryptocurrency whose value is tied to a stable asset, such as the US dollar. Throu uses the stablecoin Tether (USDT) for transactions."
+      },
+      "withdrawGains": {
+        "title": "How do you withdraw gains?",
+        "content": "Gains can be withdrawn directly from the Throu platform once available, or the smart contract can automatically send the gains to investors' wallets."
+      },
+      "smartContractDefinition": {
+        "title": "What is a smart contract?",
+        "content": "A smart contract is a computer program that automatically executes the conditions of a contract when certain pre-established criteria are met."
+      },
+      "propertyTokenType": {
+        "title": "What type of token represents the property in Throu?",
+        "content": "In Throu, each property is represented by a unique token (ERC-1155). This token is a fraction of the total value of the property."
+      },
+      "realEstateTokenizationRisk": {
+        "title": "What are the risks associated with investing in real estate tokenization?",
+        "content": "The risks include price volatility, lack of liquidity, and real estate market risks."
+      },
+      "assetValuation": {
+        "title": "How are real estate assets valued on Throu?",
+        "content": "Real estate assets on Throu are valued by experts and professionals in the real estate sector, considering factors such as location, property condition, local market, and economic trends."
+      },
+      "liquidityGuarantee": {
+        "title": "How is the liquidity of property tokens guaranteed on Throu?",
+        "content": "Throu works to guarantee the liquidity of property tokens by allowing them to be bought and sold on its platform and potentially on secondary markets."
+      },
+      "gainsDistribution": {
+        "title": "How are investment gains distributed on Throu?",
+        "content": "Investment gains are distributed proportionally to token holders based on their ownership stake in the property."
+      },
+      "securityMeasures": {
+        "title": "What security measures have been implemented in Throu?",
+        "content": "Throu uses blockchain technology to ensure transaction transparency and security. We also implement security measures such as encryption, two-factor authentication, and periodic security audits."
+      },
+      "technicalIssues": {
+        "title": "What happens if Throu faces technical or security issues?",
+        "content": "In case of technical or security issues, Throu will work to quickly resolve the problem and ensure the protection of users' assets and information."
+      },
+      "withdrawInvestment": {
+        "title": "Can I withdraw my investment at any time?",
+        "content": "The liquidity of property tokens may vary depending on the project and the secondary market. While Throu seeks to provide liquidity through its platform, it is not guaranteed that you can always sell your tokens at the desired price or time."
+      },
+      "investmentCosts": {
+        "title": "What are the costs associated with investing in Throu?",
+        "content": "The costs associated with investing in Throu may include transaction fees, platform fees, and asset management fees. These costs can vary depending on the project."
+      },
+      "experienceRequirement": {
+        "title": "Do I need prior experience in real estate or cryptocurrency investing to invest in Throu?",
+        "content": "No prior experience in real estate or cryptocurrency investing is necessary to invest in Throu. The platform is intuitive and user-friendly, and offers educational resources to help investors understand the concepts and processes associated with real estate tokenization."
+      },
+      "minimumInvestment": {
+        "title": "What are the minimum investments in Throu?",
+        "content": "Throu aims to offer accessible investments with low minimum requirements. The minimum investment may vary by project but can start from $100.0 USDT."
+      },
+      "metamaskUsage": {
+        "title": "What is MetaMask and how do I use it to invest in Throu?",
+        "content": "MetaMask is a digital wallet that allows users to interact with the Ethereum blockchain. On Throu, investors use MetaMask to buy and sell property tokens."
+      },
+      "usdtDefinition": {
+        "title": "What is USDT and how is it used in Throu?",
+        "content": "USDT, or Tether, is a stablecoin whose value is tied to the US dollar. In Throu, investors use USDT to buy and sell property tokens."
+      },
+      "dataProtection": {
+        "title": "How does Throu protect my personal data?",
+        "content": "Throu takes privacy and data security seriously. We use advanced security technology and encryption to protect your data and comply with all relevant privacy and data protection laws and regulations."
+      },
+      "registrationProcess": {
+        "title": "How do I register on Throu?",
+        "content": "To register on Throu, you need to provide certain personal information for the identity verification process (KYC), such as your name, ID, age, cell phone number, email, and wallet address."
+      },
+      "foreignInvestment": {
+        "title": "Can I invest in Throu if I live outside the United States?",
+        "content": "Yes, Throu is a global platform and accepts investors from many jurisdictions around the world. However, it is the responsibility of the investor to comply with the laws and regulations of their country of residence."
+      },
+      "investmentReports": {
+        "title": "Does Throu provide investment reports?",
+        "content": "Yes, Throu provides regular investment and performance reports to investors. These reports are available on the Throu user platform."
+      },
+      "lostWalletAccess": {
+        "title": "What happens if I lose access to my wallet?",
+        "content": "Recovering access to your wallet will depend on the wallet you are using. In many cases, you will undergo a verification process to confirm that you are the wallet holder and are an active investor on the platform."
+      },
+      "tokenizedPropertySale": {
+        "title": "What happens if the tokenized property is sold?",
+        "content": "If a tokenized property is sold, the token holders will receive a proportional share of the sale proceeds based on the number of tokens they own."
+      },
+      "tokenExchange": {
+        "title": "Can I exchange my property tokens for other assets on Throu?",
+        "content": "Currently, property tokens on Throu are intended to represent ownership in a specific property and cannot be directly exchanged for other assets on the platform."
+      },
+      "tokenPriceDetermination": {
+        "title": "How is the price of a property token determined?",
+        "content": "The price of a property token is based on the valuation of the underlying real estate asset. This value is divided by the total number of tokens issued for that property."
+      },
+      "tokenTransfer": {
+        "title": "Can I transfer my property tokens to another person?",
+        "content": "Yes, property tokens are transferable. However, the ability to transfer tokens may be subject to certain restrictions and regulations depending on the token holder's jurisdiction."
+      }
+    }
+  },
+
   "Languages": {
     "english": "English",
     "spanish": "Spanish",

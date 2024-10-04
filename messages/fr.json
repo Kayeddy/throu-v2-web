@@ -148,6 +148,167 @@
       "users": "Utilisateurs"
     }
   },
+  "Learn": {
+    "tabs": {
+      "default": "Accueil",
+      "blog": "Blog",
+      "faqs": "FAQs"
+    },
+    "home": {
+      "welcomeTitle": "Bienvenue chez Throu",
+      "welcomeContent": "<p>Bienvenue dans la section Apprendre de notre plateforme. Ici commence votre voyage dans le monde révolutionnaire de l'investissement immobilier grâce à la technologie blockchain. Avec les informations et les idées recueillies ici, vous serez en mesure de naviguer sur notre plateforme avec confiance et compétence.</p><p>Nous sommes certains que plus vous explorerez, plus vous serez inspiré par les synergies potentielles entre les cryptomonnaies et l'immobilier. Votre voyage vers la création de richesse et la liberté financière commence maintenant. Apprenez, investissez et prospérez avec nous.</p><p>Notre onglet <Blog>Blog</Blog> vous offre les dernières informations et tendances du domaine, tandis que l'onglet <FAQs>FAQs</FAQs> répond à vos questions les plus urgentes sur la plateforme.</p>"
+    },
+    "blog": {
+      "tokenizationBlog": {
+        "title": "Tokenisation Immobilière",
+        "content": "<p>La tokenisation immobilière révolutionne la manière dont nous investissons dans l'immobilier, démocratisant l'accès et offrant une plus grande liquidité aux investisseurs. Mais qu'est-ce que la tokenisation immobilière et comment fonctionne-t-elle ? Dans cet article, nous explorerons le concept de tokenisation immobilière, ses avantages et comment elle change le paysage des investissements immobiliers.</p><p><b>Qu'est-ce que la tokenisation immobilière ?</b></p><p>La tokenisation immobilière est un processus par lequel les actifs immobiliers sont divisés en jetons numériques, représentant une fraction de la propriété. Ces jetons peuvent être acquis par des investisseurs, leur permettant d'acheter et de vendre des fractions de propriétés au lieu d'investir dans une propriété entière. En tokenisant des actifs immobiliers, l'accès aux investissements immobiliers est facilité pour un public plus large et les investisseurs bénéficient d'une plus grande liquidité. De plus, la tokenisation peut contribuer à réduire les coûts de transaction et à faciliter la diversification des investissements.</p><p><b>Avantages de la tokenisation immobilière :</b></p><p><b>1. Accessibilité :</b> La tokenisation permet aux investisseurs disposant de moins de capital d'investir dans l'immobilier, car ils peuvent acquérir des fractions d'une propriété plutôt que d'acheter l'ensemble de la propriété.</p><p><b>2. Liquidité :</b> Les jetons immobiliers peuvent être achetés et vendus sur des plateformes numériques, ce qui facilite l'entrée et la sortie des investissements et augmente la liquidité par rapport aux investissements immobiliers traditionnels.</p><p><b>3. Diversification :</b> En investissant dans des jetons immobiliers, les investisseurs peuvent diversifier leurs investissements dans différentes propriétés et emplacements, réduisant ainsi le risque associé à l'investissement dans un seul actif.</p><p><b>4. Transparence :</b> La technologie blockchain, utilisée pour émettre et gérer des jetons immobiliers, fournit un registre transparent et immuable de toutes les transactions, facilitant ainsi l'audit et la vérification de la propriété.</p><p>La tokenisation immobilière est en train de changer la manière dont nous investissons dans l'immobilier, offrant une manière plus accessible et plus liquide d'investir dans ce type d'actifs. En comprenant comment fonctionne la tokenisation immobilière et ses avantages, les investisseurs peuvent prendre des décisions plus éclairées et profiter des opportunités qu'offre cette approche innovante de l'investissement.</p>"
+      },
+      "platformGuideBlog": {
+        "title": "Comment fonctionne la plateforme d'investissement immobilier tokenisée de Throu?",
+        "content": "<p>Guide étape par étape pour l'inscription des utilisateurs et la vérification KYC.</p><p><b>Étape 1: Accédez à Throu.app</b></p><p>Commencez par visiter notre plateforme via ce lien <Link>Throu.app</Link>. Vous trouverez une interface conviviale et facile à naviguer.</p><p><b>Étape 2: Inscription initiale</b></p><p>Cliquez sur le bouton <Link>Créer un compte</Link> situé en haut de la page. Vous serez redirigé vers une page d'inscription où il vous sera demandé de fournir des informations de base, telles que votre e-mail, prénom, nom et un mot de passe sécurisé.</p><p><b>Étape 3: Confirmation de l'e-mail</b></p><p>Après avoir terminé l'inscription, vous recevrez un e-mail de confirmation à l'adresse que vous avez fournie. Cherchez cet e-mail dans votre boîte de réception et cliquez sur le lien de vérification. Si vous ne le trouvez pas, vérifiez votre dossier spam ou demandez à renvoyer l'e-mail.</p><p>Vous faites maintenant partie de Throu.app en tant qu'utilisateur non vérifié ! Pour accéder à toutes les fonctionnalités et avantages de notre plateforme, vous pouvez compléter la vérification KYC.</p>"
+      },
+      "investmentGuideBlog": {
+        "title": "Comment commencer à investir dans des projets immobiliers avec l'application Throu?",
+        "content": "<p><b>1. Création de compte et processus de vérification KYC</b></p><p>Pour garantir la sécurité et se conformer aux réglementations, Throu exige que les utilisateurs complètent un processus de vérification d'identité (KYC) avant d'investir sur la plateforme. Lors de la création d'un compte, il vous sera demandé de fournir des informations telles que votre nom, pièce d'identité, âge, numéro de téléphone portable, email et adresse de portefeuille. Ce processus aide à prévenir la fraude, à protéger les investisseurs et à assurer le respect des lois et réglementations applicables.</p><p><b>2. Explorer les opportunités d'investissement</b></p><p>Une fois que vous aurez terminé le processus de vérification KYC, vous pourrez explorer les différentes opportunités d'investissement disponibles sur la plateforme Throu. Les projets sur la plateforme peuvent varier en durée, de deux ans à des périodes plus longues, selon la nature du projet et le plan d'investissement. Throu propose deux principales façons d'investir :</p><span><p><b>A. Projets d'achat, de rénovation et de vente :</b></p><p>Ces projets impliquent l'acquisition de propriétés nécessitant des rénovations ou des améliorations avant d'être vendues sur le marché. Les investisseurs peuvent bénéficier de la différence entre le prix d'achat et le prix de vente après les améliorations nécessaires.</p></span><span><p><b>B. Projets de revenus passifs :</b></p><p>Ces projets se concentrent sur la génération de revenus passifs grâce à des locations de courte et longue durée, telles que des hôtels, Airbnb et d'autres propriétés locatives. Les investisseurs peuvent bénéficier des revenus générés par ces locations, qui sont proportionnellement distribués aux détenteurs de tokens en fonction de leur part dans la propriété.</p></span><span><p><b>C. Sélectionner un projet et investir :</b></p><p>Après avoir examiné et analysé les opportunités d'investissement sur la plateforme Throu, vous pouvez sélectionner un projet qui correspond à vos objectifs et préférences d'investissement. Pour investir, suivez simplement les instructions sur la plateforme et achetez les tokens correspondant au projet en utilisant des crypto-monnaies ou des devises fiduciaires.</p></span><p>La plateforme d'investissement immobilier tokenisé de Throu offre une manière innovante et accessible d'investir dans l'immobilier. En comprenant comment fonctionne la plateforme et les opportunités d'investissement disponibles, vous pouvez prendre des décisions éclairées et profiter des avantages de la tokenisation immobilière.</p>"
+      },
+      "walletCreationGuideBlog": {
+        "title": "Comment créer un portefeuille dans MetaMask?",
+        "content": "<p>Pour participer à la plateforme d'investissement immobilier tokenisé Throu, les utilisateurs doivent disposer d'un portefeuille numérique compatible. MetaMask est un portefeuille populaire et facile à utiliser qui s'intègre avec Throu et permet aux utilisateurs de gérer et de réaliser des transactions avec des jetons de propriété. Dans cet article, nous expliquerons comment créer un portefeuille dans MetaMask et comment l'utiliser pour accéder à la plateforme Throu.</p><span><b>Étape 1:</b><Link>Télécharger et installer MetaMask</Link><span><p><b>A.</b> Visitez le site officiel de MetaMask (<Link>https://metamask.io/</Link>) et cliquez sur “Télécharger”.</p><p><b>B.</b> Sélectionnez la version appropriée de MetaMask pour votre navigateur (Chrome, Firefox, Brave ou Edge) et suivez les instructions pour installer l'extension.</p></span></span><span><b>Étape 2:</b> Créer un nouveau portefeuille dans MetaMask<span><p><b>A.</b> Cliquez sur l'icône MetaMask dans la barre d'outils de votre navigateur pour ouvrir l'extension.</p><p><b>B.</b> Sélectionnez “Commencer” puis choisissez “Créer un portefeuille”.</p><p><b>C.</b> Définissez un mot de passe sécurisé et cliquez sur “Créer”.</p><p><b>D.</b> MetaMask générera une phrase de récupération de 12 mots. Assurez-vous de sauvegarder cette phrase dans un endroit sûr, car elle sera nécessaire pour récupérer votre portefeuille en cas de perte d'accès. Cliquez sur “Suivant” une fois que vous avez sauvegardé votre phrase de récupération.</p><p><b>E.</b> Confirmez votre phrase de récupération en sélectionnant les mots dans le bon ordre et cliquez sur “Confirmer”.</p><p><b>F.</b> Une fois votre phrase de récupération confirmée, votre portefeuille MetaMask sera créé et prêt à l'emploi.</p></span></span><span><b>Étape 3:</b> Connecter MetaMask à la plateforme Throu<span><p><b>A.</b> Visitez le site de Throu et inscrivez-vous ou connectez-vous à votre compte.</p><p><b>B.</b> Allez dans les paramètres de votre compte ou la page de dépôt.</p><p><b>C.</b> Sélectionnez MetaMask comme méthode de connexion de portefeuille et cliquez sur “Connecter”.</p><p><b>D.</b> Une fenêtre pop-up MetaMask apparaîtra demandant l'autorisation de connecter votre portefeuille à Throu. Cliquez sur “Connecter” pour autoriser la connexion.</p><p><b>E.</b> Une fois connecté, votre portefeuille MetaMask sera lié à votre compte Throu, vous permettant d'effectuer des transactions et de gérer vos jetons de propriété sur la plateforme.</p></span></span>",
+        "polygonTitle": "Connecter MetaMask au réseau Polygon",
+        "polygonContent": "<p>La plateforme Throu fonctionne sur le réseau Polygon, une solution de scalabilité de couche 2 pour Ethereum. Pour interagir avec la plateforme Throu et effectuer des transactions avec des jetons de propriété, vous devrez connecter votre portefeuille MetaMask au réseau Polygon. Dans cet article, nous vous guiderons à travers le processus de configuration du réseau Polygon dans MetaMask et comment l'utiliser sur Throu.</p><span><b>Étape 1:</b> Configurer le réseau Polygon dans MetaMask<span><p><b>A.</b> Ouvrez MetaMask en cliquant sur l'icône dans la barre d'outils de votre navigateur.</p><p><b>B.</b> Cliquez sur l'icône circulaire en haut à droite et sélectionnez “Paramètres” dans le menu déroulant.</p><p><b>C.</b> Sur la page des paramètres, cliquez sur “Réseaux” puis sur “Ajouter un réseau”.</p></span></span><span><b>Étape 2:</b> Passer au réseau Polygon dans MetaMask<span><p><b>A.</b> Ouvrez MetaMask et cliquez en haut où la chaîne actuelle (par exemple, “Ethereum Mainnet”) est affichée.</p><p><b>B.</b> Sélectionnez “Polygon” dans la liste des réseaux disponibles. Maintenant, votre MetaMask sera connecté au réseau Polygon.</p></span></span><span><b>Étape 3:</b> Transférer des fonds vers le réseau Polygon<span><p><b>A.</b> Visitez le site du pont Polygon (<Link>https://wallet.polygon.technology/bridge</Link>).</p><p><b>B.</b> Sélectionnez le jeton que vous souhaitez transférer (par exemple, USDT) et le montant.</p><p><b>C.</b> Cliquez sur “Transférer” et confirmez la transaction dans MetaMask. Notez que ce processus peut prendre plusieurs minutes, voire plusieurs heures, en fonction de la congestion du réseau.</p></span></span><span><b>Étape 4:</b> Accéder à la plateforme Throu avec MetaMask sur le réseau Polygon<span><p><b>A.</b> Visitez le site Throu et inscrivez-vous ou connectez-vous à votre compte.</p><p><b>B.</b> Si vous n'avez pas encore connecté votre MetaMask à Throu, suivez les étapes dans l'exemple 4 pour connecter votre portefeuille.</p><p><b>C.</b> Assurez-vous que votre MetaMask est sur le réseau Polygon, comme indiqué à l'étape 2.</p><p><b>D.</b> Vous pouvez maintenant explorer les opportunités d'investissement sur Throu, acheter des jetons de propriété et gérer vos investissements en utilisant votre portefeuille MetaMask sur le réseau Polygon.</p></span></span>"
+      },
+      "stablecoinBlog": {
+        "title": "Les stablecoins et leur intégration dans la plateforme Throu",
+        "content": "<p>Dans le monde des cryptomonnaies, la volatilité est souvent la norme, pas l'exception. Les prix peuvent monter ou descendre de manière spectaculaire en quelques minutes. Bien que cette volatilité puisse offrir des opportunités lucratives pour certains, elle peut également présenter des risques importants pour ceux qui recherchent des investissements plus stables. C'est là que les stablecoins entrent en jeu.</p><span><p><b>Qu'est-ce qu'un stablecoin?</b></p><p>Les stablecoins sont un type spécial de cryptomonnaie conçu pour maintenir leur valeur par rapport à un actif spécifique, généralement une monnaie fiduciaire telle que le dollar américain. En étant indexés sur des actifs à valeur stable, les stablecoins offrent la promesse de la stabilité des monnaies fiduciaires traditionnelles ainsi que la fonctionnalité et la sécurité des cryptomonnaies.</p></span><span><p><b>USDT: Un stablecoin populaire</b></p><p>L'un des stablecoins les plus populaires et les plus largement utilisés est le Tether (USDT). Chaque jeton USDT est adossé à un dollar américain, qui est conservé en réserve par Tether Ltd., la société derrière USDT. Cela signifie qu'en théorie, chaque USDT a une valeur d'un dollar américain. L'USDT peut être échangé sur de nombreuses plateformes de cryptomonnaies et peut être utilisé pour acheter d'autres cryptomonnaies ou pour stocker de la valeur.</p></span><span><p><b>Utilisation de l'USDT sur Throu</b></p><p>Chez Throu, nous avons choisi d'utiliser l'USDT comme notre stablecoin de prédilection pour plusieurs raisons. Tout d'abord, la stabilité de l'USDT en fait une option attrayante pour les investisseurs cherchant à éviter la volatilité associée à d'autres cryptomonnaies. Lorsque vous investissez dans des projets immobiliers tokenisés sur Throu, nous voulons que vous vous concentriez sur le potentiel de l'actif immobilier lui-même, et non sur les fluctuations de la valeur de la cryptomonnaie.</p></span><span><p>De plus, l'USDT est largement accepté et facile à échanger, ce qui le rend pratique pour nos utilisateurs. Vous pouvez acheter de l'USDT sur la plupart des plateformes de cryptomonnaies et l'utiliser ensuite pour acheter des jetons de propriété sur la plateforme Throu.</p></span><span><p>Enfin, en utilisant l'USDT, nous pouvons également offrir un processus d'investissement et de retrait plus efficace. Lorsque vos profits d'investissement deviennent disponibles et liquides, vous pouvez retirer vos gains en USDT directement depuis la plateforme. De même, les rendements des investissements peuvent être automatiquement distribués aux portefeuilles des détenteurs de jetons de propriété.</p></span><span><p>Les stablecoins comme l'USDT offrent un équilibre entre la stabilité des monnaies fiduciaires et l'efficacité et la sécurité des cryptomonnaies. Chez Throu, nous sommes fiers d'offrir à nos utilisateurs la possibilité d'investir dans des actifs immobiliers tokenisés en utilisant l'USDT, offrant ainsi une expérience d'investissement à la fois sécurisée et pratique. Avec Throu et l'USDT, vous pouvez naviguer dans le monde des investissements immobiliers tokenisés en toute confiance.</p></span>"
+      },
+      "gainsWithdrawalGuideBlog": {
+        "title": "Retirer des gains sur la plateforme Throu",
+        "content": "<p>Dans le monde des investissements, le processus de retrait des gains peut souvent être compliqué et parfois lent. Chez Throu, nous sommes fiers d'offrir un processus de retrait de gains simplifié et efficace. Dans cet article, nous vous guiderons à travers les étapes pour retirer vos gains directement depuis la plateforme Throu ou recevoir automatiquement les gains dans votre portefeuille.</p><span><p><b>Étape 1: Connexion à votre compte Throu</b></p><p>Pour commencer le processus de retrait, vous devez d'abord vous connecter à votre compte Throu. Assurez-vous d'avoir vos identifiants de connexion prêts.</p></span><span><p><b>Étape 2: Vérifiez vos gains</b></p><p>Une fois connecté, vous pouvez vérifier vos gains dans le tableau de bord de votre compte. Ici, vous pourrez voir tous les investissements que vous avez réalisés ainsi que les gains générés par chacun.</p></span><span><p><b>Étape 3: Demander un retrait</b></p><p>Les jetons immobiliers peuvent être achetés et vendus sur des plateformes numériques, facilitant l'entrée et la sortie des investissements et augmentant la liquidité par rapport aux investissements immobiliers traditionnels.</p></span><span><p><b>Étape 4: Confirmer le retrait</b></p><p>Après avoir demandé un retrait, vous recevrez un e-mail pour confirmer votre demande. Une fois confirmée, le processus de retrait commencera. Throu utilise l'USDT, une stablecoin indexée sur le dollar américain, pour traiter les retraits.</p></span><span><p><b>Étape 5: Recevez vos gains</b></p><p>Une fois votre demande confirmée, le processus de retrait commencera. Throu utilise l'USDT pour traiter les retraits.</p></span><span><p>En plus de ce processus de retrait manuel, Throu propose également l'option des retraits automatiques. Avec les retraits automatiques, les gains sont distribués directement aux portefeuilles des détenteurs de jetons immobiliers à un intervalle de temps spécifié. C'est une excellente option pour ceux qui préfèrent une approche plus passive de la gestion de leurs investissements.</p></span><span><p>Chez Throu, nous nous efforçons de rendre l'expérience d'investissement aussi simple et pratique que possible. Que vous préfériez retirer manuellement vos gains ou recevoir des paiements automatiques, notre objectif est de vous fournir une plateforme où vous pouvez investir en toute confiance et confort. En simplifiant le processus de retrait des gains, nous espérons que vous pourrez vous concentrer sur ce qui compte le plus: investir dans des actifs immobiliers tokenisés et voir croître votre patrimoine.</p></span>"
+      }
+    },
+    "faqs": {
+      "throuDefinition": {
+        "title": "Qu'est-ce que Throu?",
+        "content": "Throu est une plateforme qui permet la tokenisation d'actifs immobiliers, facilitant l'achat et la vente de fractions de propriétés par les investisseurs."
+      },
+      "realEstateTokenizationDefinition": {
+        "title": "Qu'est-ce que la tokenisation immobilière?",
+        "content": "La tokenisation immobilière est un processus qui permet de diviser un actif immobilier en plusieurs tokens numériques. Chaque token représente une fraction de propriété de l'actif."
+      },
+      "platformPropertiesList": {
+        "title": "Quels types de propriétés sont disponibles sur Throu?",
+        "content": "Throu propose une variété d'actifs immobiliers, notamment des résidences, des commerces, des projets de développement, ainsi que des opportunités d'investissement dans des projets hôteliers."
+      },
+      "buyTokens": {
+        "title": "Comment acheter des tokens immobiliers sur Throu?",
+        "content": "Pour acheter des tokens immobiliers, les investisseurs doivent s'inscrire sur la plateforme, compléter le processus de vérification d'identité (KYC/AML), puis ils peuvent acheter des tokens en utilisant des cryptomonnaies ou des monnaies fiduciaires."
+      },
+      "kycDefinition": {
+        "title": "Qu'est-ce qu'un processus KYC/AML?",
+        "content": "KYC (Connaître son client) et AML (Lutte contre le blanchiment d'argent) sont des processus réglementaires que les institutions financières utilisent pour vérifier l'identité de leurs clients et prévenir les activités illégales."
+      },
+      "stablecoinDefinition": {
+        "title": "Qu'est-ce qu'une stablecoin?",
+        "content": "Une stablecoin est une cryptomonnaie dont la valeur est liée à un actif stable, tel que le dollar américain. Sur Throu, nous utilisons la stablecoin Tether (USDT) pour les transactions."
+      },
+      "withdrawGains": {
+        "title": "Comment retirer des gains?",
+        "content": "Les gains peuvent être retirés directement depuis la plateforme Throu une fois disponibles, ou le smart contract peut envoyer automatiquement les gains aux wallets des investisseurs."
+      },
+      "smartContractDefinition": {
+        "title": "Qu'est-ce qu'un smart contract?",
+        "content": "Un smart contract est un programme informatique qui exécute automatiquement les termes d'un contrat lorsque certains critères préétablis sont remplis."
+      },
+      "propertyTokenType": {
+        "title": "Quel type de token représente la propriété sur Throu?",
+        "content": "Sur Throu, chaque propriété est représentée par un token unique (ERC-1155). Ce token est une fraction de la valeur totale de la propriété."
+      },
+      "realEstateTokenizationRisk": {
+        "title": "Quels sont les risques associés à l'investissement dans la tokenisation immobilière?",
+        "content": "Les risques incluent la volatilité des prix, le manque de liquidité et les risques du marché immobilier."
+      },
+      "assetValuation": {
+        "title": "Comment les actifs immobiliers sont-ils évalués sur Throu?",
+        "content": "Les actifs immobiliers sur Throu sont évalués par des experts et des professionnels du secteur immobilier, en tenant compte de facteurs tels que l'emplacement, l'état de la propriété, le marché local et les tendances économiques."
+      },
+      "liquidityGuarantee": {
+        "title": "Comment la liquidité des tokens immobiliers est-elle garantie sur Throu?",
+        "content": "Throu travaille à garantir la liquidité des tokens immobiliers en permettant leur achat et vente sur sa plateforme et potentiellement sur les marchés secondaires."
+      },
+      "gainsDistribution": {
+        "title": "Comment les gains d'investissement sont-ils distribués sur Throu?",
+        "content": "Les gains d'investissement sont distribués proportionnellement aux détenteurs de tokens en fonction de leur participation dans la propriété."
+      },
+      "securityMeasures": {
+        "title": "Quelles mesures de sécurité sont mises en œuvre sur Throu?",
+        "content": "Throu utilise la technologie blockchain pour garantir la transparence et la sécurité des transactions. Nous mettons également en œuvre des mesures de sécurité telles que le chiffrement, l'authentification à deux facteurs et des audits de sécurité périodiques."
+      },
+      "technicalIssues": {
+        "title": "Que se passe-t-il si Throu rencontre des problèmes techniques ou de sécurité?",
+        "content": "En cas de problèmes techniques ou de sécurité, Throu travaillera à résoudre rapidement le problème et à garantir la protection des actifs et des informations des utilisateurs."
+      },
+      "withdrawInvestment": {
+        "title": "Puis-je retirer mon investissement à tout moment?",
+        "content": "La liquidité des tokens immobiliers peut varier selon le projet et le marché secondaire. Bien que Throu s'efforce de fournir de la liquidité via sa plateforme, il n'est pas garanti que vous puissiez toujours vendre vos tokens au prix souhaité ou au moment voulu."
+      },
+      "investmentCosts": {
+        "title": "Quels sont les coûts associés à l'investissement dans Throu?",
+        "content": "Les coûts associés à l'investissement dans Throu peuvent inclure des frais de transaction, des frais de plateforme et des frais de gestion d'actifs. Ces coûts peuvent varier selon le projet."
+      },
+      "experienceRequirement": {
+        "title": "Ai-je besoin d'une expérience préalable en investissement immobilier ou en cryptomonnaies pour investir dans Throu?",
+        "content": "Aucune expérience préalable en investissement immobilier ou en cryptomonnaies n'est nécessaire pour investir dans Throu. La plateforme est intuitive et facile à utiliser, et elle offre des ressources éducatives pour aider les investisseurs à comprendre les concepts et processus associés à la tokenisation immobilière."
+      },
+      "minimumInvestment": {
+        "title": "Quels sont les montants minimums d'investissement sur Throu?",
+        "content": "Throu vise à offrir des investissements accessibles avec des exigences minimales faibles. Le montant minimum d'investissement peut varier selon le projet, mais il peut commencer à partir de 100,0 USDT."
+      },
+      "metamaskUsage": {
+        "title": "Qu'est-ce que MetaMask et comment l'utiliser pour investir dans Throu?",
+        "content": "MetaMask est un portefeuille numérique qui permet aux utilisateurs d'interagir avec la blockchain Ethereum. Sur Throu, les investisseurs utilisent MetaMask pour acheter et vendre des tokens immobiliers."
+      },
+      "usdtDefinition": {
+        "title": "Qu'est-ce que USDT et comment est-il utilisé sur Throu?",
+        "content": "USDT, ou Tether, est une stablecoin dont la valeur est liée au dollar américain. Sur Throu, les investisseurs utilisent USDT pour acheter et vendre des tokens immobiliers."
+      },
+      "dataProtection": {
+        "title": "Comment Throu protège-t-il mes données personnelles?",
+        "content": "Throu prend la protection des données au sérieux. Nous utilisons une technologie de sécurité avancée et de cryptage pour protéger vos données, et nous respectons toutes les lois et réglementations pertinentes en matière de confidentialité et de protection des données."
+      },
+      "registrationProcess": {
+        "title": "Comment m'inscrire sur Throu?",
+        "content": "Pour vous inscrire sur Throu, vous devez fournir certaines données personnelles pour le processus de vérification d'identité (KYC), telles que votre nom, pièce d'identité, âge, numéro de téléphone portable, adresse e-mail et adresse de wallet."
+      },
+      "foreignInvestment": {
+        "title": "Puis-je investir dans Throu si je vis hors des États-Unis?",
+        "content": "Oui, Throu est une plateforme mondiale et accepte les investisseurs de nombreuses juridictions dans le monde entier. Cependant, il est de la responsabilité de l'investisseur de se conformer aux lois et réglementations de son pays de résidence."
+      },
+      "investmentReports": {
+        "title": "Throu fournit-il des rapports d'investissement?",
+        "content": "Oui, Throu fournit des rapports réguliers sur les investissements et les performances aux investisseurs. Ces rapports sont disponibles sur la plateforme utilisateur de Throu."
+      },
+      "lostWalletAccess": {
+        "title": "Que se passe-t-il si je perds l'accès à mon wallet?",
+        "content": "Récupérer l'accès à votre wallet dépendra du portefeuille que vous utilisez. Dans de nombreux cas, un processus de vérification sera effectué pour confirmer que vous êtes le propriétaire du wallet et un investisseur actif sur la plateforme."
+      },
+      "tokenizedPropertySale": {
+        "title": "Que se passe-t-il si la propriété tokenisée est vendue?",
+        "content": "Si une propriété tokenisée est vendue, les détenteurs de tokens recevront une part proportionnelle des bénéfices de la vente, en fonction du nombre de tokens qu'ils détiennent."
+      },
+      "tokenExchange": {
+        "title": "Puis-je échanger mes tokens immobiliers contre d'autres actifs sur Throu?",
+        "content": "Actuellement, les tokens immobiliers sur Throu sont destinés à représenter une participation dans une propriété spécifique et ne peuvent pas être échangés directement contre d'autres actifs sur la plateforme."
+      },
+      "tokenPriceDetermination": {
+        "title": "Comment le prix d'un token immobilier est-il déterminé?",
+        "content": "Le prix d'un token immobilier est basé sur la valorisation de l'actif immobilier sous-jacent. Cette valeur est divisée par le nombre total de tokens émis pour cette propriété."
+      },
+      "tokenTransfer": {
+        "title": "Puis-je transférer mes tokens immobiliers à une autre personne?",
+        "content": "Oui, les tokens immobiliers sont transférables. Cependant, la capacité de transférer des tokens peut être soumise à certaines restrictions et réglementations, selon la juridiction du détenteur du token."
+      }
+    }
+  },
   "Languages": {
     "english": "Anglais",
     "spanish": "Espagnol",

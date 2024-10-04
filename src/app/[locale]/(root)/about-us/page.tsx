@@ -7,7 +7,7 @@ export default function About() {
   return (
     <>
       <div className="relative gap-10 w-screen overflow-x-hidden">
-        <div className="flex flex-col items-start justify-start gap-24 lg:mt-28 mt-20 w-full h-full p-4 sm:p-6 md:p-8 lg:p-12 xl:p-16 relative z-[2]">
+        <div className="flex flex-col items-start justify-start gap-24 mt-20 w-full h-full p-4 sm:p-6 md:p-8 lg:p-12 xl:p-16 relative z-[2]">
           {/* Textually informative section */}
           <Intro />
 

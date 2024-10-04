@@ -53,13 +53,15 @@ export const MobileHomeNavigation = React.memo(
         className={`z-[999] py-2 transition-all duration-300 ease-in-out lg:hidden ${blurClass}`}
       >
         <NavbarContent>
-          <Image
-            src="/assets/shared/logo_sm.png"
-            alt="throu_mobile_navbar_image"
-            width={40}
-            height={40}
-            className="object-contain w-auto h-auto"
-          />
+          <Link href="/">
+            <Image
+              src="/assets/shared/logo_sm.png"
+              alt="throu_mobile_navbar_image"
+              width={40}
+              height={40}
+              className="object-contain w-auto h-auto"
+            />
+          </Link>
         </NavbarContent>
 
         <NavbarMenu
