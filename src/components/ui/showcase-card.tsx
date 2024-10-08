@@ -44,18 +44,18 @@ export const ShowcaseCard = ({
       {data ? (
         <motion.div
           layoutId={layout ? `card-${data.projectURI?.name}` : undefined}
-          className="rounded-md bg-light shadow-project-section-card-custom h-[60vh] lg:h-[70vh] w-[80vw] max-w-[450px] lg:w-[40vw] overflow-hidden flex flex-col items-start justify-start relative"
+          className="relative flex h-[70vh] max-h-[600px] w-[80vw] max-w-[450px] flex-col items-start justify-start overflow-hidden rounded-md bg-light shadow-project-section-card-custom lg:max-h-[700px] lg:w-[40vw]"
         >
-          <div className="h-[50%] min-h-[45%] relative w-full">
+          <div className="relative h-[50%] min-h-[45%] w-full">
             <BlurImage
               src="/assets/projects/prado/renders/render_1.jpg"
               alt={data.projectURI?.name ?? "Project-card-image"}
               fill
               sizes="(max-width: 768px) 100vw, 33vw"
-              className="object-cover w-auto h-auto"
+              className="h-auto w-auto object-cover"
             />
           </div>
-          <div className="flex flex-col items-start justify-between h-full w-full relative p-3">
+          <div className="relative flex h-full w-full flex-col items-start justify-between p-3">
             <h1 className="font-sen text-xl font-semibold text-primary">
               {/* {data.projectURI?.name ?? "Salón Prado"} */}
               Salón Prado
@@ -66,25 +66,25 @@ export const ShowcaseCard = ({
               layout="horizontal"
             />
 
-            <p className="text-base font-jakarta font-extralight truncate text-primary w-[95%]">
+            <p className="w-[95%] truncate font-jakarta text-base font-extralight text-primary">
               {data.projectURI?.description}
             </p>
 
-            <span className="text-primary text-base text-jakarta flex flex-row items-center justify-start gap-2">
+            <span className="text-jakarta flex flex-row items-center justify-start gap-2 text-base text-primary">
               <LocationIcon />
               {data.projectURI?.attributes[0].value
                 ? data.projectURI.attributes[0].value
                 : t("no_location_available")}
             </span>
 
-            <div className="flex flex-col items-start justify-start gap-1 w-full">
-              <p className="font-jakarta font-semibold text-secondary text-sm">
+            <div className="flex w-full flex-col items-start justify-start gap-1">
+              <p className="font-jakarta text-sm font-semibold text-secondary">
                 {t("project_complete", {
                   percentage: projectCompletionPercentage(),
                 })}
               </p>
               <span
-                className="h-1.5 bg-secondary rounded-[10px]"
+                className="h-1.5 rounded-[10px] bg-secondary"
                 style={{
                   width: `${projectCompletionPercentage()}%`,
                   maxWidth: "100%",
@@ -98,7 +98,7 @@ export const ShowcaseCard = ({
               rel="noreferrer"
               as={Link}
               size="lg"
-              className="font-bold text-white bg-primary hover:bg-secondary text-lg lg:text-base font-sen w-full rounded-none"
+              className="w-full rounded-none bg-primary font-sen text-lg font-bold text-white hover:bg-secondary lg:text-base"
             >
               {t("invest_button")}
             </Button>
@@ -109,13 +109,13 @@ export const ShowcaseCard = ({
           layoutId={
             layout ? "go-tomarketplace-showcase-card" : "see-more-showcase-card"
           }
-          className="rounded-md bg-primary shadow-project-section-card-custom h-[60vh] lg:h-[70vh] w-[80vw] max-w-[450px] lg:w-[40vw] overflow-hidden flex flex-col items-start justify-start relative"
+          className="relative flex h-[70vh] max-h-[600px] w-[80vw] max-w-[450px] flex-col items-start justify-start overflow-hidden rounded-md bg-primary shadow-project-section-card-custom lg:max-h-[700px] lg:w-[40vw]"
         >
-          <div className="h-full w-full flex flex-col items-center justify-center gap-12 py-6 px-4">
-            <span className="p-4 border-3 border-secondary rounded-md">
-              <PlusIcon className="text-secondary text-5xl" />
+          <div className="flex h-full w-full flex-col items-center justify-center gap-12 px-4 py-6">
+            <span className="rounded-md border-3 border-secondary p-4">
+              <PlusIcon className="text-5xl text-secondary" />
             </span>
-            <h1 className="font-sen text-secondary text-3xl font-semibold text-center">
+            <h1 className="text-center font-sen text-3xl font-semibold text-secondary">
               {t("explore_all_projects")}
             </h1>
             <Button
@@ -124,7 +124,7 @@ export const ShowcaseCard = ({
               rel="noreferrer"
               as={Link}
               size="lg"
-              className="bg-transparent text-sm border hover:border-secondary border-light hover:text-white text-light hover:bg-secondary font-sen rounded-none"
+              className="rounded-none border border-light bg-transparent font-sen text-sm text-light hover:border-secondary hover:bg-secondary hover:text-white"
             >
               {t("go_to_marketplace")}
             </Button>

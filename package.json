@@ -11,7 +11,7 @@
   "dependencies": {
     "@clerk/elements": "^0.15.4",
     "@clerk/localizations": "^3.0.3",
-    "@clerk/nextjs": "^5.5.2",
+    "@clerk/nextjs": "^5.7.1",
     "@nextui-org/button": "^2.0.37",
     "@nextui-org/react": "^2.4.6",
     "@nextui-org/system": "^2.2.5",
@@ -22,6 +22,7 @@
     "framer-motion": "^11.5.4",
     "next": "^14.2.12",
     "next-intl": "^3.19.3",
+    "next-themes": "^0.3.0",
     "pino-pretty": "^11.2.2",
     "react": "^18",
     "react-dom": "^18",

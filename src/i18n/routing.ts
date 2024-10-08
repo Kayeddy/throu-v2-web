@@ -34,6 +34,12 @@ export const routing = defineRouting({
       fr: "/apprendre",
       ar: "/تعلم",
     },
+    "/dashboard": {
+      en: "/dashboard",
+      es: "/panel",
+      fr: "/tableau-de-bord",
+      ar: "/لوحة-التحكم",
+    },
     "/terms-conditions": {
       en: "/terms-conditions",
       es: "/terminos-condiciones",

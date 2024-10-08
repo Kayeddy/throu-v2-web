@@ -97,7 +97,7 @@ export const Carousel = ({
     >
       <div className="relative w-full">
         <div
-          className="flex w-full overflow-x-scroll overscroll-x-auto py-10 scroll-smooth [scrollbar-width:none]"
+          className="flex w-full overflow-x-scroll overscroll-x-auto scroll-smooth py-10 [scrollbar-width:none]"
           ref={carouselRef}
           onScroll={checkScrollability}
         >
@@ -130,7 +130,7 @@ export const Carousel = ({
                   },
                 }}
                 key={"card" + index}
-                className="last:pr-[5%] rounded-3xl"
+                className="rounded-3xl last:pr-[50px]"
               >
                 {item}
               </motion.div>
@@ -140,7 +140,7 @@ export const Carousel = ({
         {showPagination && (
           <div className="flex justify-center gap-2">
             <button
-              className="relative z-20 h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
+              className="relative z-20 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50"
               onClick={scrollLeft}
               disabled={!canScrollLeft}
             >
@@ -148,7 +148,7 @@ export const Carousel = ({
             </button>
             <Pagination transition={transition} />
             <button
-              className="relative z-20 h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
+              className="relative z-20 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50"
               onClick={scrollRight}
               disabled={!canScrollRight}
             >

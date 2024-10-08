@@ -19,6 +19,7 @@ import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import { WalletConnectionButton } from "../shared/WalletConnectionButton";
 import LanguageSelector from "../shared/LanguageSelector";
+import UserButtonMenu from "../shared/UserButtonMenu";
 
 // Types for home navigation items
 interface NavigationItem {
@@ -59,7 +60,7 @@ export const MobileHomeNavigation = React.memo(
               alt="throu_mobile_navbar_image"
               width={40}
               height={40}
-              className="object-contain w-auto h-auto"
+              className="h-auto w-auto object-contain"
             />
           </Link>
         </NavbarContent>
@@ -73,10 +74,10 @@ export const MobileHomeNavigation = React.memo(
           {navigationItems.map((item, index) => (
             <NavbarMenuItem
               key={`${item.name}-navigation-item-${index}`}
-              className="flex flex-col items-center justify-center w-full"
+              className="flex w-full flex-col items-center justify-center"
             >
               <Link
-                className="text-center text-xl text-primary font-jakarta"
+                className="text-center font-jakarta text-xl text-primary"
                 href={`/${locale}/${item.link}`}
                 rel="noreferrer"
               >
@@ -90,7 +91,7 @@ export const MobileHomeNavigation = React.memo(
               <Button
                 size="lg"
                 radius="none"
-                className="bg-primary text-white text-sm font-bold px-10 w-full lg:w-fit hover:bg-secondary font-sen"
+                className="w-full bg-primary px-10 font-sen text-sm font-bold text-white hover:bg-secondary lg:w-fit"
               >
                 {t("invest")}
               </Button>
@@ -99,7 +100,7 @@ export const MobileHomeNavigation = React.memo(
               <Button
                 size="lg"
                 radius="none"
-                className="bg-primary text-white text-lg font-semibold px-10 font-sen w-full lg:w-fit hover:bg-secondary"
+                className="w-full bg-primary px-10 font-sen text-lg font-semibold text-white hover:bg-secondary lg:w-fit"
                 as={Link}
                 href={`/${locale}/sign-in`}
                 rel="noreferrer"
@@ -109,7 +110,7 @@ export const MobileHomeNavigation = React.memo(
             </SignedOut>
           </NavbarMenuItem>
 
-          <NavbarMenuItem className="w-full flex flex-row items-center justify-between">
+          <NavbarMenuItem className="flex w-full flex-row items-center justify-between">
             <Link
               href="/terms-conditions"
               rel="noreferrer"
@@ -128,7 +129,7 @@ export const MobileHomeNavigation = React.memo(
             </Link>
           </NavbarMenuItem>
 
-          <div className="flex flex-row items-center justify-between w-full">
+          <div className="flex w-full flex-row items-center justify-between">
             {socialMediaItems.map((item, idx) => (
               <NavbarMenuItem
                 key={item.name + "navigation-social-media-element-" + idx}
@@ -198,29 +199,29 @@ export const DesktopHomeNavigation = React.memo(
             height={0}
             width={logoSize}
             src={logoSrc}
-            className="object-contain w-auto h-auto"
+            className="h-auto w-auto object-contain"
           />
         </Link>
 
-        <div className="gap-4 flex flex-row items-center justify-center transition-all duration-300 ease-in-out">
+        <div className="flex flex-row items-center justify-center gap-4 transition-all duration-300 ease-in-out">
           {navigationItems.map((item) => (
             <Button
               key={`${item.name}-navbar-navigation-link`}
               href={`/${locale}/${item.link}`}
               as={Link}
-              className="text-base hover:text-secondary hover:underline bg-transparent text-primary font-jakarta"
+              className="bg-transparent font-jakarta text-base text-primary hover:text-secondary hover:underline"
             >
               {item.name}
             </Button>
           ))}
         </div>
 
-        <div className="font-sen flex flex-row gap-2">
+        <div className="flex flex-row gap-2 font-sen">
           <LanguageSelector />
           <SignedOut>
             <Button
               startContent={<FaRegUser />}
-              className="text-primary bg-transparent font-sen font-normal"
+              className="bg-transparent font-sen font-normal text-primary"
               as={Link}
               href={`/${locale}/sign-in`}
               rel="noreferrer"
@@ -229,7 +230,8 @@ export const DesktopHomeNavigation = React.memo(
             </Button>
           </SignedOut>
           <SignedIn>
-            <UserButton />
+            {/* <UserButton /> */}
+            <UserButtonMenu />
           </SignedIn>
         </div>
       </div>

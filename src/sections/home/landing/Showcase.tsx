@@ -8,6 +8,23 @@ import { Carousel } from "@/components/ui/cards-carousel";
 import { ShowcaseCard } from "@/components/ui/showcase-card";
 import { useTranslations, useLocale } from "next-intl";
 
+const TemporaryComingSoonCard = () => {
+  const t = useTranslations("HomePage.Showcase");
+
+  return (
+    <div className="relative flex h-[70vh] max-h-[600px] w-[80vw] max-w-[450px] flex-col items-start justify-start overflow-hidden rounded-md bg-primary shadow-project-section-card-custom lg:max-h-[700px] lg:w-[40vw]">
+      <div className="wave"></div>
+      <div className="wave"></div>
+      <div className="wave"></div>
+      <div className="absolute flex h-full w-full items-center justify-center bg-transparent">
+        <h1 className="text-center font-sen text-3xl font-bold text-light">
+          {t("coming_soon_card_text")}
+        </h1>
+      </div>
+    </div>
+  );
+};
+
 export default function Showcase() {
   const t = useTranslations("HomePage.Showcase");
   const locale = useLocale() as "en" | "es" | "fr" | "ar";
@@ -24,7 +41,13 @@ export default function Showcase() {
   const renderProjectsCarousel = useMemo(() => {
     if (!isPending && project) {
       return (
-        <Carousel items={[<ShowcaseCard data={project} />, <ShowcaseCard />]} />
+        <Carousel
+          items={[
+            <ShowcaseCard data={project} />,
+            <ShowcaseCard />,
+            <TemporaryComingSoonCard />,
+          ]}
+        />
       );
     }
     if (error) {
@@ -76,22 +99,22 @@ export default function Showcase() {
   }, [t, locale]);
 
   return (
-    <div className="w-screen h-fit lg:h-screen min-h-screen overflow-x-hidden p-4 sm:p-6 md:p-8 lg:p-12 xl:p-16 flex lg:flex-row flex-col items-center justify-center">
-      <div className="h-full lg:w-[50%] lg:min-w-[550px] w-full flex flex-col items-start justify-center px-6 gap-6 shadow-project-section-custom">
-        <h1 className="font-sen text-3xl lg:text-4xl text-primary font-bold lg:text-left text-center">
+    <div className="flex h-fit min-h-screen w-screen flex-col items-center justify-center overflow-x-hidden p-4 sm:p-6 md:p-8 lg:h-screen lg:flex-row lg:p-12 xl:p-16">
+      <div className="flex h-full w-full flex-col items-start justify-center gap-6 px-6 shadow-project-section-custom lg:w-[50%] lg:min-w-[550px]">
+        <h1 className="text-center font-sen text-3xl font-bold text-primary lg:text-left lg:text-4xl">
           {formatTitle}
         </h1>
-        <p className="lg:text-base text-lg text-primary font-jakarta lg:max-w-sm text-center lg:text-left">
+        <p className="text-center font-jakarta text-lg text-primary lg:max-w-sm lg:text-left lg:text-base">
           {t("description")}
         </p>
-        <div className="flex flex-col lg:flex-row items-center justify-start w-full gap-4 lg:gap-0">
+        <div className="flex w-full flex-col items-center justify-start gap-4 lg:flex-row lg:gap-0">
           <Button
             size="lg"
             radius="none"
             variant="ghost"
             color="primary"
             aria-label={t("explore_button")}
-            className="hover:text-white lg:text-sm text-lg font-bold px-10 w-full lg:w-fit hover:bg-primary font-sen border-primary"
+            className="w-full border-primary px-10 font-sen text-lg font-bold hover:bg-primary hover:text-white lg:w-fit lg:text-sm"
           >
             {t("explore_button")}
           </Button>
@@ -101,14 +124,14 @@ export default function Showcase() {
             rel="noreferrer"
             as={Link}
             aria-label={t("learn_more_button")}
-            className="lg:font-medium font-extralight text-primary bg-transparent hover:underline hover:text-secondary hover:bg-transparent text-xl lg:text-base font-sen"
+            className="bg-transparent font-sen text-xl font-extralight text-primary hover:bg-transparent hover:text-secondary hover:underline lg:text-base lg:font-medium"
           >
             {t("learn_more_button")}
           </Button>
         </div>
       </div>
-      <div className="h-full lg:w-[50%] w-full">
-        <div className="h-full w-full relative flex items-center justify-center">
+      <div className="h-full w-full lg:w-[50%]">
+        <div className="relative flex h-full w-full items-center justify-center">
           {renderProjectsCarousel}
         </div>
       </div>
