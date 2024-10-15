@@ -224,7 +224,7 @@ export const DesktopMarketplaceNavigation = React.memo(
           <SignedOut>
             <Button
               startContent={<FaRegUser />}
-              className="bg-transparent font-sen font-normal text-primary"
+              className="bg-transparent font-sen font-normal text-primary dark:text-light"
               as={Link}
               href={`/${locale}/sign-in`}
               rel="noreferrer"
