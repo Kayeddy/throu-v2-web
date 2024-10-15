@@ -360,5 +360,40 @@
       "privacy": "Privacy"
     },
     "rightsReserved": "© 2023 Throu Investment. All rights reserved."
+  },
+
+  "Shared": {
+    "userButtonMenu": {
+      "profile": "Profile",
+      "dashboard": "Dashboard",
+      "saved": "Saved",
+      "logout": "Logout",
+      "userImageAlt": "User image popover menu trigger"
+    },
+    "walletConnectionButton": {
+      "connect": "Connect wallet",
+      "wrongNetwork": "Wrong network",
+      "switchNetworks": "Switch networks",
+      "disconnectTimeout": "Wallet connection timed out, disconnecting...",
+      "balance": "{balance} {symbol}"
+    }
+  },
+
+  "Dashboard": {
+    "header": {
+      "balance": "Balance"
+    },
+    "portfolio": {
+      "desktopTitle": "My Projects",
+      "mobileTitle": "Projects"
+    },
+    "movements": {
+      "desktopTitle": "Balances and Movements",
+      "mobileTitle": "Balance"
+    },
+    "saved": {
+      "title": "Saved"
+    },
+    "options": "Options"
   }
 }

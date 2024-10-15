@@ -1,10 +1,12 @@
 "use client";
 import { useUser } from "@clerk/nextjs";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { BsPlus as PlusIcon } from "react-icons/bs";
 
 export default function Header() {
   const user = useUser();
+  const t = useTranslations("Dashboard.header");
   return (
     <div className="relative flex min-h-fit w-full flex-col items-center justify-center bg-[url('https://wallpaperaccess.com/full/38582.jpg')] bg-cover bg-center p-6">
       <div className="flex w-full flex-col items-center justify-center gap-6">
@@ -24,7 +26,7 @@ export default function Header() {
             {user.user?.primaryEmailAddress?.emailAddress}
           </p>
           <div className="mt-6 flex flex-col items-center justify-center">
-            <p className="font-jakarta text-sm">Balance</p>
+            <p className="font-jakarta text-sm">{t("balance")}</p>
             <span className="flex flex-row items-center justify-center gap-2">
               <PlusIcon className="border border-light" />
               <p className="text-medium font-bold">0 USDT</p>

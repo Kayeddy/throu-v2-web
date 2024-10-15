@@ -1,9 +1,9 @@
 "use client";
 
 import useLoadingStore from "@/stores/useLoadingStore";
-import { Spinner } from "@nextui-org/react";
 import { Image } from "@nextui-org/react";
 import AnimatedSpinner from "../ui/animated-spinner";
+import { BlurImage } from "../ui/blur-image";
 
 export default function Loader() {
   const isLoading = useLoadingStore((state) => state.isLoading);
@@ -11,10 +11,14 @@ export default function Loader() {
   return (
     <>
       {isLoading && (
-        <div className="flex flex-col items-center justify-center z-[1000] fixed w-screen h-screen bg-light">
-          <Image
+        <div className="fixed z-[1000] flex h-screen w-screen flex-col items-center justify-center bg-light">
+          <BlurImage
+            width={50}
+            height={50}
+            alt="Loader-logo-image"
             src="/assets/shared/logo_lg.png"
-            className="w-80 h-40 object-contain animate-pulse"
+            className="h-40 w-80 animate-pulse object-contain"
+            loading="lazy"
           />
           <AnimatedSpinner />
         </div>

@@ -41,7 +41,7 @@ export const MobileHomeNavigation = React.memo(
       scrollPosition > 10 ? "bg-white/80" : "backdrop-blur-lg bg-transparent";
 
     const navigationItems: NavigationItem[] = [
-      { name: t("projects"), link: "projects" },
+      { name: t("projects"), link: "marketplace" },
       { name: t("about-us"), link: "about-us" },
       { name: t("learn"), link: "learn" },
     ];
@@ -68,9 +68,6 @@ export const MobileHomeNavigation = React.memo(
         <NavbarMenu
           className={`max-h-[70vh] overflow-hidden mt-3 flex flex-col items-center justify-around ${blurClass}`}
         >
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
           {navigationItems.map((item, index) => (
             <NavbarMenuItem
               key={`${item.name}-navigation-item-${index}`}
@@ -89,6 +86,8 @@ export const MobileHomeNavigation = React.memo(
           <NavbarMenuItem className="w-full">
             <SignedIn>
               <Button
+                href={`/${locale}/marketplace`}
+                as={Link}
                 size="lg"
                 radius="none"
                 className="w-full bg-primary px-10 font-sen text-sm font-bold text-white hover:bg-secondary lg:w-fit"
@@ -136,6 +135,7 @@ export const MobileHomeNavigation = React.memo(
               >
                 <Link
                   href={item.link}
+                  target="_blank"
                   rel="noreferrer"
                   className={`${item.styles} font-sen`}
                 >
@@ -147,6 +147,9 @@ export const MobileHomeNavigation = React.memo(
         </NavbarMenu>
 
         <NavbarContent justify="end">
+          <SignedIn>
+            <UserButtonMenu />
+          </SignedIn>
           <LanguageSelector />
 
           <Button className="relative bg-transparent" onClick={toggleMenu}>
@@ -182,7 +185,7 @@ export const DesktopHomeNavigation = React.memo(
     const logoSize = compactNavigationElements ? 45 : 190;
 
     const navigationItems: NavigationItem[] = [
-      { name: t("projects"), link: "projects" },
+      { name: t("projects"), link: "marketplace" },
       { name: t("about-us"), link: "about-us" },
       { name: t("learn"), link: "learn" },
     ];
@@ -217,7 +220,6 @@ export const DesktopHomeNavigation = React.memo(
         </div>
 
         <div className="flex flex-row gap-2 font-sen">
-          <LanguageSelector />
           <SignedOut>
             <Button
               startContent={<FaRegUser />}
@@ -233,6 +235,7 @@ export const DesktopHomeNavigation = React.memo(
             {/* <UserButton /> */}
             <UserButtonMenu />
           </SignedIn>
+          <LanguageSelector />
         </div>
       </div>
     );

@@ -9,7 +9,7 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className="overflow-x-hidden bg-[#F7FAFF] relative">
+    <main className="relative overflow-x-hidden bg-light">
       <Navigation />
       {children}
       <Footer />

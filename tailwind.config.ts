@@ -11,6 +11,7 @@ const {
 } = require("tailwindcss/lib/util/flattenColorPalette");
 
 const config: Config = {
+  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -60,11 +61,13 @@ const config: Config = {
         mullish: ["Mullish", "sans-serif"],
       },
       colors: {
-        primary: "#062147", // Principal color
-        secondary: "#18A5FF", // Secondary color
-        tertiary: "#8C06B1", // Tertiary color
+        primary: "#062147",
+        secondary: "#18A5FF",
+        tertiary: "#8C06B1",
+        quaternary: "#76DBDB",
         minimal: "#b5b5b5",
         light: "#F7FAFF",
+        dark: "#01070E",
       },
       boxShadow: {
         custom: "0px 0px 50px rgba(24, 165, 255, 0.15)",

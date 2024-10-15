@@ -10,11 +10,11 @@ export const routing = defineRouting({
 
   pathnames: {
     "/": "/", // Homepage
-    "/projects": {
-      en: "/projects",
-      es: "/proyectos",
-      fr: "/projets",
-      ar: "/مشاريع",
+    "/marketplace": {
+      en: "/marketplace",
+      es: "/marketplace",
+      fr: "/marketplace",
+      ar: "/marketplace",
     },
     "/about": {
       en: "/about",

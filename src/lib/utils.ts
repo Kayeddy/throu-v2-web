@@ -24,7 +24,7 @@ export const convertContractUnits = (
   return Number(bigNumber);
 };
 
-// This function is used to calculate the percentage bar, based on the investment goal and the amount raised so far.
+// This function is used to calculate the progress percentage bar, based on the investment goal and the amount raised so far.
 export const calculateBarPercentage = (
   totalTokens: number,
   remainingTokens: number | any
@@ -41,4 +41,16 @@ export const calculateBarPercentage = (
   const percentage = Math.round((tokensSold * 100) / totalTokens);
 
   return percentage;
+};
+
+export const slugify = (text: string) => {
+  return text
+    .toString()
+    .toLowerCase() // Convert to lowercase
+    .trim() // Remove whitespace from both sides
+    .replace(/\s+/g, "-") // Replace spaces with hyphens
+    .replace(/[^\w\-]+/g, "") // Remove all non-word characters (except hyphens)
+    .replace(/\-\-+/g, "-") // Replace multiple hyphens with a single one
+    .replace(/^-+/, "") // Remove leading hyphens
+    .replace(/-+$/, ""); // Remove trailing hyphens
 };

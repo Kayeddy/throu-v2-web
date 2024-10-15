@@ -1,33 +1,45 @@
 "use client";
 
 import { useState } from "react";
-import { Popover, PopoverTrigger, PopoverContent } from "@nextui-org/react";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  Button,
+} from "@nextui-org/react";
 import Image from "next/image";
 import { useClerk, useUser } from "@clerk/nextjs";
 import { FaRegUser } from "react-icons/fa";
-import { useLocale } from "next-intl";
+import { MdDashboard } from "react-icons/md";
+import { ImProfile } from "react-icons/im";
+import { FaBookmark } from "react-icons/fa";
+import { useLocale, useTranslations } from "next-intl";
+import ThemeChanger from "./ThemeChanger";
+import Link from "next/link";
+import LogoutButton from "./LogoutButton";
 
 export default function UserButtonMenu() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { user } = useUser();
-
+  const t = useTranslations("Shared.userButtonMenu"); // Use translations
   const locale = useLocale();
   const { openUserProfile } = useClerk();
 
-  const handleThemeChange = () => {};
-
   const userMenuItems = [
     {
-      name: "Profile",
+      name: t("profile"),
+      icon: <ImProfile />,
       callback: openUserProfile,
     },
     {
-      name: "Dashboard",
+      name: t("dashboard"),
+      icon: <MdDashboard />,
       link: `/${locale}/dashboard`,
     },
     {
-      name: "Saved",
-      link: `/${locale}/dashboard?save`,
+      name: t("saved"),
+      icon: <FaBookmark />,
+      link: `/${locale}/dashboard?saved=true`,
     },
   ];
 
@@ -47,7 +59,7 @@ export default function UserButtonMenu() {
           >
             <Image
               src={user.imageUrl}
-              alt="user image popover menu trigger"
+              alt={t("userImageAlt")}
               fill
               className="h-auto w-auto rounded-full object-contain"
             />
@@ -59,7 +71,36 @@ export default function UserButtonMenu() {
         )}
       </PopoverTrigger>
       <PopoverContent className="p-1">
-        <div className="flex flex-col gap-2"></div>
+        <div className="flex flex-col gap-2">
+          <ThemeChanger />
+          {userMenuItems.map((menuItem) =>
+            menuItem.link ? (
+              <Button
+                key={menuItem.name + "user-button-menu-item"}
+                className="flex flex-row items-center justify-start gap-2 bg-transparent font-sen text-primary dark:text-light"
+                role="option"
+                as={Link}
+                href={menuItem.link}
+              >
+                {menuItem.icon}
+                <p>{menuItem.name}</p>
+              </Button>
+            ) : (
+              <Button
+                key={menuItem.name + "user-button-menu-item"}
+                className="flex flex-row items-center justify-start gap-2 bg-transparent font-sen text-primary dark:text-light"
+                role="option"
+                onClick={() => {
+                  if (menuItem.callback) menuItem.callback();
+                }}
+              >
+                {menuItem.icon}
+                <p>{menuItem.name}</p>
+              </Button>
+            )
+          )}
+          <LogoutButton />
+        </div>
       </PopoverContent>
     </Popover>
   );

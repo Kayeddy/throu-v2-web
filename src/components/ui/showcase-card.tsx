@@ -1,31 +1,39 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { SlLocationPin as LocationIcon } from "react-icons/sl";
 import { AiOutlinePlus as PlusIcon } from "react-icons/ai";
-import { calculateBarPercentage, cn } from "@/lib/utils";
+import { calculateBarPercentage } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { BlurImage } from "./blur-image";
 import ProjectAttributesContainer from "./project-attributes-boxes-container";
 import { Button } from "@nextui-org/button";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { Chip } from "@nextui-org/react";
+
+interface CardData extends ProjectDetails {
+  redirectionLink: string;
+}
 
 export const ShowcaseCard = ({
   data,
   layout = false,
 }: {
-  data?: ProjectDetails;
+  data?: CardData;
   layout?: boolean;
 }) => {
   const t = useTranslations("HomePage.Showcase");
 
+  const locale = useLocale();
+
   const projectAttributes = {
     supply: data?.projectTotalSupply,
-    min: data?.projectPrice,
-    total:
+    min: `$${data?.projectPrice}`,
+    total: `$${
       data?.projectPrice && data?.projectTotalSupply
         ? data?.projectTotalSupply * data?.projectPrice
-        : 0,
+        : 0
+    }`,
     APY: "23%",
   };
 
@@ -47,6 +55,22 @@ export const ShowcaseCard = ({
           className="relative flex h-[70vh] max-h-[600px] w-[80vw] max-w-[450px] flex-col items-start justify-start overflow-hidden rounded-md bg-light shadow-project-section-card-custom lg:max-h-[700px] lg:w-[40vw]"
         >
           <div className="relative h-[50%] min-h-[45%] w-full">
+            <div className="absolute top-3 z-10 flex w-full flex-row items-center justify-between px-3">
+              <Chip
+                radius="sm"
+                size="md"
+                className="bg-quaternary font-jakarta text-light"
+              >
+                Gastronómico
+              </Chip>
+              <Chip
+                radius="sm"
+                size="md"
+                className="bg-black/30 font-jakarta text-light backdrop-blur-sm"
+              >
+                Tendencia
+              </Chip>
+            </div>
             <BlurImage
               src="/assets/projects/prado/renders/render_1.jpg"
               alt={data.projectURI?.name ?? "Project-card-image"}
@@ -64,6 +88,7 @@ export const ShowcaseCard = ({
             <ProjectAttributesContainer
               items={projectAttributes}
               layout="horizontal"
+              ignoreTheme
             />
 
             <p className="w-[95%] truncate font-jakarta text-base font-extralight text-primary">
@@ -93,9 +118,7 @@ export const ShowcaseCard = ({
             </div>
 
             <Button
-              href="/"
-              target="_blank"
-              rel="noreferrer"
+              href={data.redirectionLink}
               as={Link}
               size="lg"
               className="w-full rounded-none bg-primary font-sen text-lg font-bold text-white hover:bg-secondary lg:text-base"
@@ -119,9 +142,7 @@ export const ShowcaseCard = ({
               {t("explore_all_projects")}
             </h1>
             <Button
-              href="/"
-              target="_blank"
-              rel="noreferrer"
+              href={`/${locale}/marketplace`}
               as={Link}
               size="lg"
               className="rounded-none border border-light bg-transparent font-sen text-sm text-light hover:border-secondary hover:bg-secondary hover:text-white"

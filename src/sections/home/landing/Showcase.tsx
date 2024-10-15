@@ -37,13 +37,22 @@ export default function Showcase() {
     }
   }, [isPending, project, error]);
 
+  {
+    /** This is a remporal solution to redirect to one project, Salon Prado in this case */
+  }
+
+  const cardData = {
+    ...project,
+    redirectionLink: `/${locale}/marketplace/projects/salon-prado-0`,
+  };
+
   // Memoized carousel render logic for optimization
   const renderProjectsCarousel = useMemo(() => {
     if (!isPending && project) {
       return (
         <Carousel
           items={[
-            <ShowcaseCard data={project} />,
+            <ShowcaseCard data={cardData} />,
             <ShowcaseCard />,
             <TemporaryComingSoonCard />,
           ]}

@@ -7,13 +7,14 @@ import { socialMediaItems } from "@/utils/constants";
 import Link from "next/link";
 import ScrollTopIndicator from "./ScrollTopIndicator";
 import BackgroundImage from "../ui/background-image";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useMemo } from "react";
 import { HomeNavigationItems } from "@/utils/types/shared/common";
 
 export default function Footer() {
   const { openConnectModal } = useConnectModal();
   const t = useTranslations("HomeFooter");
+  const locale = useLocale();
 
   // Translated footer cards data using useMemo
   const footerCardsData = useMemo(
@@ -52,40 +53,40 @@ export default function Footer() {
   const footerLinks: HomeNavigationItems[] = [
     {
       name: "projects",
-      link: "/marketplace",
+      link: `/${locale}/marketplace`,
     },
     {
       name: "aboutUs",
-      link: "/about-us",
+      link: `/${locale}/about-us`,
     },
     {
       name: "learn",
-      link: "/learn",
+      link: `/${locale}/learn`,
     },
     {
       name: "termsService",
-      link: "/terms",
+      link: `/${locale}/terms`,
     },
     {
       name: "privacy",
-      link: "/privacy",
+      link: `/${locale}/privacy`,
     },
   ];
 
   return (
-    <div className="bg-primary w-full h-fit p-6 sm:p-6 md:p-8 lg:p-12 pb-32 lg:pb-8 flex flex-col items-center justify-between mt-32 gap-24 z-[10] relative overflow-hidden">
-      <div className="flex lg:flex-row flex-col items-center justify-start w-full gap-16 z-10 relative">
+    <div className="relative z-[10] mt-32 flex h-fit w-full flex-col items-center justify-between gap-24 overflow-hidden bg-primary p-6 pb-32 sm:p-6 md:p-8 lg:p-12 lg:pb-8">
+      <div className="relative z-10 flex w-full flex-col items-center justify-start gap-16 lg:flex-row">
         <div className="flex flex-col gap-4">
-          <h1 className="font-bold font-sen text-[1.85rem] lg:text-[2.50rem] text-light lg:max-w-[28rem] leading-relaxed mt-4 lg:mt-4">
+          <h1 className="mt-4 font-sen text-[1.85rem] font-bold leading-relaxed text-light lg:mt-4 lg:max-w-[28rem] lg:text-[2.50rem]">
             <span className="lg:text-secondary">{t("headline.part1")}</span>{" "}
             {t("headline.part2")}{" "}
             <span className="lg:text-secondary">{t("headline.part3")}</span>.
           </h1>
-          <p className="text-light text-base font-normal font-jakarta max-w-[23rem]">
+          <p className="max-w-[23rem] font-jakarta text-base font-normal text-light">
             {t("description")}
           </p>
         </div>
-        <div className="flex flex-row lg:gap-10 gap-4">
+        <div className="flex flex-row gap-4 lg:gap-10">
           {footerCardsData.map((cardData, index) => (
             <div key={index}>
               <FooterCard data={cardData} />
@@ -93,31 +94,31 @@ export default function Footer() {
           ))}
         </div>
       </div>
-      <div className="flex lg:flex-row flex-col items-center lg:justify-between justify-center w-full gap-10 lg:gap-0 z-10 relative">
-        <div className="flex flex-col gap-10 lg:items-start items-start lg:justify-start justify-center">
+      <div className="relative z-10 flex w-full flex-col items-center justify-center gap-10 lg:flex-row lg:justify-between lg:gap-0">
+        <div className="flex flex-col items-start justify-center gap-10 lg:items-start lg:justify-start">
           <Image
             alt={t("logoAltText")}
             height={0}
             width={190}
             src="/assets/shared/logo_lg_footer.png"
-            className="object-contain w-auto h-auto"
+            className="h-auto w-auto object-contain"
           />
-          <div className="flex lg:flex-row flex-col items-center lg:justify-start justify-center gap-6 lg:flex-wrap mx-auto lg:mx-0">
+          <div className="mx-auto flex flex-col items-center justify-center gap-6 lg:mx-0 lg:flex-row lg:flex-wrap lg:justify-start">
             {footerLinks.map((item) => (
               <Link
                 key={`${item.name}-footer-link`}
                 href={item.link}
                 target="_blank"
                 rel="noreferrer"
-                className="text-base hover:text-secondary hover:underline bg-transparent text-light transition-all duration-300 ease-in-out"
+                className="bg-transparent text-base text-light transition-all duration-300 ease-in-out hover:text-secondary hover:underline"
               >
                 {t(`links.${item.name}`)}
               </Link>
             ))}
           </div>
         </div>
-        <div className="flex flex-col gap-12 items-center justify-center">
-          <div className="flex flex-row gap-4 items-center justify-around w-full max-w-sm">
+        <div className="flex flex-col items-center justify-center gap-12">
+          <div className="flex w-full max-w-sm flex-row items-center justify-around gap-4">
             {socialMediaItems.map((item) => (
               <Link
                 key={`${item.name}-social-media-link`}
@@ -129,7 +130,7 @@ export default function Footer() {
               </Link>
             ))}
           </div>
-          <p className="lg:text-xs text-sm text-light max-w-sm text-center">
+          <p className="max-w-sm text-center text-sm text-light lg:text-xs">
             {t("rightsReserved")}
           </p>
         </div>

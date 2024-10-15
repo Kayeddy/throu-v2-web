@@ -353,5 +353,38 @@
       "privacy": "الخصوصية"
     },
     "rightsReserved": "© 2023 Throu Investment. جميع الحقوق محفوظة."
+  },
+  "Shared": {
+    "userButtonMenu": {
+      "profile": "الملف الشخصي",
+      "dashboard": "لوحة القيادة",
+      "saved": "المحفوظة",
+      "logout": "تسجيل الخروج",
+      "userImageAlt": "صورة المستخدم لتشغيل القائمة المنبثقة"
+    },
+    "walletConnectionButton": {
+      "connect": "اتصل بالمحفظة",
+      "wrongNetwork": "شبكة خاطئة",
+      "switchNetworks": "تبديل الشبكات",
+      "disconnectTimeout": "انتهت مهلة اتصال المحفظة، جاري الفصل...",
+      "balance": "{balance} {symbol}"
+    }
+  },
+  "Dashboard": {
+    "header": {
+      "balance": "الرصيد"
+    },
+    "portfolio": {
+      "desktopTitle": "مشاريعي",
+      "mobileTitle": "المشاريع"
+    },
+    "movements": {
+      "desktopTitle": "الأرصدة والتحركات",
+      "mobileTitle": "الرصيد"
+    },
+    "saved": {
+      "title": "المحفوظات"
+    },
+    "options": "خيارات"
   }
 }

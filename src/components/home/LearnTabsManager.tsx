@@ -8,6 +8,8 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { useIsMobile } from "@/utils/hooks/shared/useIsMobile";
 
+import { motion } from "framer-motion";
+
 export default function LearnTabsManager() {
   const t = useTranslations("Learn.tabs"); // Using translations for the tabs
   const isMobile = useIsMobile(); // Using the isMobile hook to check if the user is on a mobile device
@@ -40,8 +42,13 @@ export default function LearnTabsManager() {
   ];
 
   return (
-    <div className="flex flex-col px-4 mt-20 w-full h-full">
-      <div className="flex w-full flex-col h-full">
+    <motion.div
+      className="mt-20 flex h-full w-full flex-col px-4"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.1, duration: 1 }}
+    >
+      <div className="flex h-full w-full flex-col">
         <Tabs
           aria-label="Options"
           isVertical={isMobile ? false : true}
@@ -49,6 +56,9 @@ export default function LearnTabsManager() {
           color="primary"
           selectedKey={selected}
           onSelectionChange={(key) => setSelected(key as string)}
+          classNames={{
+            tabList: "bg-transparent",
+          }}
         >
           {tabs.map((tab) => (
             <Tab key={tab.key} title={tab.name} className="w-full">
@@ -57,6 +67,6 @@ export default function LearnTabsManager() {
           ))}
         </Tabs>
       </div>
-    </div>
+    </motion.div>
   );
 }

@@ -1,19 +1,33 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback, useMemo } from "react";
+import { useQueryClient } from "@tanstack/react-query";
 import {
   useConnectModal,
   useAccountModal,
   useChainModal,
 } from "@rainbow-me/rainbowkit";
-import { useAccount, useDisconnect } from "wagmi";
+import { useAccount, useDisconnect, useBalance, useBlockNumber } from "wagmi";
 import { emojiAvatarForAddress } from "@/utils/helpers/walletButtonStyleGenerator";
+import { MdOutlineAccountBalanceWallet as WalletIcon } from "react-icons/md";
+import { IoIosWarning as WarningIcon } from "react-icons/io";
+import { Button, Spinner } from "@nextui-org/react";
+import { convertContractUnits } from "@/lib/utils";
+import { useTranslations } from "next-intl"; // Importing next-intl for translations
 
 export const WalletConnectionButton = () => {
+  const t = useTranslations("Shared.walletConnectionButton"); // Accessing translations
   const { isConnecting, address, isConnected, chain } = useAccount();
-  const { color: backgroundColor, emoji } = emojiAvatarForAddress(
-    address ?? ""
+
+  // Memoizing the result of this function since it only depends on the address
+  const { color: backgroundColor, emoji } = useMemo(
+    () => emojiAvatarForAddress(address ?? ""),
+    [address]
   );
+
+  const queryClient = useQueryClient();
+  const { data: blockNumber } = useBlockNumber({ watch: true });
+  const { data: balance, queryKey } = useBalance({ address });
 
   const { openConnectModal } = useConnectModal();
   const { openAccountModal } = useAccountModal();
@@ -21,59 +35,123 @@ export const WalletConnectionButton = () => {
   const { disconnect } = useDisconnect();
 
   const isMounted = useRef(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null); // Reference for timeout
 
   useEffect(() => {
     isMounted.current = true;
   }, []);
 
+  // Unified effect to handle balance logging and query invalidation
+  useEffect(() => {
+    if (balance?.value) {
+      queryClient.invalidateQueries({ queryKey });
+    }
+  }, [balance, queryClient, queryKey, blockNumber]);
+
+  // Timeout effect for wallet connection attempt
+  useEffect(() => {
+    if (isConnecting && !isConnected) {
+      timeoutRef.current = setTimeout(() => {
+        console.log(t("disconnectTimeout")); // Using translation for timeout log
+        disconnect(); // Disconnect the wallet if it's taking too long to connect
+      }, 3000); // Timeout set for 3 seconds
+    }
+
+    // Clear the timeout if the wallet connects before the timeout
+    if (isConnected && timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current); // Clean up on unmount
+      }
+    };
+  }, [isConnecting, isConnected, disconnect]);
+
+  // Handlers for connecting/disconnecting
+  const handleConnectClick = useCallback(async () => {
+    if (isConnected) {
+      disconnect();
+    }
+    openConnectModal?.();
+  }, [disconnect, isConnected, openConnectModal]);
+
+  const handleAccountModalClick = useCallback(() => {
+    openAccountModal?.();
+  }, [openAccountModal]);
+
   if (!isConnected) {
     return (
       <button
-        className="btn"
-        onClick={async () => {
-          // Disconnecting wallet first because sometimes when is connected but the user is not connected
-          if (isConnected) {
-            disconnect();
-          }
-          openConnectModal?.();
-        }}
+        aria-label={t("connect")} // Translation for button label
+        className="flex h-8 w-fit items-center justify-center rounded-md bg-transparent p-4 lg:h-7 lg:w-7 lg:rounded-full lg:bg-secondary lg:p-0"
+        onClick={handleConnectClick}
         disabled={isConnecting}
       >
-        {isConnecting ? "Connecting..." : "Connect your wallet"}
+        {isConnecting ? (
+          <span className="relative flex h-full w-full items-center justify-center bg-transparent">
+            <WalletIcon />
+            <Spinner
+              color="primary"
+              size="sm"
+              className="absolute inset-0 m-auto"
+            />
+          </span>
+        ) : (
+          <>
+            <div className="flex flex-row items-center justify-center gap-2 font-medium lg:hidden">
+              <span className="text-2xl text-secondary">
+                <WalletIcon />
+              </span>
+              <p className="font-sen text-xl text-secondary">
+                {t("connect")} {/* Translation for "Connect Wallet" */}
+              </p>
+            </div>
+
+            <span className="hidden text-light lg:block">
+              <WalletIcon />
+            </span>
+          </>
+        )}
       </button>
     );
   }
 
-  if (isConnected && !chain) {
+  if ((isConnected && !chain) || chain?.id !== 137) {
     return (
-      <button className="btn" onClick={openChainModal}>
-        Wrong network
-      </button>
+      <Button
+        className="flex flex-row items-center justify-center bg-transparent font-jakarta text-primary focus:border-transparent focus:outline-none dark:text-white"
+        onClick={openChainModal}
+      >
+        <span className="relative flex h-full items-center justify-center">
+          <WalletIcon className="text-lg" />
+          <WarningIcon className="absolute bottom-1 right-0 translate-x-2 animate-pulse text-danger" />
+        </span>
+        {t("wrongNetwork")} {/* Translation for "Wrong Network" */}
+      </Button>
     );
   }
 
   return (
-    <div className="max-w-5xl w-full flex items-center justify-between">
-      <div
-        className="flex justify-center items-center px-4 py-2 border border-neutral-700 bg-neutral-800/30 rounded-xl font-mono font-bold gap-x-2 cursor-pointer"
-        onClick={async () => openAccountModal?.()}
-      >
-        <div
-          role="button"
-          tabIndex={1}
-          className="h-8 w-8 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden"
-          style={{
-            backgroundColor,
-            boxShadow: "0px 2px 2px 0px rgba(81, 98, 255, 0.20)",
-          }}
-        >
-          {emoji}
-        </div>
-        <p>Account</p>
-      </div>
-      <button className="btn" onClick={openChainModal}>
-        Switch Networks
-      </button>
-    </div>
+    <Button
+      className="flex flex-row items-center justify-center bg-transparent font-jakarta text-primary dark:text-white"
+      onClick={handleAccountModalClick}
+    >
+      {isConnected && chain && (
+        <>
+          <WalletIcon className="text-2xl lg:text-lg" />
+          <span className="text-xl font-bold lg:text-base">
+            {balance?.value
+              ? t("balance", {
+                  balance: convertContractUnits(balance?.value),
+                  symbol: balance?.symbol,
+                })
+              : t("balance", { balance: 0, symbol: "USDT" })}
+          </span>
+        </>
+      )}
+    </Button>
   );
 };

@@ -353,5 +353,38 @@
       "privacy": "Confidentialité"
     },
     "rightsReserved": "© 2023 Throu Investment. Tous droits réservés."
+  },
+  "Shared": {
+    "userButtonMenu": {
+      "profile": "Profil",
+      "dashboard": "Tableau de bord",
+      "saved": "Enregistré",
+      "logout": "Se déconnecter",
+      "userImageAlt": "Image de l'utilisateur pour déclencher le menu"
+    },
+    "walletConnectionButton": {
+      "connect": "Connecter le portefeuille",
+      "wrongNetwork": "Mauvais réseau",
+      "switchNetworks": "Changer de réseau",
+      "disconnectTimeout": "Connexion du portefeuille expirée, déconnexion...",
+      "balance": "{balance} {symbol}"
+    }
+  },
+  "Dashboard": {
+    "header": {
+      "balance": "Solde"
+    },
+    "portfolio": {
+      "desktopTitle": "Mes Projets",
+      "mobileTitle": "Projets"
+    },
+    "movements": {
+      "desktopTitle": "Soldes et Mouvements",
+      "mobileTitle": "Balance"
+    },
+    "saved": {
+      "title": "Enregistré"
+    },
+    "options": "Options"
   }
 }

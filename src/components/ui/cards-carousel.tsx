@@ -14,6 +14,7 @@ interface CarouselProps {
   items: JSX.Element[];
   initialScroll?: number;
   showPagination?: boolean;
+  removePaddings?: boolean;
 }
 
 export const CarouselContext = createContext<{
@@ -28,6 +29,7 @@ export const Carousel = ({
   items,
   initialScroll = 0,
   showPagination = true,
+  removePaddings = false,
 }: CarouselProps) => {
   const carouselRef = React.useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = React.useState(false);
@@ -97,7 +99,9 @@ export const Carousel = ({
     >
       <div className="relative w-full">
         <div
-          className="flex w-full overflow-x-scroll overscroll-x-auto scroll-smooth py-10 [scrollbar-width:none]"
+          className={`flex w-full overflow-x-scroll overscroll-x-auto scroll-smooth ${
+            !removePaddings && "py-10"
+          } [scrollbar-width:none]`}
           ref={carouselRef}
           onScroll={checkScrollability}
         >
@@ -109,8 +113,8 @@ export const Carousel = ({
 
           <div
             className={cn(
-              "flex flex-row justify-start gap-4 pl-4",
-              "max-w-7xl mx-auto"
+              "flex flex-row justify-start gap-4",
+              `max-w-7xl ${!removePaddings && "mx-auto pl-4"}`
             )}
           >
             {items.map((item, index) => (

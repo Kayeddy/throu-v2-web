@@ -1,4 +1,6 @@
+"use client";
 import { Image } from "@nextui-org/react";
+import { BlurImage } from "./blur-image";
 
 interface BackgroundImageProps {
   src: string;
@@ -13,10 +15,13 @@ export default function BackgroundImage({
 }: BackgroundImageProps) {
   return (
     <div className={containerStyles}>
-      <Image
+      <BlurImage
         src={src}
         className={imageStyles}
+        width={200}
+        height={200}
         alt={`background-logo-decoration`}
+        loading="lazy"
       />
     </div>
   );

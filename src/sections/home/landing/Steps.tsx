@@ -3,11 +3,12 @@
 import { Carousel } from "@/components/ui/cards-carousel";
 import StepsShadowCard from "@/components/ui/steps-shadow-card";
 import { Image } from "@nextui-org/react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useMemo } from "react";
 
 const Steps = () => {
   const t = useTranslations("HomePage.Steps");
+  const locale = useLocale();
 
   // Step list is now translated, and memoized to avoid re-render
   const stepList = useMemo(
@@ -24,7 +25,7 @@ const Steps = () => {
         titlesColor: "text-primary",
         description: t("steps.0.description"),
         link: {
-          url: "/",
+          url: `/${locale}/learn`,
           color: "text-minimal",
           text: t("steps.0.link_text"),
         },
@@ -42,7 +43,7 @@ const Steps = () => {
         titlesColor: "text-primary",
         description: t("steps.1.description"),
         link: {
-          url: "/",
+          url: `/${locale}/learn`,
           color: "text-primary",
           text: t("steps.1.link_text"),
         },
@@ -60,7 +61,7 @@ const Steps = () => {
         titlesColor: "text-secondary",
         description: t("steps.2.description"),
         link: {
-          url: "/",
+          url: `/${locale}/learn`,
           color: "text-secondary",
           text: t("steps.2.link_text"),
         },
@@ -78,7 +79,7 @@ const Steps = () => {
         titlesColor: "text-tertiary",
         description: t("steps.3.description"),
         link: {
-          url: "/",
+          url: `/${locale}/learn`,
           color: "text-tertiary",
           text: t("steps.3.link_text"),
         },
@@ -92,7 +93,7 @@ const Steps = () => {
   const renderStepsContent = () => {
     return (
       <>
-        <div className="lg:flex hidden flex-row w-full items-center justify-between lg:px-10">
+        <div className="hidden w-full flex-row items-center justify-between lg:flex lg:px-10">
           <div>
             <StepsShadowCard step={stepList[0]} />
           </div>
@@ -107,7 +108,7 @@ const Steps = () => {
           </div>
         </div>
 
-        <div className="w-screen flex items-center justify-center lg:hidden px-3 mt-10 lg:mt-0">
+        <div className="mt-10 flex w-screen items-center justify-center px-3 lg:mt-0 lg:hidden">
           <Carousel
             showPagination={false}
             items={stepList.map((step, index) => (
@@ -122,22 +123,22 @@ const Steps = () => {
   };
 
   return (
-    <div className="h-screen lg:min-h-screen min-h-fit lg:h-fit overflow-x-hidden max-w-screen-2xl 2xl:mx-auto flex justify-start items-start pb-6">
+    <div className="flex h-screen min-h-fit max-w-screen-2xl items-start justify-start overflow-x-hidden pb-6 lg:h-fit lg:min-h-screen 2xl:mx-auto">
       <div>
-        <div className="p-6 sm:p-6 md:p-8 lg:p-12 xl:p-16 flex lg:flex-row flex-col items-start justify-start relative pt-24 lg:pt-0">
-          <h1 className="font-sen flex flex-col items-start justify-start font-bold gap-4 lg:gap-1 lg:ml-[6%]">
-            <span className="text-4xl text-primary text-center">
+        <div className="relative flex flex-col items-start justify-start p-6 pt-24 sm:p-6 md:p-8 lg:flex-row lg:p-12 lg:pt-0 xl:p-16">
+          <h1 className="flex flex-col items-start justify-start gap-4 font-sen font-bold lg:ml-[6%] lg:gap-1">
+            <span className="text-center text-4xl text-primary">
               {t("main_title_part1")}
             </span>
-            <span className="text-5xl text-secondary text-center">
-              <span className="lg:opacity-50 opacity-100">
+            <span className="text-center text-5xl text-secondary">
+              <span className="opacity-100 lg:opacity-50">
                 {t("main_title_part2")}
               </span>{" "}
-              <span className="opacity-50 lg:opacity-100 text-center">
+              <span className="text-center opacity-50 lg:opacity-100">
                 {t("main_title_part3")}
               </span>
             </span>
-            <span className="text-4xl text-primary font-sen text-center">
+            <span className="text-center font-sen text-4xl text-primary">
               {t("main_title_part4")}
             </span>
           </h1>
@@ -146,7 +147,7 @@ const Steps = () => {
         <Image
           src="/assets/home/steps/steps_line_light.png"
           alt="steps-line-image"
-          className="object-contain w-screen h-[500px] translate-x-[100px] mt-[-20%] mb-[30px] lg:block hidden"
+          className="mb-[30px] mt-[-20%] hidden h-[500px] w-screen translate-x-[100px] object-contain lg:block"
           loading="lazy" // Lazy load this large image
         />
 

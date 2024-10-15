@@ -46,7 +46,7 @@ export default function StepsShadowCard({ step }: { step: CardProps }) {
           </h2>
           <h1 className="text-center text-lg lg:text-base">{step.title}</h1>
         </div>
-        <p className="text-center font-jakarta text-base lg:text-sm">
+        <p className="text-center font-jakarta text-base text-primary lg:text-sm">
           {step.description}
         </p>
         <Button

@@ -28,7 +28,7 @@ export default async function RootLayout({
   const cookie = headers().get("cookie");
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <body className={`${inter.className}`}>
         <NextIntlClientProvider messages={messages}>
           <Providers locale={locale as Locale} cookie={cookie}>

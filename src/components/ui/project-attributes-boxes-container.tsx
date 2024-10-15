@@ -14,24 +14,37 @@ interface ProjectAttributesContainerProps {
   items: ProjectAttribute; // The list of attributes to render
   layout?: "horizontal" | "vertical"; // Layout type: horizontal or vertical
   size?: "lg" | "xl"; // Card size: lg for small, xl for big
+  isTranslucent?: boolean;
+  isGrid?: boolean; // Prop to determine if the layout should be in grid format
+  ignoreTheme?: boolean;
 }
 
 const ProjectAttributeBox = ({
   name,
   value,
   size = "lg",
+  isTranslucent = false,
+  ignoreTheme = false,
 }: {
   name: string;
   value: number | string;
   size?: "lg" | "xl";
+  isTranslucent?: boolean;
+  ignoreTheme?: boolean;
 }) => {
   return (
     <Card
       className={`border-none flex items-center justify-center ${
-        size === "xl" ? "w-24 h-24" : "w-20 h-12"
+        isTranslucent ? "bg-white/20 dark:bg-dark" : "bg-white"
+      } ${
+        size === "xl" ? "w-32 h-24" : "w-20 h-12"
       } rounded-md shadow-project-attribute-box-custom`}
     >
-      <div className="flex flex-col items-center justify-center text-primary font-sen">
+      <div
+        className={`flex flex-col items-center justify-center font-sen text-primary ${
+          !ignoreTheme && "dark:text-white"
+        }`}
+      >
         <p
           className={`font-bold text-center ${
             size === "xl" ? "text-xl" : "text-sm"
@@ -56,6 +69,9 @@ const ProjectAttributesContainer = ({
   items,
   layout = "vertical", // Default layout is vertical
   size = "lg", // Default size is lg
+  isTranslucent = false,
+  isGrid = false, // Default is false, meaning no grid layout unless specified
+  ignoreTheme = false,
 }: ProjectAttributesContainerProps) => {
   // Create an array of the attributes and their values to map over
   const attributes = Object.entries(items).filter(
@@ -64,9 +80,13 @@ const ProjectAttributesContainer = ({
 
   return (
     <div
-      className={`flex w-full items-center justify-between ${
-        layout === "horizontal" ? "flex-row" : "flex-col"
-      } gap-4`}
+      className={`${
+        isGrid
+          ? "grid grid-cols-2 gap-4" // Use grid layout when isGrid is true
+          : layout === "horizontal"
+          ? "flex flex-row gap-4"
+          : "flex flex-col gap-4"
+      } w-full items-center justify-between`}
     >
       {attributes.map(([name, value], index) => (
         <ProjectAttributeBox
@@ -74,6 +94,8 @@ const ProjectAttributesContainer = ({
           name={name}
           value={value as number | string}
           size={size} // Apply the size prop (lg or xl) to all boxes
+          isTranslucent={isTranslucent}
+          ignoreTheme={ignoreTheme}
         />
       ))}
     </div>
