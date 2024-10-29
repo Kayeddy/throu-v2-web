@@ -8,7 +8,7 @@ import { useTranslations } from "next-intl";
 const teamMembers = [
   {
     name: "Miguel",
-    role: "founder", // Use translation key
+    role: "coFounder", // Use translation key
     socials: { linkedIn: "", twitter: "" },
     imageSrc: "/assets/about_us/member_1.png",
     alt: "Photo of Team Member 1",
