@@ -7,7 +7,7 @@ export default function ScrollTopIndicator() {
   return (
     <div
       onClick={scrollToTop}
-      className="w-12 h-12 bg-light flex items-center justify-center text-slate-500 text-lg absolute right-0 top-0 cursor-pointer"
+      className="absolute right-0 top-0 hidden h-12 w-12 cursor-pointer items-center justify-center bg-light text-lg text-slate-500 lg:flex"
     >
       <RxDoubleArrowUp className="animate-bounce" />
     </div>

@@ -1,7 +1,7 @@
-"use client";
-
 import { useIsMobile } from "@/utils/hooks/shared/useIsMobile";
 import { useTranslations } from "next-intl";
+import Values from "./Values";
+import Community from "./Community";
 
 export default function Intro() {
   const isMobile = useIsMobile();
@@ -9,25 +9,65 @@ export default function Intro() {
 
   return (
     <div className="flex flex-col items-start justify-start gap-10 text-primary">
-      <h1 className="font-sen text-4xl lg:text-6xl font-bold">
+      <h1 className="font-sen text-4xl font-bold lg:text-6xl">
         {isMobile ? t("headline.mobile") : t("headline.desktop")}
       </h1>
 
-      <p className="font-jakarta">{t("description")}</p>
+      {t.rich("description", {
+        p: (children) => <p className="font-jakarta text-base">{children}</p>,
+      })}
 
-      <div className="flex flex-col gap-4 ml-4 font-jakarta lg:max-w-5xl">
-        <p>
-          <b>1. {t("pillars.democratize.title")}:</b>{" "}
-          {t("pillars.democratize.description")}
-          <br />
-          <br />
-          <b>2. {t("pillars.simplify.title")}:</b>{" "}
-          {t("pillars.simplify.description")}
-          <br />
-          <br />
-          <b>3. {t("pillars.dynamize.title")}:</b>{" "}
-          {t("pillars.dynamize.description")}
-        </p>
+      <div className="flex flex-col gap-10 font-jakarta lg:max-w-5xl">
+        {/* Mission & Vision Section */}
+        <div className="flex flex-col items-start justify-start gap-4">
+          <h2 className="font-sen text-2xl font-bold lg:text-4xl">
+            {t("mission.title")}
+          </h2>
+          <ul className="ml-4 list-disc space-y-4">
+            <li>
+              {t.rich("mission.missionStatement", {
+                p: (children) => (
+                  <p className="font-jakarta text-base">{children}</p>
+                ),
+              })}
+            </li>
+            <li>
+              {t.rich("mission.visionStatement", {
+                p: (children) => (
+                  <p className="font-jakarta text-base">{children}</p>
+                ),
+              })}
+            </li>
+          </ul>
+        </div>
+
+        {/* Purpose Section */}
+        <div className="mt-6 flex flex-col items-start justify-start gap-4">
+          <h2 className="font-sen text-2xl font-bold lg:text-4xl">
+            {t("purpose.title")}
+          </h2>
+          {t.rich("purpose.description", {
+            p: (children) => (
+              <p className="font-jakarta text-base">{children}</p>
+            ),
+          })}
+        </div>
+
+        <Values />
+
+        {/* History Section */}
+        <div className="mt-6 flex flex-col items-start justify-start gap-4">
+          <h2 className="font-sen text-2xl font-bold lg:text-4xl">
+            {t("history.title")}
+          </h2>
+          {t.rich("history.story", {
+            p: (children) => (
+              <p className="font-jakarta text-base">{children}</p>
+            ),
+          })}
+        </div>
+
+        <Community />
       </div>
     </div>
   );

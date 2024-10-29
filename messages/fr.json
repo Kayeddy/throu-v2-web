@@ -109,22 +109,21 @@
     "intro": {
       "headline": {
         "mobile": "À Propos de Nous",
-        "desktop": "Une Porte d’Entrée vers l’Investissement Immobilier"
+        "desktop": "Une Passerelle vers l'Investissement Immobilier"
       },
-      "description": "Chez Throu, nous croyons au pouvoir de la technologie blockchain et de l’investissement immobilier pour rendre le monde plus équitable. Notre mission est de rendre les investissements immobiliers simples et accessibles à tous, où qu'ils soient et quel que soit le montant qu'ils souhaitent investir.",
-      "pillars": {
-        "democratize": {
-          "title": "Démocratiser",
-          "description": "Nous croyons que chacun doit avoir l'opportunité d'investir dans l'immobilier. C’est pourquoi nous supprimons les barrières à l'entrée et rendons l'investissement immobilier accessible à tous."
-        },
-        "simplify": {
-          "title": "Simplifier",
-          "description": "Nous rendons l'investissement immobilier facile. Notre plateforme est intuitive et facile à utiliser, et notre équipe est toujours disponible pour vous aider à chaque étape."
-        },
-        "dynamize": {
-          "title": "Dynamiser",
-          "description": "Nous utilisons la technologie blockchain pour rendre l'investissement immobilier plus efficace et transparent. Avec Throu, vous pouvez voir exactement où va votre argent et comment il est utilisé."
-        }
+      "description": "Chez Throu, nous croyons au pouvoir de la technologie blockchain et de l'investissement immobilier pour rendre le monde plus équitable. Notre mission est de rendre les investissements immobiliers simples et accessibles à tous, où qu'ils soient et quel que soit le montant qu'ils souhaitent investir.",
+      "mission": {
+        "title": "Mission et Vision",
+        "missionStatement": "Chez Throu, notre mission est de démocratiser l'investissement immobilier grâce à la technologie blockchain. Nous visons à fournir un accès aux opportunités d'investissement immobilier fractionné aux investisseurs de tous niveaux, en supprimant les barrières traditionnelles à l'entrée tout en garantissant la transparence et la liquidité.",
+        "visionStatement": "Chez Throu, nous nous engageons à diriger la transformation de l'industrie immobilière à travers des technologies innovantes. Notre vision est de devenir la plateforme d'investissement immobilier préférée et la plus accessible au niveau mondial, où chacun peut participer de manière transparente et simple via la tokenisation des actifs immobiliers sur la blockchain Polygon. Nous nous efforçons d'offrir une expérience utilisateur exceptionnelle, une sécurité robuste et une sélection soigneusement étudiée d'opportunités d'investissement immobilier, tout en respectant nos valeurs fondamentales de transparence, d'efficacité et de responsabilité sociale."
+      },
+      "purpose": {
+        "title": "But",
+        "description": "Nous contribuons au progrès humain en créant et en apportant des avancées technologiques et durables."
+      },
+      "history": {
+        "title": "Histoire",
+        "story": "<p>Il y a quelques années, un groupe de jeunes entrepreneurs a entrepris de démocratiser le marché immobilier et de le rendre plus accessible à tous. Forts d'une expertise en technologie, en blockchain et en finance, ils ont vu une opportunité dans la tokenisation des actifs immobiliers pour concrétiser cette vision. Throu est née en tant que plateforme web3 offrant des investissements directs dans des projets immobiliers fractionnés via des tokens sur la blockchain Polygon.</p><p>L'équipe de Throu a travaillé dur pour développer une plateforme conviviale, sécurisée et efficace permettant aux investisseurs d'acheter et de vendre facilement des tokens de projets immobiliers. Depuis, Throu a sélectionné une gamme d'opportunités d'investissement immobilier fractionné, garantissant que chaque projet passe par un processus de diligence rigoureux et réponde à des normes élevées de qualité et de rentabilité.</p><p>Au fil du temps, Throu a attiré des investisseurs du monde entier qui ont trouvé une manière innovante et accessible d'investir dans l'immobilier via la plateforme. L'entreprise a rapidement évolué pour devenir un leader du marché de l'investissement immobilier tokenisé, en maintenant toujours ses valeurs fondamentales de transparence, d'efficacité et de responsabilité sociale.</p><p>L'histoire de Throu est celle de l'innovation et de la vision, démontrant comment la technologie peut transformer la manière dont nous investissons et accédons aux marchés financiers. Avant tout, c'est l'histoire d'une entreprise qui peut avoir un impact positif sur la vie des gens en démocratisant l'investissement et en ouvrant des opportunités pour tous.</p>"
       }
     },
     "team": {
@@ -138,15 +137,87 @@
         "mobile": "Notre Équipe"
       },
       "roles": {
-        "ceoCoFounder": "PDG - Cofondateur",
-        "humanWebEngineer": "Ingénieur Web Humain",
-        "ctoCoFounder": "CTO - Cofondateur",
-        "directResearchAnalyst": "Analyste en Recherche Directe"
+        "founder": "Fondateur",
+        "coFounder": "Co-fondateur",
+        "cto": "Directeur de la Technologie",
+        "blockchainDev": "Développeur Blockchain"
       },
       "description": "Chez Throu, nous avons une équipe d'experts en immobilier, blockchain, finance et investissement. Notre équipe est dédiée à trouver, analyser et sélectionner les meilleures opportunités d'investissement pour nos utilisateurs. Nous sommes là pour vous accompagner à chaque étape de votre parcours d'investissement, de la sélection des projets à l'achat de tokens. Notre équipe est composée de professionnels passionnés engagés dans la démocratisation de l'investissement immobilier. Ensemble, nous changeons la façon dont le monde investit dans l'immobilier.",
       "professionals": "Professionnels",
       "areas": "Secteurs",
       "users": "Utilisateurs"
+    },
+    "roadmap": {
+      "title": "Parcours de Développement",
+      "phases": [
+        {
+          "title": "Phase 1",
+          "contentTitle": "Expansion de la plateforme de tokenisation immobilière et durabilité",
+          "content": "Au cours de la phase 1, Throu se concentrera sur l'expansion de sa plateforme de tokenisation immobilière et l'augmentation de l'offre de projets durables. L'intégration de nouvelles technologies sera améliorée pour optimiser la sélection des projets et l'émission de tokens, permettant ainsi une plus grande diversification des projets. Des efforts seront faits pour établir des partenariats avec des entreprises de construction et immobilières pour collaborer sur des projets durables avec des technologies innovantes."
+        },
+        {
+          "title": "Phase 2",
+          "contentTitle": "Création de projets NFT exclusifs",
+          "content": "Lors de la phase 2, Throu créera des projets NFT exclusifs pour sa communauté d'investisseurs, offrant des avantages dans les investissements et la participation à des projets propriétaires. La collaboration avec des artistes et des designers sera recherchée pour créer des NFTs uniques et précieux."
+        },
+        {
+          "title": "Phase 3",
+          "contentTitle": "Création d'un métavers pour les projets tokenisés",
+          "content": "Pendant la phase 3, Throu se concentrera sur la création d'un métavers de projets tokenisés, où tous les projets immobiliers de la plateforme seront représentés numériquement. La collaboration avec des entreprises de technologie de réalité virtuelle sera poursuivie pour créer une expérience immersive pour les investisseurs."
+        },
+        {
+          "title": "Phase 4",
+          "contentTitle": "Extension des offres d'actifs tokenisés",
+          "content": "Au cours de la phase 4, Throu cherchera à élargir l'offre d'actifs tokenisés, y compris les investissements dans l'art et les entreprises. De nouvelles opportunités d'investissement dans des actifs tangibles seront explorées et de nouveaux marchés seront étudiés pour étendre l'offre d'investissement."
+        },
+        {
+          "title": "Phase 5",
+          "contentTitle": "Création de projets résidentiels durables",
+          "content": "Au cours de la phase 5, Throu se concentrera sur la création de ses propres projets résidentiels durables, offerts exclusivement aux investisseurs de la plateforme. Ces projets seront conçus pour répondre aux besoins de notre communauté d'investisseurs nomades, cherchant des logements dans différentes parties du monde."
+        }
+      ]
+    },
+    "values": {
+      "title": "Valeurs",
+      "items": [
+        {
+          "name": "Transparence",
+          "description": "Nous nous engageons à être transparents dans tout ce que nous faisons, de la sélection des projets à la gestion des investissements. Nous croyons que la transparence est essentielle pour instaurer la confiance des investisseurs et établir des relations durables."
+        },
+        {
+          "name": "Efficacité",
+          "description": "Nous nous efforçons d'être aussi efficaces que possible dans tout ce que nous faisons, de la sélection des projets à l'émission de tokens. Notre plateforme est conçue pour offrir une expérience utilisateur fluide et efficace, permettant à nos investisseurs de se concentrer sur ce qui compte vraiment : investir."
+        },
+        {
+          "name": "Responsabilité sociale",
+          "description": "Nous nous soucions de l'impact que nous avons sur la société et l'environnement. Nous veillons à ce que tous nos projets respectent des normes élevées de durabilité et de responsabilité sociale, favorisant un impact positif dans les communautés où nous opérons."
+        },
+        {
+          "name": "Innovation",
+          "description": "Nous sommes engagés dans l'innovation et l'utilisation de technologies de pointe pour améliorer l'investissement immobilier. Nous cherchons constamment de nouvelles façons d'améliorer et de rendre l'investissement immobilier plus accessible grâce à la tokenisation et à d'autres technologies disruptives."
+        },
+        {
+          "name": "Excellence",
+          "description": "Nous visons l'excellence dans tout ce que nous faisons. De la sélection des projets au service client, nous nous efforçons d'offrir un service exceptionnel et de dépasser les attentes de nos investisseurs à tout moment."
+        }
+      ]
+    },
+    "community": {
+      "title": "Communauté",
+      "items": [
+        {
+          "description": "La communauté Throu est composée d'investisseurs passionnés par l'investissement immobilier et la technologie blockchain. Ils sont des individus qui valorisent la transparence, la durabilité et la diversification de leurs investissements, cherchant de nouvelles opportunités dans les actifs tangibles et numériques."
+        },
+        {
+          "description": "La communauté Throu se compose d'investisseurs nomades, d'entrepreneurs et de professionnels de différentes parties du monde, intéressés à investir dans des projets immobiliers innovants et durables, et à faire partie d'une communauté active et engagée."
+        },
+        {
+          "description": "Throu s'engage à fournir une plateforme sécurisée et fiable à ses investisseurs, où ils peuvent interagir, apprendre d'autres investisseurs et accéder à des projets exclusifs et des opportunités d'investissement uniques. Throu propose également des ressources éducatives et des outils d'analyse pour aider les investisseurs à prendre des décisions éclairées concernant leurs investissements."
+        },
+        {
+          "description": "En résumé, la communauté Throu est un groupe diversifié et passionné d'investisseurs engagés dans la croissance durable et l'innovation dans l'investissement immobilier et la technologie blockchain."
+        }
+      ]
     }
   },
   "Learn": {
@@ -374,16 +445,24 @@
     "header": {
       "balance": "Solde"
     },
-    "portfolio": {
-      "desktopTitle": "Mes Projets",
-      "mobileTitle": "Projets"
+    "tabs": {
+      "portfolio": {
+        "desktopTitle": "Mes Projets",
+        "mobileTitle": "Projets"
+      },
+      "movements": {
+        "desktopTitle": "Soldes et Mouvements",
+        "mobileTitle": "Balance"
+      },
+      "saved": {
+        "title": "Enregistré"
+      }
     },
-    "movements": {
-      "desktopTitle": "Soldes et Mouvements",
-      "mobileTitle": "Balance"
-    },
-    "saved": {
-      "title": "Enregistré"
+    "attributes": {
+      "projectsCount": "Total des projets",
+      "tokensCount": "Nombre total de jetons",
+      "fiatInvestmentAmount": "Total USDT",
+      "returnOnInvestment": "Rentabilité"
     },
     "options": "Options"
   }

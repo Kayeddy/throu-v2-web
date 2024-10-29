@@ -7,8 +7,8 @@ import { useTranslations } from "next-intl";
 
 const teamMembers = [
   {
-    name: "Clifford Wisoky",
-    role: "ceoCoFounder", // Use translation key
+    name: "Miguel",
+    role: "founder", // Use translation key
     socials: { linkedIn: "", twitter: "" },
     imageSrc: "/assets/about_us/member_1.png",
     alt: "Photo of Team Member 1",
@@ -16,28 +16,28 @@ const teamMembers = [
     translateY: "",
   },
   {
-    name: "Lillian Mueller",
-    role: "humanWebEngineer", // Use translation key
+    name: "Simón Atehortua",
+    role: "coFounder", // Use translation key
     socials: { linkedIn: "", twitter: "" },
-    imageSrc: "/assets/about_us/member_2.png",
+    imageSrc: "/assets/about_us/vp_team.jpg",
     alt: "Photo of Team Member 2",
     alignSelf: "end",
     translateY: "lg:-translate-y-[150px]",
   },
   {
-    name: "Cora Bernier",
-    role: "ctoCoFounder", // Use translation key
+    name: "Edward Bowie",
+    role: "cto", // Use translation key
     socials: { linkedIn: "", twitter: "" },
-    imageSrc: "/assets/about_us/member_3.png",
+    imageSrc: "/assets/about_us/cto_team.png",
     alt: "Photo of Team Member 3",
     alignSelf: "start",
     translateY: "lg:-translate-y-[300px]",
   },
   {
-    name: "Drew Simons",
-    role: "directResearchAnalyst", // Use translation key
+    name: "Diego Villanueva",
+    role: "blockchainDev", // Use translation key
     socials: { linkedIn: "", twitter: "" },
-    imageSrc: "/assets/about_us/member_4.png",
+    imageSrc: "/assets/about_us/blockchain_team.jpg",
     alt: "Photo of Team Member 4",
     alignSelf: "end",
     translateY: "lg:-translate-y-[450px]",
@@ -47,9 +47,9 @@ const teamMembers = [
 const TeamMetricsBox = ({ name, amount }: { name: string; amount: number }) => {
   const t = useTranslations("AboutUs.teamMetrics");
   return (
-    <span className="flex flex-col gap-6 items-center justify-center">
-      <h3 className="text-4xl font-sen font-bold">{`+${amount.toLocaleString()}`}</h3>
-      <p className="font-jakarta text-sm text-center pl-2">{t(name)}</p>
+    <span className="flex flex-col items-center justify-center gap-6">
+      <h3 className="font-sen text-4xl font-bold">{`+${amount.toLocaleString()}`}</h3>
+      <p className="pl-2 text-center font-jakarta text-sm">{t(name)}</p>
     </span>
   );
 };
@@ -83,16 +83,16 @@ const TeamMember = ({
         alt={alt}
         width={200}
         height={200}
-        className="object-contain"
+        className="h-[200px] max-h-[200px] object-cover"
         loading="lazy"
       />
 
-      <span className="flex flex-col items-center justify-center mt-2">
+      <span className="mt-2 flex flex-col items-center justify-center">
         <p className="font-sen text-lg font-bold">{name}</p>
-        <p className="text-sm font-jakarta">{t(role)}</p>
+        <p className="font-jakarta text-sm">{t(role)}</p>
       </span>
 
-      <span className="flex flex-row items-center justify-center gap-4 text-primary text-base mt-2">
+      <span className="mt-2 flex flex-row items-center justify-center gap-4 text-base text-primary">
         <Link href={socials.linkedIn} target="_blank" rel="noreferrer">
           <FaLinkedin />
         </Link>
@@ -110,28 +110,28 @@ export default function TeamMetrics() {
   const teamMetrics = [
     { name: "professionals", amount: 15 },
     { name: "areas", amount: 5 },
-    { name: "users", amount: 1.2 },
+    { name: "users", amount: 150 },
   ];
 
   return (
-    <div className="flex flex-col lg:flex-row gap lg:items-start items-center lg:justify-between justify-center w-full gap-10 text-primary">
-      <h2 className="lg:hidden font-sen text-4xl font-bold">
+    <div className="gap flex w-full flex-col items-center justify-center gap-10 text-primary lg:flex-row lg:items-start lg:justify-between">
+      <h2 className="font-sen text-4xl font-bold lg:hidden">
         {t("headline.mobile")}
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-start justify-start w-full lg:min-w-[450px] lg:max-w-[40%] lg:flex lg:flex-col lg:h-[850px]">
+      <div className="grid w-full grid-cols-1 items-start justify-start gap-4 sm:grid-cols-2 lg:flex lg:h-[850px] lg:min-w-[450px] lg:max-w-[40%] lg:flex-col">
         {teamMembers.map((member, index) => (
           <TeamMember key={index} {...member} />
         ))}
       </div>
-      <div className="flex flex-col gap-10 items-start justify-start lg:max-w-[50%]">
-        <h2 className="hidden lg:block font-sen text-4xl font-bold">
+      <div className="flex flex-col items-start justify-start gap-10 lg:max-w-[50%]">
+        <h2 className="hidden font-sen text-4xl font-bold lg:block">
           {t("headline.desktop")}
         </h2>
 
-        <div className="flex flex-col-reverse lg:flex-col items-start justify-start gap-10">
+        <div className="flex flex-col-reverse items-start justify-start gap-10 lg:flex-col">
           <p className="text-base">{t("description")}</p>
 
-          <div className="flex flex-row gap-4 lg:gap-24 w-full items-center lg:justify-start justify-around">
+          <div className="flex w-full flex-row items-center justify-around gap-4 lg:justify-start lg:gap-24">
             {teamMetrics.map((metric) => (
               <TeamMetricsBox
                 key={metric.name}

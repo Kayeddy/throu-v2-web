@@ -1,8 +1,11 @@
 "use client";
 
+import Community from "@/sections/home/about-us/Community";
 import Intro from "@/sections/home/about-us/Intro";
+import Roadmap from "@/sections/home/about-us/Roadmap";
 import Team from "@/sections/home/about-us/Team";
 import TeamMetrics from "@/sections/home/about-us/TeamMetrics";
+import Values from "@/sections/home/about-us/Values";
 
 import { motion } from "framer-motion";
 
@@ -19,11 +22,13 @@ export default function HomeAboutUsContent() {
         <Intro />
 
         {/* General team showcase section */}
-
         <Team />
 
         {/* Metrics and specific team members information section */}
         <TeamMetrics />
+
+        {/* Development roadmap section */}
+        <Roadmap />
       </div>
     </motion.div>
   );

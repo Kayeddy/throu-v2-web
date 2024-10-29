@@ -2,6 +2,7 @@
 import Header from "@/sections/dashboard/Header";
 import DashboardTabsManager from "./DashboardTabsManager";
 import { useSearchParams } from "next/navigation";
+import { motion } from "framer-motion";
 
 export default function DashboardContent() {
   // Use useSearchParams hook to get the search params
@@ -11,9 +12,14 @@ export default function DashboardContent() {
   const isSavedParam = searchParams.get("saved");
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <motion.div
+      className="flex flex-col items-start justify-start gap-6"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.1, duration: 1 }}
+    >
       <Header />
       <DashboardTabsManager isSavedParam={isSavedParam?.toString()} />
-    </div>
+    </motion.div>
   );
 }

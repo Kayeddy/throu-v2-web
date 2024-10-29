@@ -108,23 +108,22 @@
   "AboutUs": {
     "intro": {
       "headline": {
-        "mobile": "Nosotros",
-        "desktop": "Una puerta de entrada a la inversión inmobiliaria"
+        "mobile": "Sobre Nosotros",
+        "desktop": "Una Puerta a la Inversión Inmobiliaria"
       },
-      "description": "En Throu, creemos en el poder de la tecnología blockchain y la inversión inmobiliaria para hacer del mundo un lugar más equitativo. Nuestra misión es hacer que las inversiones en bienes raíces sean simples y accesibles para todos, sin importar dónde se encuentren o cuánto deseen invertir.",
-      "pillars": {
-        "democratize": {
-          "title": "Democratizar",
-          "description": "Creemos que todos deberían tener la oportunidad de invertir en bienes raíces. Por eso, estamos eliminando las barreras de entrada y haciendo que la inversión inmobiliaria sea accesible para todos."
-        },
-        "simplify": {
-          "title": "Simplificar",
-          "description": "Hacemos que la inversión inmobiliaria sea fácil. Nuestra plataforma es intuitiva y fácil de usar, y nuestro equipo está siempre disponible para ayudarte en cada paso del camino."
-        },
-        "dynamize": {
-          "title": "Dinamizar",
-          "description": "Estamos utilizando la tecnología blockchain para hacer que la inversión inmobiliaria sea más eficiente y transparente. Con Throu, puedes ver exactamente dónde va tu dinero y cómo se está utilizando."
-        }
+      "description": "En Throu, creemos en el poder de la tecnología blockchain y la inversión inmobiliaria para hacer del mundo un lugar más equitativo. Nuestra misión es hacer que las inversiones inmobiliarias sean simples y accesibles para todos, sin importar dónde estén o cuánto deseen invertir.",
+      "mission": {
+        "title": "Misión y Visión",
+        "missionStatement": "En Throu, nuestra misión es democratizar la inversión en bienes raíces a través de la tecnología blockchain. Queremos proporcionar acceso a oportunidades de inversión inmobiliaria fraccionada a inversores de todos los niveles, eliminando las barreras tradicionales de entrada y proporcionando transparencia y liquidez en el proceso.",
+        "visionStatement": "En Throu, estamos comprometidos a liderar la transformación de la industria inmobiliaria mediante tecnologías innovadoras. Nuestra visión es ser la plataforma de inversión inmobiliaria preferida y más accesible a nivel global, donde cualquier persona pueda participar de manera transparente y sencilla mediante la tokenización de activos inmobiliarios en la blockchain de Polygon. Nos esforzamos por brindar una experiencia de usuario excepcional, una seguridad robusta y una selección cuidadosamente curada de oportunidades de inversión inmobiliaria, manteniendo siempre nuestros valores de transparencia, eficiencia y responsabilidad social."
+      },
+      "purpose": {
+        "title": "Propósito",
+        "description": "Contribuimos al progreso humano creando y aportando avances tecnológicos y sostenibles."
+      },
+      "history": {
+        "title": "Historia",
+        "story": "<p>Hace unos años, un grupo de jóvenes emprendedores se propuso democratizar el mercado inmobiliario y hacerlo más accesible para todos. Con experiencia en tecnología, blockchain y finanzas, vieron una oportunidad en la tokenización de activos inmobiliarios para hacer realidad esta visión. Throu nació como una plataforma web3 que ofrece inversiones directas en proyectos inmobiliarios fraccionados a través de tokens en la blockchain de Polygon.</p><p>El equipo de Throu trabajó arduamente para desarrollar una plataforma fácil de usar, segura y eficiente que permite a los inversores comprar y vender tokens de proyectos inmobiliarios de manera sencilla. Desde entonces, Throu ha seleccionado una variedad de oportunidades de inversión inmobiliaria fraccionada, asegurando que cada proyecto pase por un riguroso proceso de debida diligencia y cumpla con altos estándares de calidad y rentabilidad.</p><p>Con el tiempo, Throu ha atraído a inversores de todo el mundo que han encontrado una forma innovadora y accesible de invertir en bienes raíces a través de la plataforma. La empresa ha crecido rápidamente, estableciéndose como líder en el mercado de inversión inmobiliaria tokenizada, siempre manteniendo sus valores fundamentales de transparencia, eficiencia y responsabilidad social.</p><p>La historia de Throu es una de innovación y visión, demostrando cómo la tecnología puede cambiar la forma en que invertimos y accedemos a los mercados financieros. Sobre todo, es una historia de cómo una empresa puede marcar una diferencia positiva en la vida de las personas al democratizar la inversión y abrir oportunidades para todos.</p>"
       }
     },
     "team": {
@@ -138,15 +137,87 @@
         "mobile": "Nuestro Equipo"
       },
       "roles": {
-        "ceoCoFounder": "CEO - Cofundador",
-        "humanWebEngineer": "Ingeniero Web Humano",
-        "ctoCoFounder": "CTO - Cofundador",
-        "directResearchAnalyst": "Analista de Investigación Directa"
+        "founder": "Fundador",
+        "coFounder": "Co-fundador",
+        "cto": "Director de Tecnología",
+        "blockchainDev": "Desarrollador de Blockchain"
       },
       "description": "En Throu, contamos con un equipo de expertos en bienes raíces, blockchain, finanzas e inversión. Nuestro equipo se dedica a buscar, analizar y seleccionar las mejores oportunidades de inversión para nuestros usuarios. Estamos aquí para ayudarte en cada paso de tu viaje de inversión, desde la elección de proyectos hasta la compra de tokens. Nuestro equipo está compuesto por profesionales apasionados que están comprometidos con la democratización de la inversión inmobiliaria. Juntos, estamos cambiando la forma en que el mundo invierte en bienes raíces.",
       "professionals": "Profesionales",
       "areas": "Áreas",
       "users": "Usuarios"
+    },
+    "roadmap": {
+      "title": "Ruta de desarrollo",
+      "phases": [
+        {
+          "title": "Fase 1",
+          "contentTitle": "Expansión de la plataforma de tokenización inmobiliaria y sostenibilidad",
+          "content": "Durante la fase 1, Throu se centrará en expandir su plataforma de tokenización inmobiliaria y en aumentar la oferta de proyectos sostenibles. Se mejorará la integración de nuevas tecnologías para mejorar la selección de proyectos y la emisión de tokens, lo que permitirá una mayor diversificación de los proyectos. Se trabajará para establecer alianzas con empresas de construcción y de bienes raíces para colaborar en proyectos sostenibles y con tecnologías innovadoras."
+        },
+        {
+          "title": "Fase 2",
+          "contentTitle": "Creación de proyectos NFTs exclusivos",
+          "content": "En la fase 2, Throu creará proyectos NFTs exclusivos para su comunidad de inversores, que ofrecerán beneficios en las inversiones y en la participación en proyectos propios. Se trabajará en colaboración con artistas y diseñadores para crear NFTs únicos y valiosos."
+        },
+        {
+          "title": "Fase 3",
+          "contentTitle": "Creación de un metaverso de proyectos tokenizados",
+          "content": "En la fase 3, Throu se enfocará en crear un metaverso de proyectos tokenizados, donde se representen digitalmente todos los proyectos inmobiliarios de la plataforma. Se trabajará en colaboración con empresas de tecnología de realidad virtual para crear una experiencia inmersiva para los inversores."
+        },
+        {
+          "title": "Fase 4",
+          "contentTitle": "Ampliación de la oferta de activos tokenizados",
+          "content": "En la fase 4, Throu buscará ampliar la oferta de activos tokenizados, incluyendo inversiones en arte y empresas. Se explorarán nuevas oportunidades de inversión en activos tangibles y se investigarán nuevos mercados para ampliar la oferta de inversión."
+        },
+        {
+          "title": "Fase 5",
+          "contentTitle": "Creación de proyectos habitacionales sostenibles",
+          "content": "Durante la fase 5, Throu se enfocará en la creación de sus propios proyectos habitacionales sostenibles, que serán ofrecidos exclusivamente a los inversores de la plataforma. Estos proyectos serán diseñados para satisfacer las necesidades de nuestra comunidad de inversores nómadas, que buscan viviendas en diferentes partes del mundo."
+        }
+      ]
+    },
+    "values": {
+      "title": "Valores",
+      "items": [
+        {
+          "name": "Transparencia",
+          "description": "Nos comprometemos a ser transparentes en todo lo que hacemos, desde la selección de proyectos hasta el manejo de las inversiones. Creemos que la transparencia es esencial para construir la confianza de nuestros inversores y para establecer relaciones duraderas."
+        },
+        {
+          "name": "Eficiencia",
+          "description": "Buscamos ser lo más eficientes posible en todo lo que hacemos, desde la selección de proyectos hasta la emisión de tokens. Nuestra plataforma está diseñada para proporcionar una experiencia de usuario fluida y eficiente, para que nuestros inversores puedan enfocarse en lo que realmente importa: invertir."
+        },
+        {
+          "name": "Responsabilidad social",
+          "description": "Nos preocupamos por el impacto que tenemos en la sociedad y el medio ambiente. Nos aseguramos de que todos nuestros proyectos se ajusten a altos estándares de sostenibilidad y responsabilidad social, y buscamos fomentar un impacto positivo en las comunidades donde operamos."
+        },
+        {
+          "name": "Innovación",
+          "description": "Estamos comprometidos con la innovación y el uso de tecnología de punta para mejorar la forma en que se realiza la inversión inmobiliaria. Buscamos constantemente nuevas formas de mejorar y hacer más accesible la inversión en bienes raíces, a través de la tokenización y otras tecnologías disruptivas."
+        },
+        {
+          "name": "Excelencia",
+          "description": "Nos esforzamos por la excelencia en todo lo que hacemos. Desde la selección de proyectos hasta el servicio al cliente, buscamos ofrecer un servicio excepcional y superar las expectativas de nuestros inversores en todo momento."
+        }
+      ]
+    },
+    "community": {
+      "title": "Comunidad",
+      "items": [
+        {
+          "description": "La comunidad de Throu está compuesta por inversores apasionados por el mundo de las inversiones inmobiliarias y la tecnología blockchain. Son personas que valoran la transparencia, la sostenibilidad y la diversificación en sus inversiones, y que buscan nuevas oportunidades de inversión en activos tangibles y digitales."
+        },
+        {
+          "description": "La comunidad de Throu se compone de inversores nómadas, emprendedores y profesionales de diferentes partes del mundo, que están interesados en invertir en proyectos inmobiliarios innovadores y sostenibles, y en ser parte de una comunidad activa y comprometida."
+        },
+        {
+          "description": "Throu se compromete a proporcionar una plataforma segura y confiable para sus inversores, donde puedan interactuar y aprender de otros inversores, y donde puedan tener acceso a proyectos exclusivos y oportunidades de inversión únicas. Throu también ofrece recursos educativos y herramientas de análisis para ayudar a sus inversores a tomar decisiones informadas sobre sus inversiones."
+        },
+        {
+          "description": "En resumen, la comunidad de Throu es un grupo diverso y apasionado de inversores comprometidos con el crecimiento sostenible y la innovación en el mundo de las inversiones inmobiliarias y la tecnología blockchain."
+        }
+      ]
     }
   },
   "Learn": {
@@ -384,6 +455,12 @@
     },
     "saved": {
       "title": "Guardados"
+    },
+    "attributes": {
+      "projectsCount": "Total de proyectos",
+      "tokensCount": "Total de tokens",
+      "fiatInvestmentAmount": "Total USDT",
+      "returnOnInvestment": "Rentabilidad"
     },
     "options": "Opciones"
   }

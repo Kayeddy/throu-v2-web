@@ -64,7 +64,7 @@ export default function ProjectDescriptionTab({
       <Image
         src="/assets/projects/prado/other/desc_1.png"
         alt=""
-        className="h-fit w-full object-cover dark:bg-light lg:w-[50vw] lg:object-contain"
+        className="h-[400px] min-w-[50vw] object-contain dark:bg-light lg:w-[50vw] lg:object-contain"
       />
 
       <p className="font-jakarta text-base">
@@ -80,12 +80,12 @@ export default function ProjectDescriptionTab({
       <Image
         src="/assets/projects/prado/other/desc_2.png"
         alt=""
-        className="h-fit w-fit object-contain dark:bg-light"
+        className="h-[400px] min-w-[50vw] object-contain dark:bg-light"
       />
       <Image
         src="/assets/projects/prado/other/desc_3.png"
         alt=""
-        className="h-fit w-fit object-contain dark:bg-light"
+        className="h-[400px] min-w-[50vw] object-contain dark:bg-light"
       />
       <p className="font-jakarta text-base">
         Además, Salón Prado se distingue por su enfoque sostenible y de impacto
@@ -98,7 +98,7 @@ export default function ProjectDescriptionTab({
       <Image
         src="/assets/projects/prado/other/desc_4.png"
         alt=""
-        className="h-fit w-full object-cover dark:bg-light lg:w-[50vw]"
+        className="h-[400px] min-w-[50vw] object-fill dark:bg-light lg:w-[50vw] lg:object-cover"
       />
       <p className="font-jakarta text-base">
         Finalmente, la estructura de inversión tokenizada del proyecto ofrece
@@ -108,7 +108,7 @@ export default function ProjectDescriptionTab({
       <Image
         src="/assets/projects/prado/wireframes/wireframe_1.png"
         alt=""
-        className="h-fit w-fit object-contain dark:bg-light"
+        className="h-[400px] min-w-[50vw] object-contain dark:bg-light"
       />
     </div>
   );

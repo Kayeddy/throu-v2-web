@@ -19,7 +19,7 @@ interface ProjectAttributesContainerProps {
   ignoreTheme?: boolean;
 }
 
-const ProjectAttributeBox = ({
+export const ProjectAttributeBox = ({
   name,
   value,
   size = "lg",
@@ -53,7 +53,7 @@ const ProjectAttributeBox = ({
           {value}
         </p>
         <h2
-          className={`font-light ${
+          className={`font-normal self-center text-center ${
             size === "xl" ? "text-lg" : "text-[13px] lg:text-sm"
           }`}
         >

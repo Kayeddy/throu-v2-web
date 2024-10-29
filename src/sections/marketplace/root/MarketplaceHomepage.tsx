@@ -31,12 +31,6 @@ export default function MarketplaceHomepage() {
   const projectId = 0;
   const { project, error, isPending } = useGetProject(projectId);
 
-  useEffect(() => {
-    if (!isPending && project && !error) {
-      console.log(project);
-    }
-  }, [isPending, project, error]);
-
   return (
     <motion.div
       className="flex flex-col items-start justify-start gap-6"

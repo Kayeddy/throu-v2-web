@@ -114,19 +114,18 @@
         "desktop": "A Gateway to Real Estate Investment"
       },
       "description": "At Throu, we believe in the power of blockchain technology and real estate investment to make the world a more equitable place. Our mission is to make real estate investments simple and accessible to everyone, no matter where they are or how much they wish to invest.",
-      "pillars": {
-        "democratize": {
-          "title": "Democratize",
-          "description": "We believe everyone should have the opportunity to invest in real estate. That’s why we are removing entry barriers and making real estate investment accessible to all."
-        },
-        "simplify": {
-          "title": "Simplify",
-          "description": "We make real estate investing easy. Our platform is intuitive and easy to use, and our team is always available to assist you every step of the way."
-        },
-        "dynamize": {
-          "title": "Dynamize",
-          "description": "We’re using blockchain technology to make real estate investment more efficient and transparent. With Throu, you can see exactly where your money is going and how it’s being used."
-        }
+      "mission": {
+        "title": "Mission and Vision",
+        "missionStatement": "At Throu, our mission is to democratize real estate investment through blockchain technology. We aim to provide access to fractional real estate investment opportunities to investors of all levels, removing traditional entry barriers while ensuring transparency and liquidity in the process.",
+        "visionStatement": "At Throu, we are committed to leading the transformation of the real estate industry through innovative technologies. Our vision is to become the preferred and most accessible global platform for real estate investment, where anyone can participate transparently and easily through the tokenization of real estate assets on the Polygon blockchain. We strive to provide an exceptional user experience, robust security, and a carefully curated selection of real estate investment opportunities while upholding our core values of transparency, efficiency, and social responsibility."
+      },
+      "purpose": {
+        "title": "Purpose",
+        "description": "We contribute to human progress by creating and delivering technological and sustainable advancements."
+      },
+      "history": {
+        "title": "History",
+        "story": "<p>A few years ago, a group of young entrepreneurs set out to democratize the real estate market and make it more accessible to everyone. With expertise in technology, blockchain, and finance, they saw an opportunity in the tokenization of real estate assets to make this vision a reality. Throu was born as a web3 platform offering direct investments in fractionalized real estate projects through tokens on the Polygon blockchain.</p><p>The Throu team worked hard to develop a user-friendly, secure, and efficient platform that allows investors to easily buy and sell tokens of real estate projects. Since then, Throu has curated a selection of fractional real estate investment opportunities, ensuring that each project undergoes a rigorous due diligence process and meets high standards of quality and profitability.</p><p>Over time, Throu has attracted investors worldwide who have found an innovative and accessible way to invest in real estate through the platform. The company has rapidly grown, establishing itself as a leader in the tokenized real estate investment market, always upholding its core values of transparency, efficiency, and social responsibility.</p><p>The story of Throu is one of innovation and vision, demonstrating how technology can change how we invest and access financial markets. Above all, it's a story of how a company can make a positive difference in people’s lives by democratizing investment and opening opportunities for all.</p>"
       }
     },
     "team": {
@@ -140,15 +139,87 @@
         "mobile": "Our Team"
       },
       "roles": {
-        "ceoCoFounder": "CEO - Co-founder",
-        "humanWebEngineer": "Human Web Engineer",
-        "ctoCoFounder": "CTO - Co-founder",
-        "directResearchAnalyst": "Direct Research Analyst"
+        "founder": "Founder",
+        "coFounder": "Co-founder",
+        "cto": "Chief Technology Officer",
+        "blockchainDev": "Blockchain Developer"
       },
       "description": "At Throu, we have a team of experts in real estate, blockchain, finance, and investment. Our team is dedicated to finding, analyzing, and selecting the best investment opportunities for our users. We are here to help you at every step of your investment journey, from choosing projects to purchasing tokens. Our team consists of passionate professionals committed to democratizing real estate investment. Together, we are changing the way the world invests in real estate.",
       "professionals": "Professionals",
       "areas": "Areas",
       "users": "Users"
+    },
+    "roadmap": {
+      "title": "Roadmap",
+      "phases": [
+        {
+          "title": "Phase 1",
+          "contentTitle": "Expansion of the real estate tokenization platform and sustainability",
+          "content": "During Phase 1, Throu will focus on expanding its real estate tokenization platform and increasing the offer of sustainable projects. Integration of new technologies will be improved to enhance project selection and token issuance, enabling greater project diversification. Efforts will be made to establish partnerships with construction and real estate companies to collaborate on sustainable projects with innovative technologies."
+        },
+        {
+          "title": "Phase 2",
+          "contentTitle": "Creation of NFT projects",
+          "content": "In Phase 2, Throu will create exclusive NFT projects for its investor community, offering benefits in investments and participation in proprietary projects. Collaboration with artists and designers will be pursued to create unique and valuable NFTs."
+        },
+        {
+          "title": "Phase 3",
+          "contentTitle": "Creation of a metaverse of tokenized projects",
+          "content": "In Phase 3, Throu will focus on creating a metaverse of tokenized projects, where all the platform's real estate projects will be digitally represented. Collaboration with virtual reality technology companies will be pursued to create an immersive experience for investors."
+        },
+        {
+          "title": "Phase 4",
+          "contentTitle": "Expansion of tokenized asset offerings",
+          "content": "In Phase 4, Throu will seek to expand the offering of tokenized assets, including investments in art and companies. New investment opportunities in tangible assets will be explored, and new markets will be investigated to expand the investment offering."
+        },
+        {
+          "title": "Phase 5",
+          "contentTitle": "Creation of sustainable residential projects",
+          "content": "During Phase 5, Throu will focus on the creation of its own sustainable residential projects, offered exclusively to platform investors. These projects will be designed to meet the needs of our nomadic investor community, seeking housing in different parts of the world."
+        }
+      ]
+    },
+    "values": {
+      "title": "Values",
+      "items": [
+        {
+          "name": "Transparency",
+          "description": "We are committed to being transparent in everything we do, from project selection to investment management. We believe that transparency is essential for building investor trust and establishing long-lasting relationships."
+        },
+        {
+          "name": "Efficiency",
+          "description": "We strive to be as efficient as possible in everything we do, from project selection to token issuance. Our platform is designed to provide a smooth and efficient user experience so that our investors can focus on what truly matters: investing."
+        },
+        {
+          "name": "Social Responsibility",
+          "description": "We care about the impact we have on society and the environment. We ensure that all our projects meet high standards of sustainability and social responsibility, fostering a positive impact in the communities where we operate."
+        },
+        {
+          "name": "Innovation",
+          "description": "We are committed to innovation and the use of cutting-edge technology to improve real estate investment. We constantly seek new ways to enhance and make real estate investment more accessible through tokenization and other disruptive technologies."
+        },
+        {
+          "name": "Excellence",
+          "description": "We strive for excellence in everything we do. From project selection to customer service, we aim to deliver exceptional service and exceed our investors' expectations at all times."
+        }
+      ]
+    },
+    "community": {
+      "title": "Community",
+      "items": [
+        {
+          "description": "The Throu community is made up of investors passionate about real estate investments and blockchain technology. They are individuals who value transparency, sustainability, and diversification in their investments, seeking new opportunities in both tangible and digital assets."
+        },
+        {
+          "description": "The Throu community consists of nomadic investors, entrepreneurs, and professionals from different parts of the world, interested in investing in innovative and sustainable real estate projects, and being part of an active and engaged community."
+        },
+        {
+          "description": "Throu is committed to providing a secure and reliable platform for its investors, where they can interact, learn from other investors, and have access to exclusive projects and unique investment opportunities. Throu also offers educational resources and analysis tools to help investors make informed decisions about their investments."
+        },
+        {
+          "description": "In summary, the Throu community is a diverse and passionate group of investors committed to sustainable growth and innovation in real estate investments and blockchain technology."
+        }
+      ]
     }
   },
 
@@ -383,17 +454,25 @@
     "header": {
       "balance": "Balance"
     },
-    "portfolio": {
-      "desktopTitle": "My Projects",
-      "mobileTitle": "Projects"
+    "tabs": {
+      "portfolio": {
+        "desktopTitle": "My Projects",
+        "mobileTitle": "Projects"
+      },
+      "movements": {
+        "desktopTitle": "Balances and Movements",
+        "mobileTitle": "Balance"
+      },
+      "saved": {
+        "title": "Saved"
+      }
     },
-    "movements": {
-      "desktopTitle": "Balances and Movements",
-      "mobileTitle": "Balance"
-    },
-    "saved": {
-      "title": "Saved"
-    },
-    "options": "Options"
+    "options": "Options",
+    "attributes": {
+      "projectsCount": "Total projects",
+      "tokensCount": "Total tokens",
+      "fiatInvestmentAmount": "total USDT",
+      "returnOnInvestment": "Return on investment"
+    }
   }
 }
