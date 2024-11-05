@@ -5,6 +5,7 @@ import ProjectDocumentsTab from "./projectDocumentsTab";
 import ProjectUpdatesTab from "./ProjectUpdatesTab";
 import ProjectFaqsTab from "./ProjectFaqsTab";
 import { motion } from "framer-motion";
+import InvestmentCta from "@/components/marketplace/InvestmentCta";
 
 const fadeInAnimation = {
   initial: { opacity: 0, y: 20 },
@@ -56,7 +57,7 @@ export default function ProjectTabsHandler({
   return (
     <div className="relative w-full">
       <div className="flex w-full flex-col-reverse items-center justify-center gap-6 lg:flex-row lg:items-start lg:justify-between lg:gap-0">
-        <div className="flex w-full flex-col">
+        <div className="relative flex w-full max-w-[50vw] flex-col">
           <Tabs
             aria-label="Options"
             radius="md"
@@ -86,8 +87,8 @@ export default function ProjectTabsHandler({
           </Tabs>
         </div>
         <Divider className="h-[0.5px] w-full bg-minimal lg:hidden" />
-        <div className="flex w-full items-center justify-center">
-          Investment CTA
+        <div className="relative w-80">
+          <InvestmentCta projectInfo={projectDetails} />
         </div>
       </div>
     </div>

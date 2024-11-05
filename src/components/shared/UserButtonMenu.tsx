@@ -17,11 +17,12 @@ import { useLocale, useTranslations } from "next-intl";
 import ThemeChanger from "./ThemeChanger";
 import Link from "next/link";
 import LogoutButton from "./LogoutButton";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function UserButtonMenu() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { user } = useUser();
-  const t = useTranslations("Shared.userButtonMenu"); // Use translations
+  const t = useTranslations("Shared.userButtonMenu");
   const locale = useLocale();
   const { openUserProfile } = useClerk();
 
@@ -70,38 +71,56 @@ export default function UserButtonMenu() {
           </div>
         )}
       </PopoverTrigger>
-      <PopoverContent className="p-1">
-        <div className="flex flex-col gap-2">
-          <ThemeChanger />
-          {userMenuItems.map((menuItem) =>
-            menuItem.link ? (
-              <Button
-                key={menuItem.name + "user-button-menu-item"}
-                className="flex flex-row items-center justify-start gap-2 bg-transparent font-sen text-primary dark:text-light"
-                role="option"
-                as={Link}
-                href={menuItem.link}
-              >
-                {menuItem.icon}
-                <p>{menuItem.name}</p>
-              </Button>
-            ) : (
-              <Button
-                key={menuItem.name + "user-button-menu-item"}
-                className="flex flex-row items-center justify-start gap-2 bg-transparent font-sen text-primary dark:text-light"
-                role="option"
-                onClick={() => {
-                  if (menuItem.callback) menuItem.callback();
-                }}
-              >
-                {menuItem.icon}
-                <p>{menuItem.name}</p>
-              </Button>
-            )
-          )}
-          <LogoutButton />
-        </div>
-      </PopoverContent>
+      <AnimatePresence>
+        {isOpen && (
+          <PopoverContent className="bg-transparent p-0">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="flex h-full w-full flex-col gap-2 overflow-hidden rounded-lg bg-light/50 p-1 backdrop-blur-xl transition-all ease-in-out dark:bg-dark/50"
+            >
+              <ThemeChanger />
+              <AnimatePresence mode="wait">
+                {userMenuItems.map((menuItem, index) => (
+                  <motion.div
+                    key={menuItem.name}
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -50 }}
+                    transition={{ delay: index * 0.1, duration: 0.3 }}
+                  >
+                    {menuItem.link ? (
+                      <Button
+                        className="flex flex-row items-center justify-start bg-transparent font-sen text-primary dark:text-light"
+                        role="option"
+                        as={Link}
+                        href={menuItem.link}
+                        startContent={menuItem.icon}
+                      >
+                        {menuItem.name}
+                      </Button>
+                    ) : (
+                      <Button
+                        className="flex flex-row items-center justify-start bg-transparent font-sen text-primary dark:text-light"
+                        role="option"
+                        onClick={() => {
+                          if (menuItem.callback) menuItem.callback();
+                        }}
+                        startContent={menuItem.icon}
+                      >
+                        {menuItem.name}
+                      </Button>
+                    )}
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+              <LogoutButton />
+            </motion.div>
+          </PopoverContent>
+        )}
+      </AnimatePresence>
     </Popover>
   );
 }

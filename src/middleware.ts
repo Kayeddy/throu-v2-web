@@ -4,19 +4,25 @@ import { routing } from "./i18n/routing";
 
 const intlMiddleware = createMiddleware(routing);
 
-const isPublicRoute = createRouteMatcher([
-  "/",
-  "/en",
-  "/es",
-  "/fr",
-  "/ar",
-  "/:locale/sign-in",
-  "/:locale/sign-up",
-  "/:locale/about-us", // More specific route first
-  "/api/webhooks/clerk",
-  "/(en|es|fr|ar)/about-us", // Also ensure locale-specific paths for about-us
-  "/(en|es|fr|ar)(.*)", // General route matcher last
-]);
+// const isPublicRoute = createRouteMatcher([
+//   "/",
+//   "/en",
+//   "/es",
+//   "/fr",
+//   "/ar",
+//   "/:locale/sign-in",
+//   "/:locale/sign-up",
+//   "/:locale/about-us", // More specific route first
+//   "/:locale/marketplace", // Marketplace route for locales
+//   "/:locale/marketplace/projects/:project", // Marketplace project route with slug for locales
+//   "/api/webhooks/clerk",
+//   "/(en|es|fr|ar)/about-us", // Locale-specific paths for about-us
+//   "/(en|es|fr|ar)/marketplace", // Locale-specific paths for marketplace
+//   "/(en|es|fr|ar)/marketplace/projects/:project", // Locale-specific paths for marketplace projects with slug
+//   "/(en|es|fr|ar)(.*)", // General route matcher last
+// ]);
+
+const isPublicRoute = createRouteMatcher(["/(.*)"]); // Match all routes
 
 export default clerkMiddleware((auth, req) => {
   if (!isPublicRoute(req)) auth().protect();

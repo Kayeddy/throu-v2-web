@@ -9,7 +9,7 @@ const projectId = "9497f7be49f92c5f565bb3bf26ed3205";
 const supportedChains: Chain[] = [polygon];
 
 export const config = getDefaultConfig({
-  appName: "WalletConnection",
+  appName: "Throu",
   projectId,
   chains: supportedChains as any,
   ssr: true,

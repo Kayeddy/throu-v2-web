@@ -474,5 +474,63 @@
       "fiatInvestmentAmount": "total USDT",
       "returnOnInvestment": "Return on investment"
     }
+  },
+
+  "Marketplace": {
+    "project": {
+      "projectInvestmentModal": {
+        "tabs": {
+          "invest": "Invest",
+          "paymentMethod": "Payment Method",
+          "investmentConfirmation": "Confirmation"
+        },
+        "triggerButton": {
+          "default": "Invest",
+          "error": "Invalid amount"
+        },
+        "loadingStates": [
+          "Approving investment amount...",
+          "Waiting for amount approval confirmation...",
+          "Executing purchase transaction...",
+          "Finalizing investment..."
+        ],
+        "paymentMethodTab": {
+          "provider": "Provider",
+          "unknownWallet": "Unknown Wallet",
+          "notEnoughBalance": "You don't have enough USDT balance. You need at least $ {requiredUsdt} to proceed."
+        },
+        "projectInvestmentConfirmationTab": {
+          "header": {
+            "mobile": "{investmentAmount} token {projectName}",
+            "desktop": "Order Summary"
+          },
+          "investmentDetails": {
+            "investmentValue": "Investment Value (USDT)",
+            "totalTokens": "Total Tokens to Acquire",
+            "transactionFee": "Transaction Fee (1%)"
+          },
+          "totalAmount": "Total Amount"
+        },
+        "backButton": "Back",
+        "continueButton": "Continue",
+        "finishButton": "Finish"
+      },
+      "investmentCta": {
+        "header": {
+          "title": "Invest in {projectName}",
+          "subtitle": "How much would you like to invest?"
+        },
+        "body": {
+          "tokensLabel": "Tokens",
+          "usdtLabel": "USDT",
+          "conversionButton": "Convert"
+        },
+        "footer": {
+          "acquirePercentage": "Acquire a % of the project",
+          "error": "Invalid amount",
+          "investButton": "Invest"
+        }
+      }
+    }
   }
 }

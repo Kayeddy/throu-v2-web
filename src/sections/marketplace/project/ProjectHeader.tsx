@@ -90,9 +90,11 @@ export default function ProjectHeader({
         <div className="flex w-full flex-col-reverse items-start justify-center lg:flex-col">
           <span className="mt-3 flex flex-row items-center justify-start gap-4 lg:mt-0">
             <p className="font-sen text-xl font-bold text-minimal">
-              ${projectSales}
+              ${projectSales.toLocaleString()}
             </p>
-            <p className="text-lg text-minimal">de ${totalProjectGoal}</p>
+            <p className="text-lg text-minimal">
+              de ${totalProjectGoal.toLocaleString()}
+            </p>
           </span>
           <div className="relative h-2 w-full rounded-md bg-minimal dark:bg-light lg:w-[40%]">
             <span

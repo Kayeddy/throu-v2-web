@@ -12,7 +12,7 @@ import { emojiAvatarForAddress } from "@/utils/helpers/walletButtonStyleGenerato
 import { MdOutlineAccountBalanceWallet as WalletIcon } from "react-icons/md";
 import { IoIosWarning as WarningIcon } from "react-icons/io";
 import { Button, Spinner } from "@nextui-org/react";
-import { convertContractUnits } from "@/lib/utils";
+import { convertBalanceUnits, convertContractUnits } from "@/lib/utils";
 import { useTranslations } from "next-intl"; // Importing next-intl for translations
 
 export const WalletConnectionButton = () => {
@@ -145,10 +145,10 @@ export const WalletConnectionButton = () => {
           <span className="text-xl font-bold lg:text-base">
             {balance?.value
               ? t("balance", {
-                  balance: convertContractUnits(balance?.value),
+                  balance: convertBalanceUnits(balance?.value).toFixed(2),
                   symbol: balance?.symbol,
                 })
-              : t("balance", { balance: 0, symbol: "USDT" })}
+              : t("balance", { balance: 0, symbol: "POL" })}
           </span>
         </>
       )}

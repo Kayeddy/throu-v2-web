@@ -11,6 +11,7 @@ import clsx from "clsx";
 import { useTranslations, useLocale } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
 import useLoadingStore from "@/stores/useLoadingStore";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface Language {
   name: string;
@@ -43,11 +44,10 @@ export default function LanguageSelector() {
   const setLoading = useLoadingStore((state) => state.setLoading);
   const removeLoading = useLoadingStore((state) => state.removeLoading);
   const t = useTranslations("Languages");
-  const locale = useLocale(); // Get the current locale using useLocale
+  const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
 
-  // Memoize the language options to avoid recalculating them unnecessarily
   const languages: Language[] = useMemo(
     () => [
       {
@@ -91,9 +91,9 @@ export default function LanguageSelector() {
         parts.length > 1 &&
         languages.some((lang) => lang.localization === parts[1])
       ) {
-        return parts[1]; // Return the locale part of the pathname
+        return parts[1];
       }
-      return "en"; // Fallback to English if no locale is found
+      return "en";
     },
     [languages]
   );
@@ -106,17 +106,17 @@ export default function LanguageSelector() {
       const currentLocaleFromPathname = extractLocaleFromPathname(pathname);
 
       if (newLanguage && localization !== currentLocaleFromPathname) {
-        setLoading("language-change"); // Set loading state for language change
+        setLoading("language-change");
         try {
           const newPathname = pathname.replace(
             `/${currentLocaleFromPathname}`,
             `/${localization}`
           );
-          router.replace(newPathname); // Await for the route to complete
-          setSelectedLanguage(newLanguage); // Update selected language
-          setIsOpen(false); // Close popover
+          router.replace(newPathname);
+          setSelectedLanguage(newLanguage);
+          setIsOpen(false);
         } finally {
-          removeLoading("language-change"); // Ensure loading state is removed
+          removeLoading("language-change");
         }
       }
     },
@@ -143,7 +143,7 @@ export default function LanguageSelector() {
           type="button"
           aria-expanded={isOpen}
           aria-haspopup="listbox"
-          className="lg:w-7 lg:h-7 w-8 h-8 px-0 bg-transparent my-auto focus:outline-none focus:border-transparent"
+          className="my-auto h-8 w-8 bg-transparent px-0 focus:border-transparent focus:outline-none lg:h-7 lg:w-7"
           aria-label={`Select language, current: ${selectedLanguage?.name}`}
         >
           <LanguageIconIdentifier
@@ -152,26 +152,41 @@ export default function LanguageSelector() {
           />
         </button>
       </PopoverTrigger>
-      <PopoverContent className="p-1">
-        <div className="flex flex-col gap-2">
-          {languages.map((language) => (
-            <Button
-              key={language.localization}
-              onClick={() => handleLanguageChange(language.localization)}
-              className="flex items-center justify-start gap-2 px-3 py-2 rounded-md hover:bg-gray-100 bg-transparent"
-              role="option"
-              aria-selected={
-                selectedLanguage.localization === language.localization
-              }
-            >
-              <LanguageIconIdentifier
-                localization={language.localization}
-                gradient={language.gradient}
-              />
-              <span>{language.name}</span>
-            </Button>
-          ))}
-        </div>
+      <PopoverContent className="bg-transparent p-0">
+        <AnimatePresence>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="flex h-full w-full flex-col gap-2 overflow-hidden rounded-lg bg-light/50 p-1 backdrop-blur-xl transition-all ease-in-out dark:bg-dark/50"
+          >
+            {languages.map((language, index) => (
+              <motion.div
+                key={language.localization}
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -50 }}
+                transition={{ delay: index * 0.1, duration: 0.3 }}
+              >
+                <Button
+                  onClick={() => handleLanguageChange(language.localization)}
+                  className="flex w-full items-center justify-start gap-2 rounded-md bg-transparent px-3 py-2"
+                  role="option"
+                  aria-selected={
+                    selectedLanguage.localization === language.localization
+                  }
+                >
+                  <LanguageIconIdentifier
+                    localization={language.localization}
+                    gradient={language.gradient}
+                  />
+                  <span>{language.name}</span>
+                </Button>
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
       </PopoverContent>
     </Popover>
   );

@@ -465,5 +465,62 @@
       "returnOnInvestment": "العائد على الاستثمار"
     },
     "options": "خيارات"
+  },
+  "Marketplace": {
+    "project": {
+      "projectInvestmentModal": {
+        "tabs": {
+          "invest": "استثمار",
+          "paymentMethod": "طريقة الدفع",
+          "investmentConfirmation": "تأكيد"
+        },
+        "triggerButton": {
+          "default": "استثمار",
+          "error": "كمية غير صالحة"
+        },
+        "loadingStates": [
+          "الموافقة على مبلغ الاستثمار...",
+          "انتظار تأكيد الموافقة...",
+          "تنفيذ عملية الشراء...",
+          "إكمال الاستثمار..."
+        ],
+        "paymentMethodTab": {
+          "provider": "مزود",
+          "unknownWallet": "محفظة غير معروفة",
+          "notEnoughBalance": "ليس لديك رصيد كافٍ من USDT. تحتاج إلى ما لا يقل عن $ {requiredUsdt} للمتابعة."
+        },
+        "projectInvestmentConfirmationTab": {
+          "header": {
+            "mobile": "{investmentAmount} رمز {projectName}",
+            "desktop": "ملخص الطلب"
+          },
+          "investmentDetails": {
+            "investmentValue": "قيمة الاستثمار (USDT)",
+            "totalTokens": "إجمالي الرموز المراد الحصول عليها",
+            "transactionFee": "رسوم المعاملة (1%)"
+          },
+          "totalAmount": "المبلغ الإجمالي"
+        },
+        "backButton": "رجوع",
+        "continueButton": "متابعة",
+        "finishButton": "إنهاء"
+      },
+      "investmentCta": {
+        "header": {
+          "title": "استثمر في {projectName}",
+          "subtitle": "كم تريد أن تستثمر؟"
+        },
+        "body": {
+          "tokensLabel": "رموز",
+          "usdtLabel": "USDT",
+          "conversionButton": "تحويل"
+        },
+        "footer": {
+          "acquirePercentage": "احصل على % من المشروع",
+          "error": "مبلغ غير صالح",
+          "investButton": "استثمر"
+        }
+      }
+    }
   }
 }

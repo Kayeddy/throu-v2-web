@@ -463,5 +463,63 @@
       "returnOnInvestment": "Rentabilidad"
     },
     "options": "Opciones"
+  },
+  "Marketplace": {
+    "project": {
+      "projectInvestmentModal": {
+        "tabs": {
+          "invest": "Invertir",
+          "paymentMethod": "Método de pago",
+          "investmentConfirmation": "Confirmación"
+        },
+        "triggerButton": {
+          "default": "Invertir",
+          "error": "Cantidad inválida"
+        },
+        "loadingStates": [
+          "Aprobando cantidad de inversión...",
+          "Esperando confirmación de la aprobación...",
+          "Ejecutando transacción de compra...",
+          "Finalizando inversión..."
+        ],
+        "paymentMethodTab": {
+          "provider": "Proveedor",
+          "unknownWallet": "Billetera Desconocida",
+          "notEnoughBalance": "No tienes suficiente saldo en USDT. Necesitas al menos $ {requiredUsdt} para continuar."
+        },
+        "projectInvestmentConfirmationTab": {
+          "header": {
+            "mobile": "{investmentAmount} token {projectName}",
+            "desktop": "Resumen del pedido"
+          },
+          "investmentDetails": {
+            "investmentValue": "Valor de Inversión (USDT)",
+            "totalTokens": "Total de tokens a adquirir",
+            "transactionFee": "Valor de transacción (1%)"
+          },
+          "totalAmount": "Importe total"
+        },
+
+        "backButton": "Atrás",
+        "continueButton": "Continuar",
+        "finishButton": "Finalizar"
+      },
+      "investmentCta": {
+        "header": {
+          "title": "Invierte en {projectName}",
+          "subtitle": "¿Cuánto quieres invertir?"
+        },
+        "body": {
+          "tokensLabel": "Tokens",
+          "usdtLabel": "USDT",
+          "conversionButton": "Convertir"
+        },
+        "footer": {
+          "acquirePercentage": "Adquieres un % del proyecto",
+          "error": "Cantidad inválida",
+          "investButton": "Invertir"
+        }
+      }
+    }
   }
 }

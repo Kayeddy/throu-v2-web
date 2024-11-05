@@ -50,7 +50,7 @@ export const ProjectAttributeBox = ({
             size === "xl" ? "text-xl" : "text-sm"
           }`}
         >
-          {value}
+          {value.toLocaleString()}
         </p>
         <h2
           className={`font-normal self-center text-center ${

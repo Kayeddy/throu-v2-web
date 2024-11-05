@@ -24,6 +24,20 @@ export const convertContractUnits = (
   return Number(bigNumber);
 };
 
+export const convertBalanceUnits = (
+  bigNumber: bigint,
+  decimals: number = 18 // Ethereum default
+): number => {
+  if (typeof bigNumber !== "bigint") {
+    throw new Error("Expected a BigInt input for conversion");
+  }
+
+  const conversionFactor = BigInt(10 ** decimals);
+  const adjustedAmount = Number(bigNumber) / Number(conversionFactor);
+
+  return adjustedAmount;
+};
+
 // This function is used to calculate the progress percentage bar, based on the investment goal and the amount raised so far.
 export const calculateBarPercentage = (
   totalTokens: number,

@@ -465,5 +465,62 @@
       "returnOnInvestment": "Rentabilité"
     },
     "options": "Options"
+  },
+  "Marketplace": {
+    "project": {
+      "projectInvestmentModal": {
+        "tabs": {
+          "invest": "Investir",
+          "paymentMethod": "Méthode de paiement",
+          "investmentConfirmation": "Confirmation"
+        },
+        "triggerButton": {
+          "default": "Investir",
+          "error": "Montant invalide"
+        },
+        "loadingStates": [
+          "Approbation du montant de l'investissement...",
+          "Attente de la confirmation de l'approbation...",
+          "Exécution de la transaction d'achat...",
+          "Finalisation de l'investissement..."
+        ],
+        "paymentMethodTab": {
+          "provider": "Fournisseur",
+          "unknownWallet": "Portefeuille Inconnu",
+          "notEnoughBalance": "Vous n'avez pas assez de solde en USDT. Vous avez besoin d'au moins $ {requiredUsdt} pour continuer."
+        },
+        "projectInvestmentConfirmationTab": {
+          "header": {
+            "mobile": "{investmentAmount} token {projectName}",
+            "desktop": "Récapitulatif de la commande"
+          },
+          "investmentDetails": {
+            "investmentValue": "Valeur de l'investissement (USDT)",
+            "totalTokens": "Total des jetons à acquérir",
+            "transactionFee": "Frais de transaction (1%)"
+          },
+          "totalAmount": "Montant total"
+        },
+        "backButton": "Retour",
+        "continueButton": "Continuer",
+        "finishButton": "Terminer"
+      },
+      "investmentCta": {
+        "header": {
+          "title": "Investir dans {projectName}",
+          "subtitle": "Combien souhaitez-vous investir?"
+        },
+        "body": {
+          "tokensLabel": "Jetons",
+          "usdtLabel": "USDT",
+          "conversionButton": "Convertir"
+        },
+        "footer": {
+          "acquirePercentage": "Vous obtenez un % du projet",
+          "error": "Montant invalide",
+          "investButton": "Investir"
+        }
+      }
+    }
   }
 }
