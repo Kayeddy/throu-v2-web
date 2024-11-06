@@ -77,7 +77,8 @@ export default function MarketplaceHomeCard({
 
         <div className="relative flex h-full w-full flex-col items-start justify-between p-3">
           <h1 className="font-sen text-xl font-semibold text-primary dark:text-white">
-            {data.projectURI?.name ?? "Salón Prado"}
+            {/* {data.projectURI?.name ?? "Salón Prado"} */}
+            Salón Prado
           </h1>
 
           <div className="flex w-full flex-col items-start justify-start gap-1">

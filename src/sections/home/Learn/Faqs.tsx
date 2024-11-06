@@ -190,18 +190,18 @@ export default function Faqs() {
   ];
 
   return (
-    <div className="w-full h-full">
+    <div className="h-full w-full">
       <Accordion className="w-full">
         {faqsItems.map((item) => (
           <AccordionItem
             key={item.id}
             aria-label={item.title}
             title={
-              <h1 className="text-primary font-sen text-2xl font-medium">
+              <h1 className="font-sen text-lg font-semibold text-primary">
                 {item.title}
               </h1>
             }
-            className="text-primary w-full"
+            className="w-full text-primary"
           >
             {item.content}
           </AccordionItem>

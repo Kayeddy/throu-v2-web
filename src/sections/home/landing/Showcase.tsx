@@ -53,8 +53,8 @@ export default function Showcase() {
         <Carousel
           items={[
             <ShowcaseCard data={cardData} />,
-            <ShowcaseCard />,
             <TemporaryComingSoonCard />,
+            <ShowcaseCard />,
           ]}
         />
       );

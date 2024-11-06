@@ -4,7 +4,7 @@ import Movements from "@/sections/dashboard/Movements";
 import Portfolio from "@/sections/dashboard/Portfolio";
 import Saved from "@/sections/dashboard/Saved";
 import { useIsMobile } from "@/utils/hooks/shared/useIsMobile";
-import { Tab, Tabs } from "@nextui-org/react";
+import { Spinner, Tab, Tabs } from "@nextui-org/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState, useMemo } from "react";
 import { useTranslations } from "next-intl";
@@ -16,8 +16,8 @@ export default function DashboardTabsManager({
 }: {
   isSavedParam: string | undefined;
 }) {
-  const t = useTranslations("Dashboard.tabs"); // Translations for the "Dashboard" namespace
-  const projectId = 0; // Your specific project ID
+  const t = useTranslations("Dashboard");
+  const projectId = 0;
   const [selected, setSelected] = useState<string>("Portfolio");
   const isMobile = useIsMobile();
   const { isConnected, address } = useAccount();
@@ -37,42 +37,44 @@ export default function DashboardTabsManager({
     exit: { opacity: 0, y: 20, transition: { duration: 0.3 } },
   };
 
+  // Set the initial tab based on `isSavedParam` only once
+  useEffect(() => {
+    if (isSavedParam) {
+      setSelected("Saved");
+    }
+  }, [isSavedParam]);
+
   // Define the tabs with translated titles
   const tabs = [
     {
       id: 1,
-      name: isMobile ? t("portfolio.mobileTitle") : t("portfolio.desktopTitle"),
+      name: isMobile
+        ? t("tabs.portfolio.mobileTitle")
+        : t("tabs.portfolio.desktopTitle"),
       key: "Portfolio",
       content: isPending ? (
-        <p>Loading...</p>
+        <Spinner color="secondary" />
       ) : isHolder ? (
         <Portfolio project={project} />
       ) : (
-        <p>No options available to show</p>
+        <p>{t("tabs.portfolio.noInvestmentMessage")}</p>
       ),
     },
     {
       id: 2,
-      name: isMobile ? t("movements.mobileTitle") : t("movements.desktopTitle"),
+      name: isMobile
+        ? t("tabs.movements.mobileTitle")
+        : t("tabs.movements.desktopTitle"),
       key: "Movements",
       content: <Movements />,
     },
     {
       id: 3,
-      name: t("saved.title"),
+      name: t("tabs.saved.title"),
       key: "Saved",
       content: <Saved />,
     },
   ];
-
-  // UseEffect to set the selected tab based on the param
-  useEffect(() => {
-    if (isSavedParam && selected !== "Saved") {
-      setSelected("Saved");
-    } else if (!isSavedParam && selected !== "Portfolio") {
-      setSelected("Portfolio");
-    }
-  }, [isSavedParam, selected]);
 
   return (
     <div className={`w-full p-4 lg:p-0`}>

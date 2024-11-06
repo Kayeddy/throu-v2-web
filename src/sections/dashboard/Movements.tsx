@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 
 export default function Movements() {
-  const t = useTranslations("Dashboard.movements"); // Use the movements namespace for translations
+  const t = useTranslations("Dashboard.tabs.movements"); // Use the movements namespace for translations
 
   return (
     <div className="mt-6 w-full">

@@ -451,28 +451,32 @@
   },
 
   "Dashboard": {
+    "connectWalletMessage": "Please connect your wallet to view your dashboard.",
     "header": {
       "balance": "Balance"
     },
     "tabs": {
       "portfolio": {
         "desktopTitle": "My Projects",
-        "mobileTitle": "Projects"
+        "mobileTitle": "Projects",
+        "noInvestmentMessage": "You haven't invested in any projects yet"
       },
       "movements": {
         "desktopTitle": "Balances and Movements",
-        "mobileTitle": "Balance"
+        "mobileTitle": "Balance",
+        "noMovementsMessage": "You have no movements to display"
       },
       "saved": {
-        "title": "Saved"
+        "title": "Saved",
+        "noSavedMessage": "You have no saved projects"
       }
     },
     "options": "Options",
     "attributes": {
       "projectsCount": "Total projects",
       "tokensCount": "Total tokens",
-      "fiatInvestmentAmount": "total USDT",
-      "returnOnInvestment": "Return on investment"
+      "fiatInvestmentAmount": "Total USDT",
+      "returnOnInvestment": "Profitability"
     }
   },
 
@@ -529,6 +533,111 @@
           "acquirePercentage": "Acquire a % of the project",
           "error": "Invalid amount",
           "investButton": "Invest"
+        }
+      },
+      "projectDetails": {
+        "projectHeader": {
+          "backButton": "Back",
+          "title": "{projectName}",
+          "status": {
+            "label": "Status",
+            "active": "In fundraising",
+            "completed": "Completed"
+          },
+          "sales": {
+            "raised": "${projectSales}",
+            "goal": "of ${totalProjectGoal}"
+          },
+          "progress": "{projectCompletionPercentage}% completed",
+          "attributes": {
+            "tokens": "Tokens",
+            "value": "Value",
+            "total": "Total",
+            "apy": "APY"
+          }
+        },
+        "projectDescriptionTab": {
+          "title": "Salón Prado",
+          "category": "Gastronomic",
+          "categoryLabel": "Category",
+          "investmentType": "Long-term return",
+          "locationLabel": "Location",
+          "description": {
+            "paragraph1": "The Salón Prado project, located in the emblematic Prado neighborhood of Medellín, offers a unique investment opportunity that combines cultural richness and economic dynamism through real estate tokenization. This initiative aims not only to revitalize a space of historical value but also to create a center for art, gastronomy, and entertainment that attracts both locals and tourists.",
+            "paragraph2": "The project's profitability is structured through a detailed model projecting a defined investment recovery period, with an annual return (IRR) of 23% that is highly competitive. This model not only reflects the project's economic growth potential but also ensures unmatched transparency and security thanks to blockchain technology. This means that investors can monitor the progress and management of their investments with unprecedented clarity.",
+            "paragraph3": "Furthermore, Salón Prado stands out for its sustainable and social impact approach. The investment goes beyond financial returns, contributing to urban revitalization, heritage conservation, and the promotion of local culture. Investors, therefore, not only benefit financially but also participate in enriching Medellín's social and cultural fabric.",
+            "paragraph4": "Finally, the tokenized investment structure of the project offers flexibility and liquidity, allowing investors to buy, sell, or trade tokens efficiently in the secondary market."
+          }
+        },
+        "projectGalleryTab": {
+          "noMedia": "Project has no media",
+          "imageAlt": "project-gallery-image"
+        },
+        "projectDocumentsTab": {
+          "open": "Open",
+          "download": "Download",
+          "documents": {
+            "ProjectPresentation": "Project Presentation",
+            "ExistenceCertificate": "Existence Certificate",
+            "FacadeCertification": "Facade Certification"
+          }
+        },
+        "projectUpdatesTab": {
+          "updates": {
+            "salonPradoReadyForInvestment": "Salón Prado is now ready for investment!",
+            "participateAndBecomePartner": "Participate and become a partner in this project.",
+            "June 21 - 2021": "June 21 - 2021"
+          }
+        },
+        "projectFaqsTab": {
+          "faq1": {
+            "title": "What is tokenization in the context of Salón Prado?",
+            "content": "Tokenization in Salón Prado refers to the process of converting the project's economic value into digital tokens, allowing investors to purchase fractional ownership in the project through blockchain technology."
+          },
+          "faq2": {
+            "title": "How can I invest in Salón Prado?",
+            "content": "You can invest by purchasing tokens associated with the project. These represent a fraction of the project's value and entitle you to a proportional share of the generated profits."
+          },
+          "faq3": {
+            "title": "What is the expected return on investment?",
+            "content": "The return on investment varies depending on the investment phase, offering attractive annual return rates (IRR) of 23.9% and a multiplication of the initial investment over time."
+          },
+          "faq4": {
+            "title": "Is it safe to invest in Salón Prado tokens?",
+            "content": "Yes, the investment is secure due to blockchain technology, which ensures transparency and traceability of investments and generated revenues."
+          },
+          "faq5": {
+            "title": "Can I sell my tokens if I choose not to continue with the investment?",
+            "content": "Yes, tokens can be sold or exchanged in the secondary market, providing liquidity and flexibility to investors."
+          },
+          "faq6": {
+            "title": "How does Salón Prado contribute to the cultural and economic development of Medellín?",
+            "content": "Salón Prado revitalizes a historic space, promoting art, gastronomy, and entertainment, which attracts tourism and stimulates the local economy."
+          },
+          "faq7": {
+            "title": "What additional benefits do I get as an investor?",
+            "content": "In addition to financial returns, investors contribute to cultural heritage and the sustainable development of the local community."
+          },
+          "faq8": {
+            "title": "What guarantees do I have that the project will meet its goals?",
+            "content": "While all investments carry risks, the project is based on market studies and solid financial projections, supported by an experienced team."
+          },
+          "faq9": {
+            "title": "How are the profits generated by the project distributed?",
+            "content": "Profits are distributed proportionally among token holders based on the amount and type of tokens they own."
+          },
+          "faq10": {
+            "title": "Where can I get more information about the project and investment?",
+            "content": "You can visit the official project website and contact the Salón Prado team directly to obtain more detailed information and resolve specific questions."
+          }
+        },
+        "projectTabsHandler": {
+          "ariaLabel": "Options",
+          "descriptionTab": "Description",
+          "galleryTab": "Gallery",
+          "documentsTab": "Documents",
+          "updatesTab": "Updates",
+          "faqsTab": "FAQs"
         }
       }
     }

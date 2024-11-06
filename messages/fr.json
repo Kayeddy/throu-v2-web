@@ -442,29 +442,33 @@
     }
   },
   "Dashboard": {
+    "connectWalletMessage": "Veuillez connecter votre portefeuille pour voir votre tableau de bord.",
     "header": {
       "balance": "Solde"
     },
     "tabs": {
       "portfolio": {
         "desktopTitle": "Mes Projets",
-        "mobileTitle": "Projets"
+        "mobileTitle": "Projets",
+        "noInvestmentMessage": "Vous n'avez encore investi dans aucun projet"
       },
       "movements": {
         "desktopTitle": "Soldes et Mouvements",
-        "mobileTitle": "Balance"
+        "mobileTitle": "Solde",
+        "noMovementsMessage": "Vous n'avez aucun mouvement à afficher"
       },
       "saved": {
-        "title": "Enregistré"
+        "title": "Enregistré",
+        "noSavedMessage": "Vous n'avez aucun projet enregistré"
       }
     },
+    "options": "Options",
     "attributes": {
-      "projectsCount": "Total des projets",
-      "tokensCount": "Nombre total de jetons",
-      "fiatInvestmentAmount": "Total USDT",
+      "projectsCount": "Projets totaux",
+      "tokensCount": "Total des jetons",
+      "fiatInvestmentAmount": "Total en USDT",
       "returnOnInvestment": "Rentabilité"
-    },
-    "options": "Options"
+    }
   },
   "Marketplace": {
     "project": {
@@ -519,6 +523,111 @@
           "acquirePercentage": "Vous obtenez un % du projet",
           "error": "Montant invalide",
           "investButton": "Investir"
+        }
+      },
+      "projectDetails": {
+        "projectHeader": {
+          "backButton": "Retour",
+          "title": "{projectName}",
+          "status": {
+            "label": "Statut",
+            "active": "En collecte",
+            "completed": "Terminé"
+          },
+          "sales": {
+            "raised": "${projectSales}",
+            "goal": "sur ${totalProjectGoal}"
+          },
+          "progress": "{projectCompletionPercentage}% terminé",
+          "attributes": {
+            "tokens": "Jetons",
+            "value": "Valeur",
+            "total": "Total",
+            "apy": "APY"
+          }
+        },
+        "projectDescriptionTab": {
+          "title": "Salón Prado",
+          "category": "Gastronomique",
+          "categoryLabel": "Catégorie",
+          "investmentType": "Retour à long terme",
+          "locationLabel": "Localisation",
+          "description": {
+            "paragraph1": "Le projet Salón Prado, situé dans le quartier emblématique de Prado à Medellín, représente une opportunité d'investissement unique alliant richesse culturelle et dynamisme économique grâce à la tokenisation immobilière. Cette initiative vise non seulement à revitaliser un espace de valeur historique, mais aussi à créer un centre d'art, de gastronomie et de divertissement attirant tant les locaux que les touristes.",
+            "paragraph2": "La rentabilité du projet est structurée par un modèle détaillé qui prévoit une période de récupération de l'investissement, avec un rendement annuel (TRI) de 23%, très compétitif. Ce modèle reflète non seulement le potentiel de croissance économique du projet, mais garantit également une transparence et une sécurité inégalées grâce à la technologie blockchain, permettant aux investisseurs de suivre leurs investissements avec une clarté sans précédent.",
+            "paragraph3": "De plus, Salón Prado se distingue par son approche durable et son impact social. L'investissement dépasse le simple retour financier, contribuant à la revitalisation urbaine, à la conservation du patrimoine et à la promotion de la culture locale. Les investisseurs bénéficient ainsi financièrement et participent également à l'enrichissement du tissu social et culturel de Medellín.",
+            "paragraph4": "Enfin, la structure d'investissement tokenisée du projet offre flexibilité et liquidité, permettant aux investisseurs d'acheter, de vendre ou d'échanger des tokens efficacement sur le marché secondaire."
+          }
+        },
+        "projectGalleryTab": {
+          "noMedia": "Le projet n'a pas de média",
+          "imageAlt": "image-de-galerie-de-projet"
+        },
+        "projectDocumentsTab": {
+          "open": "Ouvrir",
+          "download": "Télécharger",
+          "documents": {
+            "ProjectPresentation": "Présentation du Projet",
+            "ExistenceCertificate": "Certificat d'Existence",
+            "FacadeCertification": "Certification de la Façade"
+          }
+        },
+        "projectUpdatesTab": {
+          "updates": {
+            "salonPradoReadyForInvestment": "Le Salon Prado est maintenant prêt pour l'investissement!",
+            "participateAndBecomePartner": "Participez et devenez partenaire de ce projet.",
+            "June 21 - 2021": "21 juin 2021"
+          }
+        },
+        "projectFaqsTab": {
+          "faq1": {
+            "title": "Qu'est-ce que la tokenisation dans le contexte de Salón Prado ?",
+            "content": "La tokenisation dans Salón Prado fait référence au processus de conversion de la valeur économique du projet en jetons numériques, permettant aux investisseurs d'acheter des participations fractionnées dans le projet via la technologie blockchain."
+          },
+          "faq2": {
+            "title": "Comment puis-je investir dans Salón Prado ?",
+            "content": "Vous pouvez investir en achetant des jetons associés au projet. Ceux-ci représentent une fraction de la valeur du projet et vous donnent droit à une part proportionnelle des bénéfices générés."
+          },
+          "faq3": {
+            "title": "Quel est le retour sur investissement attendu ?",
+            "content": "Le retour sur investissement varie selon la phase d'investissement, offrant des taux de rendement annuels attractifs (TRI) de 23,9 % et une multiplication de l'investissement initial au fil du temps."
+          },
+          "faq4": {
+            "title": "Est-il sûr d'investir dans les jetons de Salón Prado ?",
+            "content": "Oui, l'investissement est sécurisé grâce à la technologie blockchain, qui assure la transparence et la traçabilité des investissements et des revenus générés."
+          },
+          "faq5": {
+            "title": "Puis-je vendre mes jetons si je décide de ne pas poursuivre l'investissement ?",
+            "content": "Oui, les jetons peuvent être vendus ou échangés sur le marché secondaire, offrant aux investisseurs liquidité et flexibilité."
+          },
+          "faq6": {
+            "title": "Comment Salón Prado contribue-t-il au développement culturel et économique de Medellín ?",
+            "content": "Salón Prado revitalise un espace historique, en promouvant l'art, la gastronomie et le divertissement, ce qui attire le tourisme et stimule l'économie locale."
+          },
+          "faq7": {
+            "title": "Quels avantages supplémentaires puis-je obtenir en tant qu'investisseur ?",
+            "content": "En plus des rendements financiers, les investisseurs contribuent au patrimoine culturel et au développement durable de la communauté locale."
+          },
+          "faq8": {
+            "title": "Quelles garanties ai-je que le projet atteindra ses objectifs ?",
+            "content": "Bien que tout investissement comporte des risques, le projet repose sur des études de marché et des projections financières solides, soutenu par une équipe expérimentée."
+          },
+          "faq9": {
+            "title": "Comment les bénéfices générés par le projet sont-ils distribués ?",
+            "content": "Les bénéfices sont distribués proportionnellement entre les détenteurs de jetons en fonction de la quantité et du type de jetons détenus."
+          },
+          "faq10": {
+            "title": "Où puis-je obtenir plus d'informations sur le projet et l'investissement ?",
+            "content": "Vous pouvez visiter le site officiel du projet et contacter directement l'équipe de Salón Prado pour obtenir des informations détaillées et répondre aux questions spécifiques."
+          }
+        },
+        "projectTabsHandler": {
+          "ariaLabel": "Options",
+          "descriptionTab": "Description",
+          "galleryTab": "Galerie",
+          "documentsTab": "Documents",
+          "updatesTab": "Mises à jour",
+          "faqsTab": "FAQs"
         }
       }
     }

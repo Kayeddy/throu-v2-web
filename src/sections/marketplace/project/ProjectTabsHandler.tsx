@@ -6,6 +6,7 @@ import ProjectUpdatesTab from "./ProjectUpdatesTab";
 import ProjectFaqsTab from "./ProjectFaqsTab";
 import { motion } from "framer-motion";
 import InvestmentCta from "@/components/marketplace/InvestmentCta";
+import { useTranslations } from "next-intl";
 
 const fadeInAnimation = {
   initial: { opacity: 0, y: 20 },
@@ -18,10 +19,14 @@ export default function ProjectTabsHandler({
 }: {
   projectDetails: ProjectDetails | null;
 }) {
+  const t = useTranslations(
+    "Marketplace.project.projectDetails.projectTabsHandler"
+  );
+
   const projectDetailsTabs = [
     {
       id: 1,
-      name: "Description",
+      name: t("descriptionTab"),
       key: "Description",
       content: (
         <ProjectDescriptionTab
@@ -31,35 +36,36 @@ export default function ProjectTabsHandler({
     },
     {
       id: 2,
-      name: "Gallery",
+      name: t("galleryTab"),
       key: "Gallery",
       content: <ProjectGalleryTab />,
     },
     {
       id: 3,
-      name: "Documents",
+      name: t("documentsTab"),
       key: "Documents",
       content: <ProjectDocumentsTab />,
     },
     {
       id: 4,
-      name: "Updates",
+      name: t("updatesTab"),
       key: "Updates",
       content: <ProjectUpdatesTab />,
     },
     {
       id: 5,
-      name: "FAQs",
+      name: t("faqsTab"),
       key: "FAQs",
       content: <ProjectFaqsTab />,
     },
   ];
+
   return (
     <div className="relative w-full">
       <div className="flex w-full flex-col-reverse items-center justify-center gap-6 lg:flex-row lg:items-start lg:justify-between lg:gap-0">
-        <div className="relative flex w-full max-w-[50vw] flex-col">
+        <div className="relative flex w-full flex-col lg:max-w-[50vw]">
           <Tabs
-            aria-label="Options"
+            aria-label={t("ariaLabel")}
             radius="md"
             color="primary"
             classNames={{

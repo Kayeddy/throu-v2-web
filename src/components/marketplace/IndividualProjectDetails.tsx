@@ -28,7 +28,7 @@ const CardSkeletonLoader = () => {
   );
 };
 
-const projectMedia = [
+export const projectMedia = [
   // Render images
   "/assets/projects/prado/renders/render_1.jpg",
   "/assets/projects/prado/renders/render_2.jpg",

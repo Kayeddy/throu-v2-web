@@ -5,6 +5,7 @@ import { Button } from "@nextui-org/button";
 import React, { useMemo } from "react";
 import { FiChevronLeft as LeftButtonIcon } from "react-icons/fi";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 export default function ProjectHeader({
   projectDetails,
@@ -14,6 +15,7 @@ export default function ProjectHeader({
   projectMedia: string[];
 }) {
   const router = useRouter();
+  const t = useTranslations("Marketplace.project.projectDetails.projectHeader");
 
   const projectCompletionPercentage = useMemo(() => {
     if (
@@ -73,7 +75,7 @@ export default function ProjectHeader({
           <LeftButtonIcon className="text-2xl font-bold text-minimal dark:text-light" />
         </Button>
         <h1 className="font-sen text-3xl font-bold text-primary dark:text-light">
-          Salón Prado
+          {t("title", { projectName: "Salón Prado" })}
         </h1>
       </div>
 
@@ -83,17 +85,25 @@ export default function ProjectHeader({
       />
 
       <div className="mt-28 flex w-full flex-col items-start justify-center gap-3 lg:mt-0">
-        <p className="font-jakarta text-base text-minimal">Estado</p>
+        <p className="font-jakarta text-base text-minimal">
+          {t("status.label")}
+        </p>
         <h3 className="font-sen text-4xl font-bold text-secondary">
-          {projectDetails?.projectActive ? "En recaudo" : "Finalizado"}
+          {projectDetails?.projectActive
+            ? t("status.active")
+            : t("status.completed")}
         </h3>
         <div className="flex w-full flex-col-reverse items-start justify-center lg:flex-col">
           <span className="mt-3 flex flex-row items-center justify-start gap-4 lg:mt-0">
             <p className="font-sen text-xl font-bold text-minimal">
-              ${projectSales.toLocaleString()}
+              {t("sales.raised", {
+                projectSales: projectSales.toLocaleString(),
+              })}
             </p>
             <p className="text-lg text-minimal">
-              de ${totalProjectGoal.toLocaleString()}
+              {t("sales.goal", {
+                totalProjectGoal: totalProjectGoal.toLocaleString(),
+              })}
             </p>
           </span>
           <div className="relative h-2 w-full rounded-md bg-minimal dark:bg-light lg:w-[40%]">
@@ -107,7 +117,7 @@ export default function ProjectHeader({
           </div>
         </div>
         <p className="hidden animate-pulse font-jakarta text-base text-secondary lg:block">
-          {projectCompletionPercentage}% completado
+          {t("progress", { projectCompletionPercentage })}
         </p>
       </div>
       <div className="relative mx-auto lg:hidden">

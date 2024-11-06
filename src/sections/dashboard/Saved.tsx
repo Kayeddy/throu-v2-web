@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 
 export default function Saved() {
-  const t = useTranslations("Dashboard.saved"); // Use the saved namespace for translations
+  const t = useTranslations("Dashboard.tabs.saved"); // Use the saved namespace for translations
 
   return (
     <div className="mt-6 w-full">

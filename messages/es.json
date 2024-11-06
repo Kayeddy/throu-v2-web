@@ -442,27 +442,33 @@
     }
   },
   "Dashboard": {
+    "connectWalletMessage": "Conecta tu billetera para ver tu panel de control.",
     "header": {
-      "balance": "Balance"
+      "balance": "Saldo"
     },
-    "portfolio": {
-      "desktopTitle": "Mis Proyectos",
-      "mobileTitle": "Proyectos"
+    "tabs": {
+      "portfolio": {
+        "desktopTitle": "Mis Proyectos",
+        "mobileTitle": "Proyectos",
+        "noInvestmentMessage": "Aún no has invertido en ningún proyecto"
+      },
+      "movements": {
+        "desktopTitle": "Saldos y Movimientos",
+        "mobileTitle": "Saldo",
+        "noMovementsMessage": "No tienes movimientos para mostrar"
+      },
+      "saved": {
+        "title": "Guardados",
+        "noSavedMessage": "No tienes proyectos guardados"
+      }
     },
-    "movements": {
-      "desktopTitle": "Balances y Movimientos",
-      "mobileTitle": "Balance"
-    },
-    "saved": {
-      "title": "Guardados"
-    },
+    "options": "Opciones",
     "attributes": {
-      "projectsCount": "Total de proyectos",
+      "projectsCount": "Proyectos totales",
       "tokensCount": "Total de tokens",
-      "fiatInvestmentAmount": "Total USDT",
+      "fiatInvestmentAmount": "Total en USDT",
       "returnOnInvestment": "Rentabilidad"
-    },
-    "options": "Opciones"
+    }
   },
   "Marketplace": {
     "project": {
@@ -518,6 +524,111 @@
           "acquirePercentage": "Adquieres un % del proyecto",
           "error": "Cantidad inválida",
           "investButton": "Invertir"
+        }
+      },
+      "projectDetails": {
+        "projectHeader": {
+          "backButton": "Volver",
+          "title": "{projectName}",
+          "status": {
+            "label": "Estado",
+            "active": "En recaudo",
+            "completed": "Finalizado"
+          },
+          "sales": {
+            "raised": "${projectSales}",
+            "goal": "de ${totalProjectGoal}"
+          },
+          "progress": "{projectCompletionPercentage}% completado",
+          "attributes": {
+            "tokens": "Tokens",
+            "value": "Valor",
+            "total": "Total",
+            "apy": "APY"
+          }
+        },
+        "projectDescriptionTab": {
+          "title": "Salón Prado",
+          "category": "Gastronómico",
+          "categoryLabel": "Categoría",
+          "investmentType": "Retorno a largo plazo",
+          "locationLabel": "Ubicación",
+          "description": {
+            "paragraph1": "El proyecto Salón Prado, situado en el emblemático barrio Prado de Medellín, se presenta como una oportunidad de inversión única que combina la riqueza cultural y el dinamismo económico mediante la tokenización de activos inmobiliarios. Esta iniciativa busca no solo revitalizar un espacio con valor histórico, sino también crear un centro de arte, gastronomía y entretenimiento que atraiga tanto a locales como a turistas.",
+            "paragraph2": "La rentabilidad del proyecto se articula a través de un modelo detallado que proyecta una recuperación de la inversión en un plazo definido, con un rendimiento anual (TIR) del 23% altamente competitivo. Este modelo no solo refleja el potencial de crecimiento económico del proyecto, sino que también asegura una transparencia y seguridad incomparables gracias al uso de la tecnología blockchain. Esto significa que los inversores pueden monitorear el progreso y la gestión de sus inversiones con una claridad sin precedentes.",
+            "paragraph3": "Además, Salón Prado se distingue por su enfoque sostenible y de impacto social. La inversión va más allá del retorno económico, contribuyendo a la revitalización urbana, la conservación del patrimonio y el fomento de la cultura local. Los inversores, por lo tanto, no solo se benefician financieramente, sino que también participan en el enriquecimiento del tejido social y cultural de Medellín.",
+            "paragraph4": "Finalmente, la estructura de inversión tokenizada del proyecto ofrece flexibilidad y liquidez, permitiendo a los inversores comprar, vender o intercambiar tokens de manera eficiente en el mercado secundario."
+          }
+        },
+        "projectGalleryTab": {
+          "noMedia": "El proyecto no tiene medios",
+          "imageAlt": "imagen-de-galería-del-proyecto"
+        },
+        "projectDocumentsTab": {
+          "open": "Abrir",
+          "download": "Descargar",
+          "documents": {
+            "ProjectPresentation": "Presentación del Proyecto",
+            "ExistenceCertificate": "Certificado de Existencia",
+            "FacadeCertification": "Certificación de Fachada"
+          }
+        },
+        "projectUpdatesTab": {
+          "updates": {
+            "salonPradoReadyForInvestment": "¡Salón Prado ya está listo para inversión!",
+            "participateAndBecomePartner": "Participa y vuélvete socio de este proyecto.",
+            "June 21 - 2021": "21 de junio de 2021"
+          }
+        },
+        "projectFaqsTab": {
+          "faq1": {
+            "title": "¿Qué es la tokenización en el contexto de Salón Prado?",
+            "content": "La tokenización en Salón Prado se refiere al proceso de convertir el valor económico del proyecto en tokens digitales, permitiendo a los inversores comprar participaciones fraccionadas del proyecto a través de la tecnología blockchain."
+          },
+          "faq2": {
+            "title": "¿Cómo puedo invertir en Salón Prado?",
+            "content": "Puedes invertir comprando tokens asociados al proyecto. Estos representan una fracción del valor del proyecto y te dan derecho a una parte proporcional de los beneficios generados."
+          },
+          "faq3": {
+            "title": "¿Cuál es el retorno de inversión esperado?",
+            "content": "El retorno de inversión varía según la fase de inversión, ofreciendo atractivas tasas de retorno anual (TIR) 23.9% y una multiplicación de la inversión inicial a lo largo del tiempo."
+          },
+          "faq4": {
+            "title": "¿Es seguro invertir en tokens de Salón Prado?",
+            "content": "Sí, la inversión es segura gracias a la tecnología blockchain, que garantiza transparencia y trazabilidad de las inversiones y los ingresos generados."
+          },
+          "faq5": {
+            "title": "¿Puedo vender mis tokens si decido no continuar con la inversión?",
+            "content": "Sí, los tokens pueden ser vendidos o intercambiados en el mercado secundario, ofreciendo liquidez y flexibilidad a los inversores."
+          },
+          "faq6": {
+            "title": "¿Cómo contribuye Salón Prado al desarrollo cultural y económico de Medellín?",
+            "content": "Salón Prado revitaliza un espacio histórico, fomentando el arte, la gastronomía y el entretenimiento, lo cual atrae turismo y dinamiza la economía local."
+          },
+          "faq7": {
+            "title": "¿Qué beneficios adicionales obtengo como inversor?",
+            "content": "Además de los retornos financieros, los inversores contribuyen al patrimonio cultural y al desarrollo sostenible de la comunidad local."
+          },
+          "faq8": {
+            "title": "¿Qué garantías tengo de que el proyecto alcanzará sus objetivos?",
+            "content": "Aunque toda inversión conlleva riesgos, el proyecto se basa en estudios de mercado y proyecciones financieras sólidas, con un equipo experimentado detrás."
+          },
+          "faq9": {
+            "title": "¿Cómo se distribuyen los beneficios generados por el proyecto?",
+            "content": "Los beneficios se distribuyen proporcionalmente entre los poseedores de tokens, según la cantidad y el tipo de tokens que posean."
+          },
+          "faq10": {
+            "title": "¿Dónde puedo obtener más información sobre el proyecto y la inversión?",
+            "content": "Puedes visitar el sitio web oficial del proyecto y contactar directamente al equipo de Salón Prado para obtener más información detallada y resolver dudas específicas."
+          }
+        },
+        "projectTabsHandler": {
+          "ariaLabel": "Opciones",
+          "descriptionTab": "Descripción",
+          "galleryTab": "Galería",
+          "documentsTab": "Documentos",
+          "updatesTab": "Actualizaciones",
+          "faqsTab": "Preguntas Frecuentes"
         }
       }
     }

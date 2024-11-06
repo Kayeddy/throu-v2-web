@@ -1,6 +1,8 @@
 "use client";
 
+import { Carousel } from "@/components/ui/cards-carousel";
 import { ProjectAttributeBox } from "@/components/ui/project-attributes-boxes-container";
+import UserProjectDashboardCard from "@/components/ui/user-projects-dashboard-card";
 import useGetInvestorInfo from "@/utils/hooks/smart_contracts/useGetInvestorInfo";
 import { useTranslations } from "next-intl";
 import { useEffect } from "react";
@@ -33,11 +35,17 @@ export default function Portfolio({
       ? Number(userInvestmentData[0])
       : 0;
 
+  const projectsCount = project ? 1 : 0;
+
+  const ownershipPercentage = project.projectTotalSupply
+    ? ((tokensCountValue / Number(project.projectTotalSupply)) * 100).toFixed(1)
+    : "0";
+
   // Define investor portfolio attributes
   const investorPortFolioAttributes = {
     projectCount: {
       label: t("attributes.projectsCount"),
-      value: project ? 1 : 0,
+      value: projectsCount, //TODO: Update this to reflect real amount of projects user has invested in
     },
     tokensCount: {
       label: t("attributes.tokensCount"),
@@ -77,6 +85,18 @@ export default function Portfolio({
             )
           )}
         </div>
+        <Carousel
+          showPagination={false}
+          removePaddings
+          items={[
+            <UserProjectDashboardCard
+              projectName={project.projectURI?.name ?? ""}
+              userTokenCount={tokensCountValue}
+              userOwnershipPercentage={ownershipPercentage}
+              projectTokenPrice={project.projectPrice ?? 0}
+            />,
+          ]}
+        />
       </div>
     </div>
   );
