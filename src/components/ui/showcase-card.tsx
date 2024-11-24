@@ -26,6 +26,7 @@ export const ShowcaseCard = ({
   const t1 = useTranslations(
     "Marketplace.project.projectDetails.projectDescriptionTab"
   );
+  const t3 = useTranslations("Common");
 
   const locale = useLocale();
 
@@ -64,14 +65,14 @@ export const ShowcaseCard = ({
                 size="md"
                 className="bg-quaternary font-jakarta text-light"
               >
-                Gastronómico
+                {t1("category")}
               </Chip>
               <Chip
                 radius="sm"
                 size="md"
                 className="bg-black/30 font-jakarta text-light backdrop-blur-sm"
               >
-                Tendencia
+                {t3("trendLabel")}
               </Chip>
             </div>
             <BlurImage

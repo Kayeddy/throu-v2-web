@@ -59,15 +59,15 @@ export default function MarketplaceHomeCard({
               size="sm"
               className="bg-quaternary font-jakarta text-light"
             >
-              Gastronómico
+              {t1("category")}
             </Chip>
-            <Chip
+            {/* <Chip
               radius="sm"
               size="md"
               className="cursor-pointer bg-black/30 text-white backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-105"
             >
               <BookmarkIcon />
-            </Chip>
+            </Chip> */}
           </div>
           <BlurImage
             src="/assets/projects/prado/renders/render_1.jpg"

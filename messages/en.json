@@ -4,7 +4,8 @@
     "supportButton": {
       "whatsappMessage": "Hello! I am interested in learning more about your services. Could you provide more details? Thank you!",
       "supportLabel": "Support & Help"
-    }
+    },
+    "trendLabel": "trend"
   },
 
   "HomePage": {
