@@ -18,7 +18,7 @@ const DocumentContainer = ({ docDetails }: { docDetails: DocumentDetails }) => {
   return (
     <div className="relative flex h-48 w-72 items-start justify-center rounded-lg bg-light/50 p-4 dark:bg-dark/50">
       <Image
-        src="/assets/shared/logo_sm.png"
+        src="/assets/shared/logo_sm.webp"
         className="h-20 w-20 object-cover"
       />
       <div className="absolute bottom-0 flex h-20 w-full flex-col items-center justify-center gap-2 bg-light p-2 backdrop-blur-lg dark:bg-dark/50">

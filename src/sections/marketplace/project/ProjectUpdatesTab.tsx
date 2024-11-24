@@ -26,7 +26,7 @@ const ProjectUpdateContainer = ({
           alt="Throu-logo-sm"
           width={50}
           height={50}
-          src="/assets/shared/logo_sm.png"
+          src="/assets/shared/logo_sm.webp"
           className="object-cover"
         />
         <div className="flex flex-col items-start justify-start">
