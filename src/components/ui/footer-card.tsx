@@ -31,12 +31,12 @@ export const FooterCard = ({ data }: { data: CardItems }) => {
         className="h-12 w-auto object-cover"
       />
       <div className="flex flex-col items-center justify-center">
-        <h4 className="text-center font-jakarta text-base text-white">
+        <h3 className="text-center font-jakarta text-base text-white">
           {data.subtitle}
-        </h4>
-        <h3 className="text-center font-jakarta text-lg font-bold text-white">
-          {data.title}
         </h3>
+        <h4 className="text-center font-jakarta text-lg font-bold text-white">
+          {data.title}
+        </h4>
       </div>
 
       {data.link.url ? (

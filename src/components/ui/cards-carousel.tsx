@@ -144,19 +144,27 @@ export const Carousel = ({
         {showPagination && (
           <div className="flex justify-center gap-2">
             <button
-              className="relative z-20 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50"
+              className="relative z-20 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50"
               onClick={scrollLeft}
               disabled={!canScrollLeft}
+              aria-label="Scroll left"
             >
-              <MdOutlineKeyboardDoubleArrowLeft className="h-6 w-6 text-gray-500" />
+              <MdOutlineKeyboardDoubleArrowLeft
+                className="h-6 w-6 text-gray-500"
+                aria-hidden="true"
+              />
             </button>
             <Pagination transition={transition} />
             <button
-              className="relative z-20 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50"
+              className="relative z-20 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50"
               onClick={scrollRight}
               disabled={!canScrollRight}
+              aria-label="Scroll right"
             >
-              <MdOutlineKeyboardDoubleArrowRight className="h-6 w-6 text-gray-500" />
+              <MdOutlineKeyboardDoubleArrowRight
+                className="h-6 w-6 text-gray-500"
+                aria-hidden="true"
+              />
             </button>
           </div>
         )}
