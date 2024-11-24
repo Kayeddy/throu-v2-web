@@ -439,6 +439,12 @@
       "switchNetworks": "Changer de réseau",
       "disconnectTimeout": "Connexion du portefeuille expirée, déconnexion...",
       "balance": "{balance} {symbol}"
+    },
+    "projectBaseAttributes": {
+      "tokens": "Jetons",
+      "value": "Valeur",
+      "total": "Total",
+      "apy": "APY"
     }
   },
   "Dashboard": {
@@ -450,7 +456,8 @@
       "portfolio": {
         "desktopTitle": "Mes Projets",
         "mobileTitle": "Projets",
-        "noInvestmentMessage": "Vous n'avez encore investi dans aucun projet"
+        "noInvestmentMessage": "Vous n'avez encore investi dans aucun projet",
+        "partnerMessage": "Vous êtes partenaire"
       },
       "movements": {
         "desktopTitle": "Soldes et Mouvements",
@@ -538,13 +545,7 @@
             "raised": "${projectSales}",
             "goal": "sur ${totalProjectGoal}"
           },
-          "progress": "{projectCompletionPercentage}% terminé",
-          "attributes": {
-            "tokens": "Jetons",
-            "value": "Valeur",
-            "total": "Total",
-            "apy": "APY"
-          }
+          "progress": "{projectCompletionPercentage}% terminé"
         },
         "projectDescriptionTab": {
           "title": "Salón Prado",

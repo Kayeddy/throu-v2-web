@@ -63,6 +63,7 @@ export default function UserButtonMenu() {
               alt={t("userImageAlt")}
               fill
               className="h-auto w-auto rounded-full object-contain"
+              sizes="100%"
             />
           </button>
         ) : (

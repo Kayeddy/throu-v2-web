@@ -7,6 +7,7 @@ import { BlurImage } from "./blur-image";
 import { FaRegBookmark as BookmarkIcon } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 interface UserDashboardProjectDetails {
   projectName: string;
@@ -27,6 +28,12 @@ export default function UserProjectDashboardCard({
     return `/marketplace/projects/${projectNameSlug}-${projectId}`;
   };
 
+  const t = useTranslations("Dashboard.tabs.portfolio");
+  const t1 = useTranslations(
+    "Marketplace.project.projectDetails.projectDescriptionTab"
+  );
+  const t3 = useTranslations("Shared.projectBaseAttributes");
+
   return (
     <motion.div>
       <Link
@@ -42,7 +49,7 @@ export default function UserProjectDashboardCard({
                 className="bg-quaternary font-jakarta text-light"
               >
                 {/**TODO: Correctly translate tags in this card and other project cards */}
-                Gastronómico
+                {t1("category")}
               </Chip>
             </div>
             <BlurImage
@@ -61,14 +68,16 @@ export default function UserProjectDashboardCard({
             </h1>
 
             <div className="flex flex-row items-center justify-center gap-2 font-jakarta">
-              <p className="text-lg font-bold text-primary dark:text-light">{`${userTokenCount} Tokens`}</p>
+              <p className="text-lg font-bold text-primary dark:text-light">{`${userTokenCount} ${t3(
+                "tokens"
+              )}`}</p>
               <p className="text-tiny text-minimal">
                 =${userTokenCount * projectTokenPrice} USDT
               </p>
             </div>
 
             <div className="flex flex-row items-center justify-center gap-2 font-jakarta text-lg font-bold text-secondary">
-              <p className="text">Eres socio</p>
+              <p className="text">{t("partnerMessage")}</p>
               <p>({userOwnershipPercentage}%)</p>
             </div>
           </div>

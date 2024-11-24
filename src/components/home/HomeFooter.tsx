@@ -12,7 +12,6 @@ import { useMemo } from "react";
 import { HomeNavigationItems } from "@/utils/types/shared/common";
 
 export default function Footer() {
-  const { openConnectModal } = useConnectModal();
   const t = useTranslations("HomeFooter");
   const locale = useLocale();
 
@@ -23,12 +22,12 @@ export default function Footer() {
         title: t("cards.createAccount.title"),
         subtitle: t("cards.createAccount.subtitle"),
         icon: {
-          src: "/assets/shared/user_footer_icon.png",
+          src: "/assets/shared/user_footer_icon.webp",
           width: 40,
           height: 40,
         },
         link: {
-          url: "/",
+          url: `${locale}/learn`,
           text: t("cards.createAccount.linkText"),
         },
       },
@@ -36,17 +35,17 @@ export default function Footer() {
         title: t("cards.createWallet.title"),
         subtitle: t("cards.createWallet.subtitle"),
         icon: {
-          src: "/assets/shared/wallet_footer_icon.png",
+          src: "/assets/shared/wallet_footer_icon.webp",
           width: 60,
           height: 60,
         },
         link: {
-          customRedirectFunction: openConnectModal,
+          url: `${locale}/learn`,
           text: t("cards.createWallet.linkText"),
         },
       },
     ],
-    [t, openConnectModal]
+    [t]
   );
 
   // Footer links with translations
@@ -63,14 +62,14 @@ export default function Footer() {
       name: "learn",
       link: `/${locale}/learn`,
     },
-    {
-      name: "termsService",
-      link: `/${locale}/terms`,
-    },
-    {
-      name: "privacy",
-      link: `/${locale}/privacy`,
-    },
+    // {
+    //   name: "termsService",
+    //   link: `/${locale}/terms`,
+    // },
+    // {
+    //   name: "privacy",
+    //   link: `/${locale}/privacy`,
+    // },
   ];
 
   return (
@@ -100,7 +99,7 @@ export default function Footer() {
             alt={t("logoAltText")}
             height={0}
             width={190}
-            src="/assets/shared/logo_lg_footer.png"
+            src="/assets/shared/logo_lg_footer.webp"
             className="h-auto w-auto object-contain"
           />
           <div className="mx-auto flex flex-col items-center justify-center gap-6 lg:mx-0 lg:flex-row lg:flex-wrap lg:justify-start">
@@ -115,6 +114,22 @@ export default function Footer() {
                 {t(`links.${item.name}`)}
               </Link>
             ))}
+            <a
+              href="/legal/terms_conditions.pdf"
+              download
+              lang="en"
+              className="bg-transparent text-base text-light transition-all duration-300 ease-in-out hover:text-secondary hover:underline"
+            >
+              {t("links.termsService")}
+            </a>
+            <a
+              href="/legal/privacy_policy.pdf"
+              download
+              lang="en"
+              className="bg-transparent text-base text-light transition-all duration-300 ease-in-out hover:text-secondary hover:underline"
+            >
+              {t("links.privacy")}
+            </a>
           </div>
         </div>
         <div className="flex flex-col items-center justify-center gap-12">
@@ -137,7 +152,7 @@ export default function Footer() {
       </div>
       <ScrollTopIndicator />
       <BackgroundImage
-        src="/assets/shared/logo_blue_left.png"
+        src="/assets/shared/logo_blue_left.webp"
         containerStyles="h-full justify-end hidden lg:block absolute top-[100px] right-[-90px] z-0"
         imageStyles="w-[300px] h-[500px] rotate-[-20deg]"
       />

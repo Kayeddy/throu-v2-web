@@ -1,4 +1,5 @@
 import { Card } from "@nextui-org/react";
+import { useTranslations } from "next-intl";
 
 // Define the TypeScript interface for the attributes
 interface ProjectAttribute {
@@ -7,7 +8,7 @@ interface ProjectAttribute {
   total?: number | string;
   APY?: number | string;
   tokens?: number | string;
-  valor?: number | string;
+  value?: number | string;
 }
 
 interface ProjectAttributesContainerProps {
@@ -25,13 +26,16 @@ export const ProjectAttributeBox = ({
   size = "lg",
   isTranslucent = false,
   ignoreTheme = false,
+  internationalized = false,
 }: {
   name: string;
   value: number | string;
   size?: "lg" | "xl";
   isTranslucent?: boolean;
   ignoreTheme?: boolean;
+  internationalized?: boolean;
 }) => {
+  const t = useTranslations("Shared.projectBaseAttributes");
   return (
     <Card
       className={`border-none flex items-center justify-center ${
@@ -53,11 +57,11 @@ export const ProjectAttributeBox = ({
           {value.toLocaleString()}
         </p>
         <h2
-          className={`font-normal self-center text-center ${
+          className={`font-normal self-center text-center capitalize ${
             size === "xl" ? "text-lg" : "text-[13px] lg:text-sm"
           }`}
         >
-          {name}
+          {internationalized ? name : t(`${name.toLowerCase()}`)}
         </h2>
       </div>
     </Card>

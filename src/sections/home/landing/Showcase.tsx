@@ -33,7 +33,7 @@ export default function Showcase() {
 
   useEffect(() => {
     if (!isPending && project && !error) {
-      console.log(project);
+      console.log("Project fetched.");
     }
   }, [isPending, project, error]);
 
@@ -118,6 +118,8 @@ export default function Showcase() {
         </p>
         <div className="flex w-full flex-col items-center justify-start gap-4 lg:flex-row lg:gap-0">
           <Button
+            as={Link}
+            href={`${locale}/marketplace`}
             size="lg"
             radius="none"
             variant="ghost"
@@ -128,7 +130,7 @@ export default function Showcase() {
             {t("explore_button")}
           </Button>
           <Button
-            href="/"
+            href="/Learn"
             target="_blank"
             rel="noreferrer"
             as={Link}

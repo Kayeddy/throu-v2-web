@@ -50,7 +50,7 @@ const ProjectImageSlider = ({
   const projectAttributes = useMemo(
     () => ({
       tokens: projectDetails?.projectTotalSupply,
-      valor: `$${projectDetails?.projectPrice}`,
+      value: `$${projectDetails?.projectPrice}`,
       total: `$${
         projectDetails?.projectPrice && projectDetails?.projectTotalSupply
           ? projectDetails?.projectTotalSupply * projectDetails?.projectPrice

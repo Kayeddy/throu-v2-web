@@ -342,12 +342,12 @@ const ProjectInvestmentModal = ({
         ) : (
           <ModalContent className="relative bg-light dark:bg-dark lg:w-[70vw] xl:h-[70vh] 2xl:h-[60vh]">
             <BackgroundImage
-              src="/assets/shared/logo_purple_right.png"
+              src="/assets/shared/logo_purple_right.webp"
               containerStyles="absolute hidden lg:flex top-[63%] z-[1] left-0 pointer-events-none"
               imageStyles="w-fit h-fit max-w-[200px] object-contain brightness-200"
             />
             <BackgroundImage
-              src="/assets/shared/logo_blue_left.png"
+              src="/assets/shared/logo_blue_left.webp"
               containerStyles="absolute hidden lg:flex right-0 top-[-100px] z-[1] right-0 pointer-events-none"
               imageStyles="w-fit h-fit max-w-[200px] object-contain rotate-[-45deg] brightness-200"
             />

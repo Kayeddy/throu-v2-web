@@ -16,11 +16,14 @@ export default function MarketplaceHomeCard({
   data: ProjectDetails;
 }) {
   const t = useTranslations("HomePage.Showcase");
+  const t1 = useTranslations(
+    "Marketplace.project.projectDetails.projectDescriptionTab"
+  );
   const router = useRouter();
 
   const projectAttributes = {
-    supply: data?.projectTotalSupply,
-    min: `$${data?.projectPrice}`,
+    tokens: data?.projectTotalSupply,
+    value: `$${data?.projectPrice}`,
     total: `$${
       data?.projectPrice && data?.projectTotalSupply
         ? data?.projectTotalSupply * data?.projectPrice
@@ -77,7 +80,7 @@ export default function MarketplaceHomeCard({
 
         <div className="relative flex h-full w-full flex-col items-start justify-between p-3">
           <h1 className="font-sen text-xl font-semibold text-primary dark:text-white">
-            {/* {data.projectURI?.name ?? "Salón Prado"} */}
+            {/* TODO: {data.projectURI?.name ?? "Salón Prado"} */}
             Salón Prado
           </h1>
 
@@ -103,7 +106,8 @@ export default function MarketplaceHomeCard({
           />
 
           <p className="w-[95%] truncate font-jakarta text-base font-extralight text-primary dark:text-white">
-            {data.projectURI?.description}
+            {/* {data.projectURI?.description} */}
+            {t1("description.paragraph1")}
           </p>
 
           <span className="text-jakarta flex flex-row items-center justify-start gap-2 text-base text-primary dark:text-white">

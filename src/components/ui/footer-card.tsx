@@ -1,6 +1,8 @@
 import { Button } from "@nextui-org/button";
+import { useConnectModal } from "@rainbow-me/rainbowkit";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
 
 interface CardItems {
   title: string;
@@ -13,24 +15,26 @@ interface CardItems {
   link: {
     url?: string;
     text: string;
-    customRedirectFunction?: () => void;
   };
 }
+
 export const FooterCard = ({ data }: { data: CardItems }) => {
+  const { openConnectModal } = useConnectModal();
+
   return (
-    <div className="flex flex-col items-center justify-between shadow-custom rounded-md p-4 lg:h-[250px] lg:w-[250px] w-44 h-56 bg-primary">
+    <div className="flex h-56 w-44 flex-col items-center justify-between rounded-md bg-primary p-4 shadow-custom lg:h-[250px] lg:w-[250px]">
       <Image
         src={data.icon.src}
         alt={`${data.link.text}-footer-card-icon`}
         width={data.icon.width}
         height={data.icon.height}
-        className="object-cover w-auto h-12"
+        className="h-12 w-auto object-cover"
       />
       <div className="flex flex-col items-center justify-center">
-        <h4 className="text-white font-jakarta text-base text-center">
+        <h4 className="text-center font-jakarta text-base text-white">
           {data.subtitle}
         </h4>
-        <h3 className="text-white font-jakarta font-bold text-lg text-center">
+        <h3 className="text-center font-jakarta text-lg font-bold text-white">
           {data.title}
         </h3>
       </div>
@@ -38,17 +42,15 @@ export const FooterCard = ({ data }: { data: CardItems }) => {
       {data.link.url ? (
         <Button
           href={data.link.url}
-          target="_blank"
-          rel="noreferrer"
           as={Link}
-          className="font-semibold text-secondary bg-transparent hover:underline text-xl lg:text-base font-sen"
+          className="bg-transparent font-sen text-xl font-semibold text-secondary hover:underline lg:text-base"
         >
           {data.link.text}
         </Button>
       ) : (
         <Button
-          onClick={data.link.customRedirectFunction}
-          className="font-semibold text-secondary bg-transparent hover:underline text-xl lg:text-base font-sen"
+          onClick={openConnectModal}
+          className="bg-transparent font-sen text-xl font-semibold text-secondary hover:underline lg:text-base"
         >
           {data.link.text}
         </Button>

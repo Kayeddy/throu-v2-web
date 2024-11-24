@@ -5,11 +5,6 @@ import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { useScrollPosition } from "@/utils/hooks/shared/useScrollPosition";
 import React, { useState, useCallback } from "react";
 
-import { FaRegBookmark as BookmarkIcon } from "react-icons/fa";
-import { MdOutlineMenuBook as LearnIcon } from "react-icons/md";
-import { BiHelpCircle as HelpIcon } from "react-icons/bi";
-import { AiOutlineSearch as SearchIcon } from "react-icons/ai";
-
 import {
   Navbar,
   NavbarContent,
@@ -64,7 +59,7 @@ export const MobileMarketplaceNavigation = React.memo(
         <NavbarContent>
           <Link href="/">
             <Image
-              src="/assets/shared/logo_sm.png"
+              src="/assets/shared/logo_sm.webp"
               alt="throu_mobile_navbar_image"
               width={40}
               height={40}
@@ -202,7 +197,7 @@ export const DesktopMarketplaceNavigation = React.memo(
             alt="Throu_logo_small"
             height={45}
             width={45}
-            src="/assets/shared/logo_sm.png"
+            src="/assets/shared/logo_sm.webp"
             className="h-auto w-auto object-cover"
           />
         </Link>

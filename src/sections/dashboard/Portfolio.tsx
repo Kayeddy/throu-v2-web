@@ -80,6 +80,7 @@ export default function Portfolio({
                   value={attribute.value}
                   isTranslucent
                   size="xl"
+                  internationalized
                 />
               </div>
             )

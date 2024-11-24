@@ -56,7 +56,7 @@ export const MobileHomeNavigation = React.memo(
         <NavbarContent>
           <Link href="/">
             <Image
-              src="/assets/shared/logo_sm.png"
+              src="/assets/shared/logo_sm.webp"
               alt="throu_mobile_navbar_image"
               width={40}
               height={40}
@@ -180,8 +180,8 @@ export const DesktopHomeNavigation = React.memo(
     const t = useTranslations("HomeNavigation");
     const compactNavigationElements = scrollPosition > 10;
     const logoSrc = compactNavigationElements
-      ? "/assets/shared/logo_sm.png"
-      : "/assets/shared/logo_lg.png";
+      ? "/assets/shared/logo_sm.webp"
+      : "/assets/shared/logo_lg.webp";
     const logoSize = compactNavigationElements ? 45 : 190;
 
     const navigationItems: NavigationItem[] = [
@@ -203,6 +203,7 @@ export const DesktopHomeNavigation = React.memo(
             width={logoSize}
             src={logoSrc}
             className="h-auto w-auto object-contain"
+            priority
           />
         </Link>
 

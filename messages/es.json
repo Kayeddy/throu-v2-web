@@ -439,6 +439,12 @@
       "switchNetworks": "Cambiar redes",
       "disconnectTimeout": "Conexión de billetera expirada, desconectando...",
       "balance": "{balance} {symbol}"
+    },
+    "projectBaseAttributes": {
+      "tokens": "Tokens",
+      "value": "Valor",
+      "total": "Total",
+      "apy": "APY"
     }
   },
   "Dashboard": {
@@ -450,7 +456,8 @@
       "portfolio": {
         "desktopTitle": "Mis Proyectos",
         "mobileTitle": "Proyectos",
-        "noInvestmentMessage": "Aún no has invertido en ningún proyecto"
+        "noInvestmentMessage": "Aún no has invertido en ningún proyecto",
+        "partnerMessage": "Eres socio"
       },
       "movements": {
         "desktopTitle": "Saldos y Movimientos",
@@ -539,13 +546,7 @@
             "raised": "${projectSales}",
             "goal": "de ${totalProjectGoal}"
           },
-          "progress": "{projectCompletionPercentage}% completado",
-          "attributes": {
-            "tokens": "Tokens",
-            "value": "Valor",
-            "total": "Total",
-            "apy": "APY"
-          }
+          "progress": "{projectCompletionPercentage}% completado"
         },
         "projectDescriptionTab": {
           "title": "Salón Prado",

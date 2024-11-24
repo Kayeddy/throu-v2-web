@@ -23,12 +23,15 @@ export const ShowcaseCard = ({
   layout?: boolean;
 }) => {
   const t = useTranslations("HomePage.Showcase");
+  const t1 = useTranslations(
+    "Marketplace.project.projectDetails.projectDescriptionTab"
+  );
 
   const locale = useLocale();
 
   const projectAttributes = {
-    supply: data?.projectTotalSupply,
-    min: `$${data?.projectPrice}`,
+    tokens: data?.projectTotalSupply,
+    value: `$${data?.projectPrice}`,
     total: `$${
       data?.projectPrice && data?.projectTotalSupply
         ? data?.projectTotalSupply * data?.projectPrice
@@ -92,7 +95,8 @@ export const ShowcaseCard = ({
             />
 
             <p className="w-[95%] truncate font-jakarta text-base font-extralight text-primary">
-              {data.projectURI?.description}
+              {/** TODO: The project description goes here */}
+              {t1("description.paragraph1")}
             </p>
 
             <span className="text-jakarta flex flex-row items-center justify-start gap-2 text-base text-primary">

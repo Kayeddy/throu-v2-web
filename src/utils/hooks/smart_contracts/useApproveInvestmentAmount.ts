@@ -30,6 +30,7 @@ export default async function useApproveInvestmentAmount(
 
   const hash = await writeContract(config, request);
 
+  // TODO: Replace this with use wait for transaction so I can make use of the loading states
   const transactionReceipt = await waitForTransactionReceipt(config, {
     hash: hash,
     pollingInterval: 1_000,

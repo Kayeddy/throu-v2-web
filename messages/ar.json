@@ -439,6 +439,12 @@
       "switchNetworks": "تبديل الشبكات",
       "disconnectTimeout": "انتهت مهلة اتصال المحفظة، جاري الفصل...",
       "balance": "{balance} {symbol}"
+    },
+    "projectBaseAttributes": {
+      "tokens": "الرموز",
+      "value": "القيمة",
+      "total": "الإجمالي",
+      "apy": "العائد السنوي (APY)"
     }
   },
   "Dashboard": {
@@ -450,7 +456,8 @@
       "portfolio": {
         "desktopTitle": "مشاريعي",
         "mobileTitle": "المشاريع",
-        "noInvestmentMessage": "لم تستثمر في أي مشروع حتى الآن"
+        "noInvestmentMessage": "لم تستثمر في أي مشروع حتى الآن",
+        "partnerMessage": "أنت شريك"
       },
       "movements": {
         "desktopTitle": "الأرصدة والتحركات",

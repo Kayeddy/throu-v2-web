@@ -1,29 +1,34 @@
-"use client"; // Ensures this component is client-side
+"use client";
 
 import { useSession } from "@clerk/nextjs";
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import useLoadingStore from "@/stores/useLoadingStore";
-import Loader from "@/components/shared/Loader"; // Your custom loader component
+import Loader from "@/components/shared/Loader";
 
 interface AuthWrapperProps {
   children: ReactNode;
 }
 
 const AuthWrapper: React.FC<AuthWrapperProps> = ({ children }) => {
-  const { isLoaded, session } = useSession(); // Clerk session hook to check if the session is loaded
+  const { isLoaded, session } = useSession();
   const setLoading = useLoadingStore((state) => state.setLoading);
   const removeLoading = useLoadingStore((state) => state.removeLoading);
 
+  // Manage loading state using useEffect
+  useEffect(() => {
+    if (!isLoaded) {
+      setLoading("clerk-session-loading");
+    } else {
+      removeLoading("clerk-session-loading");
+    }
+  }, [isLoaded, setLoading, removeLoading]);
+
+  // Show loader while session is loading
   if (!isLoaded) {
-    // While the session is loading, trigger the global loading state
-    setLoading("clerk-session-loading");
-    return <Loader />; // Render your loader component
+    return <Loader />;
   }
 
-  // Once session is loaded, remove the loading state
-  removeLoading("clerk-session-loading");
-
-  // Render children (the actual content) when session is ready
+  // Render children once session is ready
   return <>{children}</>;
 };
 

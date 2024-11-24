@@ -25,14 +25,6 @@ export default function Footer() {
       name: "learn",
       link: `/${locale}/learn`,
     },
-    {
-      name: "termsService",
-      link: `/${locale}/terms`,
-    },
-    {
-      name: "privacy",
-      link: `/${locale}/privacy`,
-    },
   ];
 
   return (
@@ -43,7 +35,7 @@ export default function Footer() {
             alt={t("logoAltText")}
             height={0}
             width={190}
-            src="/assets/shared/logo_lg_footer.png"
+            src="/assets/shared/logo_lg_footer.webp"
             className="h-auto w-auto object-contain"
           />
           <div className="mx-auto flex flex-col items-center justify-center gap-6 lg:mx-0 lg:flex-row lg:flex-wrap lg:justify-start">
@@ -58,6 +50,22 @@ export default function Footer() {
                 {t(`links.${item.name}`)}
               </Link>
             ))}
+            <a
+              href="/legal/terms_conditions.pdf"
+              download
+              lang="en"
+              className="bg-transparent text-base text-light transition-all duration-300 ease-in-out hover:text-secondary hover:underline"
+            >
+              {t("links.termsService")}
+            </a>
+            <a
+              href="/legal/privacy_policy.pdf"
+              download
+              lang="en"
+              className="bg-transparent text-base text-light transition-all duration-300 ease-in-out hover:text-secondary hover:underline"
+            >
+              {t("links.privacy")}
+            </a>
           </div>
         </div>
         <div className="flex flex-col items-center justify-center gap-12">

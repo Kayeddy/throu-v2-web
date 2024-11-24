@@ -17,7 +17,7 @@ export default function BackgroundImage({
     <div className={containerStyles}>
       <BlurImage
         src={src}
-        className={imageStyles}
+        className={`${imageStyles} !w-auto !h-auto`}
         width={200}
         height={200}
         alt={`background-logo-decoration`}
