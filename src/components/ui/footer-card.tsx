@@ -34,9 +34,9 @@ export const FooterCard = ({ data }: { data: CardItems }) => {
         <h3 className="text-center font-jakarta text-base text-white">
           {data.subtitle}
         </h3>
-        <h4 className="text-center font-jakarta text-lg font-bold text-white">
+        <p className="text-center font-jakarta text-lg font-bold text-white">
           {data.title}
-        </h4>
+        </p>
       </div>
 
       {data.link.url ? (
