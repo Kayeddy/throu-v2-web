@@ -17,7 +17,7 @@ import { useTranslations } from "next-intl"; // Importing next-intl for translat
 
 export const WalletConnectionButton = () => {
   const t = useTranslations("Shared.walletConnectionButton"); // Accessing translations
-  const { isConnecting, address, isConnected, chain } = useAccount();
+  const { isConnecting, address, addresses, isConnected, chain } = useAccount();
 
   // Memoizing the result of this function since it only depends on the address
   const { color: backgroundColor, emoji } = useMemo(

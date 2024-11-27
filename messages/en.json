@@ -466,17 +466,18 @@
       "portfolio": {
         "desktopTitle": "My Projects",
         "mobileTitle": "Projects",
-        "noInvestmentMessage": "You haven't invested in any projects yet",
+        "noInvestmentMessage": "You currently have no investments.",
+        "errorMessage": "Failed to load portfolio data. Please try again later.",
         "partnerMessage": "You are a partner"
       },
       "movements": {
         "desktopTitle": "Balances and Movements",
         "mobileTitle": "Balance",
-        "noMovementsMessage": "You have no movements to display"
+        "noDataMessage": "There are currently no movements available to show."
       },
       "saved": {
         "title": "Saved",
-        "noSavedMessage": "You have no saved projects"
+        "noDataMessage": "There are currently no saved items to display."
       }
     },
     "options": "Options",
@@ -562,7 +563,10 @@
           "title": "Salón Prado",
           "category": "Gastronomic",
           "categoryLabel": "Category",
-          "investmentType": "Long-term return",
+          "investmentType": "Passive",
+          "investmentTypeLabel": "Investment Type",
+          "returnOnInvestment": "Long-term",
+          "returnOnInvestmentLabel": "Return on Investment",
           "locationLabel": "Location",
           "description": {
             "paragraph1": "The Salón Prado project, located in the emblematic Prado neighborhood of Medellín, offers a unique investment opportunity that combines cultural richness and economic dynamism through real estate tokenization. This initiative aims not only to revitalize a space of historical value but also to create a center for art, gastronomy, and entertainment that attracts both locals and tourists.",

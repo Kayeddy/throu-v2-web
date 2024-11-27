@@ -112,22 +112,22 @@ export const MobileMarketplaceNavigation = React.memo(
           </NavbarMenuItem>
 
           <NavbarMenuItem className="flex w-full flex-row items-center justify-between">
-            <Link
-              href="/terms-conditions"
-              rel="noreferrer"
-              target="_blank"
-              className="font-jakarta dark:text-light"
+            <a
+              href="/legal/terms_conditions.pdf"
+              download
+              lang="en"
+              className="font-jakarta"
             >
               {t("termsConditions")}
-            </Link>
-            <Link
-              href="/privacy"
-              rel="noreferrer"
-              target="_blank"
-              className="font-jakarta dark:text-light"
+            </a>
+            <a
+              href="/legal/privacy_policy.pdf"
+              download
+              lang="en"
+              className="font-jakarta"
             >
               {t("privacy")}
-            </Link>
+            </a>
           </NavbarMenuItem>
 
           <div className="flex w-full flex-row items-center justify-between">

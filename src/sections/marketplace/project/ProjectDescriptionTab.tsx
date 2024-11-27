@@ -35,6 +35,14 @@ export default function ProjectDescriptionTab({
         >
           {t("investmentType")}
         </Chip>
+        <Chip
+          radius="sm"
+          size="lg"
+          color="secondary"
+          className="font-jakarta text-light"
+        >
+          {t("returnOnInvestment")}
+        </Chip>
       </span>
 
       {/* Location for Mobile */}
@@ -56,9 +64,32 @@ export default function ProjectDescriptionTab({
         <Chip
           radius="sm"
           size="lg"
-          className="bg-quaternary font-jakarta text-light"
+          className="bg-quaternary/90 font-jakarta text-light"
         >
           {t("category")}
+        </Chip>
+      </span>
+
+      {/* Investment type for Desktop */}
+
+      <span className="hidden flex-row items-center justify-start gap-2 lg:flex">
+        <p className="font-jakarta text-base text-minimal dark:text-light">
+          {t("investmentTypeLabel")}:
+        </p>
+        <Chip
+          radius="sm"
+          size="lg"
+          className="bg-tertiary/70 font-jakarta text-light"
+        >
+          {t("investmentType")}
+        </Chip>
+        <Chip
+          radius="sm"
+          size="lg"
+          color="secondary"
+          className="font-jakarta text-light"
+        >
+          {t("returnOnInvestment")}
         </Chip>
       </span>
 

@@ -30,7 +30,8 @@ import { ProjectInvestmentTransactionLoader } from "../ui/project-investment-tra
 import useApproveInvestmentAmount from "@/utils/hooks/smart_contracts/useApproveInvestmentAmount";
 import { useBuyInvestmentAmount } from "@/utils/hooks/smart_contracts/useBuyInvestmentAmount";
 import { isError } from "ethers";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { useUser } from "@clerk/nextjs";
 
 interface ProjectInvestmentModalProps {
   triggerButton?: ReactElement<ButtonProps>;
@@ -221,7 +222,10 @@ const ProjectInvestmentModal = ({
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { address, isConnected } = useAccount();
   const { openConnectModal } = useConnectModal();
+
+  const { isLoaded, isSignedIn } = useUser();
   const isMobile = useIsMobile();
+  const locale = useLocale();
 
   const [selected, setSelected] = useState<TabKey>("paymentMethod");
   const [direction, setDirection] = useState<"forward" | "backward">("forward");
@@ -270,6 +274,9 @@ const ProjectInvestmentModal = ({
       openConnectModal?.(); // Open connect modal if wallet not connected
     } else if (investmentAmount <= 0) {
       setShowError(true); // Show error for invalid investment amount
+    } else if (!isLoaded || !isSignedIn) {
+      // Redirect user to the sign-in page
+      window.location.href = `/${locale}/sign-in`;
     } else {
       onOpen(); // Open modal if all conditions are met
     }

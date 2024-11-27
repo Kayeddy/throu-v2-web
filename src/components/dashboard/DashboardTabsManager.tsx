@@ -10,6 +10,7 @@ import { useEffect, useState, useMemo } from "react";
 import { useTranslations } from "next-intl";
 import { useAccount } from "wagmi";
 import { useGetProject } from "@/utils/hooks/smart_contracts/useGetProjects";
+import useGetInvestorInfo from "@/utils/hooks/smart_contracts/useGetInvestorInfo";
 
 export default function DashboardTabsManager({
   isSavedParam,
@@ -22,13 +23,27 @@ export default function DashboardTabsManager({
   const isMobile = useIsMobile();
   const { isConnected, address } = useAccount();
 
-  // Conditionally fetch project data only if connected
-  const { project, error, isPending } = useGetProject(projectId || 0);
+  // Fetch project data and investor information
+  const {
+    project,
+    error: projectError,
+    isPending: isProjectPending,
+  } = useGetProject(projectId || 0);
+  const {
+    userInvestmentData,
+    error: investorError,
+    isPending: isInvestorPending,
+  } = useGetInvestorInfo();
 
   // Memoized to check if the user is a project holder
   const isHolder = useMemo(() => {
     return project?.projectHolders?.includes(address?.toString() ?? "");
   }, [project, address]);
+
+  const tokensCountValue =
+    userInvestmentData && typeof userInvestmentData[0] === "bigint"
+      ? Number(userInvestmentData[0])
+      : 0;
 
   // Fade-in animation for tab transitions
   const fadeInAnimation = {
@@ -37,14 +52,37 @@ export default function DashboardTabsManager({
     exit: { opacity: 0, y: 20, transition: { duration: 0.3 } },
   };
 
-  // Set the initial tab based on `isSavedParam` only once
+  // Set the initial tab based on `isSavedParam`
   useEffect(() => {
     if (isSavedParam) {
       setSelected("Saved");
     }
   }, [isSavedParam]);
 
-  // Define the tabs with translated titles
+  const renderPortfolioContent = () => {
+    if (isProjectPending || isInvestorPending) {
+      return <Spinner color="secondary" />;
+    }
+
+    if (projectError || investorError) {
+      return (
+        <p className="text-danger-500">{t("tabs.portfolio.errorMessage")}</p>
+      );
+    }
+
+    if (!isHolder || tokensCountValue <= 0) {
+      return (
+        <p className="text-warning-500">
+          {t("tabs.portfolio.noInvestmentMessage")}
+        </p>
+      );
+    }
+
+    return (
+      <Portfolio project={project} userInvestmentData={userInvestmentData} />
+    );
+  };
+
   const tabs = [
     {
       id: 1,
@@ -52,13 +90,7 @@ export default function DashboardTabsManager({
         ? t("tabs.portfolio.mobileTitle")
         : t("tabs.portfolio.desktopTitle"),
       key: "Portfolio",
-      content: isPending ? (
-        <Spinner color="secondary" />
-      ) : isHolder ? (
-        <Portfolio project={project} />
-      ) : (
-        <p>{t("tabs.portfolio.noInvestmentMessage")}</p>
-      ),
+      content: renderPortfolioContent(),
     },
     {
       id: 2,
@@ -77,12 +109,12 @@ export default function DashboardTabsManager({
   ];
 
   return (
-    <div className={`w-full p-4 lg:p-0`}>
+    <div className="w-full p-4 lg:p-0">
       {isConnected ? (
         <Tabs
           selectedKey={selected}
           onSelectionChange={(key) => setSelected(String(key))}
-          aria-label="options"
+          aria-label="Dashboard tabs"
           color="primary"
           variant="underlined"
           classNames={{

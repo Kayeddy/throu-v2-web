@@ -457,17 +457,18 @@
       "portfolio": {
         "desktopTitle": "Mes Projets",
         "mobileTitle": "Projets",
-        "noInvestmentMessage": "Vous n'avez encore investi dans aucun projet",
+        "noInvestmentMessage": "Vous n'avez actuellement aucun investissement.",
+        "errorMessage": "Échec du chargement des données du portefeuille. Veuillez réessayer plus tard.",
         "partnerMessage": "Vous êtes partenaire"
       },
       "movements": {
         "desktopTitle": "Soldes et Mouvements",
         "mobileTitle": "Solde",
-        "noMovementsMessage": "Vous n'avez aucun mouvement à afficher"
+        "noDataMessage": "Il n'y a actuellement aucun mouvement à afficher."
       },
       "saved": {
         "title": "Enregistré",
-        "noSavedMessage": "Vous n'avez aucun projet enregistré"
+        "noDataMessage": "Il n'y a actuellement aucun élément enregistré à afficher."
       }
     },
     "options": "Options",
@@ -552,12 +553,15 @@
           "title": "Salón Prado",
           "category": "Gastronomique",
           "categoryLabel": "Catégorie",
-          "investmentType": "Retour à long terme",
+          "investmentType": "Passif",
+          "investmentTypeLabel": "Type d'Investissement",
+          "returnOnInvestment": "Long terme",
+          "returnOnInvestmentLabel": "Retour sur Investissement",
           "locationLabel": "Localisation",
           "description": {
-            "paragraph1": "Le projet Salón Prado, situé dans le quartier emblématique de Prado à Medellín, représente une opportunité d'investissement unique alliant richesse culturelle et dynamisme économique grâce à la tokenisation immobilière. Cette initiative vise non seulement à revitaliser un espace de valeur historique, mais aussi à créer un centre d'art, de gastronomie et de divertissement attirant tant les locaux que les touristes.",
-            "paragraph2": "La rentabilité du projet est structurée par un modèle détaillé qui prévoit une période de récupération de l'investissement, avec un rendement annuel (TRI) de 23%, très compétitif. Ce modèle reflète non seulement le potentiel de croissance économique du projet, mais garantit également une transparence et une sécurité inégalées grâce à la technologie blockchain, permettant aux investisseurs de suivre leurs investissements avec une clarté sans précédent.",
-            "paragraph3": "De plus, Salón Prado se distingue par son approche durable et son impact social. L'investissement dépasse le simple retour financier, contribuant à la revitalisation urbaine, à la conservation du patrimoine et à la promotion de la culture locale. Les investisseurs bénéficient ainsi financièrement et participent également à l'enrichissement du tissu social et culturel de Medellín.",
+            "paragraph1": "Le projet Salón Prado, situé dans le quartier emblématique de Prado à Medellín, offre une opportunité d'investissement unique combinant richesse culturelle et dynamisme économique grâce à la tokenisation immobilière. Cette initiative vise non seulement à revitaliser un espace de valeur historique, mais aussi à créer un centre d'art, de gastronomie et de divertissement attirant locaux et touristes.",
+            "paragraph2": "La rentabilité du projet est structurée autour d'un modèle détaillé projetant une période de récupération de l'investissement définie, avec un rendement annuel (TIR) de 23% très compétitif. Ce modèle reflète non seulement le potentiel de croissance économique du projet, mais garantit également une transparence et une sécurité incomparables grâce à la technologie blockchain. Cela permet aux investisseurs de suivre l'évolution et la gestion de leurs investissements avec une clarté sans précédent.",
+            "paragraph3": "De plus, Salón Prado se distingue par son approche durable et son impact social. L'investissement dépasse les rendements financiers, contribuant à la revitalisation urbaine, à la conservation du patrimoine et à la promotion de la culture locale. Les investisseurs bénéficient donc non seulement financièrement, mais participent également à l'enrichissement du tissu social et culturel de Medellín.",
             "paragraph4": "Enfin, la structure d'investissement tokenisée du projet offre flexibilité et liquidité, permettant aux investisseurs d'acheter, de vendre ou d'échanger des tokens efficacement sur le marché secondaire."
           }
         },

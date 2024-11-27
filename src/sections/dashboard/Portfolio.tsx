@@ -9,36 +9,24 @@ import { useEffect } from "react";
 
 export default function Portfolio({
   project,
+  userInvestmentData,
 }: {
   project?: ProjectDetails | null;
+  userInvestmentData: any;
 }) {
   const t = useTranslations("Dashboard");
-
-  // Fetch investor information
-  const { userInvestmentData, error, isPending } = useGetInvestorInfo();
-
-  // Ensure project and user investment data exist before rendering any content
-  if (!project || !userInvestmentData || isPending || error) {
-    return (
-      <div className="flex h-full items-center justify-center">
-        {isPending ? (
-          <p>Loading...</p>
-        ) : (
-          <p className="text-danger">{error && "Error loading data"}</p>
-        )}
-      </div>
-    );
-  }
 
   const tokensCountValue =
     userInvestmentData && typeof userInvestmentData[0] === "bigint"
       ? Number(userInvestmentData[0])
       : 0;
 
-  const projectsCount = project ? 1 : 0;
+  const projectsCount = project && tokensCountValue > 0 ? 1 : 0;
 
-  const ownershipPercentage = project.projectTotalSupply
-    ? ((tokensCountValue / Number(project.projectTotalSupply)) * 100).toFixed(1)
+  const ownershipPercentage = project?.projectTotalSupply
+    ? ((tokensCountValue / Number(project?.projectTotalSupply)) * 100).toFixed(
+        1
+      )
     : "0";
 
   // Define investor portfolio attributes
@@ -53,7 +41,7 @@ export default function Portfolio({
     },
     fiatInvestmentAmount: {
       label: t("attributes.fiatInvestmentAmount"),
-      value: 0,
+      value: tokensCountValue * Number(project?.projectPrice),
     },
     returnOnInvestment: {
       label: t("attributes.returnOnInvestment"),
@@ -68,7 +56,7 @@ export default function Portfolio({
         <h1 className="font-sen text-2xl font-bold text-primary dark:text-light">
           {t("tabs.portfolio.desktopTitle")}
         </h1>
-        <div className="flex flex-row items-center justify-start gap-6">
+        <div className="mx-auto grid grid-cols-2 items-center justify-center gap-6 lg:mx-0 lg:flex lg:flex-row lg:flex-wrap lg:justify-start">
           {Object.entries(investorPortFolioAttributes).map(
             ([key, attribute]) => (
               <div
@@ -91,10 +79,10 @@ export default function Portfolio({
           removePaddings
           items={[
             <UserProjectDashboardCard
-              projectName={project.projectURI?.name ?? ""}
+              projectName={project?.projectURI?.name ?? ""}
               userTokenCount={tokensCountValue}
               userOwnershipPercentage={ownershipPercentage}
-              projectTokenPrice={project.projectPrice ?? 0}
+              projectTokenPrice={project?.projectPrice ?? 0}
             />,
           ]}
         />

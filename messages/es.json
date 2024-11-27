@@ -457,17 +457,18 @@
       "portfolio": {
         "desktopTitle": "Mis Proyectos",
         "mobileTitle": "Proyectos",
-        "noInvestmentMessage": "Aún no has invertido en ningún proyecto",
+        "noInvestmentMessage": "Actualmente no tienes inversiones.",
+        "errorMessage": "Error al cargar los datos del portafolio. Por favor, inténtalo de nuevo más tarde.",
         "partnerMessage": "Eres socio"
       },
       "movements": {
         "desktopTitle": "Saldos y Movimientos",
         "mobileTitle": "Saldo",
-        "noMovementsMessage": "No tienes movimientos para mostrar"
+        "noDataMessage": "Actualmente no hay movimientos disponibles para mostrar."
       },
       "saved": {
         "title": "Guardados",
-        "noSavedMessage": "No tienes proyectos guardados"
+        "noDataMessage": "Actualmente no hay elementos guardados para mostrar."
       }
     },
     "options": "Opciones",
@@ -553,13 +554,16 @@
           "title": "Salón Prado",
           "category": "Gastronómico",
           "categoryLabel": "Categoría",
-          "investmentType": "Retorno a largo plazo",
+          "investmentType": "Pasivo",
+          "investmentTypeLabel": "Tipo de Inversión",
+          "returnOnInvestment": "Largo plazo",
+          "returnOnInvestmentLabel": "Retorno de Inversión",
           "locationLabel": "Ubicación",
           "description": {
-            "paragraph1": "El proyecto Salón Prado, situado en el emblemático barrio Prado de Medellín, se presenta como una oportunidad de inversión única que combina la riqueza cultural y el dinamismo económico mediante la tokenización de activos inmobiliarios. Esta iniciativa busca no solo revitalizar un espacio con valor histórico, sino también crear un centro de arte, gastronomía y entretenimiento que atraiga tanto a locales como a turistas.",
-            "paragraph2": "La rentabilidad del proyecto se articula a través de un modelo detallado que proyecta una recuperación de la inversión en un plazo definido, con un rendimiento anual (TIR) del 23% altamente competitivo. Este modelo no solo refleja el potencial de crecimiento económico del proyecto, sino que también asegura una transparencia y seguridad incomparables gracias al uso de la tecnología blockchain. Esto significa que los inversores pueden monitorear el progreso y la gestión de sus inversiones con una claridad sin precedentes.",
-            "paragraph3": "Además, Salón Prado se distingue por su enfoque sostenible y de impacto social. La inversión va más allá del retorno económico, contribuyendo a la revitalización urbana, la conservación del patrimonio y el fomento de la cultura local. Los inversores, por lo tanto, no solo se benefician financieramente, sino que también participan en el enriquecimiento del tejido social y cultural de Medellín.",
-            "paragraph4": "Finalmente, la estructura de inversión tokenizada del proyecto ofrece flexibilidad y liquidez, permitiendo a los inversores comprar, vender o intercambiar tokens de manera eficiente en el mercado secundario."
+            "paragraph1": "El proyecto Salón Prado, ubicado en el emblemático barrio Prado de Medellín, ofrece una oportunidad de inversión única que combina riqueza cultural y dinamismo económico a través de la tokenización inmobiliaria. Esta iniciativa no solo busca revitalizar un espacio de valor histórico, sino también crear un centro de arte, gastronomía y entretenimiento que atraiga tanto a locales como a turistas.",
+            "paragraph2": "La rentabilidad del proyecto está estructurada mediante un modelo detallado que proyecta un período definido de recuperación de la inversión, con un retorno anual (TIR) del 23%, altamente competitivo. Este modelo no solo refleja el potencial de crecimiento económico del proyecto, sino que también garantiza una transparencia y seguridad inigualables gracias a la tecnología blockchain. Esto permite a los inversionistas monitorear el progreso y la gestión de sus inversiones con una claridad sin precedentes.",
+            "paragraph3": "Además, Salón Prado se destaca por su enfoque sostenible y de impacto social. La inversión va más allá de los rendimientos financieros, contribuyendo a la revitalización urbana, la conservación del patrimonio y la promoción de la cultura local. Por lo tanto, los inversionistas no solo se benefician financieramente, sino que también participan en el enriquecimiento del tejido social y cultural de Medellín.",
+            "paragraph4": "Finalmente, la estructura de inversión tokenizada del proyecto ofrece flexibilidad y liquidez, permitiendo a los inversionistas comprar, vender o intercambiar tokens de manera eficiente en el mercado secundario."
           }
         },
         "projectGalleryTab": {

@@ -1,8 +1,6 @@
 import { Button } from "@nextui-org/button";
-import { useConnectModal } from "@rainbow-me/rainbowkit";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect } from "react";
 
 interface CardItems {
   title: string;
@@ -12,20 +10,19 @@ interface CardItems {
     width: number;
     height: number;
   };
-  link: {
+  link?: {
     url?: string;
     text: string;
   };
+  callback?: () => void; // Optional callback function
 }
 
 export const FooterCard = ({ data }: { data: CardItems }) => {
-  const { openConnectModal } = useConnectModal();
-
   return (
     <div className="flex h-56 w-44 flex-col items-center justify-between rounded-md bg-primary p-4 shadow-custom lg:h-[250px] lg:w-[250px]">
       <Image
         src={data.icon.src}
-        alt={`${data.link.text}-footer-card-icon`}
+        alt={`${data.link?.text || "callback"}-footer-card-icon`}
         width={data.icon.width}
         height={data.icon.height}
         className="h-12 w-auto object-cover"
@@ -39,7 +36,7 @@ export const FooterCard = ({ data }: { data: CardItems }) => {
         </p>
       </div>
 
-      {data.link.url ? (
+      {data.link?.url ? (
         <Button
           href={data.link.url}
           as={Link}
@@ -47,14 +44,14 @@ export const FooterCard = ({ data }: { data: CardItems }) => {
         >
           {data.link.text}
         </Button>
-      ) : (
+      ) : data.callback ? (
         <Button
-          onClick={openConnectModal}
+          onClick={data.callback}
           className="bg-transparent font-sen text-xl font-semibold text-secondary hover:underline lg:text-base"
         >
-          {data.link.text}
+          {data.link?.text || "Click Me"}
         </Button>
-      )}
+      ) : null}
     </div>
   );
 };

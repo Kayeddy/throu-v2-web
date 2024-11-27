@@ -38,7 +38,7 @@ export const ProjectAttributeBox = ({
   const t = useTranslations("Shared.projectBaseAttributes");
   return (
     <Card
-      className={`border-none flex items-center justify-center ${
+      className={`border-none p-1 flex items-center justify-center ${
         isTranslucent ? "bg-white/20 dark:bg-dark" : "bg-white"
       } ${
         size === "xl" ? "w-32 h-24" : "w-20 h-12"

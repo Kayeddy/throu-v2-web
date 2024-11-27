@@ -7,10 +7,11 @@ export default function Saved() {
 
   return (
     <div className="mt-6 w-full">
-      <div className="flex flex-col items-start justify-start">
+      <div className="flex flex-col items-start justify-start gap-6">
         <h1 className="font-sen text-2xl font-bold text-primary dark:text-light">
           {t("title")} {/* Display the saved title */}
         </h1>
+        <p>{t("noDataMessage")}</p>
       </div>
     </div>
   );

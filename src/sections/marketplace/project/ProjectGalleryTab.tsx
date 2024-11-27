@@ -15,6 +15,8 @@ export default function ProjectGalleryTab() {
         <div key={index} className="media-item">
           <ProjectImageViewerModal
             imageUrl={media}
+            images={projectMedia}
+            initialIndex={index}
             triggerImage={
               <Image src={media} alt={`${t("imageAlt")}-${index + 1}`} />
             }

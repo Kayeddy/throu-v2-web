@@ -1,6 +1,5 @@
 "use client";
 
-import { useConnectModal } from "@rainbow-me/rainbowkit";
 import { FooterCard } from "../ui/footer-card";
 import Image from "next/image";
 import { socialMediaItems } from "@/utils/constants";
@@ -9,11 +8,29 @@ import ScrollTopIndicator from "./ScrollTopIndicator";
 import BackgroundImage from "../ui/background-image";
 import { useLocale, useTranslations } from "next-intl";
 import { useMemo } from "react";
-import { HomeNavigationItems } from "@/utils/types/shared/common";
+import { useAccountModal, useConnectModal } from "@rainbow-me/rainbowkit";
+import { useRouter } from "next/navigation";
+import { useAccount } from "wagmi";
 
 export default function Footer() {
   const t = useTranslations("HomeFooter");
   const locale = useLocale();
+
+  const { address, isConnected } = useAccount();
+
+  const { openAccountModal } = useAccountModal();
+  const { openConnectModal } = useConnectModal();
+
+  const router = useRouter();
+
+  const handleCreateWalletClick = () => {
+    if (isConnected && address) {
+      openAccountModal?.();
+    } else {
+      // Open connect modal if not connected
+      openConnectModal?.();
+    }
+  };
 
   // Translated footer cards data using useMemo
   const footerCardsData = useMemo(
@@ -27,7 +44,7 @@ export default function Footer() {
           height: 40,
         },
         link: {
-          url: `${locale}/learn`,
+          url: `${locale}/sign-up`,
           text: t("cards.createAccount.linkText"),
         },
       },
@@ -39,17 +56,17 @@ export default function Footer() {
           width: 60,
           height: 60,
         },
+        callback: handleCreateWalletClick,
         link: {
-          url: `${locale}/learn`,
           text: t("cards.createWallet.linkText"),
         },
       },
     ],
-    [t]
+    [t, locale, isConnected, address]
   );
 
   // Footer links with translations
-  const footerLinks: HomeNavigationItems[] = [
+  const footerLinks = [
     {
       name: "projects",
       link: `/${locale}/marketplace`,
@@ -62,14 +79,6 @@ export default function Footer() {
       name: "learn",
       link: `/${locale}/learn`,
     },
-    // {
-    //   name: "termsService",
-    //   link: `/${locale}/terms`,
-    // },
-    // {
-    //   name: "privacy",
-    //   link: `/${locale}/privacy`,
-    // },
   ];
 
   return (
