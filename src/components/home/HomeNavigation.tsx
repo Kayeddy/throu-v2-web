@@ -114,7 +114,7 @@ export const MobileHomeNavigation = React.memo(
               href="/legal/terms_conditions.pdf"
               download
               lang="en"
-              className="font-jakarta"
+              className="font-jakarta text-primary dark:text-light"
             >
               {t("termsConditions")}
             </a>
@@ -122,7 +122,7 @@ export const MobileHomeNavigation = React.memo(
               href="/legal/privacy_policy.pdf"
               download
               lang="en"
-              className="font-jakarta"
+              className="font-jakarta text-primary dark:text-light"
             >
               {t("privacy")}
             </a>
