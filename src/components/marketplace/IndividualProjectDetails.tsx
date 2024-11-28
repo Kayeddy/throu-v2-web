@@ -34,17 +34,18 @@ export const projectMedia = [
   "/assets/projects/prado/renders/render_2.jpg",
   "/assets/projects/prado/renders/render_3.jpg",
   "/assets/projects/prado/renders/render_4.jpg",
-  "/assets/projects/prado/renders/render_5.jpg",
-  "/assets/projects/prado/renders/render_6.jpg",
-  "/assets/projects/prado/renders/render_7.jpg",
-  "/assets/projects/prado/renders/render_8.jpg",
-  "/assets/projects/prado/renders/render_9.jpg",
+  "/assets/projects/prado/renders/render_5.png",
+  "/assets/projects/prado/renders/render_6.png",
+  "/assets/projects/prado/renders/render_7.png",
+  "/assets/projects/prado/renders/render_8.png",
+  "/assets/projects/prado/renders/render_9.png",
 
   // Sketch images
   "/assets/projects/prado/sketches/sketch_1.png",
   "/assets/projects/prado/sketches/sketch_2.png",
   "/assets/projects/prado/sketches/sketch_3.png",
   "/assets/projects/prado/sketches/sketch_4.png",
+  "/assets/projects/prado/sketches/sketch_5.png",
 ];
 
 export default function IndividualProjectDetails({
