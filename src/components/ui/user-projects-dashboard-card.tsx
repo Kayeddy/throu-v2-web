@@ -8,6 +8,7 @@ import { FaRegBookmark as BookmarkIcon } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { projectMedia } from "../marketplace/IndividualProjectDetails";
 
 interface UserDashboardProjectDetails {
   projectName: string;
@@ -53,7 +54,7 @@ export default function UserProjectDashboardCard({
               </Chip>
             </div>
             <BlurImage
-              src="/assets/projects/prado/renders/render_1.jpg"
+              src={projectMedia[0]}
               alt={projectName}
               fill
               sizes="(max-width: 768px) 100vw, 33vw"

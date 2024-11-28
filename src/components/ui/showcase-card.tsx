@@ -10,6 +10,7 @@ import { Button } from "@nextui-org/button";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { Chip } from "@nextui-org/react";
+import { projectMedia } from "../marketplace/IndividualProjectDetails";
 
 interface CardData extends ProjectDetails {
   redirectionLink: string;
@@ -76,7 +77,7 @@ export const ShowcaseCard = ({
               </Chip>
             </div>
             <BlurImage
-              src="/assets/projects/prado/renders/render_1.jpg"
+              src={projectMedia[0]}
               alt={data.projectURI?.name ?? "Project-card-image"}
               fill
               sizes="(max-width: 768px) 100vw, 33vw"

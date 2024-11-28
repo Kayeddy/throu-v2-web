@@ -9,6 +9,7 @@ import { SlLocationPin as LocationIcon } from "react-icons/sl";
 import { FaRegBookmark as BookmarkIcon } from "react-icons/fa";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
+import { projectMedia } from "../marketplace/IndividualProjectDetails";
 
 export default function MarketplaceHomeCard({
   data,
@@ -70,7 +71,7 @@ export default function MarketplaceHomeCard({
             </Chip> */}
           </div>
           <BlurImage
-            src="/assets/projects/prado/renders/render_1.jpg"
+            src={projectMedia[0]}
             alt={data.projectURI?.name ?? "Project-card-image"}
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
