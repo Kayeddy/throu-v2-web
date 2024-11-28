@@ -7,6 +7,8 @@ import Showcase from "@/sections/home/landing/Showcase";
 import Steps from "@/sections/home/landing/Steps";
 
 import { motion } from "framer-motion";
+import { useTheme } from "next-themes";
+import { useEffect } from "react";
 
 export default function HomeLandingContent() {
   return (
