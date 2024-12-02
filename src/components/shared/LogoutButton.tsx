@@ -7,7 +7,11 @@ export default function LogoutButton() {
   const t = useTranslations("Shared.userButtonMenu");
   return (
     <SignOutButton>
-      <Button className="flex flex-row items-center justify-center gap-1 bg-transparent text-danger-400">
+      <Button
+        color="danger"
+        variant="shadow"
+        className="flex flex-row items-center justify-center gap-1 bg-transparent hover:bg-danger max-md:text-danger-500"
+      >
         <LogoutButtonIcon className="text-base" />
         {t("logout")}
       </Button>
