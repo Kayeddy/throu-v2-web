@@ -67,9 +67,9 @@ export default function UserButtonMenu() {
             />
           </button>
         ) : (
-          <div className="flex h-8 w-8 items-center justify-center bg-light text-lg lg:h-7 lg:w-7">
+          <button className="flex h-8 w-8 items-center justify-center rounded-full bg-tertiary/50 text-lg focus:border-transparent focus:outline-none lg:h-7 lg:w-7">
             <FaRegUser />
-          </div>
+          </button>
         )}
       </PopoverTrigger>
       <AnimatePresence>
