@@ -11,6 +11,8 @@ import { config } from "@/lib/wagmi";
 import { ReactNode } from "react";
 import { Locale } from "@/utils/types/shared/common";
 import { CustomAvatar } from "@/components/ui/wallet-emoji-avatar";
+import { enUS, esES, frFR, arSA } from "@clerk/localizations";
+import { useLocale } from "next-intl";
 
 // Application color scheme
 const appColors = {
@@ -18,6 +20,13 @@ const appColors = {
   secondary: "#18A5FF", // Bright blue
   light: "#F7FAFF", // Light background
   dark: "#01070E", // Dark background
+};
+
+const clerkLocalizations = {
+  en: enUS,
+  es: esES,
+  fr: frFR,
+  ar: arSA,
 };
 
 // Custom theme with dynamic attributes based on the current theme
@@ -67,10 +76,14 @@ export function Providers({ children, locale, cookie }: ProvidersProps) {
   // Use the custom theme
   const rainbowKitTheme = useCustomRainbowKitTheme(theme || "light");
 
+  // Get the Clerk localization for the current locale
+  const clerkLocalization = clerkLocalizations[locale] || enUS;
+
   return (
     <ClerkProvider
       signInUrl={`/${locale}/sign-in`}
       signUpUrl={`/${locale}/sign-up`}
+      localization={clerkLocalization}
     >
       <WagmiProvider config={config} initialState={cookieInitialState}>
         <QueryClientProvider client={queryClient}>
