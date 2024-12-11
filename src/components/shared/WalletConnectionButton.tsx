@@ -102,10 +102,10 @@ export const WalletConnectionButton = () => {
         ) : (
           <>
             <div className="flex flex-row items-center justify-center gap-2 font-medium lg:hidden">
-              <span className="text-2xl text-secondary">
+              <span className="text-2xl text-secondary dark:text-light">
                 <WalletIcon />
               </span>
-              <p className="font-sen text-xl text-secondary">
+              <p className="font-sen text-xl text-secondary dark:text-light">
                 {t("connect")} {/* Translation for "Connect Wallet" */}
               </p>
             </div>
@@ -122,7 +122,7 @@ export const WalletConnectionButton = () => {
   if ((isConnected && !chain) || chain?.id !== 137) {
     return (
       <Button
-        className="flex flex-row items-center justify-center bg-transparent font-jakarta text-primary focus:border-transparent focus:outline-none dark:text-white"
+        className="flex flex-row items-center justify-center bg-transparent font-jakarta text-lg text-primary focus:border-transparent focus:outline-none dark:text-white"
         onClick={openChainModal}
       >
         <span className="relative flex h-full items-center justify-center">

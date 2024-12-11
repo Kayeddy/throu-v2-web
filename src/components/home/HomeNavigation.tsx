@@ -110,22 +110,22 @@ export const MobileHomeNavigation = React.memo(
           </NavbarMenuItem>
 
           <NavbarMenuItem className="flex w-full flex-row items-center justify-between">
-            <a
-              href="/legal/terms_conditions.pdf"
-              download
-              lang="en"
-              className="font-jakarta text-primary"
+            <Link
+              href="/terms-conditions"
+              rel="noreferrer"
+              target="_blank"
+              className="font-jakarta"
             >
               {t("termsConditions")}
-            </a>
-            <a
-              href="/legal/privacy_policy.pdf"
-              download
-              lang="en"
-              className="font-jakarta text-primary"
+            </Link>
+            <Link
+              href="/privacy"
+              rel="noreferrer"
+              target="_blank"
+              className="font-jakarta"
             >
               {t("privacy")}
-            </a>
+            </Link>
           </NavbarMenuItem>
 
           <div className="flex w-full flex-row items-center justify-between">
