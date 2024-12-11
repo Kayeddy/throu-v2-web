@@ -8,12 +8,10 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function ProjectImageViewerModal({
   triggerImage,
-  imageUrl,
   images,
   initialIndex,
 }: {
   triggerImage: React.ReactElement;
-  imageUrl: string;
   images: string[];
   initialIndex: number;
 }) {
@@ -42,7 +40,7 @@ export default function ProjectImageViewerModal({
       {React.cloneElement(triggerImage, {
         onClick: onOpen,
         className:
-          "cursor-pointer h-[100px] w-[100px] min-w-[100px] object-cover lg:h-[120px] lg:w-[120px] lg:min-w-[120px]",
+          "cursor-pointer h-[100px] w-[100px] min-w-[100px] object-cover lg:h-[120px] lg:w-[120px] lg:min-w-[120px] rounded-md",
       })}
 
       <Modal
@@ -70,7 +68,7 @@ export default function ProjectImageViewerModal({
                 <Image
                   src={images[currentIndex]}
                   alt={`Project Image ${currentIndex + 1}`}
-                  className="mx-auto h-full w-full object-contain lg:w-[90%]"
+                  className="mx-auto h-full min-h-[40vh] w-full object-fill lg:w-[90%]"
                 />
               </motion.div>
             </AnimatePresence>

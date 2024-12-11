@@ -7,8 +7,9 @@ import {
 } from "react-icons/fi";
 import { Carousel } from "@/components/ui/cards-carousel";
 import ProjectAttributesContainer from "@/components/ui/project-attributes-boxes-container";
-import { Button, Image } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 import React, { useState, useMemo, useCallback } from "react";
+import Image from "next/image";
 
 const ImageSliderNavigationButton = React.memo(
   function ImageSliderNavigationButton({
@@ -75,7 +76,7 @@ const ProjectImageSlider = ({
   }, [projectMedia.length]);
 
   return (
-    <div className="flex h-auto w-full flex-col items-start justify-center gap-4 lg:flex-row lg:justify-between">
+    <div className="flex h-auto min-h-fit w-full flex-col items-start justify-center gap-4 lg:flex-row lg:justify-between">
       <div className="relative flex h-[20rem] w-full flex-col items-start justify-start gap-6 lg:h-[27rem]">
         <ImageSliderNavigationButton position="left" callback={swipeLeft} />
         <ImageSliderNavigationButton position="right" callback={swipeRight} />
@@ -90,17 +91,18 @@ const ProjectImageSlider = ({
               transition={{ duration: 0.2 }}
             >
               <Image
-                radius="md"
+                fill
+                loading="lazy"
                 src={projectMedia[currentIndex]}
                 alt={`Image of project ${projectDetails?.projectURI?.name}`}
-                className="h-[20rem] w-[90vw] object-cover object-center lg:h-[27rem]"
+                className="h-[20rem] w-[90vw] rounded-md object-cover object-center lg:h-[27rem]"
               />
             </motion.div>
           </AnimatePresence>
         </div>
 
         {/* Carousel for small images */}
-        <div className="relative z-10 flex h-16 w-full items-center justify-start gap-3 bg-transparent pl-0 lg:absolute lg:bottom-0 lg:bg-dark/30 lg:pl-4 lg:backdrop-blur-xl">
+        <div className="absolute bottom-[-90px] z-10 flex h-16 w-full items-center justify-start gap-3 bg-transparent pl-0 lg:bottom-0 lg:bg-dark/30 lg:pl-4 lg:backdrop-blur-xl">
           <AnimatePresence mode="wait">
             <Carousel
               showPagination={false}
@@ -110,22 +112,22 @@ const ProjectImageSlider = ({
                   key={index}
                   initial={{ scale: 0.8, opacity: 0.6 }}
                   animate={{
-                    scale: media === projectMedia[currentIndex] ? 1 : 0.9,
+                    scale: media === projectMedia[currentIndex] ? 0.9 : 0.8,
                     opacity: media === projectMedia[currentIndex] ? 1 : 0.6,
                   }}
-                  transition={{ duration: 0.3 }}
-                  className="flex cursor-pointer items-center justify-center"
+                  transition={{ duration: 0.2 }}
+                  className={`flex h-20 w-20 cursor-pointer items-start justify-start rounded-md transition-all duration-300 ease-in-out lg:h-14 lg:w-14`}
                   onClick={() => setCurrentIndex(index)}
                 >
-                  <Image
-                    src={media}
-                    alt={`Thumbnail for project ${projectDetails?.projectURI?.name}`}
-                    className={`${
-                      media === projectMedia[currentIndex]
-                        ? "lg:w-12 lg:h-12 w-20 h-20"
-                        : "lg:h-10 lg:w-10 w-16 h-16"
-                    } rounded-md object-cover transition-all ease-in-out duration-300 min-w-20 lg:min-w-10`}
-                  />
+                  <span className="h-full w-full">
+                    <Image
+                      fill
+                      loading="lazy"
+                      src={media}
+                      alt={`Thumbnail for project ${projectDetails?.projectURI?.name}`}
+                      className="max-h-20 max-w-20 rounded-md object-cover"
+                    />
+                  </span>
                 </motion.div>
               ))}
             />
