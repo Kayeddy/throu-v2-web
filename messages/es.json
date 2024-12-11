@@ -480,6 +480,7 @@
     }
   },
   "Marketplace": {
+    "availableProjects": "Proyectos disponibles",
     "project": {
       "projectInvestmentModal": {
         "tabs": {

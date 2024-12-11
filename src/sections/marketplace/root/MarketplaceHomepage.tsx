@@ -47,7 +47,8 @@ const CardSkeletonLoader = () => {
 
 export default function MarketplaceHomepage() {
   const projectId = 0;
-  const { project, error, isPending } = useGetProject(projectId);
+  const { project, isPending } = useGetProject(projectId);
+  const t = useTranslations("Marketplace");
 
   return (
     <motion.div
@@ -57,7 +58,7 @@ export default function MarketplaceHomepage() {
       transition={{ delay: 0.1, duration: 1 }}
     >
       <h1 className="font-sen text-3xl font-bold text-primary dark:text-light lg:text-4xl">
-        Proyectos disponibles
+        {t("availableProjects")}
       </h1>
       <div className="flex w-full items-start justify-center gap-6 lg:justify-start">
         {!isPending && project ? (

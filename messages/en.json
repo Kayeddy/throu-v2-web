@@ -490,6 +490,7 @@
   },
 
   "Marketplace": {
+    "availableProjects": "Available projects",
     "project": {
       "projectInvestmentModal": {
         "tabs": {
