@@ -92,14 +92,14 @@ const TeamMember = ({
         <p className="font-jakarta text-sm">{t(role)}</p>
       </span>
 
-      <span className="mt-2 flex flex-row items-center justify-center gap-4 text-base text-primary">
+      {/* <span className="mt-2 flex flex-row items-center justify-center gap-4 text-base text-primary">
         <Link href={socials.linkedIn} target="_blank" rel="noreferrer">
           <FaLinkedin />
         </Link>
         <Link href={socials.twitter} target="_blank" rel="noreferrer">
           <FaTwitter />
         </Link>
-      </span>
+      </span> */}
     </div>
   );
 };
