@@ -41,7 +41,8 @@ Follow these steps to set up and run the project locally.
 Ensure you have the following installed:
 
 - [Node.js](https://nodejs.org/) (v14 or later recommended)
-- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- [Npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/)
+- Clerk Publishable Key and Clerk Secret Key ([Clerk](https://clerk.com/))
 
 ### Installation
 
@@ -62,6 +63,7 @@ Ensure you have the following installed:
    ```bash
    npm install
    ```
+4. Update .env.local file with Clerk keys (comments indicate which part of the file to modify)
 
 ### Running the Application
 
