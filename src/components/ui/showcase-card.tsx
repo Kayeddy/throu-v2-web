@@ -43,10 +43,10 @@ export const ShowcaseCard = ({
   };
 
   const projectCompletionPercentage = () => {
-    if (data?.projectRemainingTokens && data?.projectTotalSupply) {
+    if (data?.projectRemainingTokens !== undefined && data?.projectTotalSupply) {
       return calculateBarPercentage(
-        data?.projectTotalSupply,
-        data?.projectRemainingTokens
+        data.projectTotalSupply,
+        data.projectRemainingTokens
       );
     }
     return 0;

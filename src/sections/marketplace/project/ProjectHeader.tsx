@@ -19,43 +19,64 @@ export default function ProjectHeader({
 
   const projectCompletionPercentage = useMemo(() => {
     if (
-      projectDetails?.projectRemainingTokens &&
+      projectDetails?.projectRemainingTokens !== undefined &&
       projectDetails?.projectTotalSupply
     ) {
       return calculateBarPercentage(
-        projectDetails?.projectTotalSupply,
-        projectDetails?.projectRemainingTokens
+        projectDetails.projectTotalSupply,
+        projectDetails.projectRemainingTokens
       );
     }
     return 0;
   }, [projectDetails]);
 
   const projectAttributes = useMemo(
-    () => ({
-      tokens: projectDetails?.projectTotalSupply,
-      value: `$${projectDetails?.projectPrice}`,
-      total: `$${
-        projectDetails?.projectPrice && projectDetails?.projectTotalSupply
-          ? projectDetails?.projectTotalSupply * projectDetails?.projectPrice
-          : 0
-      }`,
-      APY: "23%",
-    }),
+    () => {
+      // The price is already in number format
+      const price = projectDetails?.projectPrice || 0;
+        
+      return {
+        tokens: projectDetails?.projectTotalSupply,
+        value: `$${price}`,
+        total: `$${
+          price && projectDetails?.projectTotalSupply
+            ? projectDetails.projectTotalSupply * price
+            : 0
+        }`,
+        APY: "23%",
+      };
+    },
     [projectDetails]
   );
 
   // Memoizing the project sales calculation
   const projectSales = useMemo(() => {
-    return calculateProjectSales(
-      projectDetails?.projectTotalSupply,
-      projectDetails?.projectRemainingTokens,
-      projectDetails?.projectPrice
-    );
+    // If all tokens are sold (remainingTokens = 0), use the total supply * price as the sales
+    if (projectDetails?.projectRemainingTokens === 0 && 
+        projectDetails?.projectTotalSupply && 
+        projectDetails?.projectPrice) {
+      return projectDetails.projectTotalSupply * projectDetails.projectPrice;
+    }
+    
+    // Otherwise calculate based on sold tokens
+    if (projectDetails?.projectTotalSupply && 
+        projectDetails?.projectRemainingTokens !== undefined && 
+        projectDetails?.projectPrice) {
+      // Calculate tokens sold
+      const tokensSold = projectDetails.projectTotalSupply - 
+        (typeof projectDetails.projectRemainingTokens === 'number' ? 
+          projectDetails.projectRemainingTokens : 0);
+      
+      return tokensSold * projectDetails.projectPrice;
+    }
+    
+    return 0;
   }, [projectDetails]);
 
   // Memoizing the total project goal calculation
   const totalProjectGoal = useMemo(() => {
     if (projectDetails?.projectTotalSupply && projectDetails?.projectPrice) {
+      // Both values are already numbers, so we can multiply directly
       return projectDetails.projectTotalSupply * projectDetails.projectPrice;
     }
     return 0;
@@ -89,7 +110,7 @@ export default function ProjectHeader({
           {t("status.label")}
         </p>
         <h3 className="font-sen text-4xl font-bold text-secondary">
-          {projectDetails?.projectActive
+          {projectDetails?.projectActive && projectCompletionPercentage < 100
             ? t("status.active")
             : t("status.completed")}
         </h3>
@@ -132,21 +153,3 @@ export default function ProjectHeader({
     </div>
   );
 }
-
-// Optimized project sales calculation with type safety and number conversion
-const calculateProjectSales = (
-  supply: number | undefined,
-  remainingTokens: number | bigint | undefined,
-  tokenPrice: number | undefined
-): number => {
-  if (supply && remainingTokens && tokenPrice) {
-    const remainingTokensNumber =
-      typeof remainingTokens === "bigint"
-        ? Number(remainingTokens)
-        : remainingTokens;
-
-    // Ensure the operation only happens with valid numbers
-    return (supply - remainingTokensNumber) * tokenPrice;
-  }
-  return 0;
-};

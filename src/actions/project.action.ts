@@ -6,7 +6,7 @@ export async function fetchMetadataFromUri(uri: string) {
   try {
     const response = await fetch(uri, {
       headers: {
-        Accept: "application/json", // Specify that you are expecting JSON
+        Accept: "application/json", // Specify that we are expecting JSON
       },
     });
 

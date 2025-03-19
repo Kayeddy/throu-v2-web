@@ -81,7 +81,8 @@ const ProjectImageSlider = ({
         <ImageSliderNavigationButton position="left" callback={swipeLeft} />
         <ImageSliderNavigationButton position="right" callback={swipeRight} />
 
-        <div className="h-[20rem] w-full lg:h-[27rem]">
+        {/* Main image container with relative positioning */}
+        <div className="relative h-[20rem] w-full lg:h-[27rem]">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
@@ -89,9 +90,11 @@ const ProjectImageSlider = ({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
+              className="relative h-full w-full"
             >
               <Image
                 fill
+                sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 33vw"
                 loading="lazy"
                 src={projectMedia[currentIndex]}
                 alt={`Image of project ${projectDetails?.projectURI?.name}`}
@@ -119,9 +122,11 @@ const ProjectImageSlider = ({
                   className={`flex h-20 w-20 cursor-pointer items-start justify-start rounded-md transition-all duration-300 ease-in-out lg:h-14 lg:w-14`}
                   onClick={() => setCurrentIndex(index)}
                 >
-                  <span className="h-full w-full">
+                  {/* Thumbnail container with relative positioning */}
+                  <span className="relative h-full w-full">
                     <Image
                       fill
+                      sizes="(max-width: 768px) 80px, 56px"
                       loading="lazy"
                       src={media}
                       alt={`Thumbnail for project ${projectDetails?.projectURI?.name}`}
@@ -147,4 +152,4 @@ const ProjectImageSlider = ({
   );
 };
 
-export default React.memo(ProjectImageSlider);
+export default ProjectImageSlider;

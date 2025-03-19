@@ -63,12 +63,12 @@ export default function ProjectImageViewerModal({
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                className="flex h-full w-full items-center justify-center"
+                className="relative flex h-full w-full items-center justify-center"
               >
                 <Image
                   src={images[currentIndex]}
                   alt={`Project Image ${currentIndex + 1}`}
-                  className="mx-auto h-full min-h-[40vh] w-full object-fill lg:w-[90%]"
+                  className="mx-auto h-full min-h-[40vh] w-full object-contain lg:w-[90%]"
                 />
               </motion.div>
             </AnimatePresence>
