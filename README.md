@@ -176,8 +176,6 @@ Throu leverages a wide range of technologies and libraries to deliver a seamless
 
 ## License
 
-## License
-
 This project is proprietary software. Unauthorized copying, modification, or distribution of the software is strictly prohibited. All rights reserved.
 
 ---
