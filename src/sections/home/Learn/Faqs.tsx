@@ -30,7 +30,7 @@ import {
   WithdrawGainsFaqsContent,
   WithdrawInvestmentFaqsContent,
 } from "@/components/home/LearnFaqsContent";
-import { Accordion, AccordionItem } from "@nextui-org/react";
+import { Accordion, AccordionItem } from "@heroui/react";
 import { useTranslations } from "next-intl";
 
 export default function Faqs() {

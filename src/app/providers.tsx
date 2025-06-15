@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import { NextUIProvider } from "@nextui-org/react";
+import { HeroUIProvider } from "@heroui/react";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider, useTheme } from "next-themes";
 import { WagmiProvider, cookieToInitialState } from "wagmi";
@@ -92,9 +92,9 @@ export function Providers({ children, locale, cookie }: ProvidersProps) {
             locale={locale}
             avatar={CustomAvatar}
           >
-            <NextUIProvider>
+            <HeroUIProvider>
               <ThemeProvider attribute="class">{children}</ThemeProvider>
-            </NextUIProvider>
+            </HeroUIProvider>
           </RainbowKitProvider>
         </QueryClientProvider>
       </WagmiProvider>

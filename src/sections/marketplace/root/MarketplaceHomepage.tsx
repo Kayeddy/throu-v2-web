@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import MarketplaceHomeCard from "@/components/ui/marketplace-home-project-card";
 import { useGetProject } from "@/utils/hooks/smart_contracts/useGetProjects";
-import { Card, Skeleton } from "@nextui-org/react";
+import { Card, Skeleton } from "@heroui/react";
 import { useTranslations } from "next-intl";
 import { Carousel } from "@/components/ui/cards-carousel";
 

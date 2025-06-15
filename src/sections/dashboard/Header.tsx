@@ -6,7 +6,7 @@ import { BsPlus as PlusIcon } from "react-icons/bs";
 import useGetUserUsdtBalance from "@/utils/hooks/smart_contracts/useGetUserUsdtBalance";
 import { useEffect, useState } from "react";
 import { convertBalanceUnits } from "@/lib/utils";
-import { Spinner } from "@nextui-org/react";
+import { Spinner } from "@heroui/react";
 
 export default function Header() {
   const [convertedUsdtBalance, setConvertedUsdtBalance] = useState("0.00");

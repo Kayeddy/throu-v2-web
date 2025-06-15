@@ -4,7 +4,7 @@ import { useFetchAllProjects } from "@/utils/hooks/smart_contracts/useFetchAllPr
 import { useGetProject } from "@/utils/hooks/smart_contracts/useGetProjects";
 import { calculateBarPercentage } from "@/lib/utils";
 import { useEffect, useState } from "react";
-import { Card, CardBody, CardFooter, Button, Spinner } from "@nextui-org/react";
+import { Card, CardBody, CardFooter, Button, Spinner } from "@heroui/react";
 
 /**
  * A component that displays all projects from the smart contract

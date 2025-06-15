@@ -1,4 +1,4 @@
-import { Card } from "@nextui-org/react";
+import { Card } from "@heroui/react";
 import { useTranslations } from "next-intl";
 
 // Define the TypeScript interface for the attributes

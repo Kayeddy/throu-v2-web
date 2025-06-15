@@ -7,7 +7,7 @@ import {
 } from "react-icons/fi";
 import { Carousel } from "@/components/ui/cards-carousel";
 import ProjectAttributesContainer from "@/components/ui/project-attributes-boxes-container";
-import { Button } from "@nextui-org/react";
+import { Button } from "@heroui/react";
 import React, { useState, useMemo, useCallback } from "react";
 import Image from "next/image";
 

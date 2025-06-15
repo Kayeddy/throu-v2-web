@@ -9,7 +9,7 @@ import {
   Chip,
   Image,
   Skeleton,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { useAccount, useBalance } from "wagmi";
 import { MdLiveHelp as HelpIcon } from "react-icons/md";
 import Link from "next/link";

@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { Button, Spinner } from "@nextui-org/react";
+import { Button, Spinner } from "@heroui/react";
 import { IoWarningOutline as TransactionErrorIcon } from "react-icons/io5";
 import { FaCheck as TransactionConfirmationIcon } from "react-icons/fa";
 import { cn } from "@/lib/utils";

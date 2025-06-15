@@ -11,7 +11,7 @@ import { useAccount, useDisconnect, useBalance, useBlockNumber } from "wagmi";
 import { emojiAvatarForAddress } from "@/utils/helpers/walletButtonStyleGenerator";
 import { MdOutlineAccountBalanceWallet as WalletIcon } from "react-icons/md";
 import { IoIosWarning as WarningIcon } from "react-icons/io";
-import { Button, Spinner } from "@nextui-org/react";
+import { Button, Spinner } from "@heroui/react";
 import { convertBalanceUnits, convertContractUnits } from "@/lib/utils";
 import { useTranslations } from "next-intl"; // Importing next-intl for translations
 

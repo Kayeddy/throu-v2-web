@@ -1,7 +1,7 @@
 "use client";
 
 import { BlurImage } from "@/components/ui/blur-image";
-import { Image } from "@nextui-org/react";
+import { Image } from "@heroui/react";
 import { useTranslations } from "next-intl";
 
 type UpdateFormat = {

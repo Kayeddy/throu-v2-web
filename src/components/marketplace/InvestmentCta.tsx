@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Button, Input } from "@nextui-org/react";
+import { Button, Input } from "@heroui/react";
 import { MdCurrencyExchange as ConversionIcon } from "react-icons/md";
 import { MdGeneratingTokens as TokenIcon } from "react-icons/md";
 import { CiDollar as UsdtIcon } from "react-icons/ci";

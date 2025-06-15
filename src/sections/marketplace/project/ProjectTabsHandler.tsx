@@ -1,4 +1,4 @@
-import { Divider, Tab, Tabs } from "@nextui-org/react";
+import { Divider, Tab, Tabs } from "@heroui/react";
 import ProjectDescriptionTab from "./ProjectDescriptionTab";
 import ProjectGalleryTab from "./ProjectGalleryTab";
 import ProjectDocumentsTab from "./projectDocumentsTab";

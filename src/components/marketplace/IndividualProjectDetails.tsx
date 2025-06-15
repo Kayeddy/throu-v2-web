@@ -4,8 +4,9 @@ import ProjectHeader from "@/sections/marketplace/project/ProjectHeader";
 import ProjectTabsHandler from "@/sections/marketplace/project/ProjectTabsHandler";
 import { useGetProject } from "@/utils/hooks/smart_contracts/useGetProjects";
 import { useEffect, useState } from "react";
-import { Card, Divider, Skeleton } from "@nextui-org/react";
+import { Card, Divider, Skeleton } from "@heroui/react";
 import { motion } from "framer-motion";
+import { ProjectPageParams } from "@/app/[locale]/marketplace/projects/[project]/page";
 
 const CardSkeletonLoader = () => {
   return (
@@ -51,7 +52,7 @@ export const projectMedia = [
 export default function IndividualProjectDetails({
   params,
 }: {
-  params: { project: string };
+  params: ProjectPageParams;
 }) {
   const [projectId, setProjectId] = useState<number | 0>(0);
 

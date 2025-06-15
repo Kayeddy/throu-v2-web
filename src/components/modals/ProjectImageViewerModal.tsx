@@ -1,6 +1,6 @@
 "use client";
 
-import { Modal, ModalContent, Image, useDisclosure } from "@nextui-org/react";
+import { Modal, ModalContent, Image, useDisclosure } from "@heroui/react";
 import { IoClose as CloseModalIcon } from "react-icons/io5";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import React, { useState } from "react";

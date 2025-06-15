@@ -1,4 +1,4 @@
-import { Button, Card } from "@nextui-org/react";
+import { Button, Card } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 

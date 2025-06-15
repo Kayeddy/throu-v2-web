@@ -1,7 +1,7 @@
 import ProjectAttributesContainer from "@/components/ui/project-attributes-boxes-container";
 import ProjectImageSlider from "@/components/ui/project-details-image-slider";
 import { calculateBarPercentage } from "@/lib/utils";
-import { Button } from "@nextui-org/button";
+import { Button } from "@heroui/button";
 import React, { useMemo } from "react";
 import { FiChevronLeft as LeftButtonIcon } from "react-icons/fi";
 import { useRouter } from "next/navigation";

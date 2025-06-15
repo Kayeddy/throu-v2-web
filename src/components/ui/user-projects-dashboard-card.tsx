@@ -1,7 +1,7 @@
 "use client";
 
 import { slugify } from "@/lib/utils";
-import { Chip } from "@nextui-org/react";
+import { Chip } from "@heroui/react";
 import { motion } from "framer-motion";
 import { BlurImage } from "./blur-image";
 import { FaRegBookmark as BookmarkIcon } from "react-icons/fa";

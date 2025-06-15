@@ -6,7 +6,7 @@ import {
   PopoverTrigger,
   PopoverContent,
   Button,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import Image from "next/image";
 import { useClerk, useUser } from "@clerk/nextjs";
 import { FaRegUser } from "react-icons/fa";

@@ -13,7 +13,7 @@ import {
   Link,
   Button,
   Skeleton,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { socialMediaItems } from "@/utils/constants";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";

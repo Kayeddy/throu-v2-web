@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@nextui-org/button";
+import { Button } from "@heroui/button";
 import Link from "next/link";
 import { useEffect, useMemo } from "react";
 import { useGetProject } from "@/utils/hooks/smart_contracts/useGetProjects";

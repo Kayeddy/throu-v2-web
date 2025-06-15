@@ -6,7 +6,7 @@ import {
   TokenizationBlogContent,
   WalletCreationGuideBlogContent,
 } from "@/components/home/LearnBlogContent";
-import { Accordion, AccordionItem } from "@nextui-org/react";
+import { Accordion, AccordionItem } from "@heroui/react";
 import { useTranslations } from "next-intl";
 
 export default function Blog() {

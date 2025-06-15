@@ -4,7 +4,7 @@ import Movements from "@/sections/dashboard/Movements";
 import Portfolio from "@/sections/dashboard/Portfolio";
 import Saved from "@/sections/dashboard/Saved";
 import { useIsMobile } from "@/utils/hooks/shared/useIsMobile";
-import { Spinner, Tab, Tabs } from "@nextui-org/react";
+import { Spinner, Tab, Tabs } from "@heroui/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState, useMemo } from "react";
 import { useTranslations } from "next-intl";

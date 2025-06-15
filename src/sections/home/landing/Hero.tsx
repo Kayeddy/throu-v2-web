@@ -1,6 +1,6 @@
 import HomeScrollIndicator from "@/components/ui/home-scroll-indicator";
-import { Button } from "@nextui-org/button";
-import { Link } from "@nextui-org/react";
+import { Button } from "@heroui/button";
+import { Link } from "@heroui/react";
 import { useLocale, useTranslations } from "next-intl";
 
 export default function Hero() {

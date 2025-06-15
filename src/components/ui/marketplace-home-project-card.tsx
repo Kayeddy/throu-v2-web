@@ -1,7 +1,7 @@
 "use client";
 
 import { calculateBarPercentage, slugify } from "@/lib/utils";
-import { Button, Chip } from "@nextui-org/react";
+import { Button, Chip } from "@heroui/react";
 import { motion } from "framer-motion";
 import { BlurImage } from "./blur-image";
 import ProjectAttributesContainer from "./project-attributes-boxes-container";

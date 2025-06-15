@@ -6,7 +6,7 @@ import {
   PopoverTrigger,
   PopoverContent,
   Button,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import clsx from "clsx";
 import { useTranslations, useLocale } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";

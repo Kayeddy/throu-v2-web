@@ -1,6 +1,6 @@
 "use client";
 
-import { Chip, Image } from "@nextui-org/react";
+import { Chip, Image } from "@heroui/react";
 import { SlLocationPin as LocationIcon } from "react-icons/sl";
 import { useTranslations } from "next-intl";
 

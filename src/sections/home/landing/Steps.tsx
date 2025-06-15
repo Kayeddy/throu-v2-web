@@ -2,7 +2,7 @@
 
 import { Carousel } from "@/components/ui/cards-carousel";
 import StepsShadowCard from "@/components/ui/steps-shadow-card";
-import { Image } from "@nextui-org/react";
+import { Image } from "@heroui/react";
 import { useLocale, useTranslations } from "next-intl";
 import { useMemo } from "react";
 

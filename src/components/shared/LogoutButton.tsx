@@ -1,5 +1,5 @@
 import { SignOutButton } from "@clerk/nextjs";
-import { Button } from "@nextui-org/button";
+import { Button } from "@heroui/button";
 import { useTranslations } from "next-intl";
 import { TbLogout2 as LogoutButtonIcon } from "react-icons/tb";
 

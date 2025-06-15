@@ -1,6 +1,6 @@
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import { sponsors } from "@/utils/constants";
-import { Button, Divider } from "@nextui-org/react";
+import { Button, Divider } from "@heroui/react";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { useMemo } from "react";

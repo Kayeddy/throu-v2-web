@@ -6,10 +6,10 @@ import { calculateBarPercentage } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { BlurImage } from "./blur-image";
 import ProjectAttributesContainer from "./project-attributes-boxes-container";
-import { Button } from "@nextui-org/button";
+import { Button } from "@heroui/button";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
-import { Chip } from "@nextui-org/react";
+import { Chip } from "@heroui/react";
 import { projectMedia } from "../marketplace/IndividualProjectDetails";
 
 interface CardData extends ProjectDetails {

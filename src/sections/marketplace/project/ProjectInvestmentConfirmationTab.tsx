@@ -1,5 +1,5 @@
 import { useIsMobile } from "@/utils/hooks/shared/useIsMobile";
-import { Divider } from "@nextui-org/react";
+import { Divider } from "@heroui/react";
 import { useTranslations } from "next-intl";
 
 interface ProjectInvestmentConfirmationTabProps {

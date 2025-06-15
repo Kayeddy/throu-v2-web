@@ -3,7 +3,7 @@
 import Blog from "@/sections/home/Learn/Blog";
 import Home from "@/sections/home/Learn/Home";
 import Faqs from "@/sections/home/Learn/Faqs";
-import { Tabs, Tab } from "@nextui-org/react";
+import { Tabs, Tab } from "@heroui/react";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { useIsMobile } from "@/utils/hooks/shared/useIsMobile";

@@ -8,7 +8,7 @@ import {
   useDisclosure,
   ButtonProps,
   Divider,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import React, {
   ReactElement,
   useCallback,
