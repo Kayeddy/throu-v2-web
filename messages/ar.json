@@ -446,6 +446,118 @@
       "value": "القيمة",
       "total": "الإجمالي",
       "apy": "العائد السنوي (APY)"
+    },
+    "solanaWalletModal": {
+      "title": "ربط المحفظة",
+      "titleDesktop": "ربط محفظة سولانا",
+      "wallets": {
+        "phantom": {
+          "description": "محفظة سولانا الأكثر شيوعاً"
+        },
+        "solflare": {
+          "description": "محفظة سولانا غنية بالميزات"
+        },
+        "coinbasewallet": {
+          "description": "محفظة كوينبيس الآمنة"
+        },
+        "torus": {
+          "description": "محفظة بتسجيل دخول اجتماعي"
+        },
+        "ledger": {
+          "description": "محفظة أجهزة"
+        }
+      },
+      "educationalContent": {
+        "title": "جديد على سولانا؟",
+        "titleDesktop": "البدء",
+        "description": "ليس لديك محفظة سولانا بعد؟ لا مشكلة! ابدأ بتحميل محفظة وإعداد حسابك.",
+        "descriptionDesktop": "قم بتحميل محفظة سولانا لبدء الاستثمار على بلوك تشين سولانا.",
+        "getWallet": "الحصول على محفظة",
+        "learnMore": "تعلم المزيد"
+      }
+    },
+    "modernWalletButton": {
+      "connect": "ربط المحفظة",
+      "connecting": "جاري الاتصال...",
+      "connected": "متصل",
+      "disconnect": "قطع الاتصال",
+      "address": "العنوان"
+    },
+    "walletModal": {
+      "title": "ربط المحفظة",
+      "chainSelection": {
+        "title": "اختيار الشبكة",
+        "description": "حدد شبكة البلوك تشين التي تريد الاتصال بها",
+        "ethereum": {
+          "title": "إيثيريوم (EVM)",
+          "description": "بوليجون، إيثيريوم الرئيسية"
+        },
+        "solana": {
+          "title": "سولانا",
+          "description": "معاملات سريعة ومنخفضة التكلفة"
+        }
+      },
+      "walletSelection": {
+        "title": "ربط المحفظة",
+        "description": "اختر محفظتك المفضلة لـ {chain}",
+        "back": "← رجوع",
+        "detected": "مكتشفة",
+        "notInstalled": "غير مثبتة",
+        "noWalletsDetected": {
+          "title": "لم يتم اكتشاف محافظ",
+          "description": "يرجى تثبيت محفظة متوافقة للمتابعة"
+        }
+      },
+      "connecting": {
+        "title": "الاتصال بـ {wallet}",
+        "back": "← رجوع",
+        "walletConnected": "تم ربط المحفظة!",
+        "proceedDescription": "تم ربط {wallet} الآن. انقر أدناه للمتابعة مع التحقق.",
+        "proceedButton": "المتابعة للتحقق",
+        "approveMessage": "يرجى الموافقة على الاتصال في محفظة {wallet}...",
+        "waitingMessage": "قد يستغرق هذا بضع لحظات"
+      },
+      "connected": {
+        "title": "تم ربط المحفظة",
+        "description": "محفظة {wallet} متصلة الآن بـ {chain}",
+        "connectedAddress": "العنوان المتصل",
+        "proceedButton": "المتابعة للتحقق"
+      },
+      "signing": {
+        "title": "تحقق من محفظتك",
+        "description": "يرجى توقيع الرسالة للتحقق من ملكية المحفظة"
+      },
+      "success": {
+        "title": "تم الاتصال بنجاح!",
+        "description": "محفظة {wallet} متصلة ومتحقق منها الآن",
+        "connectedTo": "متصل بـ {chain}",
+        "continueButton": "متابعة للتطبيق"
+      },
+      "error": {
+        "title": "فشل في الاتصال",
+        "description": "لم نتمكن من الاتصال بمحفظتك",
+        "tryAgainButton": "حاول مرة أخرى",
+        "goBackButton": "رجوع"
+      },
+      "closeLabel": "إغلاق النافذة"
+    },
+    "walletSigningVerification": {
+      "title": "تحقق من ملكية المحفظة",
+      "description": "توقيع هذه الرسالة سيثبت أن لديك ملكية الحساب المحدد.",
+      "walletAddressLabel": "عنوان المحفظة:",
+      "trustWarning": "أكد فقط إذا كنت تثق في هذا الموقع. التوقيع هو الطريقة الوحيدة التي يمكننا من خلالها معرفة أنك المالك الحقيقي للمحفظة التي تقوم بربطها.",
+      "confirmButton": "تأكيد",
+      "signingButton": "جاري التوقيع...",
+      "cancelButton": "إلغاء",
+      "defaultMessage": "مرحباً بك في Throu. التوقيع هو الطريقة الوحيدة التي يمكننا من خلالها معرفة أنك المالك الحقيقي للمحفظة التي تقوم بربطها. التوقيع هو طريقة آمنة ومشفرة لإثبات ملكية محفظتك للتطبيق.",
+      "errors": {
+        "signingFailed": "فشل التوقيع. يرجى المحاولة مرة أخرى.",
+        "userRejected": "تم رفض التوقيع. يرجى الموافقة على التوقيع للتحقق من ملكية المحفظة.",
+        "signingCancelled": "تم إلغاء التوقيع. يرجى المحاولة مرة أخرى والموافقة على طلب التوقيع.",
+        "walletNotSupported": "{walletName} لا تدعم توقيع الرسائل. يرجى تجربة محفظة أخرى.",
+        "signingTimeout": "انتهت مهلة طلب التوقيع. يرجى التأكد من أن محفظتك مفتوحة والمحاولة مرة أخرى.",
+        "walletNotConnected": "المحفظة غير متصلة. يرجى إعادة الاتصال والمحاولة مرة أخرى."
+      }
     }
   },
   "Dashboard": {

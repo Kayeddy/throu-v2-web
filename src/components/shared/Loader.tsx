@@ -1,11 +1,22 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import useLoadingStore from "@/stores/useLoadingStore";
 import AnimatedSpinner from "../ui/animated-spinner";
 import Image from "next/image";
 
 export default function Loader() {
   const isLoading = useLoadingStore((state) => state.isLoading);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Don't render anything during SSR to prevent hydration issues
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <>

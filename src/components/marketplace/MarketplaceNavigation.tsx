@@ -17,7 +17,7 @@ import {
 import { socialMediaItems } from "@/utils/constants";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
-import { WalletConnectionButton } from "../shared/WalletConnectionButton";
+import { ModernWalletButton } from "../shared/ModernWalletButton";
 import LanguageSelector from "../shared/LanguageSelector";
 import UserButtonMenu from "../shared/UserButtonMenu";
 
@@ -71,7 +71,7 @@ export const MobileMarketplaceNavigation = React.memo(
         <NavbarMenu
           className={`max-h-[70vh] overflow-hidden mt-3 flex flex-col items-center justify-around ${blurClass}`}
         >
-          <WalletConnectionButton />
+          <ModernWalletButton size="lg" className="w-full" />
           {navigationItems.map((item, index) => (
             <NavbarMenuItem
               key={`${item.name}-navigation-item-${index}`}
@@ -228,7 +228,7 @@ export const DesktopMarketplaceNavigation = React.memo(
             </Button>
           </SignedOut>
           <SignedIn>
-            <WalletConnectionButton />
+            <ModernWalletButton />
             <UserButtonMenu />
           </SignedIn>
           <LanguageSelector />

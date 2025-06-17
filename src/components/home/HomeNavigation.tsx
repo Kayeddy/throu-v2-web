@@ -17,7 +17,8 @@ import {
 import { socialMediaItems } from "@/utils/constants";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
-import { WalletConnectionButton } from "../shared/WalletConnectionButton";
+import { ModernWalletButton } from "../shared/ModernWalletButton";
+
 import LanguageSelector from "../shared/LanguageSelector";
 import UserButtonMenu from "../shared/UserButtonMenu";
 
@@ -128,6 +129,12 @@ export const MobileHomeNavigation = React.memo(
             </Link>
           </NavbarMenuItem>
 
+          <NavbarMenuItem className="flex w-full flex-col items-center justify-center gap-3">
+            <div className="w-full px-4">
+              <ModernWalletButton size="lg" className="w-full" />
+            </div>
+          </NavbarMenuItem>
+
           <div className="flex w-full flex-row items-center justify-between">
             {socialMediaItems.map((item, idx) => (
               <NavbarMenuItem
@@ -233,9 +240,9 @@ export const DesktopHomeNavigation = React.memo(
             </Button>
           </SignedOut>
           <SignedIn>
-            {/* <UserButton /> */}
             <UserButtonMenu />
           </SignedIn>
+          <ModernWalletButton />
           <LanguageSelector />
         </div>
       </div>

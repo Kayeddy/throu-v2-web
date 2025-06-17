@@ -14,12 +14,13 @@ export const useFetchAllProjects = () => {
   const [totalProjectCount, setTotalProjectCount] = useState<number>(0);
 
   // First, get the total number of projects from the contract
-  const { 
+  const {
     data: totalProjectsData,
     isError: isTotalProjectsError,
-    isLoading: isTotalProjectsLoading
+    isLoading: isTotalProjectsLoading,
   } = useReadContract({
-    address: process.env.NEXT_PUBLIC_PROJECT_ADMIN_SMART_CONTRACT_ADDRESS as `0x${string}`,
+    address: process.env
+      .NEXT_PUBLIC_PROJECT_ADMIN_SMART_CONTRACT_ADDRESS as `0x${string}`,
     abi: projectAdminAbi,
     functionName: "totalProjects",
   });
@@ -46,6 +47,6 @@ export const useFetchAllProjects = () => {
     projects,
     isLoading,
     error,
-    totalProjectCount
+    totalProjectCount,
   };
-}; 
+};

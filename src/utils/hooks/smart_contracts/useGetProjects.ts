@@ -79,14 +79,14 @@ export const useGetProject = (projectId: number) => {
 
         if (data) {
           const [projectData, uriData, remainingTokens] = data;
-          
+
           // Print the raw data from the smart contract
-          console.log('======== PROJECT DATA FROM SMART CONTRACT ========');
-          console.log('Project ID:', projectId);
-          console.log('Project Data:', projectData.result);
-          console.log('Project URI:', uriData.result);
-          console.log('Remaining Tokens:', remainingTokens.result);
-          console.log('================================================');
+          console.log("======== PROJECT DATA FROM SMART CONTRACT ========");
+          console.log("Project ID:", projectId);
+          console.log("Project Data:", projectData.result);
+          console.log("Project URI:", uriData.result);
+          console.log("Remaining Tokens:", remainingTokens.result);
+          console.log("================================================");
 
           if (typeof uriData.result === "string") {
             const metadata: ProjectURI = await fetchMetadataFromUri(

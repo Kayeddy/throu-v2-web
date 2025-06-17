@@ -22,5 +22,4 @@ const useGetUserUsdtBalance = () => {
     isLoading,
   };
 };
-
 export default useGetUserUsdtBalance;

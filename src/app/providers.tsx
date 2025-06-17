@@ -1,26 +1,35 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useEffect, useState } from "react";
 import { HeroUIProvider } from "@heroui/react";
 import { ClerkProvider } from "@clerk/nextjs";
-import { ThemeProvider, useTheme } from "next-themes";
+import { ThemeProvider } from "next-themes";
 import { WagmiProvider, cookieToInitialState } from "wagmi";
-import { darkTheme, RainbowKitProvider, Theme } from "@rainbow-me/rainbowkit";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
-import { config } from "@/lib/wagmi";
+import { getEVMConfig } from "@/lib/unified-wallet-config";
 import { ReactNode } from "react";
 import { Locale } from "@/utils/types/shared/common";
-import { CustomAvatar } from "@/components/ui/wallet-emoji-avatar";
 import { enUS, esES, frFR, arSA } from "@clerk/localizations";
-import { useLocale } from "next-intl";
+import type { Config } from "wagmi";
 
-// Application color scheme
-const appColors = {
-  primary: "#062147", // Deep blue
-  secondary: "#18A5FF", // Bright blue
-  light: "#F7FAFF", // Light background
-  dark: "#01070E", // Dark background
-};
+// Suppress WalletConnect console warnings
+if (typeof window !== "undefined") {
+  const originalWarn = console.warn;
+  console.warn = (...args) => {
+    // Filter out WalletConnect history warnings
+    if (
+      args.some(
+        (arg) =>
+          typeof arg === "string" &&
+          (arg.includes("Restore will override") ||
+            arg.includes("core/history"))
+      )
+    ) {
+      return;
+    }
+    originalWarn.apply(console, args);
+  };
+}
 
 const clerkLocalizations = {
   en: enUS,
@@ -29,37 +38,130 @@ const clerkLocalizations = {
   ar: arSA,
 };
 
-// Custom theme with dynamic attributes based on the current theme
-const useCustomRainbowKitTheme = (theme: string): Theme => {
-  return useMemo(() => {
-    const baseTheme = darkTheme({
-      accentColorForeground: appColors.light,
-    });
+// Singleton query client to prevent multiple instances
+let queryClient: QueryClient | null = null;
 
-    return {
-      ...baseTheme, // Extend the darkTheme
-      colors: {
-        ...baseTheme.colors,
-        connectButtonBackground: appColors.primary,
-        connectButtonText: appColors.light,
-        modalBackground: "rgba(0, 0, 0, 0.6)", // Semi-transparent modal background
-        modalText: appColors.light,
-        modalTextDim: appColors.light,
+const getQueryClient = () => {
+  if (!queryClient) {
+    queryClient = new QueryClient({
+      defaultOptions: {
+        queries: {
+          staleTime: 60 * 1000, // 1 minute
+          refetchOnWindowFocus: false,
+        },
       },
-      blurs: {
-        ...baseTheme.blurs,
-        modalOverlay: "blur(10px)", // Backdrop blur effect
-      },
-      fonts: {
-        ...baseTheme.fonts,
-        body: "Sen, sans-serif", // Set font to Sen
-      },
-    };
-  }, [theme]);
+    });
+  }
+  return queryClient;
 };
 
-// Query client for React Query
-const queryClient = new QueryClient();
+// EVM Providers Wrapper - Client-side only to prevent indexedDB errors
+function EVMProvidersWrapper({
+  children,
+  evmConfig,
+  cookieInitialState,
+}: {
+  children: ReactNode;
+  evmConfig: Config | null;
+  cookieInitialState: any;
+}) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Don't render EVM providers until mounted to prevent SSR issues
+  // Also don't render if evmConfig is null (server-side)
+  if (!mounted || !evmConfig) {
+    return <>{children}</>;
+  }
+
+  return (
+    <WagmiProvider config={evmConfig} initialState={cookieInitialState}>
+      <QueryClientProvider client={getQueryClient()}>
+        {children}
+      </QueryClientProvider>
+    </WagmiProvider>
+  );
+}
+
+// Solana Provider Component - properly structured
+function SolanaProvidersWrapper({ children }: { children: ReactNode }) {
+  const [mounted, setMounted] = useState(false);
+  const [solanaComponents, setSolanaComponents] = useState<any>(null);
+
+  useEffect(() => {
+    setMounted(true);
+
+    // Load Solana components after mount
+    const loadSolanaComponents = async () => {
+      try {
+        const [
+          { ConnectionProvider, WalletProvider },
+          { WalletModalProvider },
+          { WalletAdapterNetwork },
+          { clusterApiUrl },
+          { PhantomWalletAdapter },
+        ] = await Promise.all([
+          import("@solana/wallet-adapter-react"),
+          import("@solana/wallet-adapter-react-ui"),
+          import("@solana/wallet-adapter-base"),
+          import("@solana/web3.js"),
+          import("@solana/wallet-adapter-phantom"),
+        ]);
+
+        const network = WalletAdapterNetwork.Mainnet;
+        const endpoint = clusterApiUrl(network);
+
+        // Only Phantom for Solana - Coinbase Solana support is inconsistent
+        const wallets = [new PhantomWalletAdapter()];
+
+        console.log(
+          "ℹ️ Solana wallets configured: Phantom only (Coinbase Solana support is limited)"
+        );
+
+        console.log(
+          "✅ Solana wallet adapters loaded:",
+          wallets.map((w) => w.name)
+        );
+
+        setSolanaComponents({
+          ConnectionProvider,
+          WalletProvider,
+          WalletModalProvider,
+          endpoint,
+          wallets,
+        });
+      } catch (error) {
+        console.error("❌ Failed to load Solana components:", error);
+      }
+    };
+
+    loadSolanaComponents();
+  }, []);
+
+  // Don't render Solana providers until mounted and components are loaded
+  if (!mounted || !solanaComponents) {
+    return <>{children}</>;
+  }
+
+  const {
+    ConnectionProvider,
+    WalletProvider,
+    WalletModalProvider,
+    endpoint,
+    wallets,
+  } = solanaComponents;
+
+  return (
+    <ConnectionProvider endpoint={endpoint}>
+      <WalletProvider wallets={wallets} autoConnect={false}>
+        <WalletModalProvider>{children}</WalletModalProvider>
+      </WalletProvider>
+    </ConnectionProvider>
+  );
+}
 
 interface ProvidersProps {
   children: ReactNode;
@@ -68,13 +170,10 @@ interface ProvidersProps {
 }
 
 export function Providers({ children, locale, cookie }: ProvidersProps) {
-  const cookieInitialState = cookieToInitialState(config, cookie);
-
-  // Get the current theme from next-themes
-  const { theme } = useTheme();
-
-  // Use the custom theme
-  const rainbowKitTheme = useCustomRainbowKitTheme(theme || "light");
+  const evmConfig = getEVMConfig();
+  const cookieInitialState = evmConfig
+    ? cookieToInitialState(evmConfig, cookie)
+    : undefined;
 
   // Get the Clerk localization for the current locale
   const clerkLocalization = clerkLocalizations[locale] || enUS;
@@ -85,19 +184,18 @@ export function Providers({ children, locale, cookie }: ProvidersProps) {
       signUpUrl={`/${locale}/sign-up`}
       localization={clerkLocalization}
     >
-      <WagmiProvider config={config} initialState={cookieInitialState}>
-        <QueryClientProvider client={queryClient}>
-          <RainbowKitProvider
-            theme={rainbowKitTheme}
-            locale={locale}
-            avatar={CustomAvatar}
-          >
-            <HeroUIProvider>
-              <ThemeProvider attribute="class">{children}</ThemeProvider>
-            </HeroUIProvider>
-          </RainbowKitProvider>
-        </QueryClientProvider>
-      </WagmiProvider>
+      {/* EVM Wallet Providers - Client-side only */}
+      <EVMProvidersWrapper
+        evmConfig={evmConfig}
+        cookieInitialState={cookieInitialState}
+      >
+        {/* Solana Providers */}
+        <SolanaProvidersWrapper>
+          <HeroUIProvider>
+            <ThemeProvider attribute="class">{children}</ThemeProvider>
+          </HeroUIProvider>
+        </SolanaProvidersWrapper>
+      </EVMProvidersWrapper>
     </ClerkProvider>
   );
 }

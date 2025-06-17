@@ -1,4 +1,4 @@
-import { config } from "@/lib/wagmi";
+import { getEVMConfigForCore } from "@/lib/unified-wallet-config";
 import {
   writeContract,
   simulateContract,
@@ -8,6 +8,8 @@ import projectAdminAbi from "@/utils/abis/projectAdmin.json";
 import { ethers } from "ethers";
 
 export const useBuyInvestmentAmount = async (investmentAmount: number) => {
+  const config = getEVMConfigForCore();
+
   const parsedInvestmentAmount = ethers
     .parseUnits(investmentAmount.toString(), 6)
     .toString();

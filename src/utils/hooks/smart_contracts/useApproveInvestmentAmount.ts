@@ -1,4 +1,4 @@
-import { config } from "@/lib/wagmi";
+import { getEVMConfigForCore } from "@/lib/unified-wallet-config";
 import {
   writeContract,
   simulateContract,
@@ -11,6 +11,8 @@ import { polygon } from "viem/chains";
 export default async function useApproveInvestmentAmount(
   investmentAmount: number
 ) {
+  const config = getEVMConfigForCore();
+
   const parsedInvestmentAmount = ethers
     .parseUnits(investmentAmount.toString(), 6)
     .toString();

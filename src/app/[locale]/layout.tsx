@@ -78,7 +78,7 @@ export default async function RootLayout({
         {/* Theme Color */}
         <meta name="theme-color" content="#062147" />
       </head>
-      <body className={`${inter.className}`}>
+      <body className={`${inter.className}`} suppressHydrationWarning>
         <NextIntlClientProvider messages={messages}>
           <Providers locale={locale as Locale} cookie={cookie}>
             <AuthWrapper>

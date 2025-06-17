@@ -23,8 +23,7 @@ import { MdOutlineArrowBackIos as BackArrowIcon } from "react-icons/md";
 import { MdCheck } from "react-icons/md";
 import { AnimatePresence, motion } from "framer-motion";
 import BackgroundImage from "../ui/background-image";
-import { useAccount } from "wagmi";
-import { useConnectModal } from "@rainbow-me/rainbowkit";
+import { useUnifiedWalletConnection } from "@/hooks/useUnifiedWalletConnection";
 import { useIsMobile } from "@/utils/hooks/shared/useIsMobile";
 import { ProjectInvestmentTransactionLoader } from "../ui/project-investment-transaction-loader";
 import useApproveInvestmentAmount from "@/utils/hooks/smart_contracts/useApproveInvestmentAmount";
@@ -220,8 +219,16 @@ const ProjectInvestmentModal = ({
 }: ProjectInvestmentModalProps) => {
   const t = useTranslations("Marketplace.project.projectInvestmentModal");
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { address, isConnected } = useAccount();
-  const { openConnectModal } = useConnectModal();
+  const {
+    evmConnected,
+    solanaConnected,
+    evmAddress,
+    solanaAddress,
+    activeChain,
+  } = useUnifiedWalletConnection();
+
+  const isConnected = evmConnected || solanaConnected;
+  const address = activeChain === "evm" ? evmAddress : solanaAddress;
 
   const { isLoaded, isSignedIn } = useUser();
   const isMobile = useIsMobile();
@@ -271,7 +278,8 @@ const ProjectInvestmentModal = ({
 
   const handleTriggerButtonClick = () => {
     if (!isConnected || !address) {
-      openConnectModal?.(); // Open connect modal if wallet not connected
+      // Redirect to sign-up page if wallet not connected
+      window.location.href = `/${locale}/sign-up`;
     } else if (investmentAmount <= 0) {
       setShowError(true); // Show error for invalid investment amount
     } else if (!isLoaded || !isSignedIn) {

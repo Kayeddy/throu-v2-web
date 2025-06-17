@@ -446,6 +446,118 @@
       "value": "Valeur",
       "total": "Total",
       "apy": "APY"
+    },
+    "solanaWalletModal": {
+      "title": "Connecter le Portefeuille",
+      "titleDesktop": "Connecter le Portefeuille Solana",
+      "wallets": {
+        "phantom": {
+          "description": "Portefeuille Solana le plus populaire"
+        },
+        "solflare": {
+          "description": "Portefeuille Solana riche en fonctionnalités"
+        },
+        "coinbasewallet": {
+          "description": "Portefeuille sécurisé de Coinbase"
+        },
+        "torus": {
+          "description": "Portefeuille avec connexion sociale"
+        },
+        "ledger": {
+          "description": "Portefeuille matériel"
+        }
+      },
+      "educationalContent": {
+        "title": "Nouveau sur Solana?",
+        "titleDesktop": "Commencer",
+        "description": "Vous n'avez pas encore de portefeuille Solana? Pas de problème! Commencez par télécharger un portefeuille et configurer votre compte.",
+        "descriptionDesktop": "Téléchargez un portefeuille Solana pour commencer à investir sur la blockchain Solana.",
+        "getWallet": "Obtenir un Portefeuille",
+        "learnMore": "En Savoir Plus"
+      }
+    },
+    "modernWalletButton": {
+      "connect": "Connecter Portefeuille",
+      "connecting": "Connexion...",
+      "connected": "Connecté",
+      "disconnect": "Déconnecter",
+      "address": "Adresse"
+    },
+    "walletModal": {
+      "title": "Connecter Portefeuille",
+      "chainSelection": {
+        "title": "Choisir le Réseau",
+        "description": "Sélectionnez le réseau blockchain auquel vous souhaitez vous connecter",
+        "ethereum": {
+          "title": "Ethereum (EVM)",
+          "description": "Polygon, Ethereum mainnet"
+        },
+        "solana": {
+          "title": "Solana",
+          "description": "Transactions rapides et peu coûteuses"
+        }
+      },
+      "walletSelection": {
+        "title": "Connecter Portefeuille",
+        "description": "Choisissez votre portefeuille préféré pour {chain}",
+        "back": "← Retour",
+        "detected": "Détecté",
+        "notInstalled": "Non installé",
+        "noWalletsDetected": {
+          "title": "Aucun portefeuille détecté",
+          "description": "Veuillez installer un portefeuille compatible pour continuer"
+        }
+      },
+      "connecting": {
+        "title": "Connexion à {wallet}",
+        "back": "← Retour",
+        "walletConnected": "Portefeuille Connecté!",
+        "proceedDescription": "{wallet} est maintenant connecté. Cliquez ci-dessous pour procéder à la vérification.",
+        "proceedButton": "Procéder à la Vérification",
+        "approveMessage": "Veuillez approuver la connexion dans votre portefeuille {wallet}...",
+        "waitingMessage": "Cela peut prendre quelques instants"
+      },
+      "connected": {
+        "title": "Portefeuille Connecté",
+        "description": "Votre portefeuille {wallet} est maintenant connecté à {chain}",
+        "connectedAddress": "Adresse Connectée",
+        "proceedButton": "Procéder à la Vérification"
+      },
+      "signing": {
+        "title": "Vérifiez Votre Portefeuille",
+        "description": "Veuillez signer le message pour vérifier la propriété du portefeuille"
+      },
+      "success": {
+        "title": "Connexion Réussie!",
+        "description": "Votre portefeuille {wallet} est maintenant connecté et vérifié",
+        "connectedTo": "Connecté à {chain}",
+        "continueButton": "Continuer vers l'App"
+      },
+      "error": {
+        "title": "Échec de la Connexion",
+        "description": "Nous n'avons pas pu nous connecter à votre portefeuille",
+        "tryAgainButton": "Réessayer",
+        "goBackButton": "Retour"
+      },
+      "closeLabel": "Fermer le modal"
+    },
+    "walletSigningVerification": {
+      "title": "Vérifier la Propriété du Portefeuille",
+      "description": "Signer ce message prouvera que vous avez la propriété du compte sélectionné.",
+      "walletAddressLabel": "Adresse du Portefeuille :",
+      "trustWarning": "Ne confirmez que si vous faites confiance à ce site web. Signer est le seul moyen pour nous de savoir vraiment que vous êtes le propriétaire du portefeuille que vous connectez.",
+      "confirmButton": "Confirmer",
+      "signingButton": "Signature en cours...",
+      "cancelButton": "Annuler",
+      "defaultMessage": "Bienvenue sur Throu. Signer est le seul moyen pour nous de savoir vraiment que vous êtes le propriétaire du portefeuille que vous connectez. Signer est un moyen sûr et cryptographiquement sécurisé de prouver la propriété de votre portefeuille à l'application.",
+      "errors": {
+        "signingFailed": "La signature a échoué. Veuillez réessayer.",
+        "userRejected": "La signature a été rejetée. Veuillez approuver la signature pour vérifier la propriété du portefeuille.",
+        "signingCancelled": "La signature a été annulée. Veuillez réessayer et approuver la demande de signature.",
+        "walletNotSupported": "{walletName} ne prend pas en charge la signature de messages. Veuillez essayer un autre portefeuille.",
+        "signingTimeout": "La demande de signature a expiré. Veuillez vous assurer que votre portefeuille est ouvert et réessayer.",
+        "walletNotConnected": "Le portefeuille n'est pas connecté. Veuillez le reconnecter et réessayer."
+      }
     }
   },
   "Dashboard": {

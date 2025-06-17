@@ -24,8 +24,10 @@ const intlMiddleware = createMiddleware(routing);
 
 const isPublicRoute = createRouteMatcher(["/(.*)"]); // Match all routes
 
-export default clerkMiddleware((auth, req) => {
-  if (!isPublicRoute(req)) auth().protect();
+export default clerkMiddleware(async (auth, req) => {
+  if (!isPublicRoute(req)) {
+    await auth.protect();
+  }
 
   return intlMiddleware(req);
 });
@@ -37,6 +39,7 @@ export const config = {
     // Always run for API routes
     "/(api|trpc)(.*)",
     // Match locales
-    '/', '/(de|en)/:path*',
+    "/",
+    "/(de|en)/:path*",
   ],
 };
