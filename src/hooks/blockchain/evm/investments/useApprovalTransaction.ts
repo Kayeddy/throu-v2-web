@@ -1,24 +1,29 @@
-import { config } from "@/lib/wagmi-config";
 import {
-  writeContract,
-  simulateContract,
-  waitForTransactionReceipt,
-} from "@wagmi/core";
+  useWriteContract,
+  useSimulateContract,
+  useWaitForTransactionReceipt,
+} from "wagmi";
 import usdtTokenAbi from "@/utils/abis/usdtTokenAdmin.json";
 import { ethers } from "ethers";
 import { polygon } from "viem/chains";
 
-export default async function useApproveInvestmentAmount(
-  investmentAmount: number
-) {
+/**
+ * Modern wagmi v2 hook for approving USDT spending for investment transactions.
+ * Uses proper React hooks instead of legacy @wagmi/core patterns.
+ * 
+ * @param investmentAmount - The amount to approve for spending (in USDT)
+ * @returns Object with approval transaction functions and states
+ */
+export default function useApprovalTransaction(investmentAmount: number) {
   const parsedInvestmentAmount = ethers
     .parseUnits(investmentAmount.toString(), 6)
     .toString();
 
-  const { request } = await simulateContract(config, {
-    abi: usdtTokenAbi,
+  // Simulate the approval transaction
+  const { data: simulateData, error: simulateError } = useSimulateContract({
     address: process.env
       .NEXT_PUBLIC_USDT_SMART_CONTRACT_ADDRESS as `0x${string}`,
+    abi: usdtTokenAbi,
     functionName: "approve",
     args: [
       process.env
@@ -28,16 +33,52 @@ export default async function useApproveInvestmentAmount(
     chainId: polygon.id,
   });
 
-  const hash = await writeContract(config, request);
+  // Write the approval transaction
+  const {
+    data: transactionHash,
+    error: writeError,
+    isPending: isWritePending,
+    writeContract,
+  } = useWriteContract();
 
-  // TODO: Replace this with use wait for transaction so I can make use of the loading states
-  const transactionReceipt = await waitForTransactionReceipt(config, {
-    hash: hash,
+  // Wait for transaction confirmation
+  const {
+    data: transactionReceipt,
+    error: receiptError,
+    isPending: isReceiptPending,
+  } = useWaitForTransactionReceipt({
+    hash: transactionHash,
     pollingInterval: 1_000,
   });
 
+  // Function to execute the approval transaction
+  const executeApproval = () => {
+    if (simulateData?.request) {
+      writeContract(simulateData.request);
+    }
+  };
+
   return {
-    paymentApprovalTransactionHash: hash,
+    // Transaction data
+    transactionHash,
+    transactionReceipt,
+    
+    // Loading states
+    isPending: isWritePending || isReceiptPending,
+    isWritePending,
+    isReceiptPending,
+    
+    // Error states
+    error: simulateError || writeError || receiptError,
+    simulateError,
+    writeError,
+    receiptError,
+    
+    // Actions
+    executeApproval,
+    
+    // Legacy return format for backward compatibility
+    paymentApprovalTransactionHash: transactionHash,
     paymentApprovalTransactionReceipt: transactionReceipt,
   };
 }

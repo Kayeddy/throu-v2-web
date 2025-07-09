@@ -1,34 +1,54 @@
-// DISABLED: EVM Smart Contract Hook - Will be re-implemented with 2025 standards
-// import { useReadContract, useAccount } from "wagmi";
-// import { projectAdminAbi } from "@/utils/abis/projectAdmin.json";
+import { useReadContract, useAccount } from "wagmi";
+import projectAdminAbi from "@/utils/abis/projectAdmin.json";
+import { polygon } from "viem/chains";
 
 /**
- * React hook to fetch user profile investment data using the updated useReadContract.
- * It will only run if the user is connected and the address is available.
- *
- * @returns {object} - Returns user's investment data, any error encountered, and the loading state.
+ * Modern wagmi v2 hook for fetching user's investment information.
+ * Uses proper React hooks with Reown AppKit integration.
+ * 
+ * @returns Object with user's investment data and loading states
  */
-const useGetInvestorInfo = () => {
-  // TODO: Re-implement with 2025 EVM standards when needed
-  // const { address, isConnected } = useAccount();
+const useInvestorInfo = () => {
+  const { address, isConnected } = useAccount();
 
-  // const {
-  //   data: userInvestmentData,
-  //   error,
-  //   isPending,
-  // } = useReadContract({
-  //   address: process.env
-  //     .NEXT_PUBLIC_PROJECT_SMART_CONTRACT_ADDRESS as `0x${string}`,
-  //   abi: projectAdminAbi,
-  //   functionName: "getInvestorInfo",
-  //   args: address && isConnected ? [address] : undefined,
-  // });
+  const {
+    data: userInvestmentData,
+    error,
+    isLoading,
+    isPending,
+    refetch,
+  } = useReadContract({
+    address: process.env
+      .NEXT_PUBLIC_PROJECT_ADMIN_SMART_CONTRACT_ADDRESS as `0x${string}`,
+    abi: projectAdminAbi,
+    functionName: "getInvestorInfo",
+    args: address && isConnected ? [address] : undefined,
+    chainId: polygon.id,
+    // Only query if user is connected and has an address
+    query: {
+      enabled: !!(address && isConnected),
+      refetchInterval: 60_000, // Refetch every 60 seconds
+    },
+  });
 
   return {
-    userInvestmentData: null,
-    error: null,
-    isPending: false,
+    // Investment data
+    userInvestmentData,
+    
+    // Loading states
+    isLoading,
+    isPending,
+    
+    // Error state
+    error,
+    
+    // User connection state
+    isConnected,
+    userAddress: address,
+    
+    // Actions
+    refetch,
   };
 };
 
-export default useGetInvestorInfo;
+export default useInvestorInfo;
