@@ -1,6 +1,6 @@
 "use client";
 
-import { useIsMobile } from "@/utils/hooks/shared/useIsMobile";
+import { useIsMobile } from "@/hooks/ui/useIsMobile";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 

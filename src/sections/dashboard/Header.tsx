@@ -3,7 +3,7 @@ import { useUser } from "@clerk/nextjs";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { BsPlus as PlusIcon } from "react-icons/bs";
-import useGetUserUsdtBalance from "@/utils/hooks/smart_contracts/useGetUserUsdtBalance";
+import useGetUserUsdtBalance from "@/hooks/blockchain/evm/user/useUserBalance";
 import { useEffect, useState } from "react";
 import { convertBalanceUnits } from "@/lib/utils";
 import { Spinner } from "@heroui/react";

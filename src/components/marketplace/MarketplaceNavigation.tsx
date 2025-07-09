@@ -2,7 +2,7 @@
 
 import { FaRegUser } from "react-icons/fa";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import { useScrollPosition } from "@/utils/hooks/shared/useScrollPosition";
+import { useScrollPosition } from "@/hooks/ui/useScrollPosition";
 import React, { useState, useCallback } from "react";
 
 import {
@@ -17,9 +17,28 @@ import {
 import { socialMediaItems } from "@/utils/constants";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
-import { ModernWalletButton } from "../shared/ModernWalletButton";
+// import { ModernWalletButton } from "../shared/ModernWalletButton"; // REMOVED: Will be re-implemented with 2025 standards
 import LanguageSelector from "../shared/LanguageSelector";
 import UserButtonMenu from "../shared/UserButtonMenu";
+
+// Temporary wallet button placeholder
+const WalletButtonPlaceholder = ({
+  size = "md",
+  className = "",
+}: {
+  size?: string;
+  className?: string;
+}) => (
+  <Button
+    color="secondary"
+    variant="bordered"
+    size={size as any}
+    className={`font-sen ${className}`}
+    isDisabled
+  >
+    Wallet (Coming Soon)
+  </Button>
+);
 
 // Types for home navigation items
 interface NavigationItem {
@@ -71,7 +90,7 @@ export const MobileMarketplaceNavigation = React.memo(
         <NavbarMenu
           className={`max-h-[70vh] overflow-hidden mt-3 flex flex-col items-center justify-around ${blurClass}`}
         >
-          <ModernWalletButton size="lg" className="w-full" />
+          <WalletButtonPlaceholder size="lg" className="w-full" />
           {navigationItems.map((item, index) => (
             <NavbarMenuItem
               key={`${item.name}-navigation-item-${index}`}
@@ -228,7 +247,7 @@ export const DesktopMarketplaceNavigation = React.memo(
             </Button>
           </SignedOut>
           <SignedIn>
-            <ModernWalletButton />
+            <WalletButtonPlaceholder />
             <UserButtonMenu />
           </SignedIn>
           <LanguageSelector />

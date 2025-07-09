@@ -1,17 +1,13 @@
 "use client";
 
 import { useState, useMemo, useCallback } from "react";
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  Button,
-} from "@heroui/react";
+import { Popover, PopoverTrigger, PopoverContent, Button } from "@heroui/react";
 import clsx from "clsx";
 import { useTranslations, useLocale } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
 import useLoadingStore from "@/stores/useLoadingStore";
 import { AnimatePresence, motion } from "framer-motion";
+import { useReownTheme } from "@/contexts/reown-theme-context";
 
 interface Language {
   name: string;
@@ -43,6 +39,7 @@ const LanguageIconIdentifier: React.FC<LanguageIconIdentifierProps> = ({
 export default function LanguageSelector() {
   const setLoading = useLoadingStore((state) => state.setLoading);
   const removeLoading = useLoadingStore((state) => state.removeLoading);
+  const { updateReownLanguage } = useReownTheme();
   const t = useTranslations("Languages");
   const locale = useLocale();
   const router = useRouter();
@@ -108,6 +105,9 @@ export default function LanguageSelector() {
       if (newLanguage && localization !== currentLocaleFromPathname) {
         setLoading("language-change");
         try {
+          // Update Reown language immediately
+          updateReownLanguage(localization);
+
           const newPathname = pathname.replace(
             `/${currentLocaleFromPathname}`,
             `/${localization}`
@@ -127,6 +127,7 @@ export default function LanguageSelector() {
       extractLocaleFromPathname,
       setLoading,
       removeLoading,
+      updateReownLanguage,
     ]
   );
 

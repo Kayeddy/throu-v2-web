@@ -3,7 +3,7 @@ import "@/utils/styles/marketplace/project/projectGallery.module.css";
 import ProjectImageViewerModal from "@/components/modals/ProjectImageViewerModal";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { useIsMobile } from "@/utils/hooks/shared/useIsMobile";
+import { useIsMobile } from "@/hooks/ui/useIsMobile";
 
 export default function ProjectGalleryTab() {
   const t = useTranslations(

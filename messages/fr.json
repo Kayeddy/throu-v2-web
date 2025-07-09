@@ -246,9 +246,9 @@
       },
       "walletCreationGuideBlog": {
         "title": "Comment créer un portefeuille dans MetaMask?",
-        "content": "<p>Pour participer à la plateforme d'investissement immobilier tokenisé Throu, les utilisateurs doivent disposer d'un portefeuille numérique compatible. MetaMask est un portefeuille populaire et facile à utiliser qui s'intègre avec Throu et permet aux utilisateurs de gérer et de réaliser des transactions avec des jetons de propriété. Dans cet article, nous expliquerons comment créer un portefeuille dans MetaMask et comment l'utiliser pour accéder à la plateforme Throu.</p><span><b>Étape 1:</b><Link>Télécharger et installer MetaMask</Link><span><p><b>A.</b> Visitez le site officiel de MetaMask (<Link>https://metamask.io/</Link>) et cliquez sur “Télécharger”.</p><p><b>B.</b> Sélectionnez la version appropriée de MetaMask pour votre navigateur (Chrome, Firefox, Brave ou Edge) et suivez les instructions pour installer l'extension.</p></span></span><span><b>Étape 2:</b> Créer un nouveau portefeuille dans MetaMask<span><p><b>A.</b> Cliquez sur l'icône MetaMask dans la barre d'outils de votre navigateur pour ouvrir l'extension.</p><p><b>B.</b> Sélectionnez “Commencer” puis choisissez “Créer un portefeuille”.</p><p><b>C.</b> Définissez un mot de passe sécurisé et cliquez sur “Créer”.</p><p><b>D.</b> MetaMask générera une phrase de récupération de 12 mots. Assurez-vous de sauvegarder cette phrase dans un endroit sûr, car elle sera nécessaire pour récupérer votre portefeuille en cas de perte d'accès. Cliquez sur “Suivant” une fois que vous avez sauvegardé votre phrase de récupération.</p><p><b>E.</b> Confirmez votre phrase de récupération en sélectionnant les mots dans le bon ordre et cliquez sur “Confirmer”.</p><p><b>F.</b> Une fois votre phrase de récupération confirmée, votre portefeuille MetaMask sera créé et prêt à l'emploi.</p></span></span><span><b>Étape 3:</b> Connecter MetaMask à la plateforme Throu<span><p><b>A.</b> Visitez le site de Throu et inscrivez-vous ou connectez-vous à votre compte.</p><p><b>B.</b> Allez dans les paramètres de votre compte ou la page de dépôt.</p><p><b>C.</b> Sélectionnez MetaMask comme méthode de connexion de portefeuille et cliquez sur “Connecter”.</p><p><b>D.</b> Une fenêtre pop-up MetaMask apparaîtra demandant l'autorisation de connecter votre portefeuille à Throu. Cliquez sur “Connecter” pour autoriser la connexion.</p><p><b>E.</b> Une fois connecté, votre portefeuille MetaMask sera lié à votre compte Throu, vous permettant d'effectuer des transactions et de gérer vos jetons de propriété sur la plateforme.</p></span></span>",
+        "content": "<p>Pour participer à la plateforme d'investissement immobilier tokenisé Throu, les utilisateurs doivent disposer d'un portefeuille numérique compatible. MetaMask est un portefeuille populaire et facile à utiliser qui s'intègre avec Throu et permet aux utilisateurs de gérer et de réaliser des transactions avec des jetons de propriété. Dans cet article, nous expliquerons comment créer un portefeuille dans MetaMask et comment l'utiliser pour accéder à la plateforme Throu.</p><span><b>Étape 1:</b><Link>Télécharger et installer MetaMask</Link><span><p><b>A.</b> Visitez le site officiel de MetaMask (https://metamask.io/) et cliquez sur \\\"Télécharger\\\".</p><p><b>B.</b> Sélectionnez la version appropriée de MetaMask pour votre navigateur (Chrome, Firefox, Brave ou Edge) et suivez les instructions pour installer l'extension.</p></span></span><span><b>Étape 2:</b> Créer un nouveau portefeuille dans MetaMask<span><p><b>A.</b> Cliquez sur l'icône MetaMask dans la barre d'outils de votre navigateur pour ouvrir l'extension.</p><p><b>B.</b> Sélectionnez \\\"Commencer\\\" puis choisissez \\\"Créer un portefeuille\\\".</p><p><b>C.</b> Définissez un mot de passe sécurisé et cliquez sur \\\"Créer\\\".</p><p><b>D.</b> MetaMask générera une phrase de récupération de 12 mots. Assurez-vous de sauvegarder cette phrase dans un endroit sûr, car elle sera nécessaire pour récupérer votre portefeuille en cas de perte d'accès. Cliquez sur \\\"Suivant\\\" une fois que vous avez sauvegardé votre phrase de récupération.</p><p><b>E.</b> Confirmez votre phrase de récupération en sélectionnant les mots dans le bon ordre et cliquez sur \\\"Confirmer\\\".</p><p><b>F.</b> Une fois votre phrase de récupération confirmée, votre portefeuille MetaMask sera créé et prêt à l'emploi.</p></span></span><span><b>Étape 3:</b> Connecter MetaMask à la plateforme Throu<span><p><b>A.</b> Visitez le site de Throu et inscrivez-vous ou connectez-vous à votre compte.</p><p><b>B.</b> Allez dans les paramètres de votre compte ou la page de dépôt.</p><p><b>C.</b> Sélectionnez MetaMask comme méthode de connexion de portefeuille et cliquez sur \\\"Connecter\\\".</p><p><b>D.</b> Une fenêtre pop-up MetaMask apparaîtra demandant l'autorisation de connecter votre portefeuille à Throu. Cliquez sur \\\"Connecter\\\" pour autoriser la connexion.</p><p><b>E.</b> Une fois connecté, votre portefeuille MetaMask sera lié à votre compte Throu, vous permettant d'effectuer des transactions et de gérer vos jetons de propriété sur la plateforme.</p></span></span>",
         "polygonTitle": "Connecter MetaMask au réseau Polygon",
-        "polygonContent": "<p>La plateforme Throu fonctionne sur le réseau Polygon, une solution de scalabilité de couche 2 pour Ethereum. Pour interagir avec la plateforme Throu et effectuer des transactions avec des jetons de propriété, vous devrez connecter votre portefeuille MetaMask au réseau Polygon. Dans cet article, nous vous guiderons à travers le processus de configuration du réseau Polygon dans MetaMask et comment l'utiliser sur Throu.</p><span><b>Étape 1:</b> Configurer le réseau Polygon dans MetaMask<span><p><b>A.</b> Ouvrez MetaMask en cliquant sur l'icône dans la barre d'outils de votre navigateur.</p><p><b>B.</b> Cliquez sur l'icône circulaire en haut à droite et sélectionnez “Paramètres” dans le menu déroulant.</p><p><b>C.</b> Sur la page des paramètres, cliquez sur “Réseaux” puis sur “Ajouter un réseau”.</p></span></span><span><b>Étape 2:</b> Passer au réseau Polygon dans MetaMask<span><p><b>A.</b> Ouvrez MetaMask et cliquez en haut où la chaîne actuelle (par exemple, “Ethereum Mainnet”) est affichée.</p><p><b>B.</b> Sélectionnez “Polygon” dans la liste des réseaux disponibles. Maintenant, votre MetaMask sera connecté au réseau Polygon.</p></span></span><span><b>Étape 3:</b> Transférer des fonds vers le réseau Polygon<span><p><b>A.</b> Visitez le site du pont Polygon (<Link>https://wallet.polygon.technology/bridge</Link>).</p><p><b>B.</b> Sélectionnez le jeton que vous souhaitez transférer (par exemple, USDT) et le montant.</p><p><b>C.</b> Cliquez sur “Transférer” et confirmez la transaction dans MetaMask. Notez que ce processus peut prendre plusieurs minutes, voire plusieurs heures, en fonction de la congestion du réseau.</p></span></span><span><b>Étape 4:</b> Accéder à la plateforme Throu avec MetaMask sur le réseau Polygon<span><p><b>A.</b> Visitez le site Throu et inscrivez-vous ou connectez-vous à votre compte.</p><p><b>B.</b> Si vous n'avez pas encore connecté votre MetaMask à Throu, suivez les étapes dans l'exemple 4 pour connecter votre portefeuille.</p><p><b>C.</b> Assurez-vous que votre MetaMask est sur le réseau Polygon, comme indiqué à l'étape 2.</p><p><b>D.</b> Vous pouvez maintenant explorer les opportunités d'investissement sur Throu, acheter des jetons de propriété et gérer vos investissements en utilisant votre portefeuille MetaMask sur le réseau Polygon.</p></span></span>"
+        "polygonContent": "<p>La plateforme Throu fonctionne sur le réseau Polygon, une solution de scalabilité de couche 2 pour Ethereum. Pour interagir avec la plateforme Throu et effectuer des transactions avec des jetons de propriété, vous devrez connecter votre portefeuille MetaMask au réseau Polygon. Dans cet article, nous vous guiderons à travers le processus de configuration du réseau Polygon dans MetaMask et comment l'utiliser sur Throu.</p><span><b>Étape 1:</b> Configurer le réseau Polygon dans MetaMask<span><p><b>A.</b> Ouvrez MetaMask en cliquant sur l'icône dans la barre d'outils de votre navigateur.</p><p><b>B.</b> Cliquez sur l'icône circulaire en haut à droite et sélectionnez \\\"Paramètres\\\" dans le menu déroulant.</p><p><b>C.</b> Sur la page des paramètres, cliquez sur \\\"Réseaux\\\" puis sur \\\"Ajouter un réseau\\\".</p></span></span><span><b>Étape 2:</b> Passer au réseau Polygon dans MetaMask<span><p><b>A.</b> Ouvrez MetaMask et cliquez en haut où la chaîne actuelle (par exemple, \\\"Ethereum Mainnet\\\") est affichée.</p><p><b>B.</b> Sélectionnez \\\"Polygon\\\" dans la liste des réseaux disponibles. Maintenant, votre MetaMask sera connecté au réseau Polygon.</p></span></span><span><b>Étape 3:</b> Transférer des fonds vers le réseau Polygon<span><p><b>A.</b> Visitez le site du pont Polygon (https://wallet.polygon.technology/bridge).</p><p><b>B.</b> Sélectionnez le jeton que vous souhaitez transférer (par exemple, USDT) et le montant.</p><p><b>C.</b> Cliquez sur \\\"Transférer\\\" et confirmez la transaction dans MetaMask. Notez que ce processus peut prendre plusieurs minutes, voire plusieurs heures, en fonction de la congestion du réseau.</p></span></span><span><b>Étape 4:</b> Accéder à la plateforme Throu avec MetaMask sur le réseau Polygon<span><p><b>A.</b> Visitez le site Throu et inscrivez-vous ou connectez-vous à votre compte.</p><p><b>B.</b> Si vous n'avez pas encore connecté votre MetaMask à Throu, suivez les étapes dans l'exemple 4 pour connecter votre portefeuille.</p><p><b>C.</b> Assurez-vous que votre MetaMask est sur le réseau Polygon, comme indiqué à l'étape 2.</p><p><b>D.</b> Vous pouvez maintenant explorer les opportunités d'investissement sur Throu, acheter des jetons de propriété et gérer vos investissements en utilisant votre portefeuille MetaMask sur le réseau Polygon.</p></span></span>"
       },
       "stablecoinBlog": {
         "title": "Les stablecoins et leur intégration dans la plateforme Throu",
@@ -388,14 +388,24 @@
     "french": "Français",
     "arabic": "Arabe"
   },
+  "LocaleLayout": {
+    "title": "Throu - Plateforme d'Investissement Immobilier"
+  },
+  "ui": {
+    "theme": {
+      "toggle": "Changer le thème",
+      "light": "Mode clair",
+      "dark": "Mode sombre"
+    }
+  },
   "HomeNavigation": {
     "projects": "Projets",
-    "about-us": "À propos",
+    "about-us": "À Propos de Nous",
     "learn": "Apprendre",
-    "signIn": "Se connecter",
+    "signIn": "Se Connecter",
     "invest": "Investir",
-    "termsConditions": "Conditions d'utilisation",
-    "privacy": "Confidentialité"
+    "termsConditions": "Termes et Conditions",
+    "privacy": "Politique de Confidentialité"
   },
   "HomeFooter": {
     "headline": {
@@ -419,12 +429,90 @@
     },
     "links": {
       "projects": "Projets",
-      "aboutUs": "À propos de nous",
+      "aboutUs": "À Propos de Nous",
       "learn": "Apprendre",
-      "termsService": "Conditions d'utilisation",
-      "privacy": "Confidentialité"
+      "termsService": "Termes et Conditions",
+      "privacy": "Politique de Confidentialité"
     },
     "rightsReserved": "© 2023 Throu Investment. Tous droits réservés."
+  },
+  "Reown": {
+    "wallet": {
+      "connect": "Connecter Portefeuille",
+      "connecting": "Connexion...",
+      "connected": "Connecté",
+      "disconnect": "Déconnecter",
+      "account": "Compte",
+      "balance": "Solde",
+      "copy": "Copier l'Adresse",
+      "copied": "Adresse Copiée!",
+      "error": "Erreur de Connexion",
+      "retry": "Réessayer la Connexion",
+      "unsupported": "Réseau Non Supporté",
+      "switch": "Changer de Réseau",
+      "install": "Installer le Portefeuille"
+    },
+    "network": {
+      "ethereum": "Ethereum",
+      "polygon": "Polygon",
+      "solana": "Solana",
+      "arbitrum": "Arbitrum",
+      "optimism": "Optimism",
+      "base": "Base",
+      "avalanche": "Avalanche",
+      "bsc": "BNB Smart Chain",
+      "fantom": "Fantom",
+      "switch": "Changer de Réseau",
+      "switching": "Changement...",
+      "add": "Ajouter Réseau",
+      "unsupported": "Réseau Non Supporté",
+      "testnet": "Réseau de Test",
+      "mainnet": "Réseau Principal"
+    },
+    "modal": {
+      "title": "Connecter Portefeuille",
+      "subtitle": "Choisissez votre portefeuille préféré",
+      "close": "Fermer",
+      "back": "Retour",
+      "continue": "Continuer",
+      "getWallet": "Obtenir un Portefeuille",
+      "whatIsWallet": "Qu'est-ce qu'un portefeuille?",
+      "scanQR": "Scanner avec votre portefeuille",
+      "copyLink": "Copier le lien",
+      "openWallet": "Ouvrir le portefeuille",
+      "installWallet": "Installer le portefeuille",
+      "downloadWallet": "Télécharger le portefeuille"
+    },
+    "walletTypes": {
+      "metamask": "MetaMask",
+      "walletconnect": "WalletConnect",
+      "coinbase": "Coinbase Wallet",
+      "phantom": "Phantom",
+      "solflare": "Solflare",
+      "trust": "Trust Wallet",
+      "rainbow": "Rainbow",
+      "ledger": "Ledger",
+      "trezor": "Trezor",
+      "injected": "Portefeuille du Navigateur",
+      "email": "Email",
+      "social": "Connexion Sociale"
+    },
+    "errors": {
+      "connectionFailed": "Connexion échouée",
+      "networkUnsupported": "Réseau non supporté",
+      "userRejected": "L'utilisateur a rejeté la demande",
+      "walletNotFound": "Portefeuille non trouvé",
+      "insufficientFunds": "Fonds insuffisants",
+      "transactionFailed": "Transaction échouée",
+      "unknownError": "Une erreur inconnue s'est produite",
+      "tryAgain": "Réessayer",
+      "switchNetwork": "Veuillez passer à un réseau supporté"
+    },
+    "theme": {
+      "light": "Clair",
+      "dark": "Sombre",
+      "auto": "Automatique"
+    }
   },
   "Shared": {
     "userButtonMenu": {
@@ -476,25 +564,20 @@
         "learnMore": "En Savoir Plus"
       }
     },
-    "modernWalletButton": {
-      "connect": "Connecter Portefeuille",
-      "connecting": "Connexion...",
-      "connected": "Connecté",
-      "disconnect": "Déconnecter",
-      "address": "Adresse"
-    },
+
     "walletModal": {
       "title": "Connecter Portefeuille",
       "chainSelection": {
         "title": "Choisir le Réseau",
         "description": "Sélectionnez le réseau blockchain auquel vous souhaitez vous connecter",
+        "supportInfo": "Connectez-vous pour accéder à votre portefeuille et investir en toute sécurité",
         "ethereum": {
           "title": "Ethereum (EVM)",
           "description": "Polygon, Ethereum mainnet"
         },
         "solana": {
           "title": "Solana",
-          "description": "Transactions rapides et peu coûteuses"
+          "description": "Phantom, MetaMask, Solflare"
         }
       },
       "walletSelection": {
@@ -749,6 +832,94 @@
           "faqsTab": "FAQs"
         }
       }
+    }
+  },
+  "LocaleLayout": {
+    "title": "Throu - Plateforme d'Investissement Immobilier"
+  },
+  "ui": {
+    "theme": {
+      "toggle": "Changer le thème",
+      "light": "Mode clair",
+      "dark": "Mode sombre"
+    }
+  },
+  "Reown": {
+    "wallet": {
+      "connect": "Connecter Portefeuille",
+      "connecting": "Connexion...",
+      "connected": "Connecté",
+      "disconnect": "Déconnecter",
+      "account": "Compte",
+      "balance": "Solde",
+      "copy": "Copier l'Adresse",
+      "copied": "Adresse Copiée!",
+      "error": "Erreur de Connexion",
+      "retry": "Réessayer la Connexion",
+      "unsupported": "Réseau Non Supporté",
+      "switch": "Changer de Réseau",
+      "install": "Installer le Portefeuille"
+    },
+    "network": {
+      "ethereum": "Ethereum",
+      "polygon": "Polygon",
+      "solana": "Solana",
+      "arbitrum": "Arbitrum",
+      "optimism": "Optimism",
+      "base": "Base",
+      "avalanche": "Avalanche",
+      "bsc": "BNB Smart Chain",
+      "fantom": "Fantom",
+      "switch": "Changer de Réseau",
+      "switching": "Changement...",
+      "add": "Ajouter Réseau",
+      "unsupported": "Réseau Non Supporté",
+      "testnet": "Réseau de Test",
+      "mainnet": "Réseau Principal"
+    },
+    "modal": {
+      "title": "Connecter Portefeuille",
+      "subtitle": "Choisissez votre portefeuille préféré",
+      "close": "Fermer",
+      "back": "Retour",
+      "continue": "Continuer",
+      "getWallet": "Obtenir un Portefeuille",
+      "whatIsWallet": "Qu'est-ce qu'un portefeuille?",
+      "scanQR": "Scanner avec votre portefeuille",
+      "copyLink": "Copier le lien",
+      "openWallet": "Ouvrir le portefeuille",
+      "installWallet": "Installer le portefeuille",
+      "downloadWallet": "Télécharger le portefeuille"
+    },
+    "walletTypes": {
+      "metamask": "MetaMask",
+      "walletconnect": "WalletConnect",
+      "coinbase": "Coinbase Wallet",
+      "phantom": "Phantom",
+      "solflare": "Solflare",
+      "trust": "Trust Wallet",
+      "rainbow": "Rainbow",
+      "ledger": "Ledger",
+      "trezor": "Trezor",
+      "injected": "Portefeuille du Navigateur",
+      "email": "Email",
+      "social": "Connexion Sociale"
+    },
+    "errors": {
+      "connectionFailed": "Connexion échouée",
+      "networkUnsupported": "Réseau non supporté",
+      "userRejected": "L'utilisateur a rejeté la demande",
+      "walletNotFound": "Portefeuille non trouvé",
+      "insufficientFunds": "Fonds insuffisants",
+      "transactionFailed": "Transaction échouée",
+      "unknownError": "Une erreur inconnue s'est produite",
+      "tryAgain": "Réessayer",
+      "switchNetwork": "Veuillez passer à un réseau supporté"
+    },
+    "theme": {
+      "light": "Clair",
+      "dark": "Sombre",
+      "auto": "Automatique"
     }
   }
 }

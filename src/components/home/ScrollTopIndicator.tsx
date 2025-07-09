@@ -1,4 +1,4 @@
-import useScrollToTop from "@/utils/hooks/home/landing/scrollToTop";
+import useScrollToTop from "@/hooks/ui/useScrollToTop";
 import { RxDoubleArrowUp } from "react-icons/rx";
 
 export default function ScrollTopIndicator() {

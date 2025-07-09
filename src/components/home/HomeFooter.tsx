@@ -10,66 +10,15 @@ import { useLocale, useTranslations } from "next-intl";
 import { useMemo, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-// Client-side wallet connection wrapper
-function useClientSideWalletConnection() {
-  const [mounted, setMounted] = useState(false);
-  const [walletState, setWalletState] = useState({
-    evmConnected: false,
-    solanaConnected: false,
-    evmAddress: null,
-    solanaAddress: null,
-    activeChain: "evm" as const,
-  });
-
-  useEffect(() => {
-    setMounted(true);
-
-    // Try to load wallet connection hook after mount
-    const loadWalletConnection = async () => {
-      try {
-        const { useUnifiedWalletConnection } = await import(
-          "@/hooks/useUnifiedWalletConnection"
-        );
-        // We can't actually use the hook here due to React rules
-        // For now, just use safe defaults
-        console.log("Wallet connection hook available");
-      } catch (error) {
-        console.warn("Wallet connection not available:", error);
-      }
-    };
-
-    loadWalletConnection();
-  }, []);
-
-  if (!mounted) {
-    return {
-      evmConnected: false,
-      solanaConnected: false,
-      evmAddress: null,
-      solanaAddress: null,
-      activeChain: "evm" as const,
-    };
-  }
-
-  return walletState;
-}
-
 export default function Footer() {
   const t = useTranslations("HomeFooter");
   const locale = useLocale();
   const router = useRouter();
 
-  // Use safe wallet connection state
-  const {
-    evmConnected,
-    solanaConnected,
-    evmAddress,
-    solanaAddress,
-    activeChain,
-  } = useClientSideWalletConnection();
-
-  const isConnected = evmConnected || solanaConnected;
-  const address = activeChain === "evm" ? evmAddress : solanaAddress;
+  // TODO: Re-implement wallet connection with 2025 standards
+  // For now, assume no wallet connection to prevent crashes
+  const isConnected = false;
+  const address = null;
 
   const handleCreateWalletClick = () => {
     if (isConnected && address) {

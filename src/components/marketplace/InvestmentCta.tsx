@@ -6,7 +6,6 @@ import { MdCurrencyExchange as ConversionIcon } from "react-icons/md";
 import { MdGeneratingTokens as TokenIcon } from "react-icons/md";
 import { CiDollar as UsdtIcon } from "react-icons/ci";
 import ProjectInvestmentModal from "../modals/ProjectInvestmentModal";
-import { useAccount } from "wagmi";
 import { useTranslations } from "next-intl";
 
 const CtaHeader = ({
@@ -149,7 +148,11 @@ const CtaFooter = ({
 }) => {
   const t = useTranslations("Marketplace.project.investmentCta.footer");
   const [showError, setShowError] = useState(false);
-  const { address, isConnected } = useAccount();
+
+  // TODO: Re-implement wallet connection with 2025 standards
+  // For now, assuming no wallet connection to prevent crashes
+  const isConnected = false;
+  const address = null;
 
   useEffect(() => {
     if (showError) {

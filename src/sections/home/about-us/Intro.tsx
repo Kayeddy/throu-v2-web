@@ -1,4 +1,4 @@
-import { useIsMobile } from "@/utils/hooks/shared/useIsMobile";
+import { useIsMobile } from "@/hooks/ui/useIsMobile";
 import { useTranslations } from "next-intl";
 import Values from "./Values";
 import Community from "./Community";

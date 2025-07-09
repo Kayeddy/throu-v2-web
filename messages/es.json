@@ -7,6 +7,104 @@
     },
     "trendLabel": "Tendencia"
   },
+
+  "Reown": {
+    "wallet": {
+      "connectButton": "Conectar Billetera",
+      "disconnectButton": "Desconectar",
+      "connecting": "Conectando...",
+      "connected": "Conectado",
+      "switchNetwork": "Cambiar Red",
+      "wrongNetwork": "Red Incorrecta",
+      "networkSwitching": "Cambiando Red...",
+      "connectionFailed": "Conexión Fallida",
+      "tryAgain": "Intentar de Nuevo",
+      "account": "Cuenta",
+      "balance": "Saldo",
+      "copy": "Copiar Dirección",
+      "copied": "¡Dirección Copiada!",
+      "error": "Error de Conexión",
+      "retry": "Reintentar Conexión",
+      "unsupported": "Red No Soportada",
+      "install": "Instalar Billetera"
+    },
+    "networks": {
+      "polygon": "Polygon",
+      "solana": "Solana",
+      "switchTo": "Cambiar a {network}",
+      "currentNetwork": "Red Actual",
+      "supportedNetworks": "Redes Compatibles",
+      "unsupportedNetwork": "Red No Compatible"
+    },
+    "wallets": {
+      "metamask": "MetaMask",
+      "phantom": "Phantom",
+      "coinbase": "Coinbase Wallet",
+      "solflare": "Solflare",
+      "walletConnect": "WalletConnect",
+      "installed": "Instalado",
+      "notInstalled": "No Instalado",
+      "installWallet": "Instalar {wallet}",
+      "detectingWallets": "Detectando billeteras..."
+    },
+    "theme": {
+      "light": "Modo Claro",
+      "dark": "Modo Oscuro",
+      "system": "Sistema",
+      "switchingTheme": "Cambiando tema...",
+      "themeApplied": "Tema aplicado exitosamente",
+      "toggle": "Cambiar tema",
+      "auto": "Automático"
+    },
+    "errors": {
+      "walletNotFound": "Billetera no encontrada. Por favor instala {wallet} para continuar.",
+      "connectionRejected": "La conexión fue rechazada por el usuario.",
+      "networkNotSupported": "Esta red no es compatible. Por favor cambia a {network}.",
+      "transactionFailed": "La transacción falló. Por favor intenta de nuevo.",
+      "insufficientBalance": "Saldo insuficiente para completar esta transacción.",
+      "userRejectedRequest": "El usuario rechazó la solicitud.",
+      "connectionFailed": "Conexión fallida",
+      "networkUnsupported": "Red no soportada",
+      "userRejected": "Usuario rechazó la solicitud",
+      "insufficientFunds": "Fondos insuficientes",
+      "unknownError": "Ocurrió un error desconocido",
+      "tryAgain": "Intentar de nuevo",
+      "switchNetwork": "Por favor cambia a una red soportada"
+    },
+    "modal": {
+      "title": "Conectar Billetera",
+      "subtitle": "Elige tu billetera preferida para conectar",
+      "chooseNetwork": "Elegir Red",
+      "selectWallet": "Seleccionar Billetera",
+      "connecting": "Conectando a {wallet}...",
+      "approve": "Aprueba en tu billetera",
+      "success": "¡Conectado exitosamente!",
+      "close": "Cerrar",
+      "back": "Atrás",
+      "continue": "Continuar",
+      "getWallet": "Obtener Billetera",
+      "whatIsWallet": "¿Qué es una billetera?",
+      "scanQR": "Escanea con tu billetera",
+      "copyLink": "Copiar enlace",
+      "openWallet": "Abrir billetera",
+      "downloadWallet": "Descargar billetera"
+    },
+    "walletTypes": {
+      "metamask": "MetaMask",
+      "walletconnect": "WalletConnect",
+      "coinbase": "Coinbase Wallet",
+      "phantom": "Phantom",
+      "solflare": "Solflare",
+      "trust": "Trust Wallet",
+      "rainbow": "Rainbow",
+      "ledger": "Ledger",
+      "trezor": "Trezor",
+      "injected": "Billetera del Navegador",
+      "email": "Correo Electrónico",
+      "social": "Inicio de Sesión Social"
+    }
+  },
+
   "HomePage": {
     "Hero": {
       "title": "Invierte en propiedad raíz a través de la tecnología blockchain",
@@ -246,9 +344,9 @@
       },
       "walletCreationGuideBlog": {
         "title": "¿Cómo crear una wallet en MetaMask?",
-        "content": "<p>Para participar en la plataforma de inversión inmobiliaria tokenizada Throu, los usuarios deben contar con una wallet digital compatible. MetaMask es una wallet popular y fácil de usar que se integra con Throu y permite a los usuarios administrar y realizar transacciones con tokens de propiedad. En este artículo, explicaremos cómo crear una wallet en MetaMask y cómo utilizarla para acceder a la plataforma Throu.</p><span><b>Paso 1:</b><Link>Descargar e instalar MetaMask</Link><span><p><b>A.</b> Visite el sitio web oficial de MetaMask (<Link>https://metamask.io/</Link>) y haga clic en \"Descargar\".</p><p><b>B.</b> Seleccione la versión de MetaMask adecuada para su navegador (Chrome, Firefox, Brave o Edge) y siga las instrucciones para instalar la extensión.</p></span></span><span><b>Paso 2:</b> Crear una nueva wallet en MetaMask<span><p><b>A.</b> Haga clic en el ícono de MetaMask en la barra de herramientas de su navegador para abrir la extensión.</p><p><b>B.</b> Seleccione \"Empezar\" y luego elija \"Crear una wallet\".</p><p><b>C.</b> Establezca una contraseña segura y haga clic en \"Crear\".</p><p><b>D.</b> MetaMask generará una frase semilla de 12 palabras. Asegúrese de guardar esta frase en un lugar seguro, ya que será necesaria para recuperar su wallet en caso de que pierda el acceso. Haga clic en \"Siguiente\" una vez que haya respaldado su frase semilla.</p><p><b>E.</b> Confirme su frase semilla seleccionando las palabras en el orden correcto y haga clic en \"Confirmar\".</p><p><b>F.</b> Una vez que haya confirmado su frase semilla, su wallet de MetaMask estará creada y lista para usar.</p></span></span><span><b>Paso 3:</b> Conectar MetaMask con la plataforma Throu<span><p><b>A.</b> Visite el sitio web de Throu y regístrese o inicie sesión en su cuenta.</p><p><b>B.</b> Diríjase a la sección de configuración de la cuenta o a la página de depósito.</p><p><b>C.</b> Seleccione MetaMask como su método de conexión de wallet y haga clic en \"Conectar\".</p><p><b>D.</b> Se abrirá una ventana emergente de MetaMask solicitando permiso para conectar su wallet con Throu. Haga clic en \"Conectar\" para autorizar la conexión.</p><p><b>E.</b> Una vez conectada, su wallet de MetaMask estará vinculada a su cuenta de Throu, permitiéndole realizar transacciones y administrar sus tokens de propiedad en la plataforma.</p></span></span>",
+        "content": "<p>Para participar en la plataforma de inversión inmobiliaria tokenizada Throu, los usuarios deben contar con una wallet digital compatible. MetaMask es una wallet popular y fácil de usar que se integra con Throu y permite a los usuarios administrar y realizar transacciones con tokens de propiedad. En este artículo, explicaremos cómo crear una wallet en MetaMask y cómo utilizarla para acceder a la plataforma Throu.</p><span><b>Paso 1:</b><Link>Descargar e instalar MetaMask</Link><span><p><b>A.</b> Visite el sitio web oficial de MetaMask (https://metamask.io/) y haga clic en \\\"Descargar\\\".</p><p><b>B.</b> Seleccione la versión de MetaMask adecuada para su navegador (Chrome, Firefox, Brave o Edge) y siga las instrucciones para instalar la extensión.</p></span></span><span><b>Paso 2:</b> Crear una nueva wallet en MetaMask<span><p><b>A.</b> Haga clic en el ícono de MetaMask en la barra de herramientas de su navegador para abrir la extensión.</p><p><b>B.</b> Seleccione \\\"Empezar\\\" y luego elija \\\"Crear una wallet\\\".</p><p><b>C.</b> Establezca una contraseña segura y haga clic en \\\"Crear\\\".</p><p><b>D.</b> MetaMask generará una frase semilla de 12 palabras. Asegúrese de guardar esta frase en un lugar seguro, ya que será necesaria para recuperar su wallet en caso de que pierda el acceso. Haga clic en \\\"Siguiente\\\" una vez que haya respaldado su frase semilla.</p><p><b>E.</b> Confirme su frase semilla seleccionando las palabras en el orden correcto y haga clic en \\\"Confirmar\\\".</p><p><b>F.</b> Una vez que haya confirmado su frase semilla, su wallet de MetaMask estará creada y lista para usar.</p></span></span><span><b>Paso 3:</b> Conectar MetaMask con la plataforma Throu<span><p><b>A.</b> Visite el sitio web de Throu y regístrese o inicie sesión en su cuenta.</p><p><b>B.</b> Diríjase a la sección de configuración de la cuenta o a la página de depósito.</p><p><b>C.</b> Seleccione MetaMask como su método de conexión de wallet y haga clic en \\\"Conectar\\\".</p><p><b>D.</b> Se abrirá una ventana emergente de MetaMask solicitando permiso para conectar su wallet con Throu. Haga clic en \\\"Conectar\\\" para autorizar la conexión.</p><p><b>E.</b> Una vez conectada, su wallet de MetaMask estará vinculada a su cuenta de Throu, permitiéndole realizar transacciones y administrar sus tokens de propiedad en la plataforma.</p></span></span>",
         "polygonTitle": "Conectar MetaMask a la red Polygon",
-        "polygonContent": "<p>La plataforma Throu funciona en la red Polygon, una solución de escalabilidad de capa 2 para Ethereum. Para interactuar con la plataforma Throu y realizar transacciones con tokens de propiedad, deberá conectar su wallet MetaMask a la red Polygon. En este artículo, le guiaremos a través del proceso de configuración de la red Polygon en MetaMask y cómo utilizarla en Throu.</p><span><b>Paso 1:</b> Configurar la red Polygon en MetaMask<span><p><b>A.</b> Abra MetaMask haciendo clic en el ícono en la barra de herramientas de su navegador.</p><p><b>B.</b> Haga clic en el icono circular en la parte superior derecha y seleccione \"Configuración\" en el menú desplegable.</p><p><b>C.</b> En la página de configuración, haga clic en \"Redes\" y luego en \"Agregar red\".</p></span></span><span><b>Paso 2:</b> Cambiar a la red Polygon en MetaMask<span><p><b>A.</b> Abra MetaMask y haga clic en la parte superior donde muestra la red actual (por ejemplo, \"Ethereum Mainnet\").</p><p><b>B.</b> Seleccione \"Polygon\" en la lista de redes disponibles. Ahora, su MetaMask estará conectada a la red Polygon.</p></span></span><span><b>Paso 3:</b> Transferir fondos a la red Polygon<span><p><b>A.</b> Visite el sitio web del puente de Polygon (<Link>https://wallet.polygon.technology/bridge</Link>).</p><p><b>B.</b> Seleccione el token que desea transferir (por ejemplo, USDT) y la cantidad.</p><p><b>C.</b> Haga clic en \"Transferir\" y confirme la transacción en MetaMask. Tenga en cuenta que este proceso puede tardar varios minutos o incluso horas, dependiendo de la congestión en la red.</p></span></span><span><b>Paso 4:</b> Acceder a la plataforma Throu con MetaMask en la red Polygon<span><p><b>A.</b> Visite el sitio web de Throu y regístrese o inicie sesión en su cuenta.</p><p><b>B.</b> Si aún no ha conectado su MetaMask a Throu, siga los pasos en el Ejemplo 4 para conectar su wallet.</p><p><b>C.</b> Asegúrese de que su MetaMask esté en la red Polygon, como se indicó en el Paso 2.</p><p><b>D.</b> Ahora puede explorar las oportunidades de inversión en Throu, comprar tokens de propiedad y gestionar sus inversiones utilizando su wallet MetaMask en la red Polygon.</p></span></span>"
+        "polygonContent": "<p>La plataforma Throu funciona en la red Polygon, una solución de escalabilidad de capa 2 para Ethereum. Para interactuar con la plataforma Throu y realizar transacciones con tokens de propiedad, deberá conectar su wallet MetaMask a la red Polygon. En este artículo, le guiaremos a través del proceso de configuración de la red Polygon en MetaMask y cómo utilizarla en Throu.</p><span><b>Paso 1:</b> Configurar la red Polygon en MetaMask<span><p><b>A.</b> Abra MetaMask haciendo clic en el ícono en la barra de herramientas de su navegador.</p><p><b>B.</b> Haga clic en el icono circular en la parte superior derecha y seleccione \\\"Configuración\\\" en el menú desplegable.</p><p><b>C.</b> En la página de configuración, haga clic en \\\"Redes\\\" y luego en \\\"Agregar red\\\".</p></span></span><span><b>Paso 2:</b> Cambiar a la red Polygon en MetaMask<span><p><b>A.</b> Abra MetaMask y haga clic en la parte superior donde muestra la red actual (por ejemplo, \\\"Ethereum Mainnet\\\").</p><p><b>B.</b> Seleccione \\\"Polygon\\\" en la lista de redes disponibles. Ahora, su MetaMask estará conectada a la red Polygon.</p></span></span><span><b>Paso 3:</b> Transferir fondos a la red Polygon<span><p><b>A.</b> Visite el sitio web del puente de Polygon (https://wallet.polygon.technology/bridge).</p><p><b>B.</b> Seleccione el token que desea transferir (por ejemplo, USDT) y la cantidad.</p><p><b>C.</b> Haga clic en \\\"Transferir\\\" y confirme la transacción en MetaMask. Tenga en cuenta que este proceso puede tardar varios minutos o incluso horas, dependiendo de la congestión en la red.</p></span></span><span><b>Paso 4:</b> Acceder a la plataforma Throu con MetaMask en la red Polygon<span><p><b>A.</b> Visite el sitio web de Throu y regístrese o inicie sesión en su cuenta.</p><p><b>B.</b> Si aún no ha conectado su MetaMask a Throu, siga los pasos en el Ejemplo 4 para conectar su wallet.</p><p><b>C.</b> Asegúrese de que su MetaMask esté en la red Polygon, como se indicó en el Paso 2.</p><p><b>D.</b> Ahora puede explorar las oportunidades de inversión en Throu, comprar tokens de propiedad y gestionar sus inversiones utilizando su wallet MetaMask en la red Polygon.</p></span></span>"
       },
       "stablecoinBlog": {
         "title": "Stablecoins y su integración en la plataforma de Throu",
@@ -390,12 +488,12 @@
   },
   "HomeNavigation": {
     "projects": "Proyectos",
-    "about-us": "Nosotros",
-    "learn": "Aprende",
-    "signIn": "Iniciar sesión",
+    "about-us": "Acerca de Nosotros",
+    "learn": "Aprender",
+    "signIn": "Iniciar Sesión",
     "invest": "Invertir",
-    "termsConditions": "Términos del servicio",
-    "privacy": "Privacidad"
+    "termsConditions": "Términos y Condiciones",
+    "privacy": "Política de Privacidad"
   },
   "HomeFooter": {
     "headline": {
@@ -419,10 +517,10 @@
     "logoAltText": "Logotipo de Throu",
     "links": {
       "projects": "Proyectos",
-      "aboutUs": "Nosotros",
-      "learn": "Aprende",
+      "aboutUs": "Acerca de Nosotros",
+      "learn": "Aprender",
       "termsService": "Términos del servicio",
-      "privacy": "Privacidad"
+      "privacy": "Política de Privacidad"
     },
     "rightsReserved": "© 2023 Throu Investment. Todos los derechos reservados."
   },
@@ -476,40 +574,20 @@
         "learnMore": "Aprender Más"
       }
     },
-    "walletConnection": {
-      "selectWallet": "Selecciona tu billetera",
-      "selectChain": "Seleccionar cadena",
-      "connecting": "Conectar",
-      "signing": "Firmar",
-      "connected": "Conectado",
-      "multichain": "Multicadena",
-      "installed": "Instalado",
-      "chainSelectionDescription": "Esta billetera admite múltiples cadenas. Selecciona a qué cadena te gustaría conectarte",
-      "connectingTo": "Conectando a {wallet}",
-      "connectingDescription": "Haz clic en conectar en la ventana emergente de tu billetera",
-      "signMessage": "Firmar mensaje",
-      "signMessageDescription": "Haz clic en iniciar sesión en tu billetera para confirmar que eres propietario de esta billetera.",
-      "walletConnected": "Billetera conectada"
-    },
-    "modernWalletButton": {
-      "connect": "Conectar Billetera",
-      "connecting": "Conectando...",
-      "connected": "Conectado",
-      "disconnect": "Desconectar",
-      "address": "Dirección"
-    },
+
     "walletModal": {
       "title": "Conectar Billetera",
       "chainSelection": {
         "title": "Elegir Red",
         "description": "Selecciona a qué red blockchain te gustaría conectarte",
+        "supportInfo": "Conéctate para acceder a tu billetera e invertir de forma segura",
         "ethereum": {
           "title": "Ethereum (EVM)",
           "description": "Polygon, Ethereum mainnet"
         },
         "solana": {
           "title": "Solana",
-          "description": "Transacciones rápidas y de bajo costo"
+          "description": "Phantom, MetaMask, Solflare"
         }
       },
       "walletSelection": {
@@ -765,6 +843,16 @@
           "faqsTab": "Preguntas Frecuentes"
         }
       }
+    }
+  },
+  "LocaleLayout": {
+    "title": "Throu - Plataforma de Inversión Inmobiliaria"
+  },
+  "ui": {
+    "theme": {
+      "toggle": "Cambiar tema",
+      "light": "Modo claro",
+      "dark": "Modo oscuro"
     }
   }
 }

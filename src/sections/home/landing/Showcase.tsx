@@ -3,7 +3,7 @@
 import { Button } from "@heroui/button";
 import Link from "next/link";
 import { useEffect, useMemo } from "react";
-import { useGetProject } from "@/utils/hooks/smart_contracts/useGetProjects";
+import { useGetProject } from "@/hooks/blockchain/evm/projects/useProject";
 import { Carousel } from "@/components/ui/cards-carousel";
 import { ShowcaseCard } from "@/components/ui/showcase-card";
 import { useTranslations, useLocale } from "next-intl";

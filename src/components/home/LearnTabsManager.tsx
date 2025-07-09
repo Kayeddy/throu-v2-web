@@ -6,7 +6,7 @@ import Faqs from "@/sections/home/Learn/Faqs";
 import { Tabs, Tab } from "@heroui/react";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { useIsMobile } from "@/utils/hooks/shared/useIsMobile";
+import { useIsMobile } from "@/hooks/ui/useIsMobile";
 
 import { motion } from "framer-motion";
 

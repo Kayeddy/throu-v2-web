@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import PerkIconsHandler from "../home/PerkIconsHandler";
-import { useIsMobile } from "@/utils/hooks/shared/useIsMobile";
+import { useIsMobile } from "@/hooks/ui/useIsMobile";
 
 interface Perk {
   name: string;

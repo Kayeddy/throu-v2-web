@@ -2,7 +2,7 @@
 
 import { FaRegUser } from "react-icons/fa";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import { useScrollPosition } from "@/utils/hooks/shared/useScrollPosition";
+import { useScrollPosition } from "@/hooks/ui/useScrollPosition";
 import React, { useState, useCallback } from "react";
 
 import {
@@ -17,7 +17,8 @@ import {
 import { socialMediaItems } from "@/utils/constants";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
-import { ModernWalletButton } from "../shared/ModernWalletButton";
+import ReownWalletButton from "../wallet/ReownWalletButton";
+import ReownChainIndicator from "../ui/reown-chain-indicator";
 
 import LanguageSelector from "../shared/LanguageSelector";
 import UserButtonMenu from "../shared/UserButtonMenu";
@@ -129,11 +130,19 @@ export const MobileHomeNavigation = React.memo(
             </Link>
           </NavbarMenuItem>
 
-          <NavbarMenuItem className="flex w-full flex-col items-center justify-center gap-3">
-            <div className="w-full px-4">
-              <ModernWalletButton size="lg" className="w-full" />
-            </div>
-          </NavbarMenuItem>
+          <SignedIn>
+            <NavbarMenuItem className="flex w-full flex-col items-center justify-center gap-3">
+              <div className="w-full px-4">
+                <ReownWalletButton
+                  size="lg"
+                  className="w-full bg-secondary text-lights"
+                />
+              </div>
+              {/* <div className="flex justify-center">
+                <ReownChainIndicator />
+              </div> */}
+            </NavbarMenuItem>
+          </SignedIn>
 
           <div className="flex w-full flex-row items-center justify-between">
             {socialMediaItems.map((item, idx) => (
@@ -159,7 +168,7 @@ export const MobileHomeNavigation = React.memo(
           </SignedIn>
           <LanguageSelector />
 
-          <Button className="relative bg-transparent" onClick={toggleMenu}>
+          <Button className="relative bg-transparent" onPress={toggleMenu}>
             <div
               className={`h-1 w-[33px] rounded-full bg-primary absolute transition-transform ease-in-out duration-300 ${
                 isMenuOpen
@@ -240,9 +249,15 @@ export const DesktopHomeNavigation = React.memo(
             </Button>
           </SignedOut>
           <SignedIn>
-            <UserButtonMenu />
+            <div className="flex flex-row items-center gap-2">
+              <UserButtonMenu />
+              <div>
+                <ReownWalletButton />
+                {/* <ReownChainIndicator /> */}
+              </div>
+            </div>
           </SignedIn>
-          <ModernWalletButton />
+
           <LanguageSelector />
         </div>
       </div>

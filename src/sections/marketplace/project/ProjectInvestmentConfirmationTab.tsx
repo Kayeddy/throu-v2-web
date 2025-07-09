@@ -1,4 +1,4 @@
-import { useIsMobile } from "@/utils/hooks/shared/useIsMobile";
+import { useIsMobile } from "@/hooks/ui/useIsMobile";
 import { Divider } from "@heroui/react";
 import { useTranslations } from "next-intl";
 

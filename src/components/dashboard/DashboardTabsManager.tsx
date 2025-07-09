@@ -1,154 +1,113 @@
 "use client";
 
-import Movements from "@/sections/dashboard/Movements";
-import Portfolio from "@/sections/dashboard/Portfolio";
-import Saved from "@/sections/dashboard/Saved";
-import { useIsMobile } from "@/utils/hooks/shared/useIsMobile";
-import { Spinner, Tab, Tabs } from "@heroui/react";
-import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
+import { Tabs, Tab, Card, CardBody } from "@heroui/react";
 import { useTranslations } from "next-intl";
-import { useAccount } from "wagmi";
-import { useGetProject } from "@/utils/hooks/smart_contracts/useGetProjects";
-import useGetInvestorInfo from "@/utils/hooks/smart_contracts/useGetInvestorInfo";
+import { TbMessage2 } from "react-icons/tb";
+import { LuWallet } from "react-icons/lu";
+import { MdOutlineBookmark } from "react-icons/md";
+import { motion } from "framer-motion";
+import { useIsMobile } from "@/hooks/ui/useIsMobile";
 
-export default function DashboardTabsManager({
-  isSavedParam,
-}: {
-  isSavedParam: string | undefined;
-}) {
+// Component imports
+import Portfolio from "@/sections/dashboard/Portfolio";
+import Movements from "@/sections/dashboard/Movements";
+import Saved from "@/sections/dashboard/Saved";
+
+export default function DashboardTabsManager() {
   const t = useTranslations("Dashboard");
-  const projectId = 0;
-  const [selected, setSelected] = useState<string>("Portfolio");
   const isMobile = useIsMobile();
-  const { isConnected, address } = useAccount();
 
-  // Fetch project data and investor information
-  const {
-    project,
-    error: projectError,
-    isPending: isProjectPending,
-  } = useGetProject(projectId || 0);
-  const {
-    userInvestmentData,
-    error: investorError,
-    isPending: isInvestorPending,
-  } = useGetInvestorInfo();
+  // TODO: Re-implement wallet connection with 2025 standards
+  // For now, assuming no wallet connection to prevent crashes
+  const isConnected = false;
+  const address = null;
 
-  // Memoized to check if the user is a project holder
-  const isHolder = useMemo(() => {
-    return project?.projectHolders?.includes(address?.toString() ?? "");
-  }, [project, address]);
-
-  const tokensCountValue =
-    userInvestmentData && typeof userInvestmentData[0] === "bigint"
-      ? Number(userInvestmentData[0])
-      : 0;
-
-  // Fade-in animation for tab transitions
-  const fadeInAnimation = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-    exit: { opacity: 0, y: 20, transition: { duration: 0.3 } },
-  };
-
-  // Set the initial tab based on `isSavedParam`
-  useEffect(() => {
-    if (isSavedParam) {
-      setSelected("Saved");
-    }
-  }, [isSavedParam]);
-
-  const renderPortfolioContent = () => {
-    if (isProjectPending || isInvestorPending) {
-      return <Spinner color="secondary" />;
-    }
-
-    if (projectError || investorError) {
-      return (
-        <p className="text-danger-500">{t("tabs.portfolio.errorMessage")}</p>
-      );
-    }
-
-    if (!isHolder || tokensCountValue <= 0) {
-      return (
-        <p className="text-warning-500">
-          {t("tabs.portfolio.noInvestmentMessage")}
-        </p>
-      );
-    }
-
-    return (
-      <Portfolio project={project} userInvestmentData={userInvestmentData} />
-    );
-  };
-
-  const tabs = [
-    {
-      id: 1,
-      name: isMobile
-        ? t("tabs.portfolio.mobileTitle")
-        : t("tabs.portfolio.desktopTitle"),
-      key: "Portfolio",
-      content: renderPortfolioContent(),
-    },
-    {
-      id: 2,
-      name: isMobile
-        ? t("tabs.movements.mobileTitle")
-        : t("tabs.movements.desktopTitle"),
-      key: "Movements",
-      content: <Movements />,
-    },
-    {
-      id: 3,
-      name: t("tabs.saved.title"),
-      key: "Saved",
-      content: <Saved />,
-    },
-  ];
+  const [selected, setSelected] = useState<string>("portfolio");
 
   return (
-    <div className="w-full p-4 lg:p-0">
-      {isConnected ? (
-        <Tabs
-          selectedKey={selected}
-          onSelectionChange={(key) => setSelected(String(key))}
-          aria-label="Dashboard tabs"
-          color="primary"
-          variant="underlined"
-          classNames={{
-            tabList:
-              "lg:gap-[100px] gap-10 w-full relative rounded-none p-0 border-divider",
-            cursor: "w-full bg-secondary",
-            tab: "max-w-fit px-0 h-12",
-            tabContent:
-              "group-data-[selected=true]:text-secondary dark:group-data-[selected=true]:text-secondary group-data-[selected=true]:font-semibold font-jakarta text-primary dark:text-light text-base",
-          }}
+    <div className="w-full px-4 py-6 lg:px-6">
+      <Tabs
+        aria-label="Dashboard tabs"
+        selectedKey={selected}
+        onSelectionChange={(key) => setSelected(key as string)}
+        variant="underlined"
+        color="primary"
+        className="w-full"
+        classNames={{
+          tabList:
+            "gap-6 w-full relative rounded-none p-0 border-b border-divider",
+          cursor: "w-full bg-primary",
+          tab: "max-w-fit px-0 h-12",
+          tabContent: "group-data-[selected=true]:text-primary text-minimal",
+        }}
+      >
+        <Tab
+          key="portfolio"
+          title={
+            <div className="flex items-center space-x-2">
+              <LuWallet />
+              <span>{t("tabs.portfolio")}</span>
+            </div>
+          }
         >
-          {tabs.map((tab) => (
-            <Tab key={tab.key} title={tab.name}>
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={tab.key}
-                  variants={fadeInAnimation}
-                  initial="initial"
-                  animate="animate"
-                  exit="exit"
-                >
-                  {tab.content}
-                </motion.div>
-              </AnimatePresence>
-            </Tab>
-          ))}
-        </Tabs>
-      ) : (
-        <div>
-          <p className="animate-pulse font-sen text-xl text-danger-400">
-            {t("connectWalletMessage")}
-          </p>
-        </div>
-      )}
+          <Card className="bg-transparent shadow-none">
+            <CardBody className="p-0">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Portfolio project={null} userInvestmentData={null} />
+              </motion.div>
+            </CardBody>
+          </Card>
+        </Tab>
+
+        <Tab
+          key="movements"
+          title={
+            <div className="flex items-center space-x-2">
+              <TbMessage2 />
+              <span>{t("tabs.movements")}</span>
+            </div>
+          }
+        >
+          <Card className="bg-transparent shadow-none">
+            <CardBody className="p-0">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Movements />
+              </motion.div>
+            </CardBody>
+          </Card>
+        </Tab>
+
+        <Tab
+          key="saved"
+          title={
+            <div className="flex items-center space-x-2">
+              <MdOutlineBookmark />
+              <span>{t("tabs.saved")}</span>
+            </div>
+          }
+        >
+          <Card className="bg-transparent shadow-none">
+            <CardBody className="p-0">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Saved />
+              </motion.div>
+            </CardBody>
+          </Card>
+        </Tab>
+      </Tabs>
     </div>
   );
 }

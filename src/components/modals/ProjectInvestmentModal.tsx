@@ -23,11 +23,11 @@ import { MdOutlineArrowBackIos as BackArrowIcon } from "react-icons/md";
 import { MdCheck } from "react-icons/md";
 import { AnimatePresence, motion } from "framer-motion";
 import BackgroundImage from "../ui/background-image";
-import { useUnifiedWalletConnection } from "@/hooks/useUnifiedWalletConnection";
-import { useIsMobile } from "@/utils/hooks/shared/useIsMobile";
+// import { useUnifiedWalletConnection } from "@/hooks/useUnifiedWalletConnection";
+import { useIsMobile } from "@/hooks/ui/useIsMobile";
 import { ProjectInvestmentTransactionLoader } from "../ui/project-investment-transaction-loader";
-import useApproveInvestmentAmount from "@/utils/hooks/smart_contracts/useApproveInvestmentAmount";
-import { useBuyInvestmentAmount } from "@/utils/hooks/smart_contracts/useBuyInvestmentAmount";
+import useApproveInvestmentAmount from "@/hooks/blockchain/evm/investments/useApprovalTransaction";
+import { useBuyInvestmentAmount } from "@/hooks/blockchain/evm/investments/usePurchaseTransaction";
 import { isError } from "ethers";
 import { useLocale, useTranslations } from "next-intl";
 import { useUser } from "@clerk/nextjs";
@@ -219,16 +219,16 @@ const ProjectInvestmentModal = ({
 }: ProjectInvestmentModalProps) => {
   const t = useTranslations("Marketplace.project.projectInvestmentModal");
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const {
-    evmConnected,
-    solanaConnected,
-    evmAddress,
-    solanaAddress,
-    activeChain,
-  } = useUnifiedWalletConnection();
+  // const {
+  //   evmConnected,
+  //   solanaConnected,
+  //   evmAddress,
+  //   solanaAddress,
+  //   activeChain,
+  // } = useUnifiedWalletConnection();
 
-  const isConnected = evmConnected || solanaConnected;
-  const address = activeChain === "evm" ? evmAddress : solanaAddress;
+  const isConnected = false;
+  const address = false;
 
   const { isLoaded, isSignedIn } = useUser();
   const isMobile = useIsMobile();

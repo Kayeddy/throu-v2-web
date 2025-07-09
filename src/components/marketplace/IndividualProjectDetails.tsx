@@ -2,7 +2,7 @@
 
 import ProjectHeader from "@/sections/marketplace/project/ProjectHeader";
 import ProjectTabsHandler from "@/sections/marketplace/project/ProjectTabsHandler";
-import { useGetProject } from "@/utils/hooks/smart_contracts/useGetProjects";
+import { useGetProject } from "@/hooks/blockchain/evm/projects/useProject";
 import { useEffect, useState } from "react";
 import { Card, Divider, Skeleton } from "@heroui/react";
 import { motion } from "framer-motion";

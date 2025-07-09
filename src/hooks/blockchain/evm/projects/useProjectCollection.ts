@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useReadContract } from "wagmi";
 import projectAdminAbi from "@/utils/abis/projectAdmin.json";
-import { useGetProject } from "./useGetProjects";
+import { useGetProject } from "./useProject";
 
 /**
  * Custom hook to fetch all projects from the smart contract

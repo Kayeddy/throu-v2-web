@@ -1,5 +1,5 @@
 "use client";
-import { useScrollPosition } from "@/utils/hooks/shared/useScrollPosition";
+import { useScrollPosition } from "@/hooks/ui/useScrollPosition";
 import { AiOutlineArrowDown as DownArrow } from "react-icons/ai";
 import { useTranslations } from "next-intl";
 

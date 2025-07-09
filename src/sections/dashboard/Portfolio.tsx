@@ -3,7 +3,7 @@
 import { Carousel } from "@/components/ui/cards-carousel";
 import { ProjectAttributeBox } from "@/components/ui/project-attributes-boxes-container";
 import UserProjectDashboardCard from "@/components/ui/user-projects-dashboard-card";
-import useGetInvestorInfo from "@/utils/hooks/smart_contracts/useGetInvestorInfo";
+import useGetInvestorInfo from "@/hooks/blockchain/evm/user/useInvestorInfo";
 import { useTranslations } from "next-intl";
 import { useEffect } from "react";
 

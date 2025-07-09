@@ -9,9 +9,6 @@ import { Button, Spinner } from "@heroui/react";
 import { useTranslations } from "next-intl";
 import { MdOutlineAccountBalanceWallet as WalletIcon } from "react-icons/md";
 import { IoIosWarning as WarningIcon } from "react-icons/io";
-import { useDualChainStore } from "@/stores/useDualChainStore";
-import { ChainType } from "@/lib/chains";
-import { BrowserWalletDetection } from "@/lib/solana";
 
 export const PhantomConnectButton = () => {
   const t = useTranslations("Shared.walletConnectionButton");
@@ -27,134 +24,49 @@ export const PhantomConnectButton = () => {
   } = useWallet();
   const { setVisible } = useWalletModal();
 
-  // Get dual-chain store actions
-  const { connectWallet, disconnectWallet, solanaWallet } = useDualChainStore();
-
-  // Browser-based wallet detection
-  const [isPhantomBrowserInstalled, setIsPhantomBrowserInstalled] =
-    useState(false);
   const [mounted, setMounted] = useState(false);
+  const [balance, setBalance] = useState<number>(0);
 
-  // Check browser wallet installation on mount
+  // Check for mounting to prevent hydration issues
   useEffect(() => {
     setMounted(true);
-
-    const checkPhantomInstallation = async () => {
-      const isInstalled = await BrowserWalletDetection.waitForWalletInjection(
-        "phantom",
-        2000
-      );
-      setIsPhantomBrowserInstalled(isInstalled);
-    };
-
-    checkPhantomInstallation();
   }, []);
 
-  // Get wallet balance
-  const balance = useMemo(async () => {
-    if (!connected || !publicKey) return 0;
-    try {
-      const balance = await connection.getBalance(publicKey);
-      return balance / LAMPORTS_PER_SOL;
-    } catch (error) {
-      console.error("Error fetching balance:", error);
-      return 0;
+  // Get balance when connected
+  useEffect(() => {
+    if (connected && publicKey && connection) {
+      connection.getBalance(publicKey).then((balance) => {
+        setBalance(balance / LAMPORTS_PER_SOL);
+      });
     }
   }, [connected, publicKey, connection]);
 
-  // Phantom wallet specifically
+  // Find Phantom wallet
   const phantomWallet = useMemo(
-    () => wallets.find((wallet) => wallet.adapter.name === "Phantom"),
+    () => wallets.find((w) => w.adapter.name === "Phantom"),
     [wallets]
   );
 
-  // Check if Phantom is available - combine adapter state with browser detection
-  const isPhantomAvailable = useMemo(() => {
-    // If not mounted yet, don't show as available
-    if (!mounted) return false;
+  const isPhantomAvailable =
+    phantomWallet?.readyState === WalletReadyState.Installed;
 
-    // Browser-based detection is the primary check
-    if (isPhantomBrowserInstalled) return true;
-
-    // Fallback to adapter state
-    return (
-      phantomWallet?.readyState === WalletReadyState.Installed ||
-      phantomWallet?.readyState === WalletReadyState.Loadable
-    );
-  }, [mounted, isPhantomBrowserInstalled, phantomWallet]);
-
-  // Sync with dual-chain store when connection changes
-  useEffect(() => {
-    if (connected && publicKey) {
-      connectWallet(ChainType.SOLANA);
-    }
-  }, [connected, publicKey, connectWallet]);
-
-  // Handle Phantom wallet connection
   const handlePhantomConnect = useCallback(async () => {
-    if (connected) {
-      await disconnect();
-      await disconnectWallet(ChainType.SOLANA);
-      return;
-    }
+    if (!mounted) return;
 
-    // If Phantom is available, try to connect
-    if (isPhantomAvailable) {
+    try {
       if (phantomWallet) {
         select(phantomWallet.adapter.name);
-        try {
-          await connectWallet(ChainType.SOLANA);
-        } catch (error) {
-          console.error("Failed to connect Phantom wallet:", error);
-        }
       } else {
-        // Phantom is installed but adapter not found, show modal
         setVisible(true);
       }
-    } else {
-      // Phantom is not installed, redirect to download
-      if (
-        confirm(
-          "Phantom wallet is not installed. Would you like to download it?"
-        )
-      ) {
-        window.open(
-          "https://phantom.app/download",
-          "_blank",
-          "noopener,noreferrer"
-        );
-      }
+    } catch (error) {
+      console.error("Error connecting to Phantom:", error);
     }
-  }, [
-    connected,
-    disconnect,
-    disconnectWallet,
-    isPhantomAvailable,
-    phantomWallet,
-    select,
-    connectWallet,
-    setVisible,
-  ]);
+  }, [phantomWallet, select, setVisible, mounted]);
 
-  // Handle wallet modal for other Solana wallets
-  const handleWalletModal = useCallback(() => {
-    setVisible(true);
-  }, [setVisible]);
-
-  // Format Solana address
-  const formatAddress = useCallback((address: string, chars: number = 4) => {
-    return `${address.slice(0, chars)}...${address.slice(-chars)}`;
-  }, []);
-
-  // Resolve balance
-  const [resolvedBalance, setResolvedBalance] = useState<number>(0);
-  useEffect(() => {
-    if (balance instanceof Promise) {
-      balance.then(setResolvedBalance);
-    } else {
-      setResolvedBalance(balance);
-    }
-  }, [balance]);
+  const formatAddress = (address: string) => {
+    return `${address.slice(0, 4)}...${address.slice(-4)}`;
+  };
 
   // Don't render anything until mounted to avoid hydration issues
   if (!mounted) {
@@ -207,11 +119,11 @@ export const PhantomConnectButton = () => {
   return (
     <Button
       className="flex flex-row items-center justify-center bg-transparent font-jakarta text-primary dark:text-white"
-      onClick={handleWalletModal}
+      onClick={() => setVisible(true)}
     >
       <WalletIcon className="text-2xl lg:text-lg" />
       <span className="text-xl font-bold lg:text-base">
-        {resolvedBalance.toFixed(2)} SOL
+        {balance.toFixed(2)} SOL
       </span>
       <span className="text-sm opacity-75 ml-2">
         {publicKey ? formatAddress(publicKey.toString()) : ""}
