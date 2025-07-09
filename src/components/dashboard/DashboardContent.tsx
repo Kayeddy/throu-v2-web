@@ -19,7 +19,7 @@ export default function DashboardContent() {
       transition={{ delay: 0.1, duration: 1 }}
     >
       <Header />
-      <DashboardTabsManager isSavedParam={isSavedParam?.toString()} />
+      <DashboardTabsManager />
     </motion.div>
   );
 }

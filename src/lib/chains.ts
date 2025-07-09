@@ -6,8 +6,10 @@
  * Next.js 15 + React 19 compatible
  */
 
-import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import { clusterApiUrl } from "@solana/web3.js";
+
+// Solana network types (replacing WalletAdapterNetwork)
+export type SolanaNetwork = "mainnet-beta" | "devnet" | "testnet";
 
 // Chain types enum
 export enum ChainType {
@@ -54,7 +56,7 @@ export interface EVMChain extends BaseChain {
 // Solana-specific chain interface
 export interface SolanaChain extends BaseChain {
   type: ChainType.SOLANA;
-  network: WalletAdapterNetwork;
+  network: SolanaNetwork;
   rpcUrl: string;
   wsUrl?: string;
 }
@@ -114,9 +116,9 @@ export const CHAINS: Record<SupportedChainId, SupportedChain> = {
     name: "Solana Mainnet",
     type: ChainType.SOLANA,
     isTestnet: false,
-    network: WalletAdapterNetwork.Mainnet,
-    rpcUrl: clusterApiUrl(WalletAdapterNetwork.Mainnet),
-    wsUrl: clusterApiUrl(WalletAdapterNetwork.Mainnet).replace("https", "wss"),
+    network: "mainnet-beta",
+    rpcUrl: clusterApiUrl("mainnet-beta"),
+    wsUrl: clusterApiUrl("mainnet-beta").replace("https", "wss"),
     nativeCurrency: {
       name: "Solana",
       symbol: "SOL",
@@ -133,9 +135,9 @@ export const CHAINS: Record<SupportedChainId, SupportedChain> = {
     name: "Solana Devnet",
     type: ChainType.SOLANA,
     isTestnet: true,
-    network: WalletAdapterNetwork.Devnet,
-    rpcUrl: clusterApiUrl(WalletAdapterNetwork.Devnet),
-    wsUrl: clusterApiUrl(WalletAdapterNetwork.Devnet).replace("https", "wss"),
+    network: "devnet",
+    rpcUrl: clusterApiUrl("devnet"),
+    wsUrl: clusterApiUrl("devnet").replace("https", "wss"),
     nativeCurrency: {
       name: "Solana",
       symbol: "SOL",
@@ -152,9 +154,9 @@ export const CHAINS: Record<SupportedChainId, SupportedChain> = {
     name: "Solana Testnet",
     type: ChainType.SOLANA,
     isTestnet: true,
-    network: WalletAdapterNetwork.Testnet,
-    rpcUrl: clusterApiUrl(WalletAdapterNetwork.Testnet),
-    wsUrl: clusterApiUrl(WalletAdapterNetwork.Testnet).replace("https", "wss"),
+    network: "testnet",
+    rpcUrl: clusterApiUrl("testnet"),
+    wsUrl: clusterApiUrl("testnet").replace("https", "wss"),
     nativeCurrency: {
       name: "Solana",
       symbol: "SOL",

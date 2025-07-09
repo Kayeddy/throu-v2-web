@@ -1,6 +1,6 @@
 "use client";
 
-import { useFetchAllProjects } from "@/utils/hooks/smart_contracts/useFetchAllProjects";
+import { useFetchAllProjects } from "@/hooks/blockchain/evm/projects/useProjectCollection";
 import { useGetProject } from "@/hooks/blockchain/evm/projects/useProject";
 import { calculateBarPercentage } from "@/lib/utils";
 import { useEffect, useState } from "react";

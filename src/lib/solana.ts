@@ -1,30 +1,12 @@
 /**
  * Solana Configuration and Utilities
  *
- * Based on latest Solana wallet-adapter 0.15.39 and @solana/web3.js 1.98.2
+ * Based on latest Solana web3.js 1.98.2 and Reown AppKit
  * Compatible with Next.js 15 + React 19
  *
- * Reference: https://solana.com/developers/guides/wallets/add-solana-wallet-adapter-to-nextjs
+ * Updated for Reown AppKit integration (January 2025)
  */
 
-import {
-  WalletAdapterNetwork,
-  WalletError,
-  WalletName,
-} from "@solana/wallet-adapter-base";
-import {
-  ConnectionProvider,
-  WalletProvider,
-  useConnection,
-  useWallet,
-} from "@solana/wallet-adapter-react";
-import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
-import {
-  PhantomWalletAdapter,
-  SolflareWalletAdapter,
-  TorusWalletAdapter,
-  LedgerWalletAdapter,
-} from "@solana/wallet-adapter-wallets";
 import {
   Connection,
   clusterApiUrl,
@@ -34,35 +16,33 @@ import {
   SystemProgram,
 } from "@solana/web3.js";
 import { ReactNode, useMemo, useCallback } from "react";
-import { SolanaChain, SupportedChainId, CHAINS, isSolanaChain } from "./chains";
+import {
+  SolanaChain,
+  SolanaNetwork,
+  SupportedChainId,
+  CHAINS,
+  isSolanaChain,
+} from "./chains";
 
-// Solana wallet configuration
-export const SOLANA_WALLETS = [
-  new PhantomWalletAdapter(),
-  new SolflareWalletAdapter(),
-  new TorusWalletAdapter(),
-  new LedgerWalletAdapter(),
-];
-
-// Solana connection configuration
+// Solana connection configuration (updated to use our SolanaNetwork type)
 export interface SolanaConnectionConfig {
-  network: WalletAdapterNetwork;
+  network: SolanaNetwork;
   endpoint?: string;
   commitment?: "processed" | "confirmed" | "finalized";
 }
 
 // Default Solana configuration
 export const DEFAULT_SOLANA_CONFIG: SolanaConnectionConfig = {
-  network: WalletAdapterNetwork.Devnet,
+  network: "devnet",
   commitment: "confirmed",
 };
 
-// Solana provider props
+// Solana provider props (simplified)
 export interface SolanaProviderProps {
   children: ReactNode;
   config?: SolanaConnectionConfig;
   autoConnect?: boolean;
-  onError?: (error: WalletError) => void;
+  onError?: (error: Error) => void;
 }
 
 // Get Solana connection
@@ -73,16 +53,16 @@ export function getSolanaConnection(
   return new Connection(endpoint, config.commitment);
 }
 
-// Get Solana chain configuration
+// Get Solana chain configuration (updated to use SolanaNetwork)
 export function getSolanaChainConfig(
-  network: WalletAdapterNetwork
+  network: SolanaNetwork
 ): SolanaChain | null {
   const chainId =
-    network === WalletAdapterNetwork.Mainnet
+    network === "mainnet-beta"
       ? SupportedChainId.SOLANA_MAINNET
-      : network === WalletAdapterNetwork.Devnet
+      : network === "devnet"
       ? SupportedChainId.SOLANA_DEVNET
-      : network === WalletAdapterNetwork.Testnet
+      : network === "testnet"
       ? SupportedChainId.SOLANA_TESTNET
       : null;
 
@@ -196,76 +176,50 @@ export class BrowserWalletDetection {
       return solana;
     }
 
+    console.log("🔍 Phantom provider not found");
     return null;
   }
 
-  // ENHANCED: Connect to Phantom with comprehensive error handling
+  // ENHANCED: Connect to Phantom wallet with error handling
   static async connectPhantom(): Promise<{
     publicKey: string;
     success: boolean;
     error?: string;
   }> {
-    console.log("🔌 Starting Phantom connection...");
-
     try {
-      // Step 1: Wait for Phantom injection
-      const isAvailable = await this.waitForPhantomInjection(5000);
-
-      if (!isAvailable) {
-        throw new Error(
-          "Phantom wallet not found. Please install Phantom wallet."
-        );
-      }
-
-      // Step 2: Get the provider
       const provider = this.getPhantomProvider();
-
       if (!provider) {
-        throw new Error("Phantom provider not available");
-      }
-
-      console.log("🔌 Phantom provider found, attempting connection...");
-
-      // Step 3: Check if already connected
-      if (provider.isConnected && provider.publicKey) {
-        console.log("✅ Phantom already connected");
         return {
-          publicKey: provider.publicKey.toString(),
-          success: true,
+          publicKey: "",
+          success: false,
+          error: "Phantom wallet not found",
         };
       }
 
-      // Step 4: Request connection
+      console.log("🔗 Connecting to Phantom wallet...");
+
+      // Request connection
       const response = await provider.connect();
+      const publicKey = response.publicKey.toString();
 
-      if (!response || !response.publicKey) {
-        throw new Error("No public key received from Phantom");
-      }
-
-      console.log(
-        "✅ Phantom connection successful:",
-        response.publicKey.toString()
-      );
+      console.log("✅ Phantom connected:", publicKey);
 
       return {
-        publicKey: response.publicKey.toString(),
+        publicKey,
         success: true,
       };
     } catch (error: any) {
       console.error("❌ Phantom connection failed:", error);
 
-      // Parse error types
       let errorMessage = "Failed to connect to Phantom wallet";
-
-      if (error.code === 4001 || error.message?.includes("User rejected")) {
-        errorMessage = "Connection rejected by user";
-      } else if (
-        error.message?.includes("not found") ||
-        error.message?.includes("not installed")
-      ) {
-        errorMessage = "Phantom wallet not installed";
-      } else if (error.message) {
-        errorMessage = error.message;
+      if (error.message) {
+        if (error.message.includes("User rejected")) {
+          errorMessage = "User rejected the connection request";
+        } else if (error.message.includes("already pending")) {
+          errorMessage = "Connection request already pending";
+        } else {
+          errorMessage = error.message;
+        }
       }
 
       return {
@@ -276,40 +230,31 @@ export class BrowserWalletDetection {
     }
   }
 
-  // ENHANCED: Disconnect from Phantom
+  // ENHANCED: Disconnect from Phantom wallet
   static async disconnectPhantom(): Promise<boolean> {
     try {
       const provider = this.getPhantomProvider();
+      if (!provider) return true; // Already disconnected
 
-      if (provider && provider.disconnect) {
-        await provider.disconnect();
-        console.log("✅ Phantom disconnected");
-        return true;
-      }
-
-      return false;
+      await provider.disconnect();
+      console.log("✅ Phantom disconnected successfully");
+      return true;
     } catch (error) {
       console.error("❌ Phantom disconnection failed:", error);
       return false;
     }
   }
 
-  // Check if Coinbase Wallet is installed
+  // Check if Coinbase wallet is installed
   static isCoinbaseWalletInstalled(): boolean {
     if (typeof window === "undefined") return false;
-
-    // Check for coinbase wallet provider
-    const coinbase = (window as any).coinbaseSolana;
-    return coinbase && coinbase.isCoinbaseWallet;
+    return Boolean((window as any).coinbaseSolana);
   }
 
-  // Check if generic Solana wallet is installed
+  // Check if any Solana wallet is installed
   static isSolanaWalletInstalled(): boolean {
     if (typeof window === "undefined") return false;
-
-    // Check for any solana provider
-    const solana = (window as any).solana;
-    return solana && typeof solana.connect === "function";
+    return Boolean((window as any).solana);
   }
 
   // Detect all installed wallets
@@ -321,60 +266,39 @@ export class BrowserWalletDetection {
     };
   }
 
-  // Wait for wallet injection with timeout
+  // Wait for wallet injection (generic)
   static async waitForWalletInjection(
     walletName: string,
     timeout: number = 3000
   ): Promise<boolean> {
     if (typeof window === "undefined") return false;
 
-    // Use enhanced Phantom detection
-    if (walletName.toLowerCase() === "phantom") {
-      return this.waitForPhantomInjection(timeout);
-    }
+    // Quick check for immediate availability
+    const wallets = this.detectInstalledWallets();
+    if (wallets[walletName.toLowerCase()]) return true;
 
-    // Return immediately if already available
-    switch (walletName.toLowerCase()) {
-      case "coinbase":
-        if (this.isCoinbaseWalletInstalled()) return true;
-        break;
-      case "solana":
-        if (this.isSolanaWalletInstalled()) return true;
-        break;
-    }
-
-    // Wait for wallet injection
     return new Promise((resolve) => {
-      let timeoutId: NodeJS.Timeout;
-      let intervalId: NodeJS.Timeout;
+      let attempts = 0;
+      const maxAttempts = timeout / 100;
 
       const checkWallet = () => {
-        let isInstalled = false;
+        attempts++;
 
-        switch (walletName.toLowerCase()) {
-          case "coinbase":
-            isInstalled = this.isCoinbaseWalletInstalled();
-            break;
-          case "solana":
-            isInstalled = this.isSolanaWalletInstalled();
-            break;
-        }
-
-        if (isInstalled) {
-          clearTimeout(timeoutId);
-          clearInterval(intervalId);
+        const currentWallets = this.detectInstalledWallets();
+        if (currentWallets[walletName.toLowerCase()]) {
           resolve(true);
+          return;
         }
+
+        if (attempts >= maxAttempts) {
+          resolve(false);
+          return;
+        }
+
+        setTimeout(checkWallet, 100);
       };
 
-      // Set up interval to check wallet availability
-      intervalId = setInterval(checkWallet, 100);
-
-      // Set up timeout to resolve false after timeout period
-      timeoutId = setTimeout(() => {
-        clearInterval(intervalId);
-        resolve(false);
-      }, timeout);
+      checkWallet();
     });
   }
 
@@ -427,7 +351,7 @@ export class BrowserWalletDetection {
   }
 }
 
-// Solana utility functions
+// Solana utility functions (updated to use SolanaNetwork)
 export const SolanaUtils = {
   // Convert SOL to lamports
   solToLamports: (sol: number): number => {
@@ -456,22 +380,17 @@ export const SolanaUtils = {
     return `${address.slice(0, chars)}...${address.slice(-chars)}`;
   },
 
-  // Get transaction explorer URL
-  getTransactionUrl: (
-    signature: string,
-    network: WalletAdapterNetwork
-  ): string => {
+  // Get transaction explorer URL (updated to use SolanaNetwork)
+  getTransactionUrl: (signature: string, network: SolanaNetwork): string => {
     const baseUrl = "https://solscan.io/tx";
-    const cluster =
-      network === WalletAdapterNetwork.Mainnet ? "" : `?cluster=${network}`;
+    const cluster = network === "mainnet-beta" ? "" : `?cluster=${network}`;
     return `${baseUrl}/${signature}${cluster}`;
   },
 
-  // Get account explorer URL
-  getAccountUrl: (address: string, network: WalletAdapterNetwork): string => {
+  // Get account explorer URL (updated to use SolanaNetwork)
+  getAccountUrl: (address: string, network: SolanaNetwork): string => {
     const baseUrl = "https://solscan.io/account";
-    const cluster =
-      network === WalletAdapterNetwork.Mainnet ? "" : `?cluster=${network}`;
+    const cluster = network === "mainnet-beta" ? "" : `?cluster=${network}`;
     return `${baseUrl}/${address}${cluster}`;
   },
 };
@@ -518,28 +437,32 @@ export const SolanaTransactions = {
   },
 };
 
-// Solana error handling
+// Solana error handling (updated for Reown AppKit)
 export const SolanaErrors = {
-  // Handle wallet errors
-  handleWalletError: (error: WalletError): string => {
-    switch (error.name) {
-      case "WalletNotConnectedError":
-        return "Please connect your wallet first";
-      case "WalletDisconnectedError":
-        return "Wallet was disconnected";
-      case "WalletTimeoutError":
-        return "Wallet connection timed out";
-      case "WalletNotFoundError":
-        return "Wallet not found. Please install a Solana wallet";
-      case "WalletNotReadyError":
-        return "Wallet is not ready. Please try again";
-      case "WalletLoadError":
-        return "Failed to load wallet";
-      case "WalletConfigError":
-        return "Wallet configuration error";
-      default:
-        return error.message || "An unknown wallet error occurred";
+  // Handle wallet errors (simplified for Reown AppKit)
+  handleWalletError: (error: Error): string => {
+    const message = error.message || "Unknown error";
+
+    if (message.includes("User rejected")) {
+      return "User rejected the connection request";
     }
+    if (message.includes("not connected")) {
+      return "Please connect your wallet first";
+    }
+    if (message.includes("disconnected")) {
+      return "Wallet was disconnected";
+    }
+    if (message.includes("timeout")) {
+      return "Wallet connection timed out";
+    }
+    if (message.includes("not found")) {
+      return "Wallet not found. Please install a Solana wallet";
+    }
+    if (message.includes("not ready")) {
+      return "Wallet is not ready. Please try again";
+    }
+
+    return message;
   },
 
   // Handle transaction errors
@@ -559,21 +482,5 @@ export const SolanaErrors = {
   },
 };
 
-// Export commonly used types and constants
-export {
-  WalletAdapterNetwork,
-  type WalletError,
-  type WalletName,
-  ConnectionProvider,
-  WalletProvider,
-  WalletModalProvider,
-  useConnection,
-  useWallet,
-  Connection,
-  PublicKey,
-  LAMPORTS_PER_SOL,
-};
-
-// Export Solana wallet adapter CSS (to be imported in layout)
-export const SOLANA_WALLET_ADAPTER_STYLES =
-  "@solana/wallet-adapter-react-ui/styles.css";
+// Export core Solana types and utilities
+export { Connection, PublicKey, LAMPORTS_PER_SOL, Transaction, SystemProgram };

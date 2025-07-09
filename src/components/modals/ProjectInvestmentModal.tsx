@@ -26,8 +26,8 @@ import BackgroundImage from "../ui/background-image";
 // import { useUnifiedWalletConnection } from "@/hooks/useUnifiedWalletConnection";
 import { useIsMobile } from "@/hooks/ui/useIsMobile";
 import { ProjectInvestmentTransactionLoader } from "../ui/project-investment-transaction-loader";
-import useApproveInvestmentAmount from "@/hooks/blockchain/evm/investments/useApprovalTransaction";
-import { useBuyInvestmentAmount } from "@/hooks/blockchain/evm/investments/usePurchaseTransaction";
+import useApprovalTransaction from "@/hooks/blockchain/evm/investments/useApprovalTransaction";
+import { usePurchaseTransaction } from "@/hooks/blockchain/evm/investments/usePurchaseTransaction";
 import { isError } from "ethers";
 import { useLocale, useTranslations } from "next-intl";
 import { useUser } from "@clerk/nextjs";
@@ -126,10 +126,9 @@ const InvestmentHandler = ({
 }) => {
   const t = useTranslations("Marketplace.project.projectInvestmentModal");
   const [loadingState, setLoadingState] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   const [isConfirmed, setIsConfirmed] = useState(false);
-  const processStartedRef = useRef(false);
+  const [approvalCompleted, setApprovalCompleted] = useState(false);
 
   const loadingStates = [
     { text: t("loadingStates.0") },
@@ -142,60 +141,75 @@ const InvestmentHandler = ({
   const transactionFee = totalInvestment * 0.011;
   const totalAmount = totalInvestment + transactionFee;
 
-  const handleInvestmentProcess = async () => {
-    if (processStartedRef.current) return;
-    processStartedRef.current = true;
+  // Initialize the hooks
+  const approval = useApprovalTransaction(totalAmount);
+  const purchase = usePurchaseTransaction(totalInvestment);
 
-    try {
-      // Step 1: Approving the investment amount
-      setLoadingState(0);
-      const {
-        paymentApprovalTransactionHash,
-        paymentApprovalTransactionReceipt,
-      } = await useApproveInvestmentAmount(totalAmount);
+  // Handle approval transaction effects
+  useEffect(() => {
+    if (approval.transactionHash && !approvalCompleted) {
+      setLoadingState(1); // Waiting for approval confirmation
+    }
 
-      if (paymentApprovalTransactionHash) {
-        setLoadingState(1); // Step 2: Waiting for approval confirmation
-      }
+    if (approval.transactionReceipt && !approvalCompleted) {
+      setApprovalCompleted(true);
+      setLoadingState(2); // Proceed to purchase execution
+    }
 
-      // Monitor approval receipt
-      await new Promise<void>((resolve) => {
-        const checkApprovalReceipt = setInterval(() => {
-          if (paymentApprovalTransactionReceipt) {
-            clearInterval(checkApprovalReceipt);
-            setLoadingState(2); // Proceed to purchase execution
-            resolve();
-          }
-        }, 1000);
-      });
-
-      // Step 3: Execute purchase transaction
-      const { investmentTransactionHash, investmentTransactionReceipt } =
-        await useBuyInvestmentAmount(totalInvestment);
-
-      if (investmentTransactionHash) {
-        setLoadingState(3); // Finalizing investment
-      }
-
-      // Monitor purchase receipt
-      await new Promise<void>((resolve) => {
-        const checkPurchaseReceipt = setInterval(() => {
-          if (investmentTransactionReceipt) {
-            clearInterval(checkPurchaseReceipt);
-            setIsConfirmed(true); // Show confirmation component
-            resolve();
-          }
-        }, 1000);
-      });
-    } catch (err) {
-      console.error("Transaction failed", err);
+    if (approval.error) {
+      console.error("Approval transaction failed", approval.error);
       setError(true);
     }
-  };
+  }, [
+    approval.transactionHash,
+    approval.transactionReceipt,
+    approval.error,
+    approvalCompleted,
+  ]);
 
+  // Handle purchase transaction effects
   useEffect(() => {
-    handleInvestmentProcess();
+    if (purchase.transactionHash && approvalCompleted) {
+      setLoadingState(3); // Finalizing investment
+    }
+
+    if (purchase.transactionReceipt) {
+      setIsConfirmed(true); // Show confirmation component
+    }
+
+    if (purchase.error) {
+      console.error("Purchase transaction failed", purchase.error);
+      setError(true);
+    }
+  }, [
+    purchase.transactionHash,
+    purchase.transactionReceipt,
+    purchase.error,
+    approvalCompleted,
+  ]);
+
+  // Auto-start approval transaction on mount
+  useEffect(() => {
+    if (!approval.transactionHash && !approval.isPending && !error) {
+      setLoadingState(0); // Approving the investment amount
+      approval.executeApproval();
+    }
   }, []);
+
+  // Auto-start purchase transaction when approval is completed
+  useEffect(() => {
+    if (
+      approvalCompleted &&
+      !purchase.transactionHash &&
+      !purchase.isPending &&
+      !error
+    ) {
+      purchase.executePurchase();
+    }
+  }, [approvalCompleted]);
+
+  const isLoading =
+    approval.isPending || purchase.isPending || (!isConfirmed && !error);
 
   return (
     <div className="relative">

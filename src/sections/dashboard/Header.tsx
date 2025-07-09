@@ -3,7 +3,7 @@ import { useUser } from "@clerk/nextjs";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { BsPlus as PlusIcon } from "react-icons/bs";
-import useGetUserUsdtBalance from "@/hooks/blockchain/evm/user/useUserBalance";
+import useUserBalance from "@/hooks/blockchain/evm/user/useUserBalance";
 import { useEffect, useState } from "react";
 import { convertBalanceUnits } from "@/lib/utils";
 import { Spinner } from "@heroui/react";
@@ -11,8 +11,7 @@ import { Spinner } from "@heroui/react";
 export default function Header() {
   const [convertedUsdtBalance, setConvertedUsdtBalance] = useState("0.00");
 
-  const { isLoading: isUsdtBalanceLoading, usdtBalance } =
-    useGetUserUsdtBalance();
+  const { isLoading: isUsdtBalanceLoading, usdtBalance } = useUserBalance();
 
   const { user, isLoaded } = useUser();
 
@@ -21,8 +20,12 @@ export default function Header() {
   const isLoading = isUsdtBalanceLoading || usdtBalance === null || !isLoaded;
 
   useEffect(() => {
-    if (!isUsdtBalanceLoading && usdtBalance) {
-      setConvertedUsdtBalance(convertBalanceUnits(usdtBalance, 18).toFixed(2));
+    if (
+      !isUsdtBalanceLoading &&
+      usdtBalance &&
+      typeof usdtBalance === "bigint"
+    ) {
+      setConvertedUsdtBalance(convertBalanceUnits(usdtBalance, 6).toFixed(2));
     }
   }, [isUsdtBalanceLoading, usdtBalance]);
 
