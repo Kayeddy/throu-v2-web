@@ -4,6 +4,7 @@ import projectAdminAbi from "@/utils/abis/projectAdmin.json";
 import projectTokenizationAdmin from "@/utils/abis/projectTokenizationAdmin.json";
 import { fetchMetadataFromUri } from "@/actions/project.action";
 import { convertContractUnits } from "@/lib/utils";
+import { ProjectDetails, ProjectURI } from "@/utils/types/shared/project";
 
 /**
  * React hook that fetches detailed information about a specific project from the blockchain.
@@ -98,6 +99,7 @@ export const useGetProject = (projectId: number) => {
               ...(typeof projectData.result === "object" && projectData.result),
               projectURI: metadata, // Replace the projectURI with fetched metadata
               projectRemainingTokens: remainingTokens.result as bigint,
+              chain: "polygon", // EVM projects are on Polygon chain
             };
 
             // Recursively convert BigInt properties in the project object

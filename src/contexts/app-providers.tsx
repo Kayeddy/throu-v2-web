@@ -9,7 +9,7 @@ import { enUS, esES, frFR, arSA } from "@clerk/localizations";
 import { wagmiAdapter, solanaAdapter, projectId } from "@/lib/wagmi-config";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createAppKit } from "@reown/appkit/react";
-import { polygon, solana } from "@reown/appkit/networks";
+import { polygon, solana, solanaTestnet } from "@reown/appkit/networks";
 import { cookieToInitialState, WagmiProvider, type Config } from "wagmi";
 import { ReownThemeProvider } from "./reown-theme-context";
 
@@ -56,7 +56,7 @@ const metadata = {
 // Create the AppKit instance following official multichain documentation
 const modal = createAppKit({
   adapters: [wagmiAdapter, solanaAdapter],
-  networks: [polygon, solana] as any,
+  networks: [polygon, solana, solanaTestnet] as any,
   defaultNetwork: polygon as any,
   metadata: metadata,
   projectId,

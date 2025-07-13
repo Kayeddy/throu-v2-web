@@ -27,15 +27,20 @@ import BackgroundImage from "../ui/background-image";
 import { useIsMobile } from "@/hooks/ui/useIsMobile";
 import { ProjectInvestmentTransactionLoader } from "../ui/project-investment-transaction-loader";
 import useApprovalTransaction from "@/hooks/blockchain/evm/investments/useApprovalTransaction";
-import { usePurchaseTransaction } from "@/hooks/blockchain/evm/investments/usePurchaseTransaction";
+import { usePurchaseTransaction as useEVMPurchaseTransaction } from "@/hooks/blockchain/evm/investments/usePurchaseTransaction";
+import { usePurchaseTransaction as useSolanaPurchaseTransaction } from "@/hooks/blockchain/solana/investments/usePurchaseTransaction";
 import { isError } from "ethers";
 import { useLocale, useTranslations } from "next-intl";
 import { useUser } from "@clerk/nextjs";
+import { SupportedChain } from "@/utils/types/shared/project";
+import { useAppKitAccount } from "@reown/appkit/react";
 
 interface ProjectInvestmentModalProps {
   triggerButton?: ReactElement<ButtonProps>;
   projectTokenPrice: number | null;
   investmentAmount: number;
+  projectChain: SupportedChain; // Add chain identifier
+  projectId: string | number; // Add project ID for transaction
 }
 
 type TabKey = "invest" | "paymentMethod" | "investmentConfirmation";
@@ -116,11 +121,15 @@ const TabHeader = ({
 const InvestmentHandler = ({
   investmentAmount,
   projectTokenPrice,
+  projectChain,
+  projectId,
   onExit,
   onReturn,
 }: {
   investmentAmount: number;
   projectTokenPrice: number;
+  projectChain: SupportedChain;
+  projectId: string | number;
   onExit: () => void;
   onReturn: () => void;
 }) => {
@@ -129,99 +138,215 @@ const InvestmentHandler = ({
   const [error, setError] = useState(false);
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [approvalCompleted, setApprovalCompleted] = useState(false);
+  const { caipAddress } = useAppKitAccount();
 
-  const loadingStates = [
-    { text: t("loadingStates.0") },
-    { text: t("loadingStates.1") },
-    { text: t("loadingStates.2") },
-    { text: t("loadingStates.3") },
+  // Chain-specific loading states
+  const evmLoadingStates = [
+    { text: t("loadingStates.0") }, // Approving investment amount
+    { text: t("loadingStates.1") }, // Waiting for approval confirmation
+    { text: t("loadingStates.2") }, // Executing purchase
+    { text: t("loadingStates.3") }, // Finalizing investment
   ];
+
+  const solanaLoadingStates = [
+    { text: t("solanaLoadingStates.0") || "Preparing transaction" },
+    { text: t("solanaLoadingStates.1") || "Signing transaction" },
+    { text: t("solanaLoadingStates.2") || "Broadcasting transaction" },
+    { text: t("solanaLoadingStates.3") || "Confirming investment" },
+  ];
+
+  const loadingStates =
+    projectChain === "polygon" ? evmLoadingStates : solanaLoadingStates;
 
   const totalInvestment = investmentAmount * projectTokenPrice;
   const transactionFee = totalInvestment * 0.011;
   const totalAmount = totalInvestment + transactionFee;
 
-  // Initialize the hooks
-  const approval = useApprovalTransaction(totalAmount);
-  const purchase = usePurchaseTransaction(totalInvestment);
+  // Initialize chain-specific hooks
+  const evmApproval = useApprovalTransaction(totalAmount);
+  const evmPurchase = useEVMPurchaseTransaction(totalInvestment);
+  const solanaPurchase = useSolanaPurchaseTransaction(investmentAmount);
 
-  // Handle approval transaction effects
+  // EVM transaction flow
   useEffect(() => {
-    if (approval.transactionHash && !approvalCompleted) {
+    if (projectChain !== "polygon") return;
+
+    if (evmApproval.transactionHash && !approvalCompleted) {
       setLoadingState(1); // Waiting for approval confirmation
     }
 
-    if (approval.transactionReceipt && !approvalCompleted) {
+    if (evmApproval.transactionReceipt && !approvalCompleted) {
       setApprovalCompleted(true);
       setLoadingState(2); // Proceed to purchase execution
     }
 
-    if (approval.error) {
-      console.error("Approval transaction failed", approval.error);
+    if (evmApproval.error) {
+      console.error("EVM approval transaction failed", evmApproval.error);
       setError(true);
     }
   }, [
-    approval.transactionHash,
-    approval.transactionReceipt,
-    approval.error,
+    projectChain,
+    evmApproval.transactionHash,
+    evmApproval.transactionReceipt,
+    evmApproval.error,
     approvalCompleted,
   ]);
 
-  // Handle purchase transaction effects
   useEffect(() => {
-    if (purchase.transactionHash && approvalCompleted) {
+    if (projectChain !== "polygon") return;
+
+    if (evmPurchase.transactionHash && approvalCompleted) {
       setLoadingState(3); // Finalizing investment
     }
 
-    if (purchase.transactionReceipt) {
+    if (evmPurchase.transactionReceipt) {
       setIsConfirmed(true); // Show confirmation component
     }
 
-    if (purchase.error) {
-      console.error("Purchase transaction failed", purchase.error);
+    if (evmPurchase.error) {
+      console.error("EVM purchase transaction failed", evmPurchase.error);
       setError(true);
     }
   }, [
-    purchase.transactionHash,
-    purchase.transactionReceipt,
-    purchase.error,
+    projectChain,
+    evmPurchase.transactionHash,
+    evmPurchase.transactionReceipt,
+    evmPurchase.error,
     approvalCompleted,
   ]);
 
-  // Auto-start approval transaction on mount
+  // Solana transaction flow (single transaction, no approval needed)
   useEffect(() => {
-    if (!approval.transactionHash && !approval.isPending && !error) {
-      setLoadingState(0); // Approving the investment amount
-      approval.executeApproval();
-    }
-  }, []);
+    if (projectChain !== "solana") return;
 
-  // Auto-start purchase transaction when approval is completed
+    if (solanaPurchase.isPending) {
+      setLoadingState(1); // Signing transaction
+    }
+
+    if (solanaPurchase.transactionSignature) {
+      setLoadingState(2); // Broadcasting transaction
+      // Wait a moment then move to confirmation
+      setTimeout(() => {
+        setLoadingState(3); // Confirming investment
+      }, 1000);
+    }
+
+    if (solanaPurchase.transactionSignature && !solanaPurchase.isPending) {
+      setIsConfirmed(true); // Show confirmation component
+    }
+
+    if (solanaPurchase.error) {
+      console.error("Solana purchase transaction failed", solanaPurchase.error);
+      setError(true);
+    }
+  }, [
+    projectChain,
+    solanaPurchase.isPending,
+    solanaPurchase.transactionSignature,
+    solanaPurchase.error,
+  ]);
+
+  // Auto-start transaction on mount
+  useEffect(() => {
+    if (error || isConfirmed) return;
+
+    if (projectChain === "polygon") {
+      // EVM: Start with approval
+      if (!evmApproval.transactionHash && !evmApproval.isPending) {
+        setLoadingState(0); // Approving the investment amount
+        evmApproval.executeApproval();
+      }
+    } else if (projectChain === "solana") {
+      // Solana: Direct purchase (no approval needed)
+      if (!solanaPurchase.transactionSignature && !solanaPurchase.isPending) {
+        setLoadingState(0); // Preparing transaction
+        solanaPurchase.executePurchase(String(projectId));
+      }
+    }
+  }, [projectChain, projectId, error, isConfirmed]);
+
+  // Auto-start purchase transaction when EVM approval is completed
   useEffect(() => {
     if (
+      projectChain === "polygon" &&
       approvalCompleted &&
-      !purchase.transactionHash &&
-      !purchase.isPending &&
-      !error
+      !evmPurchase.transactionHash &&
+      !evmPurchase.isPending
     ) {
-      purchase.executePurchase();
+      evmPurchase.executePurchase();
     }
-  }, [approvalCompleted]);
+  }, [
+    projectChain,
+    approvalCompleted,
+    evmPurchase.transactionHash,
+    evmPurchase.isPending,
+  ]);
 
-  const isLoading =
-    approval.isPending || purchase.isPending || (!isConfirmed && !error);
+  // Render chain-specific transaction info
+  const renderTransactionInfo = () => {
+    if (projectChain === "polygon") {
+      return (
+        <div className="flex flex-col gap-2 text-sm">
+          <div className="flex justify-between">
+            <span>Network:</span>
+            <span className="font-medium">Polygon</span>
+          </div>
+          <div className="flex justify-between">
+            <span>Transaction Fee:</span>
+            <span className="font-medium">
+              {transactionFee.toFixed(4)} MATIC
+            </span>
+          </div>
+          <div className="flex justify-between">
+            <span>Total:</span>
+            <span className="font-medium">{totalAmount.toFixed(4)} MATIC</span>
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div className="flex flex-col gap-2 text-sm">
+          <div className="flex justify-between">
+            <span>Network:</span>
+            <span className="font-medium">Solana</span>
+          </div>
+          <div className="flex justify-between">
+            <span>Investment Amount:</span>
+            <span className="font-medium">
+              {investmentAmount.toFixed(4)} SOL
+            </span>
+          </div>
+          <div className="flex justify-between">
+            <span>Network Fee:</span>
+            <span className="font-medium">~0.00025 SOL</span>
+          </div>
+        </div>
+      );
+    }
+  };
+
+  if (isConfirmed) {
+    return (
+      <ProjectInvestmentConfirmationTab
+        investmentAmount={investmentAmount}
+        projectTokenPrice={projectTokenPrice}
+      />
+    );
+  }
 
   return (
-    <div className="relative">
+    <div className="flex flex-col items-center justify-center gap-8 p-8">
       <ProjectInvestmentTransactionLoader
         loadingStates={loadingStates}
-        loading={isLoading}
+        loading={loadingState < loadingStates.length}
         currentStep={loadingState}
         error={error}
         isConfirmed={isConfirmed}
         onExit={onExit}
         onReturn={onReturn}
       />
+
+      <div className="w-full max-w-sm">{renderTransactionInfo()}</div>
     </div>
   );
 };
@@ -230,208 +355,170 @@ const ProjectInvestmentModal = ({
   triggerButton,
   projectTokenPrice,
   investmentAmount,
+  projectChain,
+  projectId,
 }: ProjectInvestmentModalProps) => {
   const t = useTranslations("Marketplace.project.projectInvestmentModal");
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  // const {
-  //   evmConnected,
-  //   solanaConnected,
-  //   evmAddress,
-  //   solanaAddress,
-  //   activeChain,
-  // } = useUnifiedWalletConnection();
-
-  const isConnected = false;
-  const address = false;
-
-  const { isLoaded, isSignedIn } = useUser();
-  const isMobile = useIsMobile();
   const locale = useLocale();
+  const isMobile = useIsMobile();
+  const { user } = useUser();
+  const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
 
-  const [selected, setSelected] = useState<TabKey>("paymentMethod");
-  const [direction, setDirection] = useState<"forward" | "backward">("forward");
-  const [showError, setShowError] = useState(false);
-  const [processingTransaction, setProcessingTransaction] = useState(false);
+  const [activeTab, setActiveTab] = useState<TabKey>("invest");
+  const [step, setStep] = useState(1);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [isInvestmentCompleted, setIsInvestmentCompleted] = useState(false);
 
-  const TABS = useMemo(
-    () =>
-      [
-        { key: "invest" as TabKey, label: t("tabs.invest"), component: <></> },
-        {
-          key: "paymentMethod" as TabKey,
-          label: t("tabs.paymentMethod"),
-          component: (
-            <ProjectInvestmentPaymentMethodTab
-              investmentAmount={investmentAmount}
-              projectTokenPrice={projectTokenPrice}
-            />
-          ),
-        },
-        {
-          key: "investmentConfirmation" as TabKey,
-          label: t("tabs.investmentConfirmation"),
-          component: (
-            <ProjectInvestmentConfirmationTab
-              investmentAmount={investmentAmount}
-              projectTokenPrice={projectTokenPrice}
-            />
-          ),
-        },
-      ] as { key: TabKey; label: string; component: React.ReactNode }[],
-    [t, investmentAmount, projectTokenPrice]
-  );
+  const tabs = [
+    { key: "invest" as TabKey, label: t("tabs.invest") },
+    { key: "paymentMethod" as TabKey, label: t("tabs.paymentMethod") },
+    {
+      key: "investmentConfirmation" as TabKey,
+      label: t("tabs.investmentConfirmation"),
+    },
+  ];
 
-  const currentTabLabel = TABS.find((tab) => tab.key === selected)?.label;
-
-  useEffect(() => {
-    if (showError) {
-      const timer = setTimeout(() => setShowError(false), 1000); // Reset error after 2 seconds
-      return () => clearTimeout(timer);
-    }
-  }, [showError]);
-
-  const handleTriggerButtonClick = () => {
-    if (!isConnected || !address) {
-      // Redirect to sign-up page if wallet not connected
-      window.location.href = `/${locale}/sign-up`;
-    } else if (investmentAmount <= 0) {
-      setShowError(true); // Show error for invalid investment amount
-    } else if (!isLoaded || !isSignedIn) {
-      // Redirect user to the sign-in page
-      window.location.href = `/${locale}/sign-in`;
-    } else {
-      onOpen(); // Open modal if all conditions are met
+  const handleBackClick = () => {
+    if (step > 1) {
+      setStep(step - 1);
+      setActiveTab(tabs[step - 2].key);
     }
   };
 
-  const TriggerButton = useMemo(() => {
-    return triggerButton ? (
-      React.cloneElement(triggerButton, {
-        onPress: handleTriggerButtonClick,
-        children: showError
-          ? t("triggerButton.error")
-          : t("triggerButton.default"),
-      })
-    ) : (
-      <Button onPress={handleTriggerButtonClick}>
-        {showError ? t("triggerButton.error") : t("triggerButton.default")}
-      </Button>
-    );
-  }, [triggerButton, handleTriggerButtonClick, showError, t]);
-
-  const handleNext = useCallback(() => {
-    const currentIndex = TABS.findIndex((tab) => tab.key === selected);
-    if (currentIndex < TABS.length - 1) {
-      setDirection("forward");
-      setSelected(TABS[currentIndex + 1].key as TabKey); // Cast to TabKey
-    } else {
-      setProcessingTransaction(true);
+  const handleNextClick = () => {
+    if (step < tabs.length) {
+      setStep(step + 1);
+      setActiveTab(tabs[step].key);
     }
-  }, [selected, TABS]);
+  };
 
-  const handleBack = useCallback(() => {
-    const currentIndex = TABS.findIndex((tab) => tab.key === selected);
-    if (currentIndex > 1) {
-      setDirection("backward");
-      setSelected(TABS[currentIndex - 1].key as TabKey); // Cast to TabKey
-    } else {
-      onClose();
+  const handleTriggerButtonClick = () => {
+    if (!user) {
+      // Handle authentication requirement
+      return;
     }
-  }, [selected, onClose, TABS]);
 
-  const ActiveTabComponent = TABS.find(
-    (tab) => tab.key === selected
-  )?.component;
+    onOpen();
+  };
+
+  const handleModalClose = () => {
+    setStep(1);
+    setActiveTab("invest");
+    setErrorMessage(null);
+    setIsInvestmentCompleted(false);
+    onClose();
+  };
+
+  const renderContent = () => {
+    switch (activeTab) {
+      case "invest":
+        return (
+          <ProjectInvestmentPaymentMethodTab
+            investmentAmount={investmentAmount}
+            projectTokenPrice={projectTokenPrice}
+          />
+        );
+      case "paymentMethod":
+        return (
+          <div className="p-6">
+            <p className="text-center text-lg font-medium mb-4">
+              {t("paymentMethod.title")}
+            </p>
+            <div className="space-y-4">
+              <div className="border rounded-lg p-4">
+                <h3 className="font-medium mb-2">
+                  {projectChain === "polygon"
+                    ? "MetaMask (Polygon)"
+                    : "Phantom (Solana)"}
+                </h3>
+                <p className="text-sm text-gray-600 mb-4">
+                  {projectChain === "polygon"
+                    ? t("paymentMethod.polygon.description")
+                    : t("paymentMethod.solana.description")}
+                </p>
+                <Button
+                  color="primary"
+                  onClick={handleNextClick}
+                  className="w-full"
+                >
+                  {t("paymentMethod.continue")}
+                </Button>
+              </div>
+            </div>
+          </div>
+        );
+      case "investmentConfirmation":
+        if (!projectTokenPrice) {
+          return <div>Error: Project token price not available</div>;
+        }
+        return (
+          <InvestmentHandler
+            investmentAmount={investmentAmount}
+            projectTokenPrice={projectTokenPrice}
+            projectChain={projectChain}
+            projectId={projectId}
+            onExit={handleModalClose}
+            onReturn={handleBackClick}
+          />
+        );
+      default:
+        return null;
+    }
+  };
 
   return (
     <>
-      {TriggerButton}
-
+      {triggerButton &&
+        React.cloneElement(triggerButton, {
+          onClick: handleTriggerButtonClick,
+        })}
       <Modal
         isOpen={isOpen}
-        onClose={onClose}
-        size={`${isMobile ? "full" : "3xl"}`}
-        hideCloseButton
-        className="overflow-hidden"
-        backdrop="blur"
+        onOpenChange={onOpenChange}
+        size="2xl"
+        placement="center"
+        classNames={{
+          base: "bg-white dark:bg-gray-900",
+          header: "border-b border-gray-200 dark:border-gray-700",
+          body: "p-0",
+        }}
         isDismissable={false}
-        isKeyboardDismissDisabled={false}
+        hideCloseButton={activeTab === "investmentConfirmation"}
       >
-        {processingTransaction ? (
-          <InvestmentHandler
-            investmentAmount={investmentAmount}
-            projectTokenPrice={projectTokenPrice ?? 0}
-            onReturn={() => setProcessingTransaction(false)}
-            onExit={() => {
-              setProcessingTransaction(false);
-              setSelected("paymentMethod");
-              onClose();
-            }}
-          />
-        ) : (
-          <ModalContent className="relative bg-light dark:bg-dark lg:w-[70vw] xl:h-[70vh] 2xl:h-[60vh]">
-            <BackgroundImage
-              src="/assets/shared/logo_purple_right.webp"
-              containerStyles="absolute hidden lg:flex top-[63%] z-[1] left-0 pointer-events-none"
-              imageStyles="w-fit h-fit max-w-[200px] object-contain brightness-200"
-            />
-            <BackgroundImage
-              src="/assets/shared/logo_blue_left.webp"
-              containerStyles="absolute hidden lg:flex right-0 top-[-100px] z-[1] right-0 pointer-events-none"
-              imageStyles="w-fit h-fit max-w-[200px] object-contain rotate-[-45deg] brightness-200"
-            />
-            <div className="z-[2] flex h-full w-full flex-col items-start justify-center p-4 backdrop-blur-md lg:flex-row lg:p-8">
-              <button
-                className="mt-6 flex flex-row items-center justify-center gap-2 lg:mt-2 lg:-translate-x-2"
-                onClick={handleBack}
-              >
-                <BackArrowIcon className="text-xl text-minimal" />
-                <span className="mb-0.5 font-sen text-2xl font-bold text-primary dark:text-light lg:hidden">
-                  {currentTabLabel}
-                </span>
-              </button>
-              <div className="flex h-full w-full flex-col items-center justify-center">
-                <TabHeader activeTab={selected} tabs={TABS} />
-                <ModalBody className="w-full">
-                  <AnimatePresence
-                    mode="wait"
-                    initial={false}
-                    custom={direction}
-                  >
-                    <motion.div
-                      key={selected}
-                      initial={{
-                        opacity: 0,
-                        x: direction === "forward" ? 50 : -50,
-                      }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{
-                        opacity: 0,
-                        x: direction === "forward" ? 50 : -50,
-                      }}
-                      transition={{ duration: 0.3 }}
-                      className="my-auto"
-                    >
-                      {ActiveTabComponent}
-                    </motion.div>
-                  </AnimatePresence>
-                </ModalBody>
-                <div className="w-full">
-                  <Button
-                    variant="bordered"
-                    size="lg"
-                    className="mx-auto w-full rounded-none border-secondary bg-secondary font-sen text-lg font-bold text-white hover:bg-transparent hover:text-secondary lg:text-base"
-                    onPress={handleNext}
-                  >
-                    {selected === "investmentConfirmation"
-                      ? t("finishButton")
-                      : t("continueButton")}
-                  </Button>
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalBody className="relative">
+                <BackgroundImage
+                  src="/images/background-pattern.svg"
+                  containerStyles="absolute inset-0 pointer-events-none"
+                  imageStyles="w-full h-full object-cover opacity-5"
+                />
+
+                <div className="relative z-10">
+                  <div className="p-6">
+                    <TabHeader activeTab={activeTab} tabs={tabs} />
+                  </div>
+
+                  <div className="px-6 pb-6">
+                    {step > 1 && activeTab !== "investmentConfirmation" && (
+                      <Button
+                        isIconOnly
+                        variant="light"
+                        onClick={handleBackClick}
+                        className="mb-4"
+                      >
+                        <BackArrowIcon className="text-lg" />
+                      </Button>
+                    )}
+
+                    {renderContent()}
+                  </div>
                 </div>
-              </div>
-            </div>
-          </ModalContent>
-        )}
+              </ModalBody>
+            </>
+          )}
+        </ModalContent>
       </Modal>
     </>
   );

@@ -7,6 +7,7 @@ import ProjectFaqsTab from "./ProjectFaqsTab";
 import { motion } from "framer-motion";
 import InvestmentCta from "@/components/marketplace/InvestmentCta";
 import { useTranslations } from "next-intl";
+import { ProjectDetails } from "@/utils/types/shared/project";
 
 const fadeInAnimation = {
   initial: { opacity: 0, y: 20 },

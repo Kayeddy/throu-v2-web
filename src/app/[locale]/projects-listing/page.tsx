@@ -1,4 +1,4 @@
-import ProjectsListing from "@/components/ProjectsListing";
+import ProjectsListing from "@/components/marketplace/ProjectsListing";
 
 /**
  * Page to display all projects from the smart contract
@@ -10,4 +10,4 @@ export default function ProjectsListingPage() {
       <ProjectsListing />
     </div>
   );
-} 
+}

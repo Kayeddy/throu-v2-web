@@ -1,13 +1,41 @@
-import { PublicKey } from '@solana/web3.js';
+import { PublicKey } from "@solana/web3.js";
 
 /**
  * Real Estate Investment Program Types
  * Based on IDL: program_real_state.json
- * Program ID: 83yNQCtYj46dry6NadX5vY8pSFJxmqBDRZJA46UhjkGv
+ *
+ * Program IDs:
+ * - Mainnet: 8GYVnwsURhjhjDktJ7vNggS7jkgunEyTbpbvHbJxXd8q
+ * - Testnet: TBD (to be provided by blockchain developer)
  */
 
-// Program ID constant
-export const PROGRAM_ID = new PublicKey('83yNQCtYj46dry6NadX5vY8pSFJxmqBDRZJA46UhjkGv');
+// Network-specific Program IDs
+const PROGRAM_IDS = {
+  "mainnet-beta": "8GYVnwsURhjhjDktJ7vNggS7jkgunEyTbpbvHbJxXd8q", // Real mainnet contract
+  testnet:
+    process.env.NEXT_PUBLIC_SOLANA_TESTNET_PROGRAM_ID ||
+    "8GYVnwsURhjhjDktJ7vNggS7jkgunEyTbpbvHbJxXd8q", // Fallback to mainnet until testnet is provided
+  devnet: "8GYVnwsURhjhjDktJ7vNggS7jkgunEyTbpbvHbJxXd8q", // Fallback to mainnet for development
+} as const;
+
+// Get current network from environment or default to mainnet
+const getCurrentNetwork = () => {
+  const network = process.env.NEXT_PUBLIC_SOLANA_NETWORK || "mainnet-beta";
+  return network as keyof typeof PROGRAM_IDS;
+};
+
+// Program ID constant - switches based on network
+export const PROGRAM_ID = new PublicKey(PROGRAM_IDS[getCurrentNetwork()]);
+
+// Debug logging - only on client side to avoid SSR issues
+if (typeof window !== "undefined") {
+  console.log(
+    "🟡 [SOLANA CONFIG] Using Program ID:",
+    PROGRAM_ID.toString(),
+    "for network:",
+    getCurrentNetwork()
+  );
+}
 
 // Account Types based on IDL
 export interface ProjectAccount {
@@ -81,24 +109,24 @@ export interface DepositAdminArgs {
 
 // PDA seed constants
 export const PDA_SEEDS = {
-  PROJECT: 'project',
-  INVESTOR: 'investor',
-  MINT_PROJECT: 'mint_project',
-  TOKEN_ACCOUNT: 'token_account',
+  PROJECT: "project",
+  INVESTOR: "investor",
+  MINT_PROJECT: "mint_project",
+  TOKEN_ACCOUNT: "token_account",
 } as const;
 
 // Helper functions for PDA generation
 export const getProjectPDA = (projectId: bigint): [PublicKey, number] => {
   return PublicKey.findProgramAddressSync(
-    [
-      Buffer.from(PDA_SEEDS.PROJECT),
-      Buffer.from(projectId.toString()),
-    ],
+    [Buffer.from(PDA_SEEDS.PROJECT), Buffer.from(projectId.toString())],
     PROGRAM_ID
   );
 };
 
-export const getInvestorPDA = (projectId: bigint, investor: PublicKey): [PublicKey, number] => {
+export const getInvestorPDA = (
+  projectId: bigint,
+  investor: PublicKey
+): [PublicKey, number] => {
   return PublicKey.findProgramAddressSync(
     [
       Buffer.from(PDA_SEEDS.INVESTOR),
@@ -111,10 +139,7 @@ export const getInvestorPDA = (projectId: bigint, investor: PublicKey): [PublicK
 
 export const getMintProjectPDA = (projectId: bigint): [PublicKey, number] => {
   return PublicKey.findProgramAddressSync(
-    [
-      Buffer.from(PDA_SEEDS.MINT_PROJECT),
-      Buffer.from(projectId.toString()),
-    ],
+    [Buffer.from(PDA_SEEDS.MINT_PROJECT), Buffer.from(projectId.toString())],
     PROGRAM_ID
   );
 };

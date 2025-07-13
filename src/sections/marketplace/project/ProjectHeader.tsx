@@ -6,6 +6,7 @@ import React, { useMemo } from "react";
 import { FiChevronLeft as LeftButtonIcon } from "react-icons/fi";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { ProjectDetails } from "@/utils/types/shared/project";
 
 export default function ProjectHeader({
   projectDetails,
@@ -30,46 +31,49 @@ export default function ProjectHeader({
     return 0;
   }, [projectDetails]);
 
-  const projectAttributes = useMemo(
-    () => {
-      // The price is already in number format
-      const price = projectDetails?.projectPrice || 0;
-        
-      return {
-        tokens: projectDetails?.projectTotalSupply,
-        value: `$${price}`,
-        total: `$${
-          price && projectDetails?.projectTotalSupply
-            ? projectDetails.projectTotalSupply * price
-            : 0
-        }`,
-        APY: "23%",
-      };
-    },
-    [projectDetails]
-  );
+  const projectAttributes = useMemo(() => {
+    // The price is already in number format
+    const price = projectDetails?.projectPrice || 0;
+
+    return {
+      tokens: projectDetails?.projectTotalSupply,
+      value: `$${price}`,
+      total: `$${
+        price && projectDetails?.projectTotalSupply
+          ? projectDetails.projectTotalSupply * price
+          : 0
+      }`,
+      APY: "23%",
+    };
+  }, [projectDetails]);
 
   // Memoizing the project sales calculation
   const projectSales = useMemo(() => {
     // If all tokens are sold (remainingTokens = 0), use the total supply * price as the sales
-    if (projectDetails?.projectRemainingTokens === 0 && 
-        projectDetails?.projectTotalSupply && 
-        projectDetails?.projectPrice) {
+    if (
+      projectDetails?.projectRemainingTokens === 0 &&
+      projectDetails?.projectTotalSupply &&
+      projectDetails?.projectPrice
+    ) {
       return projectDetails.projectTotalSupply * projectDetails.projectPrice;
     }
-    
+
     // Otherwise calculate based on sold tokens
-    if (projectDetails?.projectTotalSupply && 
-        projectDetails?.projectRemainingTokens !== undefined && 
-        projectDetails?.projectPrice) {
+    if (
+      projectDetails?.projectTotalSupply &&
+      projectDetails?.projectRemainingTokens !== undefined &&
+      projectDetails?.projectPrice
+    ) {
       // Calculate tokens sold
-      const tokensSold = projectDetails.projectTotalSupply - 
-        (typeof projectDetails.projectRemainingTokens === 'number' ? 
-          projectDetails.projectRemainingTokens : 0);
-      
+      const tokensSold =
+        projectDetails.projectTotalSupply -
+        (typeof projectDetails.projectRemainingTokens === "number"
+          ? projectDetails.projectRemainingTokens
+          : 0);
+
       return tokensSold * projectDetails.projectPrice;
     }
-    
+
     return 0;
   }, [projectDetails]);
 

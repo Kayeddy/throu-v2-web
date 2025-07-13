@@ -10,34 +10,67 @@ import { FaRegBookmark as BookmarkIcon } from "react-icons/fa";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { projectMedia } from "../marketplace/IndividualProjectDetails";
+import {
+  ProjectDetails,
+  normalizeProjectForUI,
+  isEVMProject,
+  isSolanaProject,
+} from "@/utils/types/shared/project";
+import ChainIndicator from "./chain-indicator";
 
-export default function MarketplaceHomeCard({
-  data,
-}: {
+interface MarketplaceHomeProjectCardProps {
   data: ProjectDetails;
-}) {
+  className?: string;
+  onInvest?: (projectId: string | number) => void;
+  showChainIndicator?: boolean;
+}
+
+export default function MarketplaceHomeProjectCard({
+  data,
+  className = "",
+  onInvest,
+  showChainIndicator = true,
+}: MarketplaceHomeProjectCardProps) {
   const t = useTranslations("HomePage.Showcase");
   const t1 = useTranslations(
     "Marketplace.project.projectDetails.projectDescriptionTab"
   );
   const router = useRouter();
 
+  // Normalize the project data for consistent UI rendering
+  const normalizedData = normalizeProjectForUI(data);
+
+  // Format currency based on chain
+  const formatCurrency = (amount: number | undefined) => {
+    if (!amount) return "0";
+
+    if (isEVMProject(normalizedData)) {
+      return `${amount.toFixed(4)} MATIC`;
+    } else if (isSolanaProject(normalizedData)) {
+      return `${amount.toFixed(4)} SOL`;
+    }
+    return amount.toString();
+  };
+
   const projectAttributes = {
-    tokens: data?.projectTotalSupply,
-    value: `$${data?.projectPrice}`,
+    tokens: normalizedData?.projectTotalSupply,
+    value: `$${normalizedData?.projectPrice}`,
     total: `$${
-      data?.projectPrice && data?.projectTotalSupply
-        ? data?.projectTotalSupply * data?.projectPrice
+      normalizedData?.projectPrice && normalizedData?.projectTotalSupply
+        ? normalizedData?.projectTotalSupply * normalizedData?.projectPrice
         : 0
     }`,
     APY: "23%",
   };
 
   const projectCompletionPercentage = () => {
-    if (data?.projectRemainingTokens !== undefined && data?.projectTotalSupply) {
+    if (
+      normalizedData?.projectRemainingTokens !== undefined &&
+      normalizedData?.projectTotalSupply
+    ) {
       return calculateBarPercentage(
-        data.projectTotalSupply,
-        data.projectRemainingTokens
+        normalizedData.projectTotalSupply,
+        normalizedData.projectRemainingTokens
       );
     }
     return 0;
@@ -45,14 +78,28 @@ export default function MarketplaceHomeCard({
 
   // Handle redirection to the project page using both the name and ID in the URL
   const handleInvestClick = () => {
-    const projectNameSlug = slugify(data.projectURI?.name ?? "project");
-    const projectId = 0;
-    router.push(`/marketplace/projects/${projectNameSlug}-${projectId}`);
+    if (onInvest && normalizedData.projectId) {
+      onInvest(normalizedData.projectId);
+    } else {
+      const projectNameSlug = slugify(
+        normalizedData.projectURI?.name ?? "project"
+      );
+      const projectId = normalizedData.projectId || 0;
+      router.push(`/marketplace/projects/${projectNameSlug}-${projectId}`);
+    }
   };
 
+  // Get project image
+  const projectImage =
+    projectMedia[0] ||
+    normalizedData.projectURI?.image ||
+    "/images/default-project.jpg";
+
   return (
-    data && (
-      <motion.div className="relative flex h-[70vh] max-h-[500px] w-[90vw] flex-col items-start justify-start overflow-hidden rounded-md bg-light/5 shadow-project-section-card-custom dark:bg-dark/10 lg:h-[70vh] lg:max-h-[600px] lg:min-h-[500px] lg:w-80">
+    normalizedData && (
+      <motion.div
+        className={`relative flex h-[70vh] max-h-[500px] w-[90vw] flex-col items-start justify-start overflow-hidden rounded-md bg-light/5 shadow-project-section-card-custom dark:bg-dark/10 lg:h-[70vh] lg:max-h-[600px] lg:min-h-[500px] lg:w-80 ${className}`}
+      >
         <div className="relative h-[50%] min-h-[40%] w-full">
           <div className="absolute top-3 z-10 flex w-full flex-row items-center justify-between px-3">
             <Chip
@@ -62,6 +109,16 @@ export default function MarketplaceHomeCard({
             >
               {t1("category")}
             </Chip>
+
+            {/* Chain indicator */}
+            {showChainIndicator && (
+              <ChainIndicator
+                chain={normalizedData.chain}
+                variant="compact"
+                className="backdrop-blur-sm"
+              />
+            )}
+
             {/* <Chip
               radius="sm"
               size="md"
@@ -71,8 +128,8 @@ export default function MarketplaceHomeCard({
             </Chip> */}
           </div>
           <BlurImage
-            src={projectMedia[0]}
-            alt={data.projectURI?.name ?? "Project-card-image"}
+            src={projectImage}
+            alt={normalizedData.projectURI?.name ?? "Project-card-image"}
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
             className="h-auto w-auto object-cover"
@@ -81,7 +138,7 @@ export default function MarketplaceHomeCard({
 
         <div className="relative flex h-full w-full flex-col items-start justify-between p-3">
           <h1 className="font-sen text-xl font-semibold text-primary dark:text-white">
-            {/* TODO: {data.projectURI?.name ?? "Salón Prado"} */}
+            {/* TODO: {normalizedData.projectURI?.name ?? "Salón Prado"} */}
             Salón Prado
           </h1>
 
@@ -107,24 +164,27 @@ export default function MarketplaceHomeCard({
           />
 
           <p className="w-[95%] truncate font-jakarta text-base font-extralight text-primary dark:text-white">
-            {/* {data.projectURI?.description} */}
+            {/* {normalizedData.projectURI?.description} */}
             {t1("description.paragraph1")}
           </p>
 
           <span className="text-jakarta flex flex-row items-center justify-start gap-2 text-base text-primary dark:text-white">
             <LocationIcon />
-            {data.projectURI?.attributes[0].value
-              ? data.projectURI.attributes[0].value
-              : t("no_location_available")}
+            {normalizedData.projectURI?.attributes?.find(
+              (attr) => attr.trait_type === "Location"
+            )?.value ||
+              normalizedData.projectURI?.attributes?.[0]?.value ||
+              t("no_location_available")}
           </span>
 
           <Button
-            onClick={handleInvestClick} // Update the click handler to redirect
+            onClick={handleInvestClick}
             variant="bordered"
             size="lg"
             className="w-full rounded-none border-secondary bg-secondary font-sen text-lg font-bold text-white hover:bg-transparent hover:text-secondary lg:text-base"
+            isDisabled={!normalizedData.projectActive}
           >
-            {t("invest_button")}
+            {normalizedData.projectActive ? t("invest_button") : "Unavailable"}
           </Button>
         </div>
       </motion.div>

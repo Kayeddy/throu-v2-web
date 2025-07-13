@@ -738,7 +738,8 @@
         "footer": {
           "acquirePercentage": "Adquieres un % del proyecto",
           "error": "Cantidad inválida",
-          "investButton": "Invertir"
+          "investButton": "Invertir",
+          "unavailable": "No disponible"
         }
       },
       "projectDetails": {

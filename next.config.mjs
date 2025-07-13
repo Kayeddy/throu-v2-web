@@ -18,10 +18,17 @@ const nextConfig = {
         protocol: "https",
         hostname: "img.clerk.com",
       },
-
       {
         protocol: "https",
         hostname: "wallpaperaccess.com",
+      },
+      {
+        protocol: "https",
+        hostname: "*.mypinata.cloud",
+      },
+      {
+        protocol: "https",
+        hostname: "copper-immense-octopus-480.mypinata.cloud",
       },
     ],
   },

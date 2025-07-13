@@ -10,6 +10,7 @@ import ProjectAttributesContainer from "@/components/ui/project-attributes-boxes
 import { Button } from "@heroui/react";
 import React, { useState, useMemo, useCallback } from "react";
 import Image from "next/image";
+import { ProjectDetails } from "@/utils/types/shared/project";
 
 const ImageSliderNavigationButton = React.memo(
   function ImageSliderNavigationButton({

@@ -1,7 +1,7 @@
 import { cookieStorage, createStorage } from "@wagmi/core";
 import { WagmiAdapter } from "@reown/appkit-adapter-wagmi";
 import { SolanaAdapter } from "@reown/appkit-adapter-solana";
-import { polygon, solana } from "@reown/appkit/networks";
+import { polygon, solana, solanaTestnet } from "@reown/appkit/networks";
 
 // Get projectId from https://cloud.reown.com
 export const projectId = process.env.NEXT_PUBLIC_REOWN_PROJECT_ID;
@@ -11,7 +11,7 @@ if (!projectId) {
 }
 
 // Define the networks array exactly as shown in official docs
-const networks = [polygon, solana] as any;
+const networks = [polygon, solana, solanaTestnet] as any;
 
 // Set up the Wagmi Adapter for EVM chains
 export const wagmiAdapter = new WagmiAdapter({

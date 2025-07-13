@@ -11,6 +11,7 @@ import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { Chip } from "@heroui/react";
 import { projectMedia } from "../marketplace/IndividualProjectDetails";
+import { ProjectDetails } from "@/utils/types/shared/project";
 
 interface CardData extends ProjectDetails {
   redirectionLink: string;
@@ -43,7 +44,10 @@ export const ShowcaseCard = ({
   };
 
   const projectCompletionPercentage = () => {
-    if (data?.projectRemainingTokens !== undefined && data?.projectTotalSupply) {
+    if (
+      data?.projectRemainingTokens !== undefined &&
+      data?.projectTotalSupply
+    ) {
       return calculateBarPercentage(
         data.projectTotalSupply,
         data.projectRemainingTokens

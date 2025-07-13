@@ -3,6 +3,7 @@
 import { Chip, Image } from "@heroui/react";
 import { SlLocationPin as LocationIcon } from "react-icons/sl";
 import { useTranslations } from "next-intl";
+import { ProjectAttribute } from "@/utils/types/shared/project";
 
 interface ProjectDescriptionTabProps {
   projectLocation: ProjectAttribute | undefined;

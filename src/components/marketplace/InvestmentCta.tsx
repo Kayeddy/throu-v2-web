@@ -7,6 +7,7 @@ import { MdGeneratingTokens as TokenIcon } from "react-icons/md";
 import { CiDollar as UsdtIcon } from "react-icons/ci";
 import ProjectInvestmentModal from "../modals/ProjectInvestmentModal";
 import { useTranslations } from "next-intl";
+import { ProjectDetails } from "@/utils/types/shared/project";
 
 const CtaHeader = ({
   projectName = "Salón Prado",
@@ -142,9 +143,11 @@ const CtaBody = ({
 const CtaFooter = ({
   projectTokenPrice,
   investmentAmount,
+  projectInfo,
 }: {
   projectTokenPrice: number | null;
   investmentAmount: number;
+  projectInfo: ProjectDetails | null;
 }) => {
   const t = useTranslations("Marketplace.project.investmentCta.footer");
   const [showError, setShowError] = useState(false);
@@ -161,6 +164,25 @@ const CtaFooter = ({
     }
   }, [showError]);
 
+  // Don't render the modal if project info is not available
+  if (!projectInfo || !projectInfo.projectId) {
+    return (
+      <div className="flex w-full flex-col items-center justify-center gap-4">
+        <p className="font-jakarta text-sm text-minimal">
+          {t("acquirePercentage")}
+        </p>
+        <Button
+          variant="bordered"
+          size="lg"
+          className="w-full rounded-none border-gray-400 bg-gray-400 font-sen text-lg font-bold text-white cursor-not-allowed lg:text-base"
+          isDisabled
+        >
+          {t("unavailable")}
+        </Button>
+      </div>
+    );
+  }
+
   return (
     <div className="flex w-full flex-col items-center justify-center gap-4">
       <p className="font-jakarta text-sm text-minimal">
@@ -169,6 +191,8 @@ const CtaFooter = ({
       <ProjectInvestmentModal
         projectTokenPrice={projectTokenPrice}
         investmentAmount={investmentAmount}
+        projectChain={projectInfo.chain}
+        projectId={projectInfo.projectId}
         triggerButton={
           <Button
             onClick={() => {
@@ -205,6 +229,7 @@ export default function InvestmentCta({
       <CtaFooter
         projectTokenPrice={projectInfo?.projectPrice ?? 0}
         investmentAmount={investmentAmount}
+        projectInfo={projectInfo}
       />
     </div>
   );

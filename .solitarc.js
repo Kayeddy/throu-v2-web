@@ -1,13 +1,13 @@
-const path = require('path');
+const path = require("path");
 
-const programName = 'program_real_state';
-const programId = '8GYVnwsURhjhjDktJ7vNggS7jkgunEyTbpbvHbJxXd8q';
-const idlDir = path.join(__dirname, 'src', 'utils', 'idls');
-const sdkDir = path.join(__dirname, 'src', 'generated', 'solana');
-const binaryInstallDir = path.join(__dirname, '.crates');
+const programName = "program_real_state";
+const programId = "GBVDdRqWoge6nFPEcXQLtcPyihcfptLAYyBHkGvvAxai";
+const idlDir = path.join(__dirname, "src", "utils", "idls");
+const sdkDir = path.join(__dirname, "src", "generated", "solana");
+const binaryInstallDir = path.join(__dirname, ".crates");
 
 module.exports = {
-  idlGenerator: 'anchor',
+  idlGenerator: "anchor",
   programName,
   programId,
   idlDir,

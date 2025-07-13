@@ -43,6 +43,7 @@ export default function Showcase() {
 
   const cardData = {
     ...project,
+    chain: project?.chain || "polygon", // Default to polygon for EVM projects
     redirectionLink: `/${locale}/marketplace/projects/salon-prado-0`,
   };
 

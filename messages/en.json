@@ -656,7 +656,8 @@
         "footer": {
           "acquirePercentage": "Acquire a % of the project",
           "error": "Invalid amount",
-          "investButton": "Invest"
+          "investButton": "Invest",
+          "unavailable": "Unavailable"
         }
       },
       "projectDetails": {

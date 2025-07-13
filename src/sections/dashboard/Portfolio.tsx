@@ -5,7 +5,8 @@ import { ProjectAttributeBox } from "@/components/ui/project-attributes-boxes-co
 import UserProjectDashboardCard from "@/components/ui/user-projects-dashboard-card";
 import useInvestorInfo from "@/hooks/blockchain/evm/user/useInvestorInfo";
 import { useTranslations } from "next-intl";
-import { useEffect } from "react";
+import { useMemo } from "react";
+import { ProjectDetails } from "@/utils/types/shared/project";
 
 export default function Portfolio({
   project,
