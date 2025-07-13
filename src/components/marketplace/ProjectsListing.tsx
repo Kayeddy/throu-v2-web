@@ -1,7 +1,7 @@
 "use client";
 
-import { useFetchAllProjects } from "@/hooks/blockchain/evm/projects/useProjectCollection";
-import { useGetProject } from "@/hooks/blockchain/evm/projects/useProject";
+import { useProject } from "@/hooks/blockchain/projects";
+// TODO: Implement useFetchAllProjects equivalent in new structure
 import { calculateBarPercentage } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import { Card, CardBody, CardFooter, Button, Spinner } from "@heroui/react";
@@ -9,9 +9,15 @@ import { Card, CardBody, CardFooter, Button, Spinner } from "@heroui/react";
 /**
  * A component that displays all projects from the smart contract
  * This is useful for debugging and viewing the raw data
+ *
+ * TODO: Update to use new simplified hook structure
  */
 export default function ProjectsListing() {
-  const { totalProjectCount, isLoading, error } = useFetchAllProjects();
+  // TODO: Re-implement with new hook structure
+  const totalProjectCount = 0; // Placeholder
+  const isLoading = false;
+  const error: Error | null = null;
+
   const [projectIds, setProjectIds] = useState<number[]>([]);
 
   // When total project count is fetched, create an array of project IDs
@@ -39,7 +45,7 @@ export default function ProjectsListing() {
         <h2 className="text-xl font-bold text-red-500">
           Error loading projects
         </h2>
-        <p>{error.message}</p>
+        <p>{String(error)}</p>
       </div>
     );
   }
@@ -47,6 +53,16 @@ export default function ProjectsListing() {
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold mb-6">Projects from Smart Contract</h1>
+
+      <div className="mb-4 p-4 bg-yellow-100 rounded-lg">
+        <p className="font-semibold text-yellow-800">
+          ⚠️ Component needs updating
+        </p>
+        <p className="text-sm text-yellow-700">
+          This component needs to be updated to use the new simplified hook
+          structure. The old useFetchAllProjects hook has been removed.
+        </p>
+      </div>
 
       <div className="mb-4">
         <p className="font-semibold">Total Projects: {totalProjectCount}</p>
@@ -69,7 +85,7 @@ export default function ProjectsListing() {
  * Card component for a single project
  */
 function ProjectCard({ projectId }: { projectId: number }) {
-  const { project, error, isPending } = useGetProject(projectId);
+  const { project, error, isLoading } = useProject(projectId);
 
   // Calculate completion percentage
   const getCompletionPercentage = () => {
@@ -85,7 +101,7 @@ function ProjectCard({ projectId }: { projectId: number }) {
     return 0;
   };
 
-  if (isPending) {
+  if (isLoading) {
     return (
       <Card className="min-h-[200px] flex items-center justify-center">
         <Spinner size="sm" />
@@ -96,7 +112,7 @@ function ProjectCard({ projectId }: { projectId: number }) {
   if (error) {
     return (
       <Card className="min-h-[200px] flex items-center justify-center bg-red-50">
-        <p className="text-red-500">Error: {error.message}</p>
+        <p className="text-red-500">Error: {String(error)}</p>
       </Card>
     );
   }

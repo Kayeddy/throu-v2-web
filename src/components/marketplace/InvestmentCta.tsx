@@ -189,24 +189,16 @@ const CtaFooter = ({
         {t("acquirePercentage")}
       </p>
       <ProjectInvestmentModal
-        projectTokenPrice={projectTokenPrice}
-        investmentAmount={investmentAmount}
+        projectTitle={projectInfo.projectURI?.name || `Project ${projectInfo.projectId}`}
+        projectPrice={projectTokenPrice || 0}
         projectChain={projectInfo.chain}
-        projectId={projectInfo.projectId}
-        triggerButton={
-          <Button
-            onClick={() => {
-              if (isConnected && address && investmentAmount < 1)
-                setShowError(true);
-            }}
-            variant="bordered"
-            size="lg"
-            className="w-full rounded-none border-secondary bg-secondary font-sen text-lg font-bold text-white hover:bg-transparent hover:text-secondary lg:text-base"
-          >
-            {showError ? t("error") : t("investButton")}
-          </Button>
-        }
-      />
+        projectId={Number(projectInfo.projectId)}
+        variant="bordered"
+        size="lg"
+        className="w-full rounded-none border-secondary bg-secondary font-sen text-lg font-bold text-white hover:bg-transparent hover:text-secondary lg:text-base"
+      >
+        <span>{showError ? t("error") : t("investButton")}</span>
+      </ProjectInvestmentModal>
     </div>
   );
 };

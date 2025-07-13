@@ -2,9 +2,10 @@
 
 import { motion } from "framer-motion";
 import MarketplaceHomeCard from "@/components/ui/marketplace-home-project-card";
-import { useGetProject } from "@/hooks/blockchain/evm/projects/useProject";
-import { useGetProject as useGetSolanaProject } from "@/hooks/blockchain/solana/projects/useProject";
-import { useFetchAllSolanaProjects } from "@/hooks/blockchain/solana/projects/useProjectCollection";
+import { useProject } from "@/hooks/blockchain/projects";
+// TODO: Implement simplified Solana hooks
+// import { useGetProject as useGetSolanaProject } from "@/hooks/blockchain/solana/projects/useProject";
+// import { useFetchAllSolanaProjects } from "@/hooks/blockchain/solana/projects/useProjectCollection";
 import { Card, Skeleton } from "@heroui/react";
 import { useTranslations } from "next-intl";
 import { Carousel } from "@/components/ui/cards-carousel";
@@ -54,19 +55,24 @@ export default function MarketplaceHomepage() {
 
   // EVM Project Fetch
   const evmProjectId = 0;
-  const { project: evmProject, isPending: evmPending } =
-    useGetProject(evmProjectId);
+  const { project: evmProject, isLoading: evmPending } =
+    useProject(evmProjectId);
 
+  // TODO: Implement simplified Solana hooks
   // Solana Project Fetch
-  const solanaProjectId = "0"; // Solana projects use string IDs
-  const { projectData: solanaProject, isLoading: solanaPending } =
-    useGetSolanaProject(solanaProjectId);
+  // const solanaProjectId = "0"; // Solana projects use string IDs
+  // const { projectData: solanaProject, isLoading: solanaPending } =
+  //   useGetSolanaProject(solanaProjectId);
+  const solanaProject = null;
+  const solanaPending = false;
 
   // Solana project count for debugging
-  const {
-    totalProjectCount: solanaProjectCount,
-    isLoading: solanaCountLoading,
-  } = useFetchAllSolanaProjects();
+  // const {
+  //   totalProjectCount: solanaProjectCount,
+  //   isLoading: solanaCountLoading,
+  // } = useFetchAllSolanaProjects();
+  const solanaProjectCount = 0;
+  const solanaCountLoading = false;
 
   const [allProjects, setAllProjects] = useState<ProjectDetails[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -79,10 +85,11 @@ export default function MarketplaceHomepage() {
       project: evmProject?.projectURI?.name,
       pending: evmPending,
     });
-    console.log("🟡 [MARKETPLACE] Solana Project:", {
-      project: solanaProject?.projectURI?.name,
-      pending: solanaPending,
-    });
+    // TODO: Re-enable when Solana hooks are implemented
+    // console.log("🟡 [MARKETPLACE] Solana Project:", {
+    //   project: solanaProject?.projectURI?.name,
+    //   pending: solanaPending,
+    // });
     console.log("🟡 [MARKETPLACE] Solana Project Count:", {
       count: solanaProjectCount,
       loading: solanaCountLoading,
@@ -99,24 +106,25 @@ export default function MarketplaceHomepage() {
       projects.push(evmProject);
     }
 
+    // TODO: Add Solana project when simplified hooks are implemented
     // Add Solana project if available (convert SolanaProjectDetails to ProjectDetails)
-    if (solanaProject) {
-      console.log(
-        "🟢 [MARKETPLACE] Adding Solana project to display:",
-        solanaProject.projectURI?.name
-      );
-      const solanaAsProjectDetails: ProjectDetails = {
-        ...solanaProject,
-        // Ensure compatibility with ProjectDetails interface
-        projectRemainingTokens: BigInt(solanaProject.projectRemainingTokens),
-        // Add missing properties from ProjectDetails that aren't in SolanaProjectDetails
-        projectPrice: solanaProject.projectPrice,
-        projectTotalSupply: solanaProject.projectTotalSupply,
-        projectSales: solanaProject.projectSales,
-        projectProfit: solanaProject.projectProfit,
-      };
-      projects.push(solanaAsProjectDetails);
-    }
+    // if (solanaProject) {
+    //   console.log(
+    //     "🟢 [MARKETPLACE] Adding Solana project to display:",
+    //     solanaProject.projectURI?.name
+    //   );
+    //   const solanaAsProjectDetails: ProjectDetails = {
+    //     ...solanaProject,
+    //     // Ensure compatibility with ProjectDetails interface
+    //     projectRemainingTokens: BigInt(solanaProject.projectRemainingTokens),
+    //     // Add missing properties from ProjectDetails that aren't in SolanaProjectDetails
+    //     projectPrice: solanaProject.projectPrice,
+    //     projectTotalSupply: solanaProject.projectTotalSupply,
+    //     projectSales: solanaProject.projectSales,
+    //     projectProfit: solanaProject.projectProfit,
+    //   };
+    //   projects.push(solanaAsProjectDetails);
+    // }
 
     console.log(
       `🟢 [MARKETPLACE] Total projects to display: ${projects.length}`

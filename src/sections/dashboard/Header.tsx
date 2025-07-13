@@ -3,7 +3,7 @@ import { useUser } from "@clerk/nextjs";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { BsPlus as PlusIcon } from "react-icons/bs";
-import useUserBalance from "@/hooks/blockchain/evm/user/useUserBalance";
+import { useUserBalance } from "@/hooks/blockchain";
 import { useEffect, useState } from "react";
 import { convertBalanceUnits } from "@/lib/utils";
 import { Spinner } from "@heroui/react";
@@ -11,13 +11,14 @@ import { Spinner } from "@heroui/react";
 export default function Header() {
   const [convertedUsdtBalance, setConvertedUsdtBalance] = useState("0.00");
 
-  const { isLoading: isUsdtBalanceLoading, usdtBalance } = useUserBalance();
+  const { isLoading: isUsdtBalanceLoading, wallet } = useUserBalance();
 
   const { user, isLoaded } = useUser();
 
   const t = useTranslations("Dashboard.header");
 
-  const isLoading = isUsdtBalanceLoading || usdtBalance === null || !isLoaded;
+  const usdtBalance = wallet?.usdt?.formatted || "0";
+  const isLoading = isUsdtBalanceLoading || !isLoaded;
 
   useEffect(() => {
     if (

@@ -2,7 +2,7 @@
 
 import ProjectHeader from "@/sections/marketplace/project/ProjectHeader";
 import ProjectTabsHandler from "@/sections/marketplace/project/ProjectTabsHandler";
-import { useGetProject } from "@/hooks/blockchain/evm/projects/useProject";
+import { useProject } from "@/hooks/blockchain/projects";
 import { useEffect, useState } from "react";
 import { Card, Divider, Skeleton } from "@heroui/react";
 import { motion } from "framer-motion";
@@ -68,7 +68,7 @@ export default function IndividualProjectDetails({
     }
   }, [params.project]);
 
-  const { project, error, isPending } = useGetProject(projectId);
+  const { project, error, isLoading } = useProject(projectId);
 
   return (
     <motion.div
@@ -77,7 +77,7 @@ export default function IndividualProjectDetails({
       animate={{ opacity: 1 }}
       transition={{ delay: 1, duration: 1 }}
     >
-      {isPending ? (
+      {isLoading ? (
         <CardSkeletonLoader />
       ) : (
         <div className="relative w-full">

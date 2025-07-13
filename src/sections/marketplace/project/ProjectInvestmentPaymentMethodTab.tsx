@@ -1,7 +1,7 @@
 import { useEffect, useState, useMemo } from "react";
 import { convertBalanceUnits } from "@/lib/utils";
 // import { emojiAvatarForAddress } from "@/utils/helpers/walletButtonStyleGenerator"; // DISABLED: Deleted file
-import useUserBalance from "@/hooks/blockchain/evm/user/useUserBalance";
+import { useUserBalance } from "@/hooks/blockchain/wallet";
 import {
   Card,
   CardBody,
@@ -49,7 +49,8 @@ export default function ProjectInvestmentPaymentMethodTab({
   );
 
   // TODO: Re-implement with 2025 wallet standards - All wallet functionality temporarily disabled
-  const { isLoading: isUsdtBalanceLoading, usdtBalance } = useUserBalance();
+  const { isLoading: isUsdtBalanceLoading, wallet } = useUserBalance();
+  const usdtBalance = wallet?.usdt?.formatted || "0";
   const [convertedUsdtBalance, setConvertedUsdtBalance] = useState("0.00");
   const isMobile = useIsMobile();
 

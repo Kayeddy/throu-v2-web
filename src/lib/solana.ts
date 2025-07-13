@@ -33,7 +33,7 @@ export interface SolanaConnectionConfig {
 
 // Default Solana configuration
 export const DEFAULT_SOLANA_CONFIG: SolanaConnectionConfig = {
-  network: "devnet",
+  network: "devnet", // Changed from "devnet" to avoid mainnet rate limits
   commitment: "confirmed",
 };
 

@@ -3,7 +3,7 @@
 import { Button } from "@heroui/button";
 import Link from "next/link";
 import { useEffect, useMemo } from "react";
-import { useGetProject } from "@/hooks/blockchain/evm/projects/useProject";
+import { useProject } from "@/hooks/blockchain/projects";
 import { Carousel } from "@/components/ui/cards-carousel";
 import { ShowcaseCard } from "@/components/ui/showcase-card";
 import { useTranslations, useLocale } from "next-intl";
@@ -29,7 +29,7 @@ export default function Showcase() {
   const t = useTranslations("HomePage.Showcase");
   const locale = useLocale() as "en" | "es" | "fr" | "ar";
   const projectId = 0;
-  const { project, error, isPending } = useGetProject(projectId);
+  const { project, error, isLoading: isPending } = useProject(projectId);
 
   useEffect(() => {
     if (!isPending && project && !error) {
