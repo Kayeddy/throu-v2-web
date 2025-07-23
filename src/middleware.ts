@@ -1,45 +1,49 @@
-import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
-import createMiddleware from "next-intl/middleware";
+import createIntlMiddleware from "next-intl/middleware";
 import { routing } from "./i18n/routing";
+import { NextRequest, NextResponse } from "next/server";
 
-const intlMiddleware = createMiddleware(routing);
+// Create intl middleware with error handling
+const intlMiddleware = createIntlMiddleware(routing);
 
-// const isPublicRoute = createRouteMatcher([
-//   "/",
-//   "/en",
-//   "/es",
-//   "/fr",
-//   "/ar",
-//   "/:locale/sign-in",
-//   "/:locale/sign-up",
-//   "/:locale/about-us", // More specific route first
-//   "/:locale/marketplace", // Marketplace route for locales
-//   "/:locale/marketplace/projects/:project", // Marketplace project route with slug for locales
-//   "/api/webhooks/clerk",
-//   "/(en|es|fr|ar)/about-us", // Locale-specific paths for about-us
-//   "/(en|es|fr|ar)/marketplace", // Locale-specific paths for marketplace
-//   "/(en|es|fr|ar)/marketplace/projects/:project", // Locale-specific paths for marketplace projects with slug
-//   "/(en|es|fr|ar)(.*)", // General route matcher last
-// ]);
+// Safe middleware wrapper with comprehensive error handling
+export default function middleware(req: NextRequest) {
+  try {
+    // Check if request should be handled by intl middleware
+    const pathname = req.nextUrl.pathname;
+    
+    // Skip middleware for static files, API routes, and assets
+    if (
+      pathname.startsWith('/_next') ||
+      pathname.startsWith('/api') ||
+      pathname.startsWith('/assets') ||
+      pathname.startsWith('/legal') ||
+      pathname.match(/\.(jpg|jpeg|png|gif|svg|ico|webp|css|js|json|pdf|webmanifest)$/)
+    ) {
+      return NextResponse.next();
+    }
 
-const isPublicRoute = createRouteMatcher(["/(.*)"]); // Match all routes
-
-export default clerkMiddleware(async (auth, req) => {
-  // Since all routes are currently public, we don't need to protect any routes
-  // This prevents unnecessary auth checks that might cause middleware failures
-  
-  // Always return the intl middleware response
-  return intlMiddleware(req);
-});
+    // Handle internationalization
+    return intlMiddleware(req);
+  } catch (error) {
+    // Log error for debugging (will appear in Vercel function logs)
+    console.error('[Middleware Error]:', error);
+    
+    // Return a safe fallback response
+    return NextResponse.next();
+  }
+}
 
 export const config = {
   matcher: [
-    // Exclude static files such as PDFs, images, and others in the public folder
-    "/((?!_next|legal|assets|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|pdf|webmanifest)).*)",
-    // Always run for API routes
-    "/(api|trpc)(.*)",
-    // Match locales (updated to match routing configuration)
-    "/",
-    "/(en|es|fr|ar)/:path*",
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     * - assets (public assets)
+     * - legal (legal documents)
+     */
+    '/((?!api|_next/static|_next/image|favicon.ico|assets|legal).*)',
   ],
 };
