@@ -25,10 +25,10 @@ const intlMiddleware = createMiddleware(routing);
 const isPublicRoute = createRouteMatcher(["/(.*)"]); // Match all routes
 
 export default clerkMiddleware(async (auth, req) => {
-  if (!isPublicRoute(req)) {
-    await auth.protect();
-  }
-
+  // Since all routes are currently public, we don't need to protect any routes
+  // This prevents unnecessary auth checks that might cause middleware failures
+  
+  // Always return the intl middleware response
   return intlMiddleware(req);
 });
 
@@ -38,8 +38,8 @@ export const config = {
     "/((?!_next|legal|assets|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|pdf|webmanifest)).*)",
     // Always run for API routes
     "/(api|trpc)(.*)",
-    // Match locales
+    // Match locales (updated to match routing configuration)
     "/",
-    "/(de|en)/:path*",
+    "/(en|es|fr|ar)/:path*",
   ],
 };
