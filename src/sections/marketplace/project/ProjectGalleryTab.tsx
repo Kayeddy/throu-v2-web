@@ -1,4 +1,4 @@
-import { projectMedia } from "@/components/marketplace/IndividualProjectDetails";
+import { useProjectMediaByChain } from "@/hooks/blockchain/useProjectDataByChain";
 import "@/utils/styles/marketplace/project/projectGallery.module.css";
 import ProjectImageViewerModal from "@/components/modals/ProjectImageViewerModal";
 import { useTranslations } from "next-intl";
@@ -11,6 +11,9 @@ export default function ProjectGalleryTab() {
   );
 
   const isMobile = useIsMobile();
+  
+  // Get dynamic project media based on current chain
+  const projectMedia = useProjectMediaByChain();
 
   const renderProjectMedia = () => {
     if (projectMedia?.length) {

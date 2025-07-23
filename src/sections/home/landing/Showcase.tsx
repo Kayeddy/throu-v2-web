@@ -2,11 +2,19 @@
 
 import { Button } from "@heroui/button";
 import Link from "next/link";
-import { useEffect, useMemo } from "react";
-import { useProject } from "@/hooks/blockchain/projects";
+import { useEffect, useMemo, useState } from "react";
+import { useGetProject } from "@/hooks/blockchain/evm";
+import { useGetSolanaProject } from "@/hooks/blockchain/solana";
 import { Carousel } from "@/components/ui/cards-carousel";
 import { ShowcaseCard } from "@/components/ui/showcase-card";
 import { useTranslations, useLocale } from "next-intl";
+import { ProjectDetails } from "@/utils/types/shared/project";
+import { generateProjectUrl } from "@/lib/utils";
+
+// Interface for showcase card data
+interface ShowcaseCardData extends ProjectDetails {
+  redirectionLink: string;
+}
 
 const TemporaryComingSoonCard = () => {
   const t = useTranslations("HomePage.Showcase");
@@ -28,46 +36,133 @@ const TemporaryComingSoonCard = () => {
 export default function Showcase() {
   const t = useTranslations("HomePage.Showcase");
   const locale = useLocale() as "en" | "es" | "fr" | "ar";
-  const projectId = 0;
-  const { project, error, isLoading: isPending } = useProject(projectId);
 
-  useEffect(() => {
-    if (!isPending && project && !error) {
-      console.log("Project fetched.");
-    }
-  }, [isPending, project, error]);
+  // EVM Project
+  const evmProjectId = 0;
+  const {
+    project: evmProject,
+    error: evmError,
+    isPending: evmPending,
+  } = useGetProject(evmProjectId);
 
-  {
-    /** This is a remporal solution to redirect to one project, Salon Prado in this case */
-  }
+  // Solana Project
+  const solanaProjectId = "0";
+  const {
+    data: solanaProject,
+    error: solanaError,
+    isPending: solanaPending,
+  } = useGetSolanaProject(solanaProjectId);
 
-  const cardData = {
-    ...project,
-    chain: project?.chain || "polygon", // Default to polygon for EVM projects
-    redirectionLink: `/${locale}/marketplace/projects/salon-prado-0`,
+  const [availableProjects, setAvailableProjects] = useState<
+    ShowcaseCardData[]
+  >([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Generate redirect link for a project
+  const generateProjectLink = (project: ProjectDetails) => {
+    return generateProjectUrl(project, locale);
   };
+
+  // Combine and process projects
+  useEffect(() => {
+    console.log("🟡 [SHOWCASE] Processing projects...");
+
+    const projects: ShowcaseCardData[] = [];
+
+    // Add EVM project if available
+    if (evmProject && evmProject.projectActive) {
+      console.log(
+        "🟢 [SHOWCASE] Adding EVM project:",
+        evmProject.projectURI?.name
+      );
+      projects.push({
+        ...evmProject,
+        redirectionLink: generateProjectLink(evmProject),
+      } as ShowcaseCardData);
+    }
+
+    // Add Solana project if available (show regardless of active status for testnet)
+    if (solanaProject) {
+      console.log(
+        "🟢 [SHOWCASE] Adding Solana project:",
+        solanaProject.projectURI?.name || "Unnamed Project",
+        "- Active:",
+        solanaProject.projectActive
+      );
+      projects.push({
+        ...solanaProject,
+        redirectionLink: generateProjectLink(solanaProject),
+      } as ShowcaseCardData);
+    }
+
+    setAvailableProjects(projects);
+    setIsLoading(evmPending || solanaPending);
+
+    console.log(`🟢 [SHOWCASE] Total projects available: ${projects.length}`);
+  }, [evmProject, evmPending, solanaProject, solanaPending, locale]);
+
+  // Legacy fallback for backward compatibility
+  const legacyCardData = useMemo(() => {
+    if (evmProject) {
+      return {
+        ...evmProject,
+        chain: evmProject?.chain || "polygon",
+        redirectionLink: generateProjectLink(evmProject),
+      } as ShowcaseCardData;
+    }
+    return null;
+  }, [evmProject, locale]);
 
   // Memoized carousel render logic for optimization
   const renderProjectsCarousel = useMemo(() => {
-    if (!isPending && project) {
+    // Show loading state during initial load
+    if (isLoading) {
+      return (
+        <div className="flex h-[70vh] max-h-[600px] w-[80vw] max-w-[450px] items-center justify-center rounded-md bg-light/10 shadow-project-section-card-custom lg:max-h-[700px] lg:w-[40vw]">
+          <div className="animate-pulse text-center">
+            <div className="mx-auto mb-4 h-8 w-24 rounded bg-gray-200"></div>
+            <div className="mx-auto h-4 w-32 rounded bg-gray-200"></div>
+          </div>
+        </div>
+      );
+    }
+
+    // Multi-project carousel when we have projects
+    if (availableProjects.length > 0) {
       return (
         <Carousel
           items={[
-            <ShowcaseCard data={cardData} />,
-            <TemporaryComingSoonCard />,
-            <ShowcaseCard />,
+            ...availableProjects.map((project, index) => (
+              <ShowcaseCard
+                key={`${project.chain}-${project.projectId}-${index}`}
+                data={project}
+              />
+            )),
+            <TemporaryComingSoonCard key="coming-soon" />,
           ]}
         />
       );
     }
-    if (error) {
+
+    // Fallback for legacy single project display
+    if (legacyCardData) {
       return (
-        <p className="text-center font-sen text-slate-600">
-          {t("no_projects_message")}
-        </p>
+        <Carousel
+          items={[
+            <ShowcaseCard key="legacy-evm" data={legacyCardData} />,
+            <TemporaryComingSoonCard key="coming-soon" />,
+          ]}
+        />
       );
     }
-  }, [project, error, isPending, t]);
+
+    // Default fallback - always show the coming soon card even if there are errors
+    return (
+      <Carousel
+        items={[<TemporaryComingSoonCard key="coming-soon-fallback" />]}
+      />
+    );
+  }, [availableProjects, isLoading, legacyCardData, t]);
 
   // Dynamically detect and highlight "projects" and "affordable" based on locale
   const formatTitle = useMemo(() => {

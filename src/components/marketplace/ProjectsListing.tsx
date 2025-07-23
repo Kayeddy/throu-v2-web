@@ -1,6 +1,6 @@
 "use client";
 
-import { useProject } from "@/hooks/blockchain/projects";
+import { useGetProject } from "@/hooks/blockchain/evm";
 // TODO: Implement useFetchAllProjects equivalent in new structure
 import { calculateBarPercentage } from "@/lib/utils";
 import { useEffect, useState } from "react";
@@ -85,7 +85,7 @@ export default function ProjectsListing() {
  * Card component for a single project
  */
 function ProjectCard({ projectId }: { projectId: number }) {
-  const { project, error, isLoading } = useProject(projectId);
+  const { project, error, isPending: isLoading } = useGetProject(projectId);
 
   // Calculate completion percentage
   const getCompletionPercentage = () => {
@@ -126,7 +126,7 @@ function ProjectCard({ projectId }: { projectId: number }) {
         <h3 className="text-lg font-bold">Project #{projectId}</h3>
         {project && project.projectURI && (
           <>
-            <p className="font-medium">{project.projectURI.name}</p>
+            <p className="font-medium">{project.projectURI?.name || "Unnamed Project"}</p>
             <p className="text-sm truncate">{project.projectURI.description}</p>
           </>
         )}

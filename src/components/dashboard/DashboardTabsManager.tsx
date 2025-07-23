@@ -18,11 +18,6 @@ export default function DashboardTabsManager() {
   const t = useTranslations("Dashboard");
   const isMobile = useIsMobile();
 
-  // TODO: Re-implement wallet connection with 2025 standards
-  // For now, assuming no wallet connection to prevent crashes
-  const isConnected = false;
-  const address = null;
-
   const [selected, setSelected] = useState<string>("portfolio");
 
   return (
@@ -47,7 +42,7 @@ export default function DashboardTabsManager() {
           title={
             <div className="flex items-center space-x-2">
               <LuWallet />
-              <span>{t("tabs.portfolio")}</span>
+              <span>{t("tabs.portfolio.desktopTitle")}</span>
             </div>
           }
         >
@@ -69,7 +64,7 @@ export default function DashboardTabsManager() {
           title={
             <div className="flex items-center space-x-2">
               <TbMessage2 />
-              <span>{t("tabs.movements")}</span>
+              <span>{t("tabs.movements.desktopTitle")}</span>
             </div>
           }
         >
@@ -91,7 +86,7 @@ export default function DashboardTabsManager() {
           title={
             <div className="flex items-center space-x-2">
               <MdOutlineBookmark />
-              <span>{t("tabs.saved")}</span>
+              <span>{t("tabs.saved.title")}</span>
             </div>
           }
         >

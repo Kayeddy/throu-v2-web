@@ -7,6 +7,7 @@ import { FiChevronLeft as LeftButtonIcon } from "react-icons/fi";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { ProjectDetails } from "@/utils/types/shared/project";
+import { useProjectNameByChain } from "@/hooks/blockchain/useProjectDataByChain";
 
 export default function ProjectHeader({
   projectDetails,
@@ -17,6 +18,9 @@ export default function ProjectHeader({
 }) {
   const router = useRouter();
   const t = useTranslations("Marketplace.project.projectDetails.projectHeader");
+  
+  // Get dynamic project name based on chain
+  const projectName = useProjectNameByChain(projectDetails?.chain);
 
   const projectCompletionPercentage = useMemo(() => {
     if (
@@ -100,7 +104,7 @@ export default function ProjectHeader({
           <LeftButtonIcon className="text-2xl font-bold text-minimal dark:text-light" />
         </Button>
         <h1 className="font-sen text-3xl font-bold text-primary dark:text-light">
-          {t("title", { projectName: "Salón Prado" })}
+          {t("title", { projectName })}
         </h1>
       </div>
 

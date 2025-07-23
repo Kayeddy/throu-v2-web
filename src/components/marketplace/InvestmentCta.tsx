@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Input } from "@heroui/react";
 import { MdCurrencyExchange as ConversionIcon } from "react-icons/md";
 import { MdGeneratingTokens as TokenIcon } from "react-icons/md";
@@ -8,11 +8,13 @@ import { CiDollar as UsdtIcon } from "react-icons/ci";
 import ProjectInvestmentModal from "../modals/ProjectInvestmentModal";
 import { useTranslations } from "next-intl";
 import { ProjectDetails } from "@/utils/types/shared/project";
+import { convertSolanaTokenPriceToDisplay } from "@/lib/utils";
+import { useProjectNameByChain } from "@/hooks/blockchain/useProjectDataByChain";
 
 const CtaHeader = ({
-  projectName = "Salón Prado",
+  projectName,
 }: {
-  projectName?: string;
+  projectName: string;
 }) => {
   const t = useTranslations("Marketplace.project.investmentCta.header");
   return (
@@ -29,10 +31,12 @@ const CtaBody = ({
   investmentAmount,
   setInvestmentAmount,
   projectTokenPrice,
+  projectInfo,
 }: {
   investmentAmount: number;
   setInvestmentAmount: (amount: number) => void;
   projectTokenPrice: number | null;
+  projectInfo: ProjectDetails | null;
 }) => {
   const t = useTranslations("Marketplace.project.investmentCta.body");
 
@@ -68,6 +72,8 @@ const CtaBody = ({
 
   const handleConversion = async () => {
     if (investmentAmount > 0 && projectTokenPrice) {
+      // For Solana projects, projectTokenPrice is already converted for display
+      // For EVM projects, use the display price directly
       const usdtValue = (investmentAmount * projectTokenPrice).toFixed(2);
       setConvertedUsdt(usdtValue);
     }
@@ -165,7 +171,10 @@ const CtaFooter = ({
   }, [showError]);
 
   // Don't render the modal if project info is not available
-  if (!projectInfo || !projectInfo.projectId) {
+  if (
+    !projectInfo ||
+    !(projectInfo.projectId === "0" || projectInfo.projectId === 0)
+  ) {
     return (
       <div className="flex w-full flex-col items-center justify-center gap-4">
         <p className="font-jakarta text-sm text-minimal">
@@ -189,7 +198,9 @@ const CtaFooter = ({
         {t("acquirePercentage")}
       </p>
       <ProjectInvestmentModal
-        projectTitle={projectInfo.projectURI?.name || `Project ${projectInfo.projectId}`}
+        projectTitle={
+          projectInfo.projectURI?.name || `Project ${projectInfo.projectId}`
+        }
         projectPrice={projectTokenPrice || 0}
         projectChain={projectInfo.chain}
         projectId={Number(projectInfo.projectId)}
@@ -209,14 +220,18 @@ export default function InvestmentCta({
   projectInfo: ProjectDetails | null;
 }) {
   const [investmentAmount, setInvestmentAmount] = useState<number>(0);
+  
+  // Get dynamic project name based on chain
+  const projectName = useProjectNameByChain(projectInfo?.chain);
 
   return (
     <div className="flex h-fit w-80 flex-col items-center justify-center gap-6 rounded-md bg-light/30 p-6 dark:bg-dark/50">
-      <CtaHeader />
+      <CtaHeader projectName={projectName} />
       <CtaBody
         investmentAmount={investmentAmount}
         projectTokenPrice={projectInfo?.projectPrice ?? 0}
         setInvestmentAmount={setInvestmentAmount}
+        projectInfo={projectInfo}
       />
       <CtaFooter
         projectTokenPrice={projectInfo?.projectPrice ?? 0}

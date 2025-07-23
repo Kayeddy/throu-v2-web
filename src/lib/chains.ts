@@ -9,7 +9,7 @@
 import { clusterApiUrl } from "@solana/web3.js";
 
 // Solana network types (replacing WalletAdapterNetwork)
-export type SolanaNetwork = "mainnet-beta" | "devnet" | "testnet";
+export type SolanaNetwork = "mainnet-beta" | "devnet";
 
 // Chain types enum
 export enum ChainType {
@@ -26,7 +26,6 @@ export enum SupportedChainId {
   // Solana Chains
   SOLANA_MAINNET = "mainnet-beta",
   SOLANA_DEVNET = "devnet",
-  SOLANA_TESTNET = "testnet",
 }
 
 // Base chain interface
@@ -136,25 +135,6 @@ export const CHAINS: Record<SupportedChainId, SupportedChain> = {
     type: ChainType.SOLANA,
     isTestnet: true,
     network: "devnet",
-    rpcUrl: clusterApiUrl("devnet"),
-    wsUrl: clusterApiUrl("devnet").replace("https", "wss"),
-    nativeCurrency: {
-      name: "Solana",
-      symbol: "SOL",
-      decimals: 9,
-    },
-    blockExplorer: {
-      name: "Solscan Devnet",
-      url: "https://solscan.io?cluster=devnet",
-    },
-  },
-
-  [SupportedChainId.SOLANA_TESTNET]: {
-    id: SupportedChainId.SOLANA_TESTNET,
-    name: "Solana Testnet",
-    type: ChainType.SOLANA,
-    isTestnet: true,
-    network: "testnet",
     rpcUrl: clusterApiUrl("testnet"),
     wsUrl: clusterApiUrl("testnet").replace("https", "wss"),
     nativeCurrency: {

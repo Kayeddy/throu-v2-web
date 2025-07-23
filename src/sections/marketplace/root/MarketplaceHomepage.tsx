@@ -1,18 +1,17 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 import MarketplaceHomeCard from "@/components/ui/marketplace-home-project-card";
-import { useProject } from "@/hooks/blockchain/projects";
-// TODO: Implement simplified Solana hooks
-// import { useGetProject as useGetSolanaProject } from "@/hooks/blockchain/solana/projects/useProject";
-// import { useFetchAllSolanaProjects } from "@/hooks/blockchain/solana/projects/useProjectCollection";
+import { useGetProject } from "@/hooks/blockchain/evm";
+import { useGetSolanaProject } from "@/hooks/blockchain/solana";
 import { Card, Skeleton } from "@heroui/react";
 import { useTranslations } from "next-intl";
 import { Carousel } from "@/components/ui/cards-carousel";
 import { ProjectDetails } from "@/utils/types/shared/project";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo, useRef } from "react";
 
-const TemporaryComingSoonCard = () => {
+const TemporaryComingSoonCard = React.memo(() => {
   const t = useTranslations("HomePage.Showcase");
 
   return (
@@ -27,57 +26,72 @@ const TemporaryComingSoonCard = () => {
       </div>
     </div>
   );
-};
+});
 
-const CardSkeletonLoader = () => {
+const CardSkeletonLoader = React.memo(() => {
   return (
-    <Card className="relative flex h-[70vh] max-h-[500px] w-[90vw] flex-col items-start justify-start overflow-hidden rounded-md shadow-project-section-card-custom lg:h-[55vh] lg:max-h-[600px] lg:w-80">
-      <Skeleton className="rounded-lg">
-        <div className="h-24 rounded-lg bg-default-300"></div>
-      </Skeleton>
-      <div className="space-y-3">
-        <Skeleton className="w-3/5 rounded-lg">
-          <div className="h-3 w-3/5 rounded-lg bg-default-200"></div>
-        </Skeleton>
-        <Skeleton className="w-4/5 rounded-lg">
-          <div className="h-3 w-4/5 rounded-lg bg-default-200"></div>
-        </Skeleton>
-        <Skeleton className="w-2/5 rounded-lg">
-          <div className="h-3 w-2/5 rounded-lg bg-default-300"></div>
-        </Skeleton>
-      </div>
-    </Card>
+    <div className="flex w-full gap-6 overflow-x-auto px-6 lg:px-0">
+      {Array.from({ length: 3 }).map((_, index) => (
+        <Card
+          key={index}
+          className="relative flex h-[70vh] max-h-[500px] w-[90vw] flex-col items-start justify-start rounded-md bg-light/5 shadow-project-section-card-custom dark:bg-dark/10 lg:h-[70vh] lg:max-h-[600px] lg:min-h-[500px] lg:w-80"
+        >
+          <Skeleton className="h-full w-full rounded-md" />
+        </Card>
+      ))}
+    </div>
   );
-};
+});
 
-export default function MarketplaceHomepage() {
-  console.log("🚀 [MARKETPLACE] MarketplaceHomepage rendering");
+function MarketplaceHomepage() {
+  // console.log("🚀 [MARKETPLACE] MarketplaceHomepage rendering"); // Temporarily disabled
 
   // EVM Project Fetch
   const evmProjectId = 0;
-  const { project: evmProject, isLoading: evmPending } =
-    useProject(evmProjectId);
+  const { project: evmProject, isPending: evmPending } =
+    useGetProject(evmProjectId);
 
-  // TODO: Implement simplified Solana hooks
   // Solana Project Fetch
-  // const solanaProjectId = "0"; // Solana projects use string IDs
-  // const { projectData: solanaProject, isLoading: solanaPending } =
-  //   useGetSolanaProject(solanaProjectId);
-  const solanaProject = null;
-  const solanaPending = false;
-
-  // Solana project count for debugging
-  // const {
-  //   totalProjectCount: solanaProjectCount,
-  //   isLoading: solanaCountLoading,
-  // } = useFetchAllSolanaProjects();
-  const solanaProjectCount = 0;
-  const solanaCountLoading = false;
+  const solanaProjectId = "0"; // Solana projects use string IDs
+  const { data: solanaProject, isPending: solanaPending } =
+    useGetSolanaProject(solanaProjectId);
 
   const [allProjects, setAllProjects] = useState<ProjectDetails[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const t = useTranslations("Marketplace");
+
+  // Debug: Track what causes re-renders (with proper dependencies)
+  const renderCount = useRef(0);
+  const prevProps = useRef({
+    evmProject,
+    evmPending,
+    solanaProject,
+    solanaPending,
+  });
+
+  useEffect(() => {
+    renderCount.current += 1;
+    const current = { evmProject, evmPending, solanaProject, solanaPending };
+
+    console.log(`🔍 [MARKETPLACE] Render #${renderCount.current}`);
+
+    // Check what changed
+    if (prevProps.current.evmProject !== current.evmProject) {
+      console.log("🔄 [MARKETPLACE] EVM Project changed");
+    }
+    if (prevProps.current.evmPending !== current.evmPending) {
+      console.log("🔄 [MARKETPLACE] EVM Pending changed");
+    }
+    if (prevProps.current.solanaProject !== current.solanaProject) {
+      console.log("🔄 [MARKETPLACE] Solana Project changed");
+    }
+    if (prevProps.current.solanaPending !== current.solanaPending) {
+      console.log("🔄 [MARKETPLACE] Solana Pending changed");
+    }
+
+    prevProps.current = current;
+  }, [evmProject, evmPending, solanaProject, solanaPending]);
 
   useEffect(() => {
     console.log("🟡 [MARKETPLACE] Project data update effect triggered");
@@ -85,14 +99,10 @@ export default function MarketplaceHomepage() {
       project: evmProject?.projectURI?.name,
       pending: evmPending,
     });
-    // TODO: Re-enable when Solana hooks are implemented
-    // console.log("🟡 [MARKETPLACE] Solana Project:", {
-    //   project: solanaProject?.projectURI?.name,
-    //   pending: solanaPending,
-    // });
-    console.log("🟡 [MARKETPLACE] Solana Project Count:", {
-      count: solanaProjectCount,
-      loading: solanaCountLoading,
+    console.log("🟡 [MARKETPLACE] Solana Project:", {
+      project: solanaProject?.projectURI?.name,
+      pending: solanaPending,
+      isActive: solanaProject?.projectActive,
     });
 
     const projects: ProjectDetails[] = [];
@@ -106,54 +116,68 @@ export default function MarketplaceHomepage() {
       projects.push(evmProject);
     }
 
-    // TODO: Add Solana project when simplified hooks are implemented
-    // Add Solana project if available (convert SolanaProjectDetails to ProjectDetails)
-    // if (solanaProject) {
-    //   console.log(
-    //     "🟢 [MARKETPLACE] Adding Solana project to display:",
-    //     solanaProject.projectURI?.name
-    //   );
-    //   const solanaAsProjectDetails: ProjectDetails = {
-    //     ...solanaProject,
-    //     // Ensure compatibility with ProjectDetails interface
-    //     projectRemainingTokens: BigInt(solanaProject.projectRemainingTokens),
-    //     // Add missing properties from ProjectDetails that aren't in SolanaProjectDetails
-    //     projectPrice: solanaProject.projectPrice,
-    //     projectTotalSupply: solanaProject.projectTotalSupply,
-    //     projectSales: solanaProject.projectSales,
-    //     projectProfit: solanaProject.projectProfit,
-    //   };
-    //   projects.push(solanaAsProjectDetails);
-    // }
+    // Add Solana project if available (show regardless of active status for testnet)
+    if (solanaProject) {
+      console.log(
+        "🟢 [MARKETPLACE] Adding Solana project to display:",
+        solanaProject.projectURI?.name || "Unnamed Project",
+        "- Active:",
+        solanaProject.projectActive
+      );
+      projects.push(solanaProject);
+    }
 
     console.log(
       `🟢 [MARKETPLACE] Total projects to display: ${projects.length}`
     );
-    setAllProjects(projects);
-    setIsLoading(evmPending || solanaPending || solanaCountLoading);
-  }, [
-    evmProject,
-    evmPending,
-    solanaProject,
-    solanaPending,
-    solanaProjectCount,
-    solanaCountLoading,
-  ]);
 
-  const carouselItems = [
-    ...allProjects.map((project, index) => (
-      <MarketplaceHomeCard
-        key={`${project.chain}-${project.projectId || index}`}
-        data={project}
-      />
-    )),
-    <TemporaryComingSoonCard key="coming-soon" />,
-  ];
+    // Only update projects if they actually changed
+    setAllProjects((prevProjects) => {
+      const projectsChanged =
+        prevProjects.length !== projects.length ||
+        prevProjects.some((prevProject, index) => {
+          const currentProject = projects[index];
+          return (
+            !currentProject ||
+            prevProject.projectId !== currentProject.projectId
+          );
+        });
 
-  console.log(
-    "🟡 [MARKETPLACE] Rendering with carousel items count:",
-    carouselItems.length
+      if (projectsChanged) {
+        console.log("📝 [MARKETPLACE] Projects array updated");
+        return projects;
+      }
+      console.log("♻️ [MARKETPLACE] Projects array unchanged, skipping update");
+      return prevProjects;
+    });
+
+    // Only update loading state if it actually changed
+    const newLoadingState = evmPending || solanaPending;
+    setIsLoading((prev) => {
+      if (prev !== newLoadingState) {
+        console.log(
+          `🔄 [MARKETPLACE] Loading state changed: ${prev} → ${newLoadingState}`
+        );
+        return newLoadingState;
+      }
+      return prev;
+    });
+  }, [evmProject, evmPending, solanaProject, solanaPending]);
+
+  const carouselItems = useMemo(
+    () => [
+      ...allProjects.map((project, index) => (
+        <MarketplaceHomeCard
+          key={`${project.chain}-${project.projectId || index}`}
+          data={project}
+        />
+      )),
+      <TemporaryComingSoonCard key="coming-soon" />,
+    ],
+    [allProjects]
   );
+
+  // console.log("🟡 [MARKETPLACE] Rendering with carousel items count:", carouselItems.length); // Temporarily disabled
 
   return (
     <motion.div
@@ -165,24 +189,6 @@ export default function MarketplaceHomepage() {
       <h1 className="font-sen text-3xl font-bold text-primary dark:text-light lg:text-4xl">
         {t("availableProjects")}
       </h1>
-
-      {/* Debug Info */}
-      <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg text-sm">
-        <h3 className="font-bold mb-2">🔍 Debug Info:</h3>
-        <p>
-          EVM Projects: {evmProject ? "1 found" : "0 found"} (Loading:{" "}
-          {evmPending ? "Yes" : "No"})
-        </p>
-        <p>
-          Solana Projects: {solanaProject ? "1 found" : "0 found"} (Loading:{" "}
-          {solanaPending ? "Yes" : "No"})
-        </p>
-        <p>
-          Total Solana Projects Available: {solanaProjectCount} (Loading:{" "}
-          {solanaCountLoading ? "Yes" : "No"})
-        </p>
-        <p>Total Projects Displaying: {allProjects.length}</p>
-      </div>
 
       <div className="flex w-full items-start justify-center gap-6 lg:justify-start">
         {!isLoading && carouselItems.length > 1 ? (
@@ -203,3 +209,5 @@ export default function MarketplaceHomepage() {
     </motion.div>
   );
 }
+
+export default React.memo(MarketplaceHomepage);

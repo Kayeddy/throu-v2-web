@@ -10,8 +10,8 @@ import { Button } from "@heroui/button";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { Chip } from "@heroui/react";
-import { projectMedia } from "../marketplace/IndividualProjectDetails";
-import { ProjectDetails } from "@/utils/types/shared/project";
+import { ProjectDetails, normalizeProjectForUI } from "@/utils/types/shared/project";
+import { useProjectMediaByChain, useProjectNameByChain, useProjectDescriptionKeyByChain } from "@/hooks/blockchain/useProjectDataByChain";
 
 interface CardData extends ProjectDetails {
   redirectionLink: string;
@@ -31,26 +31,33 @@ export const ShowcaseCard = ({
   const t3 = useTranslations("Common");
 
   const locale = useLocale();
+  
+  // Normalize the project data for consistent UI rendering (same as MarketplaceHomeProjectCard)
+  const normalizedData = data ? normalizeProjectForUI(data) : null;
+  
+  // Get dynamic project media, name, and description based on chain
+  const projectMedia = useProjectMediaByChain(normalizedData?.chain);
+  const projectName = useProjectNameByChain(normalizedData?.chain);
+  const descriptionKey = useProjectDescriptionKeyByChain(normalizedData?.chain);
 
   const projectAttributes = {
-    tokens: data?.projectTotalSupply,
-    value: `$${data?.projectPrice}`,
-    total: `$${
-      data?.projectPrice && data?.projectTotalSupply
-        ? data?.projectTotalSupply * data?.projectPrice
-        : 0
-    }`,
+    tokens: normalizedData?.projectTotalSupply ?? "none",
+    value: normalizedData?.projectPrice ? `$${normalizedData.projectPrice}` : "none",
+    total:
+      normalizedData?.projectPrice && normalizedData?.projectTotalSupply
+        ? `$${normalizedData.projectTotalSupply * normalizedData.projectPrice}`
+        : "none",
     APY: "23%",
   };
 
   const projectCompletionPercentage = () => {
     if (
-      data?.projectRemainingTokens !== undefined &&
-      data?.projectTotalSupply
+      normalizedData?.projectRemainingTokens !== undefined &&
+      normalizedData?.projectTotalSupply
     ) {
       return calculateBarPercentage(
-        data.projectTotalSupply,
-        data.projectRemainingTokens
+        normalizedData.projectTotalSupply,
+        normalizedData.projectRemainingTokens
       );
     }
     return 0;
@@ -60,7 +67,7 @@ export const ShowcaseCard = ({
     <>
       {data ? (
         <motion.div
-          layoutId={layout ? `card-${data.projectURI?.name}` : undefined}
+          layoutId={layout ? `card-${projectName}` : undefined}
           className="relative flex h-[70vh] max-h-[600px] w-[80vw] max-w-[450px] flex-col items-start justify-start overflow-hidden rounded-md bg-light shadow-project-section-card-custom lg:max-h-[700px] lg:w-[40vw]"
         >
           <div className="relative h-[50%] min-h-[45%] w-full">
@@ -82,7 +89,7 @@ export const ShowcaseCard = ({
             </div>
             <BlurImage
               src={projectMedia[0]}
-              alt={data.projectURI?.name ?? "Project-card-image"}
+              alt={projectName ?? "Project-card-image"}
               fill
               sizes="(max-width: 768px) 100vw, 33vw"
               className="h-auto w-auto object-cover"
@@ -90,8 +97,7 @@ export const ShowcaseCard = ({
           </div>
           <div className="relative flex h-full w-full flex-col items-start justify-between p-3">
             <h1 className="font-sen text-xl font-semibold text-primary">
-              {/* {data.projectURI?.name ?? "Salón Prado"} */}
-              Salón Prado
+              {projectName ?? "Unnamed Project"}
             </h1>
 
             <ProjectAttributesContainer
@@ -101,15 +107,12 @@ export const ShowcaseCard = ({
             />
 
             <p className="w-[95%] truncate font-jakarta text-base font-extralight text-primary">
-              {/** TODO: The project description goes here */}
-              {t1("description.paragraph1")}
+              {t1(descriptionKey)}
             </p>
 
             <span className="text-jakarta flex flex-row items-center justify-start gap-2 text-base text-primary">
               <LocationIcon />
-              {data.projectURI?.attributes[0].value
-                ? data.projectURI.attributes[0].value
-                : t("no_location_available")}
+              {normalizedData.projectURI?.attributes?.[0]?.value ?? "none"}
             </span>
 
             <div className="flex w-full flex-col items-start justify-start gap-1">
@@ -128,7 +131,7 @@ export const ShowcaseCard = ({
             </div>
 
             <Button
-              href={data.redirectionLink}
+              href={normalizedData.redirectionLink || data.redirectionLink}
               as={Link}
               size="lg"
               className="w-full rounded-none bg-primary font-sen text-lg font-bold text-white hover:bg-secondary lg:text-base"

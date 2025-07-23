@@ -15,6 +15,57 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Prevent hydration flash and handle browser extension attributes */
+body {
+  /* Prevent layout shift during hydration */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Handle browser extension attributes gracefully */
+  &[cz-shortcut-listen="true"] {
+    /* Ensure no visual changes when extension adds attributes */
+    transition: none !important;
+  }
+}
+
+/* Prevent hydration flash for client-only components */
+.hydration-safe {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+
+  &.hydrated {
+    opacity: 1;
+  }
+}
+
+/* Hide elements that might cause hydration issues until client-side */
+.client-only {
+  display: none;
+}
+
+.client-only.hydrated {
+  display: block;
+}
+
+/* Prevent flash of unstyled content */
+.no-fouc {
+  visibility: hidden;
+}
+
+.no-fouc.loaded {
+  visibility: visible;
+}
+
+/* Handle browser extension interference */
+[data-hydrated="false"] {
+  /* Prevent any extension-related styling from affecting layout */
+  pointer-events: none;
+}
+
+[data-hydrated="true"] {
+  pointer-events: auto;
+}
+
 .font-sen {
   font-family: "Sen", system-ui;
   font-optical-sizing: auto;

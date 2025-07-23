@@ -1,21 +1,21 @@
 "use client";
 
-import { calculateBarPercentage, slugify } from "@/lib/utils";
+import { calculateBarPercentage, generateProjectUrl } from "@/lib/utils";
 import { Button, Chip } from "@heroui/react";
 import { motion } from "framer-motion";
 import { BlurImage } from "./blur-image";
 import ProjectAttributesContainer from "./project-attributes-boxes-container";
 import { SlLocationPin as LocationIcon } from "react-icons/sl";
 import { FaRegBookmark as BookmarkIcon } from "react-icons/fa";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
-import { projectMedia } from "../marketplace/IndividualProjectDetails";
 import {
   ProjectDetails,
   normalizeProjectForUI,
   isEVMProject,
   isSolanaProject,
 } from "@/utils/types/shared/project";
+import { useProjectMediaByChain, useProjectNameByChain, useProjectDescriptionKeyByChain, useProjectCategoryByChain } from "@/hooks/blockchain/useProjectDataByChain";
 import ChainIndicator from "./chain-indicator";
 
 interface MarketplaceHomeProjectCardProps {
@@ -38,7 +38,17 @@ export default function MarketplaceHomeProjectCard({
   const router = useRouter();
 
   // Normalize the project data for consistent UI rendering
-  const normalizedData = normalizeProjectForUI(data);
+  let normalizedData = normalizeProjectForUI(data);
+  // TEMP: Force available for Solana Project 0
+  if (normalizedData.projectId === "0" || normalizedData.projectId === 0) {
+    normalizedData = { ...normalizedData, projectActive: true };
+  }
+  
+  // Get dynamic project media, name, description, and category based on chain
+  const projectMedia = useProjectMediaByChain(data.chain);
+  const projectName = useProjectNameByChain(data.chain);
+  const descriptionKey = useProjectDescriptionKeyByChain(data.chain);
+  const projectCategory = useProjectCategoryByChain(data.chain);
 
   // Format currency based on chain
   const formatCurrency = (amount: number | undefined) => {
@@ -68,24 +78,27 @@ export default function MarketplaceHomeProjectCard({
       normalizedData?.projectRemainingTokens !== undefined &&
       normalizedData?.projectTotalSupply
     ) {
+      const remainingTokens =
+        typeof normalizedData.projectRemainingTokens === "bigint"
+          ? Number(normalizedData.projectRemainingTokens)
+          : normalizedData.projectRemainingTokens;
       return calculateBarPercentage(
         normalizedData.projectTotalSupply,
-        normalizedData.projectRemainingTokens
+        remainingTokens
       );
     }
     return 0;
   };
 
-  // Handle redirection to the project page using both the name and ID in the URL
+  const locale = useLocale();
+
+  // Handle redirection to the project page using both the name and ID in the URL with network support
   const handleInvestClick = () => {
     if (onInvest && normalizedData.projectId) {
       onInvest(normalizedData.projectId);
     } else {
-      const projectNameSlug = slugify(
-        normalizedData.projectURI?.name ?? "project"
-      );
-      const projectId = normalizedData.projectId || 0;
-      router.push(`/marketplace/projects/${projectNameSlug}-${projectId}`);
+      const projectUrl = generateProjectUrl(normalizedData, locale);
+      router.push(projectUrl);
     }
   };
 
@@ -107,7 +120,7 @@ export default function MarketplaceHomeProjectCard({
               size="sm"
               className="bg-quaternary font-jakarta text-light"
             >
-              {t1("category")}
+              {projectCategory}
             </Chip>
 
             {/* Chain indicator */}
@@ -129,7 +142,7 @@ export default function MarketplaceHomeProjectCard({
           </div>
           <BlurImage
             src={projectImage}
-            alt={normalizedData.projectURI?.name ?? "Project-card-image"}
+            alt={projectName ?? "Project-card-image"}
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
             className="h-auto w-auto object-cover"
@@ -138,8 +151,7 @@ export default function MarketplaceHomeProjectCard({
 
         <div className="relative flex h-full w-full flex-col items-start justify-between p-3">
           <h1 className="font-sen text-xl font-semibold text-primary dark:text-white">
-            {/* TODO: {normalizedData.projectURI?.name ?? "Salón Prado"} */}
-            Salón Prado
+            {projectName ?? "Unnamed Project"}
           </h1>
 
           <div className="flex w-full flex-col items-start justify-start gap-1">
@@ -164,8 +176,7 @@ export default function MarketplaceHomeProjectCard({
           />
 
           <p className="w-[95%] truncate font-jakarta text-base font-extralight text-primary dark:text-white">
-            {/* {normalizedData.projectURI?.description} */}
-            {t1("description.paragraph1")}
+            {t1(descriptionKey)}
           </p>
 
           <span className="text-jakarta flex flex-row items-center justify-start gap-2 text-base text-primary dark:text-white">

@@ -24,8 +24,23 @@ export const useWalletConnection = () => {
   const { isConnected, address } = useAppKitAccount();
   const { caipNetwork } = useAppKitNetwork();
 
-  const isSolana = caipNetwork?.id?.toString().includes("solana") || false;
+  const isSolana = (
+    caipNetwork?.id?.toString().includes("solana") || 
+    caipNetwork?.name?.toLowerCase().includes("solana") ||
+    false
+  );
   const isEVM = !isSolana;
+
+  // Debug: Uncomment to troubleshoot wallet detection issues
+  // console.log("🔍 [WALLET CONNECTION] Debug info:", {
+  //   isConnected,
+  //   address,
+  //   chainId: caipNetwork?.id,
+  //   chainName: caipNetwork?.name,
+  //   isSolana,
+  //   isEVM,
+  //   fullCaipNetwork: caipNetwork
+  // });
 
   return {
     isConnected,
@@ -50,7 +65,11 @@ export const useWalletBalance = () => {
   // Native token balance using Reown AppKit
   const nativeBalance = useAppKitBalance();
 
-  const isSolana = caipNetwork?.id?.toString().includes("solana") || false;
+  const isSolana = (
+    caipNetwork?.id?.toString().includes("solana") || 
+    caipNetwork?.name?.toLowerCase().includes("solana") ||
+    false
+  );
   const usdtAddress = process.env.NEXT_PUBLIC_USDT_TOKEN_ADDRESS as `0x${string}`;
 
   // USDT balance for EVM chains
@@ -141,7 +160,11 @@ export const useMultiChainWallet = () => {
     chain.id === caipNetwork?.id || chain.name === caipNetwork?.name
   );
 
-  const isSolana = currentChain?.namespace === "solana" || caipNetwork?.id?.toString().includes("solana");
+  const isSolana = (
+    currentChain?.namespace === "solana" || 
+    caipNetwork?.id?.toString().includes("solana") ||
+    caipNetwork?.name?.toLowerCase().includes("solana")
+  );
   const isEVM = currentChain?.namespace === "eip155" || !isSolana;
 
   return {
@@ -165,7 +188,11 @@ export const useInvestorInfo = () => {
   const [investorData, setInvestorData] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const isSolana = caipNetwork?.id?.toString().includes("solana") || false;
+  const isSolana = (
+    caipNetwork?.id?.toString().includes("solana") || 
+    caipNetwork?.name?.toLowerCase().includes("solana") ||
+    false
+  );
   const userContractAddress = process.env.NEXT_PUBLIC_USER_ADMIN_SMART_CONTRACT_ADDRESS as `0x${string}`;
 
   // EVM investor data - would need specific function from userAdmin.json

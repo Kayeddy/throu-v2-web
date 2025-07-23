@@ -1,6 +1,7 @@
 import { useIsMobile } from "@/hooks/ui/useIsMobile";
 import { Divider } from "@heroui/react";
 import { useTranslations } from "next-intl";
+import { PRADO_PROJECT_NAME } from "@/hardcoded-projects/prado";
 
 interface ProjectInvestmentConfirmationTabProps {
   investmentAmount: number | null;
@@ -11,7 +12,7 @@ interface ProjectInvestmentConfirmationTabProps {
 export default function ProjectInvestmentConfirmationTab({
   investmentAmount = 0,
   projectTokenPrice = 0,
-  projectName = "Salón Prado",
+  projectName = PRADO_PROJECT_NAME,
 }: ProjectInvestmentConfirmationTabProps) {
   const isMobile = useIsMobile();
   const t = useTranslations(

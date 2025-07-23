@@ -1,11 +1,18 @@
 /**
  * Blockchain Hooks Index
- * 
- * Exports all blockchain-related hooks following Reown AppKit patterns.
- * Provides clean, direct access to wallet connection, transaction, and project functionality.
+ *
+ * Clean barrel exports following Reown AppKit documentation patterns.
+ * Provides a single entry point for all blockchain-related hooks.
+ *
+ * Key Features:
+ * - Multi-chain support (EVM + Solana)
+ * - Clean AppKit integration
+ * - Proper error handling
+ * - TypeScript-first approach
+ * - Organized by blockchain type (EVM/Solana)
  */
 
-// Re-export Reown AppKit hooks directly (no abstractions)
+// Core Reown AppKit exports
 export {
   useAppKit,
   useAppKitAccount,
@@ -18,31 +25,17 @@ export {
   useDisconnect,
 } from "@reown/appkit/react";
 
-// Project-related hooks
-export {
-  useProject,
-  useProjects,
-  useCanInvest,
-  useProjectStats,
-} from "./projects";
+// EVM Blockchain hooks
+export * from "./evm";
 
-// Transaction hooks
-export {
-  useInvestTransaction,
-  useApprovalTransaction,
-  useContractTransaction,
-  usePurchaseTransaction,
-} from "./transactions";
+// Solana Blockchain hooks
+export * from "./solana";
 
-// Wallet and user hooks
-export {
-  useWalletConnection,
-  useWalletBalance,
-  useWalletInfo,
-  useMultiChainWallet,
-  useInvestorInfo,
-  useUserBalance,
-} from "./wallet";
+// Generic blockchain hooks
+export * from "./wallet";
+
+// Project data hooks
+export * from "./useProjectDataByChain";
 
 // Re-export wagmi hooks that are commonly used with Reown
 export {

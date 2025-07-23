@@ -24,6 +24,7 @@ export interface ChainSpecificProjectDetails {
   programAddress?: string;
   projectAddress?: string;
   isPasiveProject?: boolean;
+  rawTokenPrice?: number; // Raw token price with 6 decimals for investment calculations
 
   // Common chain identifier
   chain?: SupportedChain;

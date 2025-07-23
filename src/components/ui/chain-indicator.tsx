@@ -45,10 +45,9 @@ export default function ChainIndicator({
   if (variant === "compact") {
     return (
       <Chip
-        color={config.color}
         radius="sm"
-        size="sm"
-        className="bg-quaternary font-jakarta text-light cacpitalize"
+        size="md"
+        className={`bg-black/30 font-jakarta text-light backdrop-blur-sm capitalize ${className}`}
         startContent={
           <Image
             src={config.icon}

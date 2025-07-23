@@ -8,6 +8,7 @@ import { routing } from "@/i18n/routing";
 import { headers } from "next/headers";
 import AppProviders from "@/contexts/app-providers";
 import { Locale } from "@/utils/types/shared/common";
+import HydrationHandler from "@/components/shared/HydrationHandler";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -37,7 +38,13 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className={inter.className}>
+      <body
+        className={inter.className}
+        suppressHydrationWarning
+        // Additional attributes to prevent extension interference
+        data-hydrated="false"
+      >
+        <HydrationHandler />
         <NextIntlClientProvider messages={messages}>
           <AppProviders locale={locale as Locale} cookies={cookies}>
             {children}

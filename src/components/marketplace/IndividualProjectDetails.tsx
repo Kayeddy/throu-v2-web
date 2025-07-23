@@ -2,11 +2,20 @@
 
 import ProjectHeader from "@/sections/marketplace/project/ProjectHeader";
 import ProjectTabsHandler from "@/sections/marketplace/project/ProjectTabsHandler";
-import { useProject } from "@/hooks/blockchain/projects";
+import { useGetProject } from "@/hooks/blockchain/evm";
+import { useGetSolanaProject } from "@/hooks/blockchain/solana";
 import { useEffect, useState } from "react";
 import { Card, Divider, Skeleton } from "@heroui/react";
 import { motion } from "framer-motion";
-import { ProjectPageParams } from "@/app/[locale]/marketplace/projects/[project]/page";
+import { ProjectDetails, SupportedChain } from "@/utils/types/shared/project";
+import { useProjectMediaByChain } from "@/hooks/blockchain/useProjectDataByChain";
+
+// Updated ProjectPageParams interface
+export interface ProjectPageParams {
+  network: string;
+  projectSlug: string;
+  locale: string;
+}
 
 const CardSkeletonLoader = () => {
   return (
@@ -29,46 +38,92 @@ const CardSkeletonLoader = () => {
   );
 };
 
-export const projectMedia = [
-  // Render images
-  "/assets/projects/prado/renders/render_1.webp",
-  "/assets/projects/prado/renders/render_2.webp",
-  "/assets/projects/prado/renders/render_3.webp",
-  "/assets/projects/prado/renders/render_4.webp",
-  "/assets/projects/prado/renders/render_5.webp",
-  "/assets/projects/prado/renders/render_6.webp",
-  "/assets/projects/prado/renders/render_7.webp",
-  "/assets/projects/prado/renders/render_8.webp",
-  "/assets/projects/prado/renders/render_9.webp",
-
-  // Sketch images
-  "/assets/projects/prado/sketches/sketch_1.webp",
-  "/assets/projects/prado/sketches/sketch_2.webp",
-  "/assets/projects/prado/sketches/sketch_3.webp",
-  "/assets/projects/prado/sketches/sketch_4.webp",
-  "/assets/projects/prado/sketches/sketch_5.webp",
-];
 
 export default function IndividualProjectDetails({
   params,
 }: {
   params: ProjectPageParams;
 }) {
-  const [projectId, setProjectId] = useState<number | 0>(0);
+  const [projectData, setProjectData] = useState<ProjectDetails | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
 
-  // Extract project ID from the URL params and update the state
+  // Determine network type and extract project ID
+  const network = params.network as SupportedChain;
+  const projectId = params.projectSlug.split("-").pop() || "0";
+  
+  // Get dynamic project media based on chain
+  const projectMedia = useProjectMediaByChain(network);
+
+  // Hooks for different networks
+  const {
+    project: evmProject,
+    error: evmError,
+    isPending: evmPending,
+  } = useGetProject(network === "polygon" ? parseInt(projectId) : 0);
+
+  const {
+    data: solanaProject,
+    error: solanaError,
+    isPending: solanaPending,
+  } = useGetSolanaProject(network === "solana" ? projectId : "");
+
+  // Update project data based on network
   useEffect(() => {
-    if (params.project) {
-      const slugParts = params.project.split("-"); // Split slug into name and ID parts
-      const extractedProjectId = Number(slugParts[slugParts.length - 1]); // Convert the ID part to a number
-      if (!isNaN(extractedProjectId)) {
-        // Ensure it's a valid number
-        setProjectId(extractedProjectId);
-      }
-    }
-  }, [params.project]);
+    console.log("🔍 [PROJECT DETAILS] Network:", network);
+    console.log("🔍 [PROJECT DETAILS] Project ID:", projectId);
 
-  const { project, error, isLoading } = useProject(projectId);
+    if (network === "polygon") {
+      setIsLoading(evmPending);
+      setError(evmError);
+      if (evmProject) {
+        console.log("✅ [PROJECT DETAILS] EVM Project loaded:", evmProject);
+        setProjectData(evmProject);
+      }
+    } else if (network === "solana") {
+      setIsLoading(solanaPending);
+      setError(solanaError);
+      if (solanaProject) {
+        console.log(
+          "✅ [PROJECT DETAILS] Solana Project loaded:",
+          solanaProject
+        );
+        setProjectData(solanaProject);
+      }
+    } else {
+      setIsLoading(false);
+      setError(new Error(`Unsupported network: ${network}`));
+    }
+  }, [
+    network,
+    projectId,
+    evmProject,
+    evmPending,
+    evmError,
+    solanaProject,
+    solanaPending,
+    solanaError,
+  ]);
+
+  if (error) {
+    return (
+      <motion.div
+        className="flex h-full w-full items-center justify-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.1, duration: 1 }}
+      >
+        <div className="text-center p-10">
+          <h2 className="text-xl font-bold text-red-500 mb-4">
+            Project Not Found
+          </h2>
+          <p className="text-gray-600 dark:text-gray-400">
+            {error.message || "The requested project could not be found."}
+          </p>
+        </div>
+      </motion.div>
+    );
+  }
 
   return (
     <motion.div
@@ -81,9 +136,12 @@ export default function IndividualProjectDetails({
         <CardSkeletonLoader />
       ) : (
         <div className="relative w-full">
-          <ProjectHeader projectDetails={project} projectMedia={projectMedia} />
+          <ProjectHeader
+            projectDetails={projectData}
+            projectMedia={projectMedia}
+          />
           <Divider className="my-6 h-[0.5px] w-full bg-minimal dark:bg-light" />
-          <ProjectTabsHandler projectDetails={project} />
+          <ProjectTabsHandler projectDetails={projectData} />
         </div>
       )}
     </motion.div>

@@ -1,7 +1,8 @@
 import IndividualProjectDetails from "@/components/marketplace/IndividualProjectDetails";
 
 export interface ProjectPageParams {
-  project: string;
+  network: string;
+  projectSlug: string;
   locale: string;
 }
 

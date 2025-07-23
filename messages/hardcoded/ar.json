@@ -1,0 +1,16 @@
+{
+  "projects": {
+    "xtremo": {
+      "investmentType": {
+        "passive": "سلبي"
+      },
+      "category": {
+        "tourism": "السياحة"
+      },
+      "subcategory": {
+        "ecological": "بيئي"
+      },
+      "location": "Vda. El Toro, Retiro, El Hallazgo, Retiro, Antioquia"
+    }
+  }
+}

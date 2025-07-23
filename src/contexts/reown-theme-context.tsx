@@ -6,6 +6,8 @@ import React, {
   useEffect,
   useState,
   ReactNode,
+  useMemo,
+  useCallback,
 } from "react";
 import { useTheme } from "next-themes";
 import { useLocale } from "next-intl";
@@ -66,17 +68,23 @@ export function ReownThemeProvider({ children }: ReownThemeProviderProps) {
   // Note: Reown AppKit doesn't have built-in internationalization support
   // It relies on browser language detection automatically
 
-  const updateReownTheme = (newTheme: "light" | "dark") => {
-    setReownTheme(newTheme);
-    if (!isMounted) return;
+  const updateReownTheme = useCallback(
+    (newTheme: "light" | "dark") => {
+      setReownTheme(newTheme);
+      if (!isMounted) return;
 
-    // Use official Reown AppKit API to set theme mode
-    if (typeof window !== "undefined" && (window as any).appkit?.setThemeMode) {
-      (window as any).appkit.setThemeMode(newTheme);
-    }
-  };
+      // Use official Reown AppKit API to set theme mode
+      if (
+        typeof window !== "undefined" &&
+        (window as any).appkit?.setThemeMode
+      ) {
+        (window as any).appkit.setThemeMode(newTheme);
+      }
+    },
+    [isMounted]
+  );
 
-  const updateReownLanguage = (newLocale: string) => {
+  const updateReownLanguage = useCallback((newLocale: string) => {
     // Note: Reown AppKit doesn't have built-in language switching
     // It automatically detects browser language
     console.log(
@@ -84,21 +92,21 @@ export function ReownThemeProvider({ children }: ReownThemeProviderProps) {
       newLocale,
       "but Reown AppKit uses browser detection"
     );
-  };
+  }, []);
 
-  const contextState: ReownThemeContextState = {
-    reownTheme,
-    isThemeLoaded,
-    locale,
-  };
-
-  const contextDispatch: ReownThemeContextDispatch = {
-    updateReownTheme,
-    updateReownLanguage,
-  };
+  const contextValue = useMemo(
+    () => ({
+      reownTheme,
+      isThemeLoaded,
+      locale,
+      updateReownTheme,
+      updateReownLanguage,
+    }),
+    [reownTheme, isThemeLoaded, locale, updateReownTheme, updateReownLanguage]
+  );
 
   return (
-    <ReownThemeContext.Provider value={{ ...contextState, ...contextDispatch }}>
+    <ReownThemeContext.Provider value={contextValue}>
       {children}
     </ReownThemeContext.Provider>
   );

@@ -582,7 +582,17 @@
         "mobileTitle": "Projects",
         "noInvestmentMessage": "You currently have no investments.",
         "errorMessage": "Failed to load portfolio data. Please try again later.",
-        "partnerMessage": "You are a partner"
+        "partnerMessage": "You are a partner",
+        "loading": "Loading your portfolio...",
+        "loadingProjects": "Fetching projects...",
+        "loadingInvestments": "Checking investments...",
+        "withdraw": {
+          "button": "Withdraw",
+          "withdrawing": "Withdrawing...",
+          "success": "Withdrawn",
+          "tryAgain": "Try Again",
+          "error": "Withdrawal failed. Please try again."
+        }
       },
       "movements": {
         "desktopTitle": "Balances and Movements",
@@ -688,7 +698,13 @@
             "paragraph1": "The Salón Prado project, located in the emblematic Prado neighborhood of Medellín, offers a unique investment opportunity that combines cultural richness and economic dynamism through real estate tokenization. This initiative aims not only to revitalize a space of historical value but also to create a center for art, gastronomy, and entertainment that attracts both locals and tourists.",
             "paragraph2": "The project's profitability is structured through a detailed model projecting a defined investment recovery period, with an annual return (IRR) of 23% that is highly competitive. This model not only reflects the project's economic growth potential but also ensures unmatched transparency and security thanks to blockchain technology. This means that investors can monitor the progress and management of their investments with unprecedented clarity.",
             "paragraph3": "Furthermore, Salón Prado stands out for its sustainable and social impact approach. The investment goes beyond financial returns, contributing to urban revitalization, heritage conservation, and the promotion of local culture. Investors, therefore, not only benefit financially but also participate in enriching Medellín's social and cultural fabric.",
-            "paragraph4": "Finally, the tokenized investment structure of the project offers flexibility and liquidity, allowing investors to buy, sell, or trade tokens efficiently in the secondary market."
+            "paragraph4": "Finally, the tokenized investment structure of the project offers flexibility and liquidity, allowing investors to buy, sell, or trade tokens efficiently in the secondary market.",
+            "xtremo": {
+              "paragraph1": "ECO-PARQUE XTREMO COLOMBIA represents an innovative eco-tourism and adventure project that combines environmental sustainability with recreational entertainment. Located in a strategic natural setting, this project offers investors the opportunity to participate in Colombia's growing eco-tourism market through blockchain tokenization, ensuring transparency and security in every investment.",
+              "paragraph2": "The project is designed to create a sustainable eco-park that features adventure activities, nature trails, and educational programs that promote environmental conservation. With a focus on responsible tourism, ECO-PARQUE XTREMO aims to generate significant returns while contributing to the preservation of Colombia's natural heritage.",
+              "paragraph3": "The investment model projects attractive annual returns through diversified revenue streams including eco-tourism activities, adventure sports, environmental education programs, and sustainable facility rentals. The tokenized structure allows for flexible investment participation and transparent profit distribution.",
+              "paragraph4": "This project not only offers financial returns but also contributes to environmental conservation, local community development, and the promotion of sustainable tourism practices in Colombia, making it an investment with both economic and social impact."
+            }
           }
         },
         "projectGalleryTab": {
@@ -832,6 +848,23 @@
       "toggle": "Toggle theme",
       "light": "Light mode",
       "dark": "Dark mode"
+    }
+  },
+
+  "hardcoded": {
+    "projects": {
+      "xtremo": {
+        "investmentType": {
+          "passive": "Passive"
+        },
+        "category": {
+          "tourism": "Tourism"
+        },
+        "subcategory": {
+          "ecological": "Ecological"
+        },
+        "location": "Vda. El Toro, Retiro, El Hallazgo, Retiro, Antioquia"
+      }
     }
   }
 }

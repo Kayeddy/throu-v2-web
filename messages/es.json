@@ -664,7 +664,17 @@
         "mobileTitle": "Proyectos",
         "noInvestmentMessage": "Actualmente no tienes inversiones.",
         "errorMessage": "Error al cargar los datos del portafolio. Por favor, inténtalo de nuevo más tarde.",
-        "partnerMessage": "Eres socio"
+        "partnerMessage": "Eres socio",
+        "loading": "Cargando tu portafolio...",
+        "loadingProjects": "Obteniendo proyectos...",
+        "loadingInvestments": "Verificando inversiones...",
+        "withdraw": {
+          "button": "Retirar",
+          "withdrawing": "Retirando...",
+          "success": "Retirado",
+          "tryAgain": "Intentar de nuevo",
+          "error": "Error al retirar. Por favor, inténtalo de nuevo."
+        }
       },
       "movements": {
         "desktopTitle": "Saldos y Movimientos",
@@ -770,7 +780,13 @@
             "paragraph1": "El proyecto Salón Prado, ubicado en el emblemático barrio Prado de Medellín, ofrece una oportunidad de inversión única que combina riqueza cultural y dinamismo económico a través de la tokenización inmobiliaria. Esta iniciativa no solo busca revitalizar un espacio de valor histórico, sino también crear un centro de arte, gastronomía y entretenimiento que atraiga tanto a locales como a turistas.",
             "paragraph2": "La rentabilidad del proyecto está estructurada mediante un modelo detallado que proyecta un período definido de recuperación de la inversión, con un retorno anual (TIR) del 23%, altamente competitivo. Este modelo no solo refleja el potencial de crecimiento económico del proyecto, sino que también garantiza una transparencia y seguridad inigualables gracias a la tecnología blockchain. Esto permite a los inversionistas monitorear el progreso y la gestión de sus inversiones con una claridad sin precedentes.",
             "paragraph3": "Además, Salón Prado se destaca por su enfoque sostenible y de impacto social. La inversión va más allá de los rendimientos financieros, contribuyendo a la revitalización urbana, la conservación del patrimonio y la promoción de la cultura local. Por lo tanto, los inversionistas no solo se benefician financieramente, sino que también participan en el enriquecimiento del tejido social y cultural de Medellín.",
-            "paragraph4": "Finalmente, la estructura de inversión tokenizada del proyecto ofrece flexibilidad y liquidez, permitiendo a los inversionistas comprar, vender o intercambiar tokens de manera eficiente en el mercado secundario."
+            "paragraph4": "Finalmente, la estructura de inversión tokenizada del proyecto ofrece flexibilidad y liquidez, permitiendo a los inversionistas comprar, vender o intercambiar tokens de manera eficiente en el mercado secundario.",
+            "xtremo": {
+              "paragraph1": "ECO-PARQUE XTREMO COLOMBIA representa un proyecto innovador de ecoturismo y aventura que combina sostenibilidad ambiental con entretenimiento recreativo. Ubicado en un entorno natural estratégico, este proyecto ofrece a los inversores la oportunidad de participar en el creciente mercado de ecoturismo de Colombia a través de la tokenización blockchain, garantizando transparencia y seguridad en cada inversión.",
+              "paragraph2": "El proyecto está diseñado para crear un ecoparque sostenible que incluye actividades de aventura, senderos naturales y programas educativos que promueven la conservación ambiental. Con un enfoque en turismo responsable, ECO-PARQUE XTREMO busca generar retornos significativos mientras contribuye a la preservación del patrimonio natural de Colombia.",
+              "paragraph3": "El modelo de inversión proyecta retornos anuales atractivos a través de flujos de ingresos diversificados que incluyen actividades de ecoturismo, deportes de aventura, programas de educación ambiental y alquiler de instalaciones sostenibles. La estructura tokenizada permite una participación de inversión flexible y distribución transparente de ganancias.",
+              "paragraph4": "Este proyecto no solo ofrece retornos financieros sino que también contribuye a la conservación ambiental, el desarrollo de la comunidad local y la promoción de prácticas de turismo sostenible en Colombia, convirtiéndolo en una inversión con impacto tanto económico como social."
+            }
           }
         },
         "projectGalleryTab": {
@@ -854,6 +870,23 @@
       "toggle": "Cambiar tema",
       "light": "Modo claro",
       "dark": "Modo oscuro"
+    }
+  },
+
+  "hardcoded": {
+    "projects": {
+      "xtremo": {
+        "investmentType": {
+          "passive": "Pasiva"
+        },
+        "category": {
+          "tourism": "Turismo"
+        },
+        "subcategory": {
+          "ecological": "Ecológica"
+        },
+        "location": "Vda. El Toro, Retiro, El Hallazgo, Retiro, Antioquia"
+      }
     }
   }
 }
