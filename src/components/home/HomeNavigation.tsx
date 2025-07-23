@@ -4,6 +4,7 @@ import { FaRegUser } from "react-icons/fa";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { useScrollPosition } from "@/hooks/ui/useScrollPosition";
 import React, { useState, useCallback } from "react";
+import NoSSR from "../shared/NoSSR";
 
 import {
   Navbar,
@@ -86,18 +87,7 @@ export const MobileHomeNavigation = React.memo(
           ))}
 
           <NavbarMenuItem className="w-full">
-            <SignedIn>
-              <Button
-                href={`/${locale}/marketplace`}
-                as={Link}
-                size="lg"
-                radius="none"
-                className="w-full bg-primary px-10 font-sen text-sm font-bold text-white hover:bg-secondary lg:w-fit"
-              >
-                {t("invest")}
-              </Button>
-            </SignedIn>
-            <SignedOut>
+            <NoSSR fallback={
               <Button
                 size="lg"
                 radius="none"
@@ -108,7 +98,31 @@ export const MobileHomeNavigation = React.memo(
               >
                 {t("signIn")}
               </Button>
-            </SignedOut>
+            }>
+              <SignedIn>
+                <Button
+                  href={`/${locale}/marketplace`}
+                  as={Link}
+                  size="lg"
+                  radius="none"
+                  className="w-full bg-primary px-10 font-sen text-sm font-bold text-white hover:bg-secondary lg:w-fit"
+                >
+                  {t("invest")}
+                </Button>
+              </SignedIn>
+              <SignedOut>
+                <Button
+                  size="lg"
+                  radius="none"
+                  className="w-full bg-primary px-10 font-sen text-lg font-semibold text-white hover:bg-secondary lg:w-fit"
+                  as={Link}
+                  href={`/${locale}/sign-in`}
+                  rel="noreferrer"
+                >
+                  {t("signIn")}
+                </Button>
+              </SignedOut>
+            </NoSSR>
           </NavbarMenuItem>
 
           <NavbarMenuItem className="flex w-full flex-row items-center justify-between">
@@ -130,19 +144,21 @@ export const MobileHomeNavigation = React.memo(
             </Link>
           </NavbarMenuItem>
 
-          <SignedIn>
-            <NavbarMenuItem className="flex w-full flex-col items-center justify-center gap-3">
-              <div className="w-full px-4">
-                <ReownWalletButton
-                  size="lg"
-                  className="w-full bg-secondary text-lights"
-                />
-              </div>
-              {/* <div className="flex justify-center">
-                <ReownChainIndicator />
-              </div> */}
-            </NavbarMenuItem>
-          </SignedIn>
+          <NoSSR>
+            <SignedIn>
+              <NavbarMenuItem className="flex w-full flex-col items-center justify-center gap-3">
+                <div className="w-full px-4">
+                  <ReownWalletButton
+                    size="lg"
+                    className="w-full bg-secondary text-lights"
+                  />
+                </div>
+                {/* <div className="flex justify-center">
+                  <ReownChainIndicator />
+                </div> */}
+              </NavbarMenuItem>
+            </SignedIn>
+          </NoSSR>
 
           <div className="flex w-full flex-row items-center justify-between">
             {socialMediaItems.map((item, idx) => (
@@ -163,9 +179,11 @@ export const MobileHomeNavigation = React.memo(
         </NavbarMenu>
 
         <NavbarContent justify="end">
-          <SignedIn>
-            <UserButtonMenu />
-          </SignedIn>
+          <NoSSR>
+            <SignedIn>
+              <UserButtonMenu />
+            </SignedIn>
+          </NoSSR>
           <LanguageSelector />
 
           <Button className="relative bg-transparent" onPress={toggleMenu}>
@@ -237,7 +255,7 @@ export const DesktopHomeNavigation = React.memo(
         </div>
 
         <div className="flex flex-row gap-2 font-sen">
-          <SignedOut>
+          <NoSSR fallback={
             <Button
               startContent={<FaRegUser />}
               className="bg-transparent font-sen font-normal text-primary"
@@ -247,16 +265,28 @@ export const DesktopHomeNavigation = React.memo(
             >
               {t("signIn")}
             </Button>
-          </SignedOut>
-          <SignedIn>
-            <div className="flex flex-row items-center gap-2">
-              <UserButtonMenu />
-              <div>
-                <ReownWalletButton />
-                {/* <ReownChainIndicator /> */}
+          }>
+            <SignedOut>
+              <Button
+                startContent={<FaRegUser />}
+                className="bg-transparent font-sen font-normal text-primary"
+                as={Link}
+                href={`/${locale}/sign-in`}
+                rel="noreferrer"
+              >
+                {t("signIn")}
+              </Button>
+            </SignedOut>
+            <SignedIn>
+              <div className="flex flex-row items-center gap-2">
+                <UserButtonMenu />
+                <div>
+                  <ReownWalletButton />
+                  {/* <ReownChainIndicator /> */}
+                </div>
               </div>
-            </div>
-          </SignedIn>
+            </SignedIn>
+          </NoSSR>
 
           <LanguageSelector />
         </div>
