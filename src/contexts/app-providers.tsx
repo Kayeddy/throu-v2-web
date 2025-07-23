@@ -56,8 +56,8 @@ const metadata = {
 // Create the AppKit instance following official multichain documentation
 const modal = createAppKit({
   adapters: [wagmiAdapter, solanaAdapter],
-  networks: [polygon, solanaDevnet],
-  defaultNetwork: polygon,
+  networks: [polygon as any, solanaDevnet as any],
+  defaultNetwork: polygon as any,
   metadata: metadata,
   projectId,
   enableNetworkSwitch: true,

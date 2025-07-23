@@ -63,12 +63,12 @@ export function getSolanaChainConfig(
       : network === "devnet"
       ? SupportedChainId.SOLANA_DEVNET
       : network === "testnet"
-      ? SupportedChainId.SOLANA_TESTNET
+      ? SupportedChainId.SOLANA_DEVNET
       : null;
 
   if (!chainId) return null;
 
-  const chain = CHAINS[chainId];
+  const chain = CHAINS[chainId as keyof typeof CHAINS];
   return isSolanaChain(chain) ? chain : null;
 }
 

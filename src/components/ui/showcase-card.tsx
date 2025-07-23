@@ -112,7 +112,7 @@ export const ShowcaseCard = ({
 
             <span className="text-jakarta flex flex-row items-center justify-start gap-2 text-base text-primary">
               <LocationIcon />
-              {normalizedData.projectURI?.attributes?.[0]?.value ?? "none"}
+              {normalizedData?.projectURI?.attributes?.[0]?.value ?? "none"}
             </span>
 
             <div className="flex w-full flex-col items-start justify-start gap-1">
@@ -131,7 +131,7 @@ export const ShowcaseCard = ({
             </div>
 
             <Button
-              href={normalizedData.redirectionLink || data.redirectionLink}
+              href={normalizedData ? data?.redirectionLink : '#'}
               as={Link}
               size="lg"
               className="w-full rounded-none bg-primary font-sen text-lg font-bold text-white hover:bg-secondary lg:text-base"
