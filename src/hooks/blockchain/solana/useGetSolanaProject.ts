@@ -323,8 +323,8 @@ export function useGetSolanaProject(
     const isKnownNotFound = lastErrorRef.current === `not_found_${projectId}`;
 
     // Only fetch if we have all required dependencies and haven't fetched this project yet
+    // Note: We don't require isConnected for reading public project data
     const shouldFetch =
-      isConnected &&
       connection &&
       program &&
       projectId &&
@@ -336,7 +336,7 @@ export function useGetSolanaProject(
       // Small delay to prevent rapid successive calls
       const timeoutId = setTimeout(() => {
         console.log(
-          "🚀 [SOLANA] Auto-fetching project with Anchor due to dependency change"
+          "🚀 [SOLANA] Auto-fetching project with Anchor (public data, no wallet required)"
         );
         refetch();
       }, 100);
@@ -347,7 +347,7 @@ export function useGetSolanaProject(
         `⏭️ [SOLANA] Skipping auto-fetch for project ${projectId} (known to not exist)`
       );
     }
-  }, [isConnected, connection, program, projectId, refetch]);
+  }, [connection, program, projectId, refetch]);
 
   return { data, isPending, error, refetch };
 }
