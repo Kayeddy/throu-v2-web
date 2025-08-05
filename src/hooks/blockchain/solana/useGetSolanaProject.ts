@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect, useRef, useMemo } from "react";
 import { useAppKitConnection } from "@reown/appkit-adapter-solana/react";
 import { useAppKitAccount } from "@reown/appkit/react";
-import { PublicKey } from "@solana/web3.js";
+import { PublicKey, Connection, Keypair } from "@solana/web3.js";
 import { AnchorProvider, Program, BN } from "@coral-xyz/anchor";
 import type { ProgramRealState } from "@/utils/types/shared/solana";
 import { ProjectDetails } from "@/utils/types/shared/project";
@@ -11,6 +11,26 @@ import { XTREMO_PROJECT_FALLBACK_IMAGE } from "@/hardcoded-projects/xtremo";
 
 // Create PROGRAM_ID as a constant outside the component to prevent re-creation
 const PROGRAM_ID = new PublicKey(programIdl.address);
+
+// Create a standalone connection for reading public data
+// This allows fetching projects without wallet connection
+// IMPORTANT: This connection is independent of wallet connection status
+// Projects will load immediately when the page loads, just like EVM projects
+const SOLANA_RPC_ENDPOINT = process.env.NEXT_PUBLIC_SOLANA_RPC_URL || "https://api.devnet.solana.com";
+const standaloneConnection = new Connection(SOLANA_RPC_ENDPOINT, "confirmed");
+
+// Create a dummy wallet for read-only operations
+// Anchor requires a wallet even for read-only operations, but it won't be used for signing
+const dummyKeypair = Keypair.generate();
+const readOnlyWallet = {
+  publicKey: dummyKeypair.publicKey,
+  signTransaction: async <T,>(tx: T): Promise<T> => {
+    throw new Error("Read-only wallet cannot sign transactions");
+  },
+  signAllTransactions: async <T,>(txs: T[]): Promise<T[]> => {
+    throw new Error("Read-only wallet cannot sign transactions");
+  },
+};
 
 // Define SolanaProject type based on the IDL
 interface SolanaProject {
@@ -111,32 +131,27 @@ export function useGetSolanaProject(
   const lastProjectIdRef = useRef<string | null>(null);
   const lastErrorRef = useRef<string | null>(null);
 
-  const { connection } = useAppKitConnection();
+  // Optional: Use wallet connection if available, but not required
+  const { connection: walletConnection } = useAppKitConnection();
   const { isConnected } = useAppKitAccount();
 
   // Create stable program instance using useMemo
+  // Use wallet connection if available, otherwise use standalone connection
   const program = useMemo(() => {
-    if (!connection || !connection.rpcEndpoint) {
-      return null;
-    }
-
+    // Always use standalone connection for reading public data
+    // This ensures projects can be fetched without wallet connection
+    const connectionToUse = standaloneConnection;
+    
     try {
-      // Create a minimal wallet interface for Anchor (read-only operations)
-      const wallet = {
-        publicKey: null,
-        signTransaction: async () => {
-          throw new Error("Signing not supported in read-only mode");
-        },
-        signAllTransactions: async () => {
-          throw new Error("Signing not supported in read-only mode");
-        },
-      };
-
-      // Create Anchor provider
-      const provider = new AnchorProvider(connection, wallet as any, {
-        commitment: "confirmed",
-        preflightCommitment: "confirmed",
-      });
+      // Create Anchor provider with read-only wallet
+      const provider = new AnchorProvider(
+        connectionToUse,
+        readOnlyWallet,
+        {
+          commitment: "confirmed",
+          preflightCommitment: "confirmed",
+        }
+      );
 
       // Create program instance using the IDL
       const programInstance = new Program(
@@ -145,20 +160,24 @@ export function useGetSolanaProject(
       );
 
       console.log(
-        "✅ [SOLANA] Anchor program initialized:",
+        "✅ [SOLANA] Anchor program initialized (standalone):",
         PROGRAM_ID.toString()
+      );
+      console.log(
+        "🌐 [SOLANA] Using RPC endpoint:",
+        connectionToUse.rpcEndpoint
       );
       return programInstance;
     } catch (error) {
       console.error("❌ [SOLANA] Failed to initialize Anchor program:", error);
       return null;
     }
-  }, [connection?.rpcEndpoint]);
+  }, []); // No dependencies - always use standalone connection
 
   const refetch = useCallback(async () => {
-    if (!connection || !program || !projectId || isFetchingRef.current) {
+    // Only check for program and projectId - connection is always available
+    if (!program || !projectId || isFetchingRef.current) {
       console.log("🚫 [SOLANA] Skipping fetch:", {
-        hasConnection: !!connection,
         hasProgram: !!program,
         hasProjectId: !!projectId,
         isFetching: isFetchingRef.current,
@@ -174,7 +193,7 @@ export function useGetSolanaProject(
     try {
       console.log("🔍 [SOLANA] Fetching project with Anchor:", projectId);
       console.log("📡 [SOLANA] Using program ID:", PROGRAM_ID.toString());
-      console.log("🌐 [SOLANA] Connection endpoint:", connection.rpcEndpoint);
+      console.log("🌐 [SOLANA] Connection endpoint:", standaloneConnection.rpcEndpoint);
 
       const convertedProjectId = new BN(projectId);
 
@@ -209,7 +228,7 @@ export function useGetSolanaProject(
         } catch (err2) {
           console.log("🔄 [SOLANA] Trying raw account parsing...");
           // Approach 3: Fall back to raw account info and manual parsing
-          const accountInfo = await connection.getAccountInfo(projectPDA);
+          const accountInfo = await standaloneConnection.getAccountInfo(projectPDA);
           if (!accountInfo) {
             throw new Error(`Project account not found for ID: ${projectId}`);
           }
@@ -307,7 +326,7 @@ export function useGetSolanaProject(
       setIsPending(false);
       isFetchingRef.current = false;
     }
-  }, [connection, program, projectId]);
+  }, [program, projectId]); // Removed connection dependency - always available
 
   // Auto-fetch when dependencies change with debounce
   useEffect(() => {
@@ -323,9 +342,8 @@ export function useGetSolanaProject(
     const isKnownNotFound = lastErrorRef.current === `not_found_${projectId}`;
 
     // Only fetch if we have all required dependencies and haven't fetched this project yet
-    // Note: We don't require isConnected for reading public project data
+    // Note: We don't require wallet connection for reading public project data
     const shouldFetch =
-      connection &&
       program &&
       projectId &&
       !isFetchingRef.current &&
@@ -347,7 +365,7 @@ export function useGetSolanaProject(
         `⏭️ [SOLANA] Skipping auto-fetch for project ${projectId} (known to not exist)`
       );
     }
-  }, [connection, program, projectId, refetch]);
+  }, [program, projectId, refetch]); // Removed connection dependency
 
   return { data, isPending, error, refetch };
 }

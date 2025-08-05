@@ -5,6 +5,10 @@
  * Following 2025 module organization patterns.
  */
 
+// Wallet provider hooks for multi-wallet compatibility
+export { useWalletProvider, useAnchorWallet } from "./useWalletProvider";
+export { usePriorityFees } from "./usePriorityFees";
+
 // Project data hooks
 export { useGetSolanaProject } from "./useGetSolanaProject";
 

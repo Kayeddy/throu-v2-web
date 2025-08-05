@@ -6,6 +6,8 @@ import { AnchorProvider, Program, BN } from "@coral-xyz/anchor";
 import type { ProgramRealState } from "@/utils/types/shared/solana";
 import programIdl from "@/utils/idls/program_real_state.json";
 import * as token from "@solana/spl-token";
+import { useWalletProvider, useAnchorWallet } from "./useWalletProvider";
+import { usePriorityFees } from "./usePriorityFees";
 
 interface SolanaWithdrawState {
   isPending: boolean;
@@ -41,6 +43,9 @@ export const useSolanaWithdrawInvestor =
   (): UseSolanaWithdrawInvestorReturn => {
     const { connection } = useAppKitConnection();
     const { address, isConnected } = useAppKitAccount();
+    const walletProvider = useWalletProvider();
+    const anchorWallet = useAnchorWallet();
+    const { addPriorityFee, walletSupportsPriorityFees } = usePriorityFees();
 
     const [withdrawState, setWithdrawState] = useState<SolanaWithdrawState>({
       isPending: false,
@@ -62,8 +67,8 @@ export const useSolanaWithdrawInvestor =
 
     const executeWithdraw = useCallback(
       async (projectId: string): Promise<string | null> => {
-        if (!connection || !address || !isConnected) {
-          const errorMsg = "Wallet not connected or connection not available";
+        if (!connection || !address || !isConnected || !walletProvider || !anchorWallet) {
+          const errorMsg = "Wallet not connected, not supported, or connection not available";
           console.error("❌ [SOLANA WITHDRAW]", errorMsg);
           setWithdrawState((prev) => ({
             ...prev,
@@ -87,24 +92,13 @@ export const useSolanaWithdrawInvestor =
         });
 
         try {
+          console.log(`🔌 [SOLANA WITHDRAW] Using wallet: ${walletProvider.walletName}`);
+          
           const publicKey = new PublicKey(address);
           const projectIdBN = new BN(projectId);
 
-          // Create minimal wallet interface for Anchor
-          const wallet = {
-            publicKey,
-            signTransaction: async () => {
-              throw new Error("Use connection signTransaction method instead");
-            },
-            signAllTransactions: async () => {
-              throw new Error(
-                "Use connection signAllTransactions method instead"
-              );
-            },
-          };
-
-          // Create Anchor provider
-          const provider = new AnchorProvider(connection, wallet as any, {
+          // Create Anchor provider with the proper wallet interface
+          const provider = new AnchorProvider(connection, anchorWallet as any, {
             commitment: "confirmed",
             preflightCommitment: "confirmed",
           });
@@ -240,53 +234,61 @@ export const useSolanaWithdrawInvestor =
             .transaction();
 
           // Get the latest blockhash
-          const latestBlockhash = await connection.getLatestBlockhash();
+          const latestBlockhash = await connection.getLatestBlockhash("confirmed");
           transaction.recentBlockhash = latestBlockhash.blockhash;
           transaction.feePayer = publicKey;
+          
+          // Add priority fees if wallet doesn't handle them automatically
+          let finalTransaction = transaction;
+          if (!walletProvider.supportsPriorityFees) {
+            console.log("💰 [SOLANA WITHDRAW] Adding priority fees...");
+            finalTransaction = await addPriorityFee(transaction, connection, {
+              autoEstimate: true
+            });
+          } else {
+            console.log("✅ [SOLANA WITHDRAW] Wallet handles priority fees automatically");
+          }
 
           console.log(
-            "📡 [SOLANA WITHDRAW] Sending transaction via Reown AppKit..."
+            `📡 [SOLANA WITHDRAW] Sending transaction via ${walletProvider.walletName}...`
           );
 
-          // Use Reown AppKit's connection to send the transaction
+          // Simulate transaction first
+          console.log("🔍 [SOLANA WITHDRAW] Simulating transaction...");
+          const simulationResult = await connection.simulateTransaction(finalTransaction);
+          
+          if (simulationResult.value.err) {
+            console.error("❌ [SOLANA WITHDRAW] Simulation failed:", simulationResult.value.err);
+            throw new Error(`Transaction simulation failed: ${JSON.stringify(simulationResult.value.err)}`);
+          }
+          
+          console.log("✅ [SOLANA WITHDRAW] Simulation successful");
+          console.log("📝 [SOLANA WITHDRAW] Sending transaction for signing...");
+          
+          // Use the wallet provider to sign and send the transaction
           let signature: string;
-
-          // Access the wallet provider through window.solana or the connection object
-          const solanaWallet = (window as any).solana;
-
-          if (
-            solanaWallet &&
-            typeof solanaWallet.signAndSendTransaction === "function"
-          ) {
-            console.log(
-              "📝 [SOLANA WITHDRAW] Using window.solana.signAndSendTransaction..."
-            );
-            const simulationResult = await connection.simulateTransaction(
-              transaction
-            );
-            console.log(
-              "🔍 [SOLANA WITHDRAW] Simulation result:",
-              simulationResult
-            );
-            const signed = await solanaWallet.signAndSendTransaction(
-              transaction
-            );
-            signature = signed.signature || signed;
-          } else {
-            // Fallback to connection.sendTransaction
-            console.log(
-              "📝 [SOLANA WITHDRAW] Using connection.sendTransaction..."
-            );
-            signature = await connection.sendTransaction(transaction, []);
+          try {
+            const skipPreflight = walletProvider.walletName === "Trust Wallet";
+            signature = await walletProvider.signAndSendTransaction(finalTransaction, skipPreflight);
+          } catch (err) {
+            console.error("❌ [SOLANA WITHDRAW] Wallet signing failed:", err);
+            // If signAndSendTransaction fails, try alternative approach
+            if (walletProvider.walletName === "Trust Wallet" || walletProvider.walletName === "Reown Wallet") {
+              console.log("🔄 [SOLANA WITHDRAW] Trying fallback method...");
+              signature = await connection.sendTransaction(finalTransaction, [], { skipPreflight: true });
+            } else {
+              throw err;
+            }
           }
 
           console.log("⏳ [SOLANA WITHDRAW] Confirming transaction...");
 
-          // Wait for confirmation
+          // Wait for confirmation with timeout
           const confirmation = await connection.confirmTransaction({
             signature,
-            ...latestBlockhash,
-          });
+            blockhash: latestBlockhash.blockhash,
+            lastValidBlockHeight: latestBlockhash.lastValidBlockHeight,
+          }, "confirmed");
 
           if (confirmation.value.err) {
             throw new Error(
@@ -324,7 +326,7 @@ export const useSolanaWithdrawInvestor =
           return null;
         }
       },
-      [connection, address, isConnected]
+      [connection, address, isConnected, walletProvider, anchorWallet]
     );
 
     return {
